@@ -30,9 +30,9 @@
     - [x] Build Project Card Component <!-- id: 18 -->
 
 - [ ] Phase 6: Interactive Slideshows
-    - [ ] Design Slideshow Modal/Overview <!-- id: 19 -->
-    - [ ] Implement Image Slideshow Logic (Next/Prev) <!-- id: 20 -->
-    - [ ] Add Touch/Swipe support (Optional) <!-- id: 21 -->
+    - [x] Design Slideshow Modal/Overview <!-- id: 19 -->
+    - [x] Implement Image Slideshow Logic (Next/Prev) <!-- id: 20 -->
+    - [/] Add Touch/Swipe support (Optional) <!-- id: 21 -->
 
 - [ ] Phase 7: Polish & Verification
     - [ ] Responsive Design Check (Mobile, Tablet, Desktop) <!-- id: 22 -->
