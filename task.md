@@ -40,4 +40,9 @@
     - [x] Refine Header Spacing & Responsive <!-- id: 23-refine -->
     - [ ] SEO Meta Tags & Favicon <!-- id: 23 -->
     - [ ] Performance Audit (Lighthouse) <!-- id: 24 -->
-    - [ ] Final Code Review & Cleanup <!-- id: 25 -->
+- [ ] Phase 8: Refinement & Restyling
+    - [x] Remove Purple Theme (Switch to Blue/Teal) <!-- id: 26 -->
+    - [x] Update Project Data Structure (Image Captions) <!-- id: 27 -->
+    - [x] Implement Slideshow Captions <!-- id: 28 -->
+    - [x] Implement "Final Slide" with Details & Link <!-- id: 29 -->
+    - [x] Verify UI/UX Polish <!-- id: 30 -->

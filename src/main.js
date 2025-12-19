@@ -8,12 +8,14 @@ const projects = [
     category: "web",
     tags: ["React", "Node.js", "MongoDB"],
     description: "A full-featured online store with cart and payment integration.",
+    details: "Built a scalable e-commerce solution handling 10k+ concurrent users. Features include real-time inventory tracking, stripe payment integration, and a custom admin dashboard.",
+    link: "https://example.com/demo",
     images: [
-      "https://via.placeholder.com/800x600/333/fff?text=E-Com+Dashboard",
-      "https://via.placeholder.com/800x600/444/fff?text=Product+Page",
-      "https://via.placeholder.com/800x600/555/fff?text=Checkout+Flow"
+      { url: "https://via.placeholder.com/800x600/005f99/fff?text=Dashboard+Overview", caption: "Admin Dashboard with real-time analytics" },
+      { url: "https://via.placeholder.com/800x600/004d80/fff?text=Product+Page", caption: "Responsive Product Details view" },
+      { url: "https://via.placeholder.com/800x600/003366/fff?text=Checkout+Flow", caption: "Seamless multi-step checkout process" }
     ],
-    thumb: "https://via.placeholder.com/400x300/333/fff?text=E-Com+Thumb"
+    thumb: "https://via.placeholder.com/400x300/005f99/fff?text=E-Com+Thumb"
   },
   {
     id: 2,
@@ -21,12 +23,14 @@ const projects = [
     category: "mobile",
     tags: ["Kotlin", "Jetpack Compose", "Room"],
     description: "Android application to track daily workouts and nutrition.",
+    details: "A native Android app focused on offline-first capability using Room database. Implements Material You design and syncs with Google Fit API.",
+    link: "https://play.google.com/store/apps/details?id=example",
     images: [
-      "https://via.placeholder.com/800x600/222/fff?text=Home+Screen",
-      "https://via.placeholder.com/800x600/333/fff?text=Workout+Log",
-      "https://via.placeholder.com/800x600/444/fff?text=Stats+Graph"
+      { url: "https://via.placeholder.com/800x600/004d40/fff?text=Home+Screen", caption: "Daily Activity Summary" },
+      { url: "https://via.placeholder.com/800x600/00695c/fff?text=Workout+Log", caption: "Interactive Workout Logging" },
+      { url: "https://via.placeholder.com/800x600/00796b/fff?text=Stats+Graph", caption: "Progress visualization over time" }
     ],
-    thumb: "https://via.placeholder.com/400x300/222/fff?text=Fitness+Thumb"
+    thumb: "https://via.placeholder.com/400x300/004d40/fff?text=Fitness+Thumb"
   },
   {
     id: 3,
@@ -34,11 +38,13 @@ const projects = [
     category: "web",
     tags: ["Vite", "Vanilla JS", "CSS3"],
     description: "The premium portfolio website you are looking at right now.",
+    details: "Designed to showcase development skills using only native web technologies. Features custom glassmorphism, performant animations, and a dynamic project loader.",
+    link: "#",
     images: [
-      "https://via.placeholder.com/800x600/111/fff?text=Hero+Section",
-      "https://via.placeholder.com/800x600/222/fff?text=Portfolio+Grid"
+      { url: "https://via.placeholder.com/800x600/101010/fff?text=Hero+Section", caption: "First impression with hero animations" },
+      { url: "https://via.placeholder.com/800x600/202020/fff?text=Portfolio+Grid", caption: "Filterable project grid layout" }
     ],
-    thumb: "https://via.placeholder.com/400x300/111/fff?text=Portfolio+Thumb"
+    thumb: "https://via.placeholder.com/400x300/101010/fff?text=Portfolio+Thumb"
   },
   {
     id: 4,
@@ -46,11 +52,13 @@ const projects = [
     category: "mobile",
     tags: ["Kotlin", "Firebase"],
     description: "Real-time messaging app with media sharing capabilities.",
+    details: "Secure messaging app using Firebase Realtime Database. Supports end-to-end encryption for private chats and group messaging features.",
+    link: "https://github.com/example/chat",
     images: [
-      "https://via.placeholder.com/800x600/000/fff?text=Chat+List",
-      "https://via.placeholder.com/800x600/111/fff?text=Message+View"
+      { url: "https://via.placeholder.com/800x600/263238/fff?text=Chat+List", caption: "Recent conversations list" },
+      { url: "https://via.placeholder.com/800x600/37474f/fff?text=Message+View", caption: "Chat interface with media support" }
     ],
-    thumb: "https://via.placeholder.com/400x300/000/fff?text=Chat+Thumb"
+    thumb: "https://via.placeholder.com/400x300/263238/fff?text=Chat+Thumb"
   }
 ];
 
@@ -60,7 +68,7 @@ const filterBtns = document.querySelectorAll('.filter-btn');
 
 // Slideshow State
 let currentProject = null;
-let currentImageIndex = 0;
+let currentSlideIndex = 0; // Changed from ImageIndex to SlideIndex to account for final slide
 
 // Render Projects
 function renderProjects(filter = 'all') {
@@ -106,12 +114,32 @@ const modalHtml = `
     <button class="close-btn">&times;</button>
     <div class="modal-content glass">
       <button class="nav-btn prev-btn">&#10094;</button>
+      
       <div class="slide-container">
-        <img id="slide-img" src="" alt="Project Slide">
+        <!-- Image Slide -->
+        <div id="image-slide" class="slide-view active">
+          <img id="slide-img" src="" alt="Project Slide">
+          <div class="slide-caption-wrapper">
+             <p id="slide-caption"></p>
+          </div>
+        </div>
+        
+        <!-- Final Info Slide -->
+        <div id="info-slide" class="slide-view">
+          <div class="info-content">
+             <h2 id="info-title"></h2>
+             <div class="info-details">
+               <p id="info-desc"></p>
+             </div>
+             <a id="info-link" href="#" target="_blank" class="btn btn-primary">Visit Project</a>
+          </div>
+        </div>
       </div>
+
       <button class="nav-btn next-btn">&#10095;</button>
-      <div class="slide-info">
-        <h3 id="slide-title"></h3>
+      
+      <div class="slide-info-footer">
+        <h3 id="footer-title"></h3>
         <p id="slide-counter"></p>
       </div>
     </div>
@@ -120,14 +148,22 @@ const modalHtml = `
 document.body.insertAdjacentHTML('beforeend', modalHtml);
 
 const modal = document.getElementById('slideshow-modal');
+const imageSlide = document.getElementById('image-slide');
+const infoSlide = document.getElementById('info-slide');
+
 const slideImg = document.getElementById('slide-img');
-const slideTitle = document.getElementById('slide-title');
+const slideCaption = document.getElementById('slide-caption');
+const infoTitle = document.getElementById('info-title');
+const infoDesc = document.getElementById('info-desc');
+const infoLink = document.getElementById('info-link');
+
+const footerTitle = document.getElementById('footer-title');
 const slideCounter = document.getElementById('slide-counter');
 
 // Modal Controls
 function openSlideshow(projectId) {
   currentProject = projects.find(p => p.id === projectId);
-  currentImageIndex = 0;
+  currentSlideIndex = 0;
   updateSlide();
   modal.classList.add('active');
   document.body.style.overflow = 'hidden';
@@ -139,20 +175,48 @@ function closeSlideshow() {
 }
 
 function nextSlide() {
-  currentImageIndex = (currentImageIndex + 1) % currentProject.images.length;
+  // Total slides = images + 1 (final info slide)
+  const totalSlides = currentProject.images.length + 1;
+  currentSlideIndex = (currentSlideIndex + 1) % totalSlides;
   updateSlide();
 }
 
 function prevSlide() {
-  currentImageIndex = (currentImageIndex - 1 + currentProject.images.length) % currentProject.images.length;
+  const totalSlides = currentProject.images.length + 1;
+  currentSlideIndex = (currentSlideIndex - 1 + totalSlides) % totalSlides;
   updateSlide();
 }
 
 function updateSlide() {
   if (!currentProject) return;
-  slideImg.src = currentProject.images[currentImageIndex];
-  slideTitle.textContent = currentProject.title;
-  slideCounter.textContent = `${currentImageIndex + 1} / ${currentProject.images.length}`;
+  const totalSlides = currentProject.images.length + 1;
+
+  // Footer Info
+  footerTitle.textContent = currentProject.title;
+
+  if (currentSlideIndex < currentProject.images.length) {
+    // Image Slide
+    imageSlide.style.display = 'flex';
+    infoSlide.style.display = 'none';
+
+    // Set Content
+    const data = currentProject.images[currentSlideIndex];
+    slideImg.src = data.url;
+    slideCaption.textContent = data.caption;
+
+    slideCounter.textContent = `Image ${currentSlideIndex + 1} of ${currentProject.images.length}`;
+  } else {
+    // Final Info Slide
+    imageSlide.style.display = 'none';
+    infoSlide.style.display = 'flex';
+
+    // Set Content
+    infoTitle.textContent = currentProject.title;
+    infoDesc.textContent = currentProject.details;
+    infoLink.href = currentProject.link;
+
+    slideCounter.textContent = `Project Details`;
+  }
 }
 
 // Modal Listeners

@@ -1,21 +1,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@300;500;700&display=swap');
 
 :root {
-  /* Colors - Cyber/Dark Theme */
-  --hue-primary: 265;
-  /* Electric Purple */
-  --hue-secondary: 180;
-  /* Cyan */
+  /* Colors - Cyber Blue/Teal Theme */
+  --hue-primary: 210;
+  /* Electric Blue */
+  --hue-secondary: 170;
+  /* Bright Teal */
   --hue-bg: 220;
-  /* Deep Blue/Black */
+  /* Deep Blue/Black - keeping this as it fits */
 
-  --color-primary: hsl(var(--hue-primary), 100%, 65%);
-  --color-primary-glow: hsl(var(--hue-primary), 100%, 65%, 0.5);
+  /* Adjusted saturation/lightness for premium feel */
+  --color-primary: hsl(var(--hue-primary), 100%, 60%);
+  --color-primary-glow: hsl(var(--hue-primary), 100%, 60%, 0.5);
   --color-secondary: hsl(var(--hue-secondary), 100%, 50%);
-  --color-bg: hsl(var(--hue-bg), 40%, 8%);
-  --color-bg-light: hsl(var(--hue-bg), 30%, 15%);
+
+  /* Slightly deeper background for contrast */
+  --color-bg: hsl(var(--hue-bg), 40%, 6%);
+  --color-bg-light: hsl(var(--hue-bg), 30%, 12%);
   --color-text-main: hsl(0, 0%, 100%);
-  --color-text-muted: hsl(220, 20%, 70%);
+  --color-text-muted: hsl(220, 20%, 75%);
 
   /* Spacing */
   --spacing-xs: 0.5rem;
@@ -90,17 +93,18 @@ header {
   transform: translateX(-50%);
   width: 95%;
   /* Wider on mobile */
-  max-width: 1200px;
+  max-width: 1400px;
   z-index: 1000;
-  padding: 0.8rem 1.5rem;
+  padding: 0.8rem 2rem;
   /* Slightly tighter padding */
   transition: all 0.3s ease;
 }
 
 header nav {
+  display: flex;
   justify-content: space-between;
+  align-items: center;
   width: 100%;
-  /* Ensure nav takes full width of header */
 }
 
 .logo {
@@ -644,4 +648,87 @@ footer {
     transform: scale(1.1);
     opacity: 0.4;
   }
+}/* Advanced Slideshow Styles */
+.slide-view {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    flex-direction: column;
+}
+
+#image-slide {
+    position: relative;
+}
+
+/* Caption Overlay over Image */
+.slide-caption-wrapper {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+    padding: 2rem 1rem 1rem;
+    text-align: center;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    pointer-events: none;
+}
+
+#slide-caption {
+    font-size: 1.1rem;
+    color: #eee;
+    font-weight: 500;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+/* Final Info Slide */
+#info-slide {
+    text-align: center;
+    padding: 3rem;
+    max-width: 600px;
+}
+
+.info-content {
+    animation: fadeInUp 0.5s ease;
+}
+
+#info-title {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--color-primary);
+}
+
+.info-details {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--color-text-muted);
+    margin-bottom: 2.5rem;
+}
+
+/* Slideshow Footer */
+.slide-info-footer {
+    position: absolute;
+    top: 1rem;
+    left: 2rem;
+    text-align: left;
+    z-index: 2005;
+}
+
+#footer-title {
+    font-size: 1.2rem;
+    color: white;
+    margin-bottom: 0.2rem;
+}
+
+#slide-counter {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+}
+
+/* Hide old slide info if it exists */
+.slide-info {
+    display: none;
 }
