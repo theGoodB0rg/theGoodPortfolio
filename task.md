@@ -13,21 +13,21 @@
     - [x] Create Utility Classes (Glassmorphism, Grid, Flex) <!-- id: 7 -->
 
 - [ ] Phase 3: Core Layout & Hero Section
-    - [ ] Build `index.html` Skeleton (Header, Main, Footer) <!-- id: 8 -->
-    - [ ] Implement Hero Section HTML <!-- id: 9 -->
-    - [ ] Style Hero Section (Typography, layout) <!-- id: 10 -->
-    - [ ] Add Hero Animations (Fade-in, slide-up) <!-- id: 11 -->
+    - [x] Build `index.html` Skeleton (Header, Main, Footer) <!-- id: 8 -->
+    - [x] Implement Hero Section HTML <!-- id: 9 -->
+    - [x] Style Hero Section (Typography, layout) <!-- id: 10 -->
+    - [x] Add Hero Animations (Fade-in, slide-up) <!-- id: 11 -->
 
 - [ ] Phase 4: Sections & Components
-    - [ ] Implement About Section <!-- id: 12 -->
-    - [ ] Implement Contact Section (No Backend) <!-- id: 13 -->
-    - [ ] Build Footer <!-- id: 14 -->
+    - [x] Implement About Section <!-- id: 12 -->
+    - [x] Implement Contact Section (No Backend) <!-- id: 13 -->
+    - [x] Build Footer <!-- id: 14 -->
 
 - [ ] Phase 5: Portfolio Engine
-    - [ ] Define Project Data Structure (JSON/Array) <!-- id: 15 -->
-    - [ ] Create Portfolio Grid Layout <!-- id: 16 -->
-    - [ ] Implement Mobile/Web Tab Filter Logic <!-- id: 17 -->
-    - [ ] Build Project Card Component <!-- id: 18 -->
+    - [x] Define Project Data Structure (JSON/Array) <!-- id: 15 -->
+    - [x] Create Portfolio Grid Layout <!-- id: 16 -->
+    - [x] Implement Mobile/Web Tab Filter Logic <!-- id: 17 -->
+    - [x] Build Project Card Component <!-- id: 18 -->
 
 - [ ] Phase 6: Interactive Slideshows
     - [ ] Design Slideshow Modal/Overview <!-- id: 19 -->
