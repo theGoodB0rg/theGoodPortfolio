@@ -2,15 +2,15 @@
 
 - [ ] Phase 1: Foundation & Setup
     - [ ] Initialize Git Repository & Remote <!-- id: 0 -->
-    - [/] Setup Project Structure (Vite + Vanilla) <!-- id: 1 -->
-    - [ ] Create `.gitignore` & AI Configuration <!-- id: 2 -->
-    - [ ] Initial Commit <!-- id: 3 -->
+    - [x] Setup Project Structure (Vite + Vanilla) <!-- id: 1 -->
+    - [x] Create `.gitignore` & AI Configuration <!-- id: 2 -->
+    - [x] Initial Commit <!-- id: 3 -->
 
 - [ ] Phase 2: Design System & Core Styles
-    - [ ] Create `src/style.css` with CSS Variables (Theming) <!-- id: 4 -->
-    - [ ] Setup Fonts (Inter/Outfit) <!-- id: 5 -->
-    - [ ] Implement Reset & Base Typography <!-- id: 6 -->
-    - [ ] Create Utility Classes (Glassmorphism, Grid, Flex) <!-- id: 7 -->
+    - [x] Create `src/style.css` with CSS Variables (Theming) <!-- id: 4 -->
+    - [x] Setup Fonts (Inter/Outfit) <!-- id: 5 -->
+    - [x] Implement Reset & Base Typography <!-- id: 6 -->
+    - [x] Create Utility Classes (Glassmorphism, Grid, Flex) <!-- id: 7 -->
 
 - [ ] Phase 3: Core Layout & Hero Section
     - [ ] Build `index.html` Skeleton (Header, Main, Footer) <!-- id: 8 -->

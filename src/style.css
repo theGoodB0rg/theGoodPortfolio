@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@300;500;700&display=swap');
+
+:root {
+  /* Colors - Cyber/Dark Theme */
+  --hue-primary: 265;
+  /* Electric Purple */
+  --hue-secondary: 180;
+  /* Cyan */
+  --hue-bg: 220;
+  /* Deep Blue/Black */
+
+  --color-primary: hsl(var(--hue-primary), 100%, 65%);
+  --color-primary-glow: hsl(var(--hue-primary), 100%, 65%, 0.5);
+  --color-secondary: hsl(var(--hue-secondary), 100%, 50%);
+  --color-bg: hsl(var(--hue-bg), 40%, 8%);
+  --color-bg-light: hsl(var(--hue-bg), 30%, 15%);
+  --color-text-main: hsl(0, 0%, 100%);
+  --color-text-muted: hsl(220, 20%, 70%);
+
+  /* Spacing */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 2rem;
+  --spacing-lg: 4rem;
+  --spacing-xl: 8rem;
+
+  /* Typography */
+  --font-display: 'Outfit', sans-serif;
+  --font-body: 'Inter', sans-serif;
+}
+
+/* Reset & Base */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text-main);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1.1;
+  color: #fff;
+}
+
+/* Utility: Glassmorphism */
+.glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1rem;
+}
+
+/* Utility: Flex/Grid */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-sm);
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
