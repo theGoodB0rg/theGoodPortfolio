@@ -6,7 +6,7 @@ let projects = [];
 // Fetch Projects
 async function loadProjects() {
   try {
-    const response = await fetch('/src/data/projects.json');
+    const response = await fetch('data/projects.json');
     if (!response.ok) throw new Error('Failed to load projects');
     projects = await response.json();
 
