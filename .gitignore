@@ -4,3 +4,5 @@ dist
 .env
 .agent
 implementation_plan.md
+headers.txt
+task.md
