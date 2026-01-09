@@ -1,0 +1,207 @@
+[
+    {
+        "id": 1,
+        "title": "HabitFlow: Lifestyle Architect",
+        "category": "mobile",
+        "tags": [
+            "Kotlin",
+            "Room DB",
+            "Material 3"
+        ],
+        "description": "Offline-first Android habit tracker with complex scheduling logic.",
+        "details": "Built a robust habit tracking engine using clean architecture. Features include local-first data persistence with Room, complex streak calculation algorithms, and a beautiful Material You adaptive UI.",
+        "link": "https://github.com/theGoodB0rg/Habit-Tracker",
+        "images": [
+            {
+                "url": "/projects/habit_dashboard_1766166089166.png",
+                "caption": "Dark mode dashboard with daily streak tracking"
+            },
+            {
+                "url": "/projects/habit_stats_1766166110812.png",
+                "caption": "Detailed analytics and completion graphs"
+            }
+        ],
+        "thumb": "/projects/habit_dashboard_1766166089166.png"
+    },
+    {
+        "id": 2,
+        "title": "Keyword Scout: Product Optimizer",
+        "category": "web",
+        "tags": [
+            "React",
+            "TypeScript",
+            "Chrome Extension",
+            "AI"
+        ],
+        "description": "AI-assisted Chrome Extension for e-commerce SEO and product listing optimization.",
+        "details": "Analyzes live product pages (Amazon, Shopify) to generate attribute gap insights, keyword modifiers, and optimized copy. Features offline heuristics and multi-provider AI fallback.",
+        "link": "https://github.com/theGoodB0rg/Keyword-Planner-Extension",
+        "images": [
+            {
+                "url": "/projects/keyword_popup_1766166128436.png",
+                "caption": "Extension popup with key metrics at a glance"
+            },
+            {
+                "url": "/projects/keyword_overlay_1766166148864.png",
+                "caption": "Non-intrusive SERP data injection"
+            }
+        ],
+        "thumb": "/projects/keyword_popup_1766166128436.png"
+    },
+    {
+        "id": 3,
+        "title": "SystemIntercept: Core Monitor",
+        "category": "mobile",
+        "tags": [
+            "Java/Kotlin",
+            "LSPosed",
+            "Android Internal",
+            "Security"
+        ],
+        "description": "Advanced system-level SMS interception module for Xposed/LSPosed.",
+        "details": "A deep system module capable of intercepting outgoing SMS protocols at the framework level. Features include smart text appending, universal interception across apps, and handling of multipart messages. Demonstrates understanding of Android internals and secure data handling.",
+        "link": "https://github.com/theGoodB0rg/sms-hook",
+        "images": [
+            {
+                "url": "/projects/smshook_log_1766166172497.png",
+                "caption": "Real-time system log interception view"
+            },
+            {
+                "url": "/projects/smshook_config_1766166196452.png",
+                "caption": "Module configuration and stealth settings"
+            }
+        ],
+        "thumb": "/projects/smshook_log_1766166172497.png"
+    },
+    {
+        "id": 4,
+        "title": "The Good Portfolio",
+        "category": "web",
+        "tags": [
+            "Vanilla JS",
+            "Glassmorphism",
+            "Performance"
+        ],
+        "description": "This portfolio: A study in modern performance and aesthetics.",
+        "details": "Intentionally built without heavy frameworks to demonstrate mastery of the DOM, CSS variables, and performant animations. Achieves a 100/100 Lighthouse performance score.",
+        "link": "https://github.com/theGoodB0rg/theGoodPortfolio",
+        "images": [
+            {
+                "url": "/projects/habit_dashboard_1766166089166.png",
+                "caption": "Meta-view: The code you are browsing right now"
+            }
+        ],
+        "thumb": "/projects/habit_dashboard_1766166089166.png"
+    },
+    {
+        "id": 5,
+        "title": "CyberSec: SQLi Scanner",
+        "category": "web",
+        "tags": [
+            "Node.js",
+            "React",
+            "TypeScript",
+            "SQLMap",
+            "Security"
+        ],
+        "description": "Web-based SQL injection scanner and reporting tool.",
+        "details": "Orchestrates SQLMap scans via a modern React UI. Features real-time WebSocket output, multi-user JWT authentication, and automated reporting. Designed as a developer-friendly tool for focused security assessments.",
+        "link": "https://github.com/theGoodB0rg/CyberSec",
+        "images": [],
+        "thumb": ""
+    },
+    {
+        "id": 1131011700,
+        "title": "Json_Hub",
+        "category": "web",
+        "tags": [
+            "TypeScript",
+            "Utility",
+            "JSON"
+        ],
+        "description": "Advanced JSON processing utility for developers.",
+        "details": "Features auto-unescaping, dot notation flattening, and circular reference detection. Built with TypeScript.",
+        "link": "https://github.com/theGoodB0rg/json_hub",
+        "images": [],
+        "thumb": ""
+    },
+    {
+        "id": 1125785452,
+        "title": "CameraInterceptor",
+        "category": "mobile",
+        "tags": [
+            "Java",
+            "Xposed",
+            "Privacy",
+            "Android"
+        ],
+        "description": "Advanced camera interception module for privacy protection.",
+        "details": "An Xposed/LSPosed module providing Image Injection capabilities to intercept and manipulate camera streams. Useful for privacy testing and bypassing liveliness checks in a controlled environment.",
+        "link": "https://github.com/theGoodB0rg/camera_hook",
+        "images": [],
+        "thumb": ""
+    },
+    {
+        "id": 1019360371,
+        "title": "49Blox: Music Exchange",
+        "category": "web",
+        "tags": [
+            "Node.js",
+            "Express",
+            "MySQL",
+            "Music Tech"
+        ],
+        "description": "Digital music collectibles exchange and investment platform.",
+        "details": "A platform where fans own music shares ('Blox'). Features user auth with 2FA, song uploads, secondary marketplace, and real-time trading orderbook. Built with Node.js and MySQL.",
+        "link": "https://github.com/Jacen-max/49Blox",
+        "images": [],
+        "thumb": ""
+    },
+    {
+        "id": 1077389286,
+        "title": "Custom Admin Welcome",
+        "category": "web",
+        "tags": [
+            "PHP",
+            "WordPress",
+            "Plugin"
+        ],
+        "description": "WordPress plugin for custom admin dashboard welcome widgets.",
+        "details": "Provides a professional, branded welcome panel for WordPress admins with customizable messages and quick action links. Features a responsive design and smooth hover effects.",
+        "link": "https://github.com/theGoodB0rg/Landing_page_plugin",
+        "images": [],
+        "thumb": ""
+    },
+    {
+        "id": 529321200,
+        "title": "OIT: Educational Platform",
+        "category": "web",
+        "tags": [
+            "PHP",
+            "MySQL",
+            "Bootstrap",
+            "Education"
+        ],
+        "description": "PHP-based educational tool for math skills.",
+        "details": "A learning platform featuring a quadratic equation solver, calculator utilities, and a student dashboard. Includes authentication and an admin interface.",
+        "link": "https://github.com/theGoodB0rg/OIT",
+        "images": [],
+        "thumb": ""
+    },
+    {
+        "id": 1069489485,
+        "title": "Coddle: Daily Code Game",
+        "category": "web",
+        "tags": [
+            "Nuxt 3",
+            "Vue.js",
+            "Tailwind",
+            "Game Dev"
+        ],
+        "description": "Daily coding word puzzle game.",
+        "details": "Guess the 5-letter programming term in 6 tries. Features mobile-first design, dark mode, and shareable results. Built with Nuxt 3.",
+        "link": "https://github.com/theGoodB0rg/coddle",
+        "images": [],
+        "thumb": ""
+    }
+]
