@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog - Olorunfemi John</title>
+    <meta name="description"
+        content="Articles and insights on web development, mobile development, and software engineering by Olorunfemi John.">
+</head>
+
+<body>
+    <header class="glass">
+        <nav class="container">
+            <div class="logo">John.Dev</div>
+            <ul class="nav-links flex-center">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#portfolio">Work</a></li>
+                <li><a href="blog.html" class="active">Blog</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Blog Hero -->
+        <section id="blog-hero" class="container">
+            <div class="blog-hero-content fade-in-up">
+                <h1>Blog</h1>
+                <p class="subtitle">Insights on Web & Mobile Development</p>
+                <p class="hero-description">Sharing my journey, learnings, and discoveries in software development.</p>
+            </div>
+        </section>
+
+        <!-- Blog Filters -->
+        <section id="blog-filters" class="container">
+            <div class="portfolio-filters" id="blog-filter-buttons">
+                <button class="filter-btn active" data-filter="all">All Posts</button>
+                <button class="filter-btn" data-filter="web">Web Dev</button>
+                <button class="filter-btn" data-filter="mobile">Mobile Dev</button>
+            </div>
+        </section>
+
+        <!-- Blog Grid -->
+        <section id="blog-list" class="container">
+            <div class="blog-grid" id="blog-grid">
+                <!-- Blog posts will be injected here via JavaScript -->
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container flex-center">
+            <p>&copy; 2025 Olorunfemi John. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script type="module" src="/src/blog.js"></script>
+</body>
+
+</html>

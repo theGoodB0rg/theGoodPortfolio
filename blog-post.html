@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title id="page-title">Blog Post - Olorunfemi John</title>
+    <meta name="description" id="page-description" content="Read the latest article from Olorunfemi John">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+</head>
+
+<body>
+    <!-- Reading Progress Bar -->
+    <div id="reading-progress"></div>
+
+    <header class="glass">
+        <nav class="container">
+            <div class="logo">John.Dev</div>
+            <ul class="nav-links flex-center">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#portfolio">Work</a></li>
+                <li><a href="blog.html" class="active">Blog</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Back to Blog -->
+        <section class="container" style="padding-top: 8rem;">
+            <a href="blog.html" class="back-link">← Back to Blog</a>
+        </section>
+
+        <!-- Blog Post Article -->
+        <article id="blog-post" class="container">
+            <div class="blog-post-container">
+                <!-- Article Header -->
+                <header class="article-header">
+                    <div class="article-meta">
+                        <span class="article-category" id="article-category">Loading...</span>
+                        <span class="article-date" id="article-date"></span>
+                        <span class="article-reading-time" id="article-reading-time"></span>
+                    </div>
+                    <h1 id="article-title">Loading...</h1>
+                    <div class="article-author">
+                        <span>By <strong id="article-author">Olorunfemi John</strong></span>
+                    </div>
+                </header>
+
+                <!-- Featured Image -->
+                <div class="article-featured-image" id="featured-image-container">
+                    <!-- Image will be injected if available -->
+                </div>
+
+                <!-- Article Content -->
+                <div class="article-content" id="article-content">
+                    <p>Loading article...</p>
+                </div>
+
+                <!-- Article Footer -->
+                <footer class="article-footer">
+                    <!-- Tags -->
+                    <div class="article-tags" id="article-tags">
+                        <!-- Tags will be injected here -->
+                    </div>
+
+                    <!-- Share Buttons -->
+                    <div class="share-section">
+                        <h3>Share this article</h3>
+                        <div class="share-buttons">
+                            <button class="share-btn" id="share-twitter" title="Share on Twitter">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                    <path
+                                        d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z" />
+                                </svg>
+                                Twitter
+                            </button>
+                            <button class="share-btn" id="share-linkedin" title="Share on LinkedIn">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                    <path
+                                        d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z" />
+                                    <circle cx="4" cy="4" r="2" />
+                                </svg>
+                                LinkedIn
+                            </button>
+                            <button class="share-btn" id="share-copy" title="Copy link">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71" />
+                                    <path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71" />
+                                </svg>
+                                Copy Link
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Navigation -->
+                    <div class="post-navigation" id="post-navigation">
+                        <!-- Previous/Next links will be injected here -->
+                    </div>
+                </footer>
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <div class="container flex-center">
+            <p>&copy; 2025 Olorunfemi John. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="back-to-top" title="Back to top">↑</button>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script type="module" src="/src/blog.js"></script>
+</body>
+
+</html>

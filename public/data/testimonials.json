@@ -1,0 +1,29 @@
+[
+    {
+        "id": 1,
+        "name": "Sarah Chen",
+        "role": "Senior Product Manager",
+        "company": "TechCorp Inc.",
+        "avatar": "",
+        "testimonial": "John's ability to translate complex requirements into elegant, performant solutions is exceptional. His work on our mobile app exceeded all expectations.",
+        "rating": 5
+    },
+    {
+        "id": 2,
+        "name": "Michael Rodriguez",
+        "role": "CTO",
+        "company": "StartupXYZ",
+        "avatar": "",
+        "testimonial": "Working with John was a game-changer for our project. His expertise in both web and mobile development helped us launch ahead of schedule with a product that users love.",
+        "rating": 5
+    },
+    {
+        "id": 3,
+        "name": "Emily Watson",
+        "role": "Lead Developer",
+        "company": "Digital Solutions Ltd.",
+        "avatar": "",
+        "testimonial": "John's code quality and attention to detail are outstanding. He's not just a developer—he's a problem solver who thinks about the bigger picture.",
+        "rating": 5
+    }
+]

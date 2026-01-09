@@ -5,11 +5,14 @@
         "category": "mobile",
         "tags": [
             "Kotlin",
-            "Room DB",
-            "Material 3"
+            "Jetpack Compose",
+            "Material 3",
+            "Room",
+            "Hilt",
+            "TensorFlow Lite"
         ],
-        "description": "Offline-first Android habit tracker with complex scheduling logic.",
-        "details": "Built a robust habit tracking engine using clean architecture. Features include local-first data persistence with Room, complex streak calculation algorithms, and a beautiful Material You adaptive UI.",
+        "description": "Intelligent habit tracking app with ML-powered insights and beautiful Material You design.",
+        "details": "Advanced Android app featuring Jetpack Compose UI, Room database with complex streak algorithms, Hilt dependency injection, and TensorFlow Lite for on-device pattern recognition. Includes PDF/Excel export, home screen widgets, and privacy-first local analytics.",
         "link": "https://github.com/theGoodB0rg/Habit-Tracker",
         "images": [
             {
@@ -30,11 +33,11 @@
         "tags": [
             "React",
             "TypeScript",
-            "Chrome Extension",
-            "AI"
+            "Chrome Manifest V3",
+            "Styled Components"
         ],
-        "description": "AI-assisted Chrome Extension for e-commerce SEO and product listing optimization.",
-        "details": "Analyzes live product pages (Amazon, Shopify) to generate attribute gap insights, keyword modifiers, and optimized copy. Features offline heuristics and multi-provider AI fallback.",
+        "description": "Chrome extension for e-commerce product listing optimization with AI-powered insights.",
+        "details": "Real-time product page analyzer for Amazon and Shopify. Features attribute gap detection, keyword modifier suggestions, and optimized copy generation. Built with React, TypeScript, and Chrome Manifest V3. Includes offline heuristics and multi-provider AI fallback for resilience.",
         "link": "https://github.com/theGoodB0rg/Keyword-Planner-Extension",
         "images": [
             {
@@ -79,11 +82,12 @@
         "category": "web",
         "tags": [
             "Vanilla JS",
-            "Glassmorphism",
-            "Performance"
+            "Vite",
+            "CSS3",
+            "Glassmorphism"
         ],
-        "description": "This portfolio: A study in modern performance and aesthetics.",
-        "details": "Intentionally built without heavy frameworks to demonstrate mastery of the DOM, CSS variables, and performant animations. Achieves a 100/100 Lighthouse performance score.",
+        "description": "This portfolio website: Framework-free showcase of modern web design and performance.",
+        "details": "Built with vanilla JavaScript and Vite to demonstrate mastery of core web technologies. Features glassmorphism design, CSS variables, performant animations, and dynamic project filtering with slideshow galleries. Achieves 100/100 Lighthouse performance score without heavy frameworks.",
         "link": "https://github.com/theGoodB0rg/theGoodPortfolio",
         "images": [
             {
@@ -115,12 +119,15 @@
         "title": "Json_Hub",
         "category": "web",
         "tags": [
+            "Next.js 14",
             "TypeScript",
-            "Utility",
-            "JSON"
+            "Tailwind CSS",
+            "Zustand",
+            "Monaco Editor",
+            "TanStack Table"
         ],
-        "description": "Advanced JSON processing utility for developers.",
-        "details": "Features auto-unescaping, dot notation flattening, and circular reference detection. Built with TypeScript.",
+        "description": "Smart JSON converter with auto-unescape and flattening to Excel/CSV formats.",
+        "details": "Client-side web application that transforms nested, double-encoded JSON into clean spreadsheet formats. Features Monaco editor with syntax highlighting, smart flattening with dot notation, circular reference detection, and multiple export formats (CSV, Excel, HTML, ZIP). All processing happens in-browser with 10MB file support.",
         "link": "https://github.com/theGoodB0rg/json_hub",
         "images": [],
         "thumb": ""
@@ -132,11 +139,11 @@
         "tags": [
             "Java",
             "Xposed",
-            "Privacy",
-            "Android"
+            "LSPosed",
+            "Android Camera APIs"
         ],
-        "description": "Advanced camera interception module for privacy protection.",
-        "details": "An Xposed/LSPosed module providing Image Injection capabilities to intercept and manipulate camera streams. Useful for privacy testing and bypassing liveliness checks in a controlled environment.",
+        "description": "Xposed module for intercepting and replacing camera streams with custom images.",
+        "details": "Universal camera hook supporting android.hardware.Camera (Legacy), camera2 (Modern), and androidx.camera (CameraX). Features image injection from gallery, seamless system-wide integration, and configurable settings. Built for Android 8.0+ with LSPosed/EdXposed support.",
         "link": "https://github.com/theGoodB0rg/camera_hook",
         "images": [],
         "thumb": ""
@@ -177,13 +184,13 @@
         "title": "OIT: Educational Platform",
         "category": "web",
         "tags": [
-            "PHP",
+            "PHP 8.x",
             "MySQL",
-            "Bootstrap",
-            "Education"
+            "Bootstrap 5",
+            "Font Awesome"
         ],
-        "description": "PHP-based educational tool for math skills.",
-        "details": "A learning platform featuring a quadratic equation solver, calculator utilities, and a student dashboard. Includes authentication and an admin interface.",
+        "description": "Educational platform with quadratic equation solver and student dashboard.",
+        "details": "PHP-based learning platform featuring step-by-step quadratic equation solver with multi-method explanations, calculator utilities (percentage, geometry), student dashboard, authentication system, and admin panel for message management. Built with Bootstrap 5 and responsive design.",
         "link": "https://github.com/theGoodB0rg/OIT",
         "images": [],
         "thumb": ""
