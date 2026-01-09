@@ -50,7 +50,7 @@
     },
     {
         "id": 3,
-        "title": "SystemIntercept: Core Monitor",
+        "title": "LSPosed SMS Hook",
         "category": "mobile",
         "tags": [
             "Java/Kotlin",
