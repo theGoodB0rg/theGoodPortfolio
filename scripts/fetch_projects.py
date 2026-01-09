@@ -54,7 +54,7 @@ g = Github(GITHUB_TOKEN)
 
 # Paths
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DATA_FILE = os.path.join(BASE_DIR, "src", "data", "projects.json")
+DATA_FILE = os.path.join(BASE_DIR, "public", "data", "projects.json")
 DOCS_DIR = os.path.join(BASE_DIR, "docs")
 CONTEXT_FILE = os.path.join(DOCS_DIR, "ALL_PROJECTS_CONTEXT.md")
 
