@@ -1,74 +1,58 @@
 import './style.css'
 
-// Project Data
-const projects = [
-  {
-    id: 1,
-    title: "E-Commerce Platform",
-    category: "web",
-    tags: ["React", "Node.js", "MongoDB"],
-    description: "A full-featured online store with cart and payment integration.",
-    details: "Built a scalable e-commerce solution handling 10k+ concurrent users. Features include real-time inventory tracking, stripe payment integration, and a custom admin dashboard.",
-    link: "https://example.com/demo",
-    images: [
-      { url: "https://via.placeholder.com/800x600/005f99/fff?text=Dashboard+Overview", caption: "Admin Dashboard with real-time analytics" },
-      { url: "https://via.placeholder.com/800x600/004d80/fff?text=Product+Page", caption: "Responsive Product Details view" },
-      { url: "https://via.placeholder.com/800x600/003366/fff?text=Checkout+Flow", caption: "Seamless multi-step checkout process" }
-    ],
-    thumb: "https://via.placeholder.com/400x300/005f99/fff?text=E-Com+Thumb"
-  },
-  {
-    id: 2,
-    title: "Fitness Tracker App",
-    category: "mobile",
-    tags: ["Kotlin", "Jetpack Compose", "Room"],
-    description: "Android application to track daily workouts and nutrition.",
-    details: "A native Android app focused on offline-first capability using Room database. Implements Material You design and syncs with Google Fit API.",
-    link: "https://play.google.com/store/apps/details?id=example",
-    images: [
-      { url: "https://via.placeholder.com/800x600/004d40/fff?text=Home+Screen", caption: "Daily Activity Summary" },
-      { url: "https://via.placeholder.com/800x600/00695c/fff?text=Workout+Log", caption: "Interactive Workout Logging" },
-      { url: "https://via.placeholder.com/800x600/00796b/fff?text=Stats+Graph", caption: "Progress visualization over time" }
-    ],
-    thumb: "https://via.placeholder.com/400x300/004d40/fff?text=Fitness+Thumb"
-  },
-  {
-    id: 3,
-    title: "Portfolio Website",
-    category: "web",
-    tags: ["Vite", "Vanilla JS", "CSS3"],
-    description: "The premium portfolio website you are looking at right now.",
-    details: "Designed to showcase development skills using only native web technologies. Features custom glassmorphism, performant animations, and a dynamic project loader.",
-    link: "#",
-    images: [
-      { url: "https://via.placeholder.com/800x600/101010/fff?text=Hero+Section", caption: "First impression with hero animations" },
-      { url: "https://via.placeholder.com/800x600/202020/fff?text=Portfolio+Grid", caption: "Filterable project grid layout" }
-    ],
-    thumb: "https://via.placeholder.com/400x300/101010/fff?text=Portfolio+Thumb"
-  },
-  {
-    id: 4,
-    title: "Chat Messenger",
-    category: "mobile",
-    tags: ["Kotlin", "Firebase"],
-    description: "Real-time messaging app with media sharing capabilities.",
-    details: "Secure messaging app using Firebase Realtime Database. Supports end-to-end encryption for private chats and group messaging features.",
-    link: "https://github.com/example/chat",
-    images: [
-      { url: "https://via.placeholder.com/800x600/263238/fff?text=Chat+List", caption: "Recent conversations list" },
-      { url: "https://via.placeholder.com/800x600/37474f/fff?text=Message+View", caption: "Chat interface with media support" }
-    ],
-    thumb: "https://via.placeholder.com/400x300/263238/fff?text=Chat+Thumb"
+// Project Data State
+let projects = [];
+
+// Fetch Projects
+async function loadProjects() {
+  try {
+    const response = await fetch('/src/data/projects.json');
+    if (!response.ok) throw new Error('Failed to load projects');
+    projects = await response.json();
+
+    generateFilters();
+    renderProjects();
+
+    // Update Intersection Observer for new elements
+    setTimeout(() => {
+      document.querySelectorAll('.project-card').forEach(card => observer.observe(card));
+    }, 100);
+  } catch (error) {
+    console.error('Error loading projects:', error);
+    grid.innerHTML = '<p class="error-msg">Failed to load projects. Please try again later.</p>';
   }
-];
+}
 
 // DOM Elements
 const grid = document.getElementById('portfolio-grid');
-const filterBtns = document.querySelectorAll('.filter-btn');
+const filterContainer = document.querySelector('.portfolio-filters');
 
 // Slideshow State
 let currentProject = null;
-let currentSlideIndex = 0; // Changed from ImageIndex to SlideIndex to account for final slide
+let currentSlideIndex = 0;
+
+// Dynamic Filters
+function generateFilters() {
+  // Get unique categories
+  const categories = ['all', ...new Set(projects.map(p => p.category || 'other'))];
+
+  const html = categories.map(cat => `
+        <button class="filter-btn ${cat === 'all' ? 'active' : ''}" data-filter="${cat}">
+            ${cat.charAt(0).toUpperCase() + cat.slice(1)}
+        </button>
+    `).join('');
+
+  filterContainer.innerHTML = html;
+
+  // Add Listeners
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderProjects(btn.dataset.filter);
+    });
+  });
+}
 
 // Render Projects
 function renderProjects(filter = 'all') {
@@ -78,35 +62,53 @@ function renderProjects(filter = 'all') {
     ? projects
     : projects.filter(p => p.category === filter);
 
-  filtered.forEach(project => {
+  if (filtered.length === 0) {
+    grid.innerHTML = '<div class="empty-state">No projects found in this category.</div>';
+    return;
+  }
+
+  filtered.forEach((project, index) => {
     const card = document.createElement('div');
     card.className = 'project-card glass fade-in-up';
-    // Add click handler for slideshow
+    card.style.animationDelay = `${index * 0.1}s`; // Staggered animation
+
+    // Add click handler
     card.onclick = () => openSlideshow(project.id);
+
+    // Image Handling
+    let imageContent;
+    if (project.thumb) {
+      imageContent = `<img src="${project.thumb}" alt="${project.title}" onerror="this.parentElement.innerHTML='<div class=\\'card-placeholder\\'>${getInitials(project.title)}</div>'">`;
+    } else {
+      imageContent = `<div class="card-placeholder">${getInitials(project.title)}</div>`;
+    }
 
     card.innerHTML = `
       <div class="card-image">
-        <img src="${project.thumb}" alt="${project.title}">
+        ${imageContent}
         <div class="view-overlay flex-center">View Project</div>
       </div>
       <div class="card-content">
-        <div class="card-tags">${project.tags.join(' • ')}</div>
+        <div class="card-tags">${(project.tags || []).slice(0, 3).join(' • ')}</div>
         <h3>${project.title}</h3>
-        <p class="card-description">${project.description}</p>
+        <p class="card-description">${truncateText(project.description || '', 100)}</p>
       </div>
     `;
     grid.appendChild(card);
   });
 }
 
-// Event Listeners
-filterBtns.forEach(btn => {
-  btn.addEventListener('click', () => {
-    filterBtns.forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    renderProjects(btn.dataset.filter);
-  });
-});
+// Helpers
+function getInitials(title) {
+  if (!title) return '??';
+  return title.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase();
+}
+
+function truncateText(text, limit) {
+  if (!text) return '';
+  if (text.length <= limit) return text;
+  return text.substring(0, limit) + '...';
+}
 
 // Slideshow Modal Logic
 const modalHtml = `
@@ -132,7 +134,7 @@ const modalHtml = `
                <p id="info-desc"></p>
              </div>
              <a id="info-link" href="#" target="_blank" class="btn btn-primary">Visit Project</a>
-          </div>
+           </div>
         </div>
       </div>
 
@@ -163,6 +165,8 @@ const slideCounter = document.getElementById('slide-counter');
 // Modal Controls
 function openSlideshow(projectId) {
   currentProject = projects.find(p => p.id === projectId);
+  if (!currentProject) return;
+
   currentSlideIndex = 0;
   updateSlide();
   modal.classList.add('active');
@@ -175,36 +179,45 @@ function closeSlideshow() {
 }
 
 function nextSlide() {
-  // Total slides = images + 1 (final info slide)
-  const totalSlides = currentProject.images.length + 1;
+  if (!currentProject) return;
+  const images = currentProject.images || [];
+  const totalSlides = images.length + 1;
   currentSlideIndex = (currentSlideIndex + 1) % totalSlides;
   updateSlide();
 }
 
 function prevSlide() {
-  const totalSlides = currentProject.images.length + 1;
+  if (!currentProject) return;
+  const images = currentProject.images || [];
+  const totalSlides = images.length + 1;
   currentSlideIndex = (currentSlideIndex - 1 + totalSlides) % totalSlides;
   updateSlide();
 }
 
 function updateSlide() {
   if (!currentProject) return;
-  const totalSlides = currentProject.images.length + 1;
+  const images = currentProject.images || [];
 
   // Footer Info
   footerTitle.textContent = currentProject.title;
 
-  if (currentSlideIndex < currentProject.images.length) {
+  if (currentSlideIndex < images.length) {
     // Image Slide
     imageSlide.style.display = 'flex';
     infoSlide.style.display = 'none';
 
     // Set Content
-    const data = currentProject.images[currentSlideIndex];
+    const data = images[currentSlideIndex];
     slideImg.src = data.url;
-    slideCaption.textContent = data.caption;
+    slideCaption.textContent = data.caption || '';
 
-    slideCounter.textContent = `Image ${currentSlideIndex + 1} of ${currentProject.images.length}`;
+    // Hide caption if empty
+    let captionWrapper = document.querySelector('.slide-caption-wrapper');
+    if (captionWrapper) {
+      captionWrapper.style.display = data.caption ? 'block' : 'none';
+    }
+
+    slideCounter.textContent = `Image ${currentSlideIndex + 1} of ${images.length}`;
   } else {
     // Final Info Slide
     imageSlide.style.display = 'none';
@@ -212,7 +225,7 @@ function updateSlide() {
 
     // Set Content
     infoTitle.textContent = currentProject.title;
-    infoDesc.textContent = currentProject.details;
+    infoDesc.textContent = currentProject.details || currentProject.description || "No specific details available.";
     infoLink.href = currentProject.link;
 
     slideCounter.textContent = `Project Details`;
@@ -236,7 +249,7 @@ document.addEventListener('keydown', (e) => {
 });
 
 // Initial Render
-renderProjects();
+loadProjects();
 
 // Intersection Observer
 const observerOptions = { threshold: 0.1 };
