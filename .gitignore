@@ -3,3 +3,4 @@ node_modules
 dist
 .env
 .agent
+implementation_plan.md
