@@ -34,7 +34,7 @@ async function initBlogIndex() {
 
 async function loadBlogPosts() {
     try {
-        const response = await fetch('/data/blog.json');
+        const response = await fetch('./data/blog.json');
         if (!response.ok) throw new Error('Failed to load blog posts');
         blogPosts = await response.json();
 
