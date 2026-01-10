@@ -564,6 +564,17 @@ footer {
 }
 
 @media (max-width: 768px) {
+
+  /* Mobile Buttons */
+  .btn {
+    padding: 0.7rem 1.2rem;
+    font-size: 0.9rem;
+  }
+
+  .contact-links {
+    gap: 0.8rem;
+  }
+
   .hero-content h1 {
     font-size: 3rem;
   }
