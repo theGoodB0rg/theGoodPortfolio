@@ -271,7 +271,7 @@ let testimonialInterval;
 
 async function loadTestimonials() {
   try {
-    const response = await fetch('/data/testimonials.json');
+    const response = await fetch('data/testimonials.json');
     if (!response.ok) return; // Silently fail if testimonials not available
 
     testimonials = await response.json();
@@ -390,7 +390,7 @@ loadTestimonials();
 
 async function loadBlogPreview() {
   try {
-    const response = await fetch('/data/blog.json');
+    const response = await fetch('data/blog.json');
     if (!response.ok) return; // Silently fail if blog not available
 
     const blogPosts = await response.json();
