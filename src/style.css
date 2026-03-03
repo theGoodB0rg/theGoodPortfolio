@@ -1,28 +1,28 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@300;500;700&display=swap');
 
 :root {
-  /* Colors - Cyber Blue/Teal Theme - Refined */
-  --hue-primary: 210;
-  /* Deep Ocean Blue */
-  --hue-secondary: 170;
-  /* Teal/Cyan */
-  --hue-bg: 224;
-  /* Dark Blue-Grey */
+  /* Colors - Cyber-Teal / Deep Ocean Dark Mode */
+  --hue-primary: 180;
+  /* Cyber Teal */
+  --hue-secondary: 215;
+  /* Deep Ocean */
+  --hue-bg: 220;
+  /* Dark Blue-Grey Base */
 
-  /* Adjusted saturation/lightness for premium feel */
-  --color-primary: hsl(var(--hue-primary), 100%, 65%);
-  --color-primary-glow: hsl(var(--hue-primary), 100%, 65%, 0.4);
-  --color-secondary: hsl(var(--hue-secondary), 100%, 50%);
+  --color-primary: hsl(var(--hue-primary), 100%, 50%);
+  --color-primary-glow: hsl(var(--hue-primary), 100%, 50%, 0.3);
+  --color-secondary: hsl(var(--hue-secondary), 90%, 65%);
+  --color-accent: hsl(300, 100%, 70%); /* Cyber Pink highlight */
 
   /* Backgrounds */
-  --color-bg: hsl(var(--hue-bg), 30%, 6%);
-  --color-bg-light: hsl(var(--hue-bg), 25%, 10%);
-  --color-surface: rgba(255, 255, 255, 0.03);
+  --color-bg: hsl(var(--hue-bg), 40%, 4%);
+  --color-bg-light: hsl(var(--hue-bg), 30%, 8%);
+  --color-surface: rgba(20, 25, 35, 0.4);
 
   /* Text */
-  --color-text-main: hsl(0, 0%, 98%);
-  --color-text-muted: hsl(220, 20%, 75%);
-  --color-text-dim: hsl(220, 15%, 50%);
+  --color-text-main: hsl(0, 0%, 100%);
+  --color-text-muted: hsl(220, 30%, 75%);
+  --color-text-dim: hsl(220, 20%, 50%);
 
   /* Spacing */
   --spacing-xs: 0.5rem;
@@ -73,11 +73,13 @@ h6 {
 /* Utility: Glassmorphism */
 .glass {
   background: var(--color-surface);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+  border-right: 1px solid rgba(255, 255, 255, 0.02);
   border-radius: 1rem;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
 }
 
 /* Utility: Flex/Grid */
@@ -235,13 +237,14 @@ header nav {
 }
 
 .btn-primary {
-  background: var(--color-text-main);
-  color: var(--color-bg);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  color: #000;
+  border: none;
 }
 
 .btn-primary:hover {
   transform: translateY(-3px);
-  box-shadow: 0 10px 25px -5px rgba(255, 255, 255, 0.3);
+  box-shadow: 0 10px 25px -5px var(--color-primary-glow);
 }
 
 .btn-secondary {
@@ -429,7 +432,7 @@ section {
   height: auto;
   border-radius: 0;
   margin-bottom: 0;
-  background-color: #1a1a2e;
+  background-color: var(--color-bg);
   position: relative;
   overflow: hidden;
 }
@@ -438,11 +441,24 @@ section {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.7s ease;
+  transition: transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.project-card .card-image::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.project-card:hover .card-image::after {
+  opacity: 1;
 }
 
 .project-card:hover .card-image img {
-  transform: scale(1.05);
+  transform: scale(1.08);
 }
 
 /* Image Fallback /* Profile Image Styling - Restored */
@@ -604,6 +620,101 @@ footer {
   background: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(4px);
   transition: opacity 0.4s ease;
+}
+
+/* Base Card Actions */
+.card-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.card-btn {
+  flex: 1;
+  padding: 0.6rem 0;
+  text-align: center;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.card-btn.live {
+  background: rgba(var(--hue-primary), 100%, 50%, 0.15);
+  color: var(--color-primary);
+  border: 1px solid rgba(var(--hue-primary), 100%, 50%, 0.3);
+}
+
+.card-btn.live:hover {
+  background: var(--color-primary);
+  color: #000;
+}
+
+.card-btn.source {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--color-text-muted);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.card-btn.source:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+}
+
+/* Mobile Sticky CTA */
+.mobile-sticky-cta {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  body {
+    padding-bottom: 80px; /* Space for the sticky bar */
+  }
+
+  .mobile-sticky-cta {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: fixed;
+    bottom: 15px;
+    left: 15px;
+    right: 15px;
+    height: 65px;
+    z-index: 1000;
+    border-radius: 20px;
+    padding: 0 10px;
+  }
+
+  .cta-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: var(--color-text-muted);
+    font-size: 0.75rem;
+    font-weight: 500;
+    gap: 4px;
+    flex: 1;
+    transition: color 0.3s ease;
+  }
+
+  .cta-link.highlight {
+    color: var(--color-primary);
+  }
+
+  .cta-link:hover, .cta-link:active {
+    color: #fff;
+  }
+
+  .cta-link svg {
+    margin-bottom: 2px;
+  }
 }
 
 /* Modal Enhancements & Core Layout */

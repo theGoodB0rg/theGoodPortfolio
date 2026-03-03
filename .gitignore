@@ -6,3 +6,6 @@ dist
 implementation_plan.md
 headers.txt
 task.md
+*.md
+!readme.md
+*pdf

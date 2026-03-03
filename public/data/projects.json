@@ -1,214 +1,441 @@
 [
-    {
-        "id": 1,
-        "title": "HabitFlow: Lifestyle Architect",
-        "category": "mobile",
-        "tags": [
-            "Kotlin",
-            "Jetpack Compose",
-            "Material 3",
-            "Room",
-            "Hilt",
-            "TensorFlow Lite"
-        ],
-        "description": "Intelligent habit tracking app with ML-powered insights and beautiful Material You design.",
-        "details": "Advanced Android app featuring Jetpack Compose UI, Room database with complex streak algorithms, Hilt dependency injection, and TensorFlow Lite for on-device pattern recognition. Includes PDF/Excel export, home screen widgets, and privacy-first local analytics.",
-        "link": "https://github.com/theGoodB0rg/Habit-Tracker",
-        "images": [
-            {
-                "url": "/projects/habit_dashboard_1766166089166.png",
-                "caption": "Dark mode dashboard with daily streak tracking"
-            },
-            {
-                "url": "/projects/habit_stats_1766166110812.png",
-                "caption": "Detailed analytics and completion graphs"
-            }
-        ],
-        "thumb": "/projects/habit_dashboard_1766166089166.png"
-    },
-    {
-        "id": 2,
-        "title": "Keyword Scout: Product Optimizer",
-        "category": "web",
-        "tags": [
-            "React",
-            "TypeScript",
-            "Chrome Manifest V3",
-            "Styled Components"
-        ],
-        "description": "Chrome extension for e-commerce product listing optimization with AI-powered insights.",
-        "details": "Real-time product page analyzer for Amazon and Shopify. Features attribute gap detection, keyword modifier suggestions, and optimized copy generation. Built with React, TypeScript, and Chrome Manifest V3. Includes offline heuristics and multi-provider AI fallback for resilience.",
-        "link": "https://github.com/theGoodB0rg/Keyword-Planner-Extension",
-        "images": [
-            {
-                "url": "/projects/keyword_popup_1766166128436.png",
-                "caption": "Extension popup with key metrics at a glance"
-            },
-            {
-                "url": "/projects/keyword_overlay_1766166148864.png",
-                "caption": "Non-intrusive SERP data injection"
-            }
-        ],
-        "thumb": "/projects/keyword_popup_1766166128436.png"
-    },
-    {
-        "id": 3,
-        "title": "LSPosed SMS Hook",
-        "category": "mobile",
-        "tags": [
-            "Java/Kotlin",
-            "LSPosed",
-            "Android Internal",
-            "Security"
-        ],
-        "description": "Advanced system-level SMS interception module for Xposed/LSPosed.",
-        "details": "A deep system module capable of intercepting outgoing SMS protocols at the framework level. Features include smart text appending, universal interception across apps, and handling of multipart messages. Demonstrates understanding of Android internals and secure data handling.",
-        "link": "https://github.com/theGoodB0rg/sms-hook",
-        "images": [
-            {
-                "url": "/projects/smshook_log_1766166172497.png",
-                "caption": "Real-time system log interception view"
-            },
-            {
-                "url": "/projects/smshook_config_1766166196452.png",
-                "caption": "Module configuration and stealth settings"
-            }
-        ],
-        "thumb": "/projects/smshook_log_1766166172497.png"
-    },
-    {
-        "id": 4,
-        "title": "The Good Portfolio",
-        "category": "web",
-        "tags": [
-            "Vanilla JS",
-            "Vite",
-            "CSS3",
-            "Glassmorphism"
-        ],
-        "description": "This portfolio website: Framework-free showcase of modern web design and performance.",
-        "details": "Built with vanilla JavaScript and Vite to demonstrate mastery of core web technologies. Features glassmorphism design, CSS variables, performant animations, and dynamic project filtering with slideshow galleries. Achieves 100/100 Lighthouse performance score without heavy frameworks.",
-        "link": "https://github.com/theGoodB0rg/theGoodPortfolio",
-        "images": [
-            {
-                "url": "/projects/habit_dashboard_1766166089166.png",
-                "caption": "Meta-view: The code you are browsing right now"
-            }
-        ],
-        "thumb": "/projects/habit_dashboard_1766166089166.png"
-    },
-    {
-        "id": 5,
-        "title": "CyberSec: SQLi Scanner",
-        "category": "web",
-        "tags": [
-            "Node.js",
-            "React",
-            "TypeScript",
-            "SQLMap",
-            "Security"
-        ],
-        "description": "Web-based SQL injection scanner and reporting tool.",
-        "details": "Orchestrates SQLMap scans via a modern React UI. Features real-time WebSocket output, multi-user JWT authentication, and automated reporting. Designed as a developer-friendly tool for focused security assessments.",
-        "link": "https://github.com/theGoodB0rg/CyberSec",
-        "images": [],
-        "thumb": ""
-    },
-    {
-        "id": 1131011700,
-        "title": "Json_Hub",
-        "category": "web",
-        "tags": [
-            "Next.js 14",
-            "TypeScript",
-            "Tailwind CSS",
-            "Zustand",
-            "Monaco Editor",
-            "TanStack Table"
-        ],
-        "description": "Smart JSON converter with auto-unescape and flattening to Excel/CSV formats.",
-        "details": "Client-side web application that transforms nested, double-encoded JSON into clean spreadsheet formats. Features Monaco editor with syntax highlighting, smart flattening with dot notation, circular reference detection, and multiple export formats (CSV, Excel, HTML, ZIP). All processing happens in-browser with 10MB file support.",
-        "link": "https://github.com/theGoodB0rg/json_hub",
-        "images": [],
-        "thumb": ""
-    },
-    {
-        "id": 1125785452,
-        "title": "CameraInterceptor",
-        "category": "mobile",
-        "tags": [
-            "Java",
-            "Xposed",
-            "LSPosed",
-            "Android Camera APIs"
-        ],
-        "description": "Xposed module for intercepting and replacing camera streams with custom images.",
-        "details": "Universal camera hook supporting android.hardware.Camera (Legacy), camera2 (Modern), and androidx.camera (CameraX). Features image injection from gallery, seamless system-wide integration, and configurable settings. Built for Android 8.0+ with LSPosed/EdXposed support.",
-        "link": "https://github.com/theGoodB0rg/camera_hook",
-        "images": [],
-        "thumb": ""
-    },
-    {
-        "id": 1019360371,
-        "title": "49Blox: Music Exchange",
-        "category": "web",
-        "tags": [
-            "Node.js",
-            "Express",
-            "MySQL",
-            "Music Tech"
-        ],
-        "description": "Digital music collectibles exchange and investment platform.",
-        "details": "A platform where fans own music shares ('Blox'). Features user auth with 2FA, song uploads, secondary marketplace, and real-time trading orderbook. Built with Node.js and MySQL.",
-        "link": "https://github.com/Jacen-max/49Blox",
-        "images": [],
-        "thumb": ""
-    },
-    {
-        "id": 1077389286,
-        "title": "Custom Admin Welcome",
-        "category": "web",
-        "tags": [
-            "PHP",
-            "WordPress",
-            "Plugin"
-        ],
-        "description": "WordPress plugin for custom admin dashboard welcome widgets.",
-        "details": "Provides a professional, branded welcome panel for WordPress admins with customizable messages and quick action links. Features a responsive design and smooth hover effects.",
-        "link": "https://github.com/theGoodB0rg/Landing_page_plugin",
-        "images": [],
-        "thumb": ""
-    },
-    {
-        "id": 529321200,
-        "title": "OIT: Educational Platform",
-        "category": "web",
-        "tags": [
-            "PHP 8.x",
-            "MySQL",
-            "Bootstrap 5",
-            "Font Awesome"
-        ],
-        "description": "Educational platform with quadratic equation solver and student dashboard.",
-        "details": "PHP-based learning platform featuring step-by-step quadratic equation solver with multi-method explanations, calculator utilities (percentage, geometry), student dashboard, authentication system, and admin panel for message management. Built with Bootstrap 5 and responsive design.",
-        "link": "https://github.com/theGoodB0rg/OIT",
-        "images": [],
-        "thumb": ""
-    },
-    {
-        "id": 1069489485,
-        "title": "Coddle: Daily Code Game",
-        "category": "web",
-        "tags": [
-            "Nuxt 3",
-            "Vue.js",
-            "Tailwind",
-            "Game Dev"
-        ],
-        "description": "Daily coding word puzzle game.",
-        "details": "Guess the 5-letter programming term in 6 tries. Features mobile-first design, dark mode, and shareable results. Built with Nuxt 3.",
-        "link": "https://github.com/theGoodB0rg/coddle",
-        "images": [],
-        "thumb": ""
-    }
+  {
+    "id": 1061267304,
+    "title": "Thegoodb0Rg",
+    "category": "web",
+    "tags": [
+      "Utilities",
+      "Python"
+    ],
+    "description": "Personal sandbox for quick Python utilities and experiment spikes.",
+    "details": "Mixed scripts, tests, and research notes used as a staging ground for larger projects.",
+    "link": "https://github.com/theGoodB0rg/thegoodB0rg",
+    "images": [],
+    "thumb": ""
+  },
+  {
+    "id": 4,
+    "title": "portfolio-moi",
+    "category": "web",
+    "tags": [
+      "UX",
+      "CSS",
+      "Vanilla JS",
+      "CSS3",
+      "Animations",
+      "Vite"
+    ],
+    "description": "Interactive personal site with glassmorphism UI, fast filtering, and story-driven slideshows.",
+    "details": "Purpose-built to showcase projects without heavy frameworks: Vite + vanilla JS, animated filters, and modal slides that highlight outcomes for non-technical viewers. 100/100 Lighthouse performance.",
+    "link": "https://github.com/theGoodB0rg/theGoodPortfolio",
+    "live_link": "https://thegoodb0rg.github.io/theGoodPortfolio",
+    "images": [
+      {
+        "url": "/projects/thegoodportfolio/profile_0b0c89f7.png",
+        "caption": "A glowing cyber-teal sphere emphasizing the developer's profile picture."
+      },
+      {
+        "url": "/projects/thegoodportfolio/habit_dashboard_1766166089166_c041888d.png",
+        "caption": "Main dashboard showing weekly habit streaks with a beautiful glassmorphism card layout."
+      },
+      {
+        "url": "/projects/thegoodportfolio/habit_stats_1766166110812_817457ea.png",
+        "caption": "Analytics view displaying habit completion percentages using sleek circular progress UI elements."
+      },
+      {
+        "url": "/projects/thegoodportfolio/keyword_overlay_1766166148864_68009428.png",
+        "caption": "In-page Chrome extension overlay analyzing live product listing keywords."
+      },
+      {
+        "url": "/projects/thegoodportfolio/keyword_popup_1766166128436_b9105eaf.png",
+        "caption": "Chrome extension popup interface displaying the keyword SEO score."
+      },
+      {
+        "url": "/projects/thegoodportfolio/smshook_config_1766166196452_f4a23961.png",
+        "caption": "LSPosed module configuration screen with stealth and append toggles."
+      }
+    ],
+    "thumb": "/projects/thegoodportfolio/habit_dashboard_1766166089166_c041888d.png"
+  },
+  {
+    "id": 1162651624,
+    "title": "Writer Agents",
+    "category": "web",
+    "tags": [
+      "Python"
+    ],
+    "description": "No description provided.",
+    "details": "Imported from GitHub. See README for details.",
+    "link": "https://github.com/theGoodB0rg/writer_agents",
+    "images": [],
+    "thumb": ""
+  },
+  {
+    "id": 1160747667,
+    "title": "Expert Eureka",
+    "category": "web",
+    "tags": [
+      "Python"
+    ],
+    "description": "No description provided.",
+    "details": "Imported from GitHub. See README for details.",
+    "link": "https://github.com/theGoodB0rg/researcher_train",
+    "images": [],
+    "thumb": ""
+  },
+  {
+    "id": 3,
+    "title": "SMS Hook Module",
+    "category": "mobile",
+    "tags": [
+      "Android",
+      "Java/Kotlin",
+      "Java",
+      "LSPosed",
+      "Security"
+    ],
+    "description": "Intercepts and augments outgoing SMS at the framework level.",
+    "details": "Adds smart text appends, multipart handling, and stealth modes across apps\u2014built on LSPosed with focus on stability and safety.",
+    "link": "https://github.com/theGoodB0rg/sms-hook",
+    "images": [
+      {
+        "url": "/projects/smshook_log_1766166172497.png",
+        "caption": "Real-time system log interception view"
+      },
+      {
+        "url": "/projects/smshook_config_1766166196452.png",
+        "caption": "Module configuration and stealth settings"
+      }
+    ],
+    "thumb": "/projects/smshook_log_1766166172497.png"
+  },
+  {
+    "id": 1169171018,
+    "title": "WhisperProof (Proofreader MVP)",
+    "category": "web",
+    "tags": [
+      "TypeScript"
+    ],
+    "description": "No description provided.",
+    "details": "Imported from GitHub. See README for details.",
+    "link": "https://github.com/theGoodB0rg/WhisperProof",
+    "images": [],
+    "thumb": ""
+  },
+  {
+    "id": 970917953,
+    "title": "49Blox - Digital Music Collectibles Platform",
+    "category": "web",
+    "tags": [
+      "JavaScript"
+    ],
+    "description": "No description provided.",
+    "details": "Imported from GitHub. See README for details.",
+    "link": "https://github.com/julianhall74/49Blox",
+    "live_link": "https://49blox.com",
+    "images": [
+      {
+        "url": "/projects/49blox/2813_b15d57d9.jpg",
+        "caption": "Platform dashboard displaying digital music collectibles and ownership stakes."
+      },
+      {
+        "url": "/projects/49blox/2814_e7a18a64.jpg",
+        "caption": "Primary orderbook and pricing graph for a tokenized song."
+      },
+      {
+        "url": "/projects/49blox/2819_7d97fdba.jpg",
+        "caption": "Secondary marketplace view where users can trade their music asset shares."
+      },
+      {
+        "url": "/projects/49blox/49BloxTeam_77302c17.png",
+        "caption": "About us section highlighting the development team."
+      }
+    ],
+    "thumb": "/projects/49blox/2813_b15d57d9.jpg"
+  },
+  {
+    "id": 1125785452,
+    "title": "CameraInterceptor",
+    "category": "mobile",
+    "tags": [
+      "LSPosed",
+      "Android",
+      "Java",
+      "C++"
+    ],
+    "description": "Swap any Android camera feed with custom imagery (LSPosed module).",
+    "details": "Hooks legacy Camera, Camera2, and CameraX APIs to inject gallery images system-wide. Built for Android 8.0+ with toggleable profiles.",
+    "link": "https://github.com/theGoodB0rg/camera_hook",
+    "images": [],
+    "thumb": ""
+  },
+  {
+    "id": 1131011700,
+    "title": "JsonExport",
+    "category": "web",
+    "tags": [
+      "Next.js",
+      "Monaco",
+      "converter",
+      "client-side",
+      "Client-side",
+      "Data Tools",
+      "TypeScript",
+      "Tailwind",
+      "api-tools"
+    ],
+    "description": "Convert nested JSON to Excel/CSV with auto-unescape & smart flattening | 100% client-side | Monaco editor | Privacy-first",
+    "details": "Client-side Next.js app with Monaco editor, smart flattening, and instant exports (CSV, Excel, HTML, ZIP). Privacy-first: all parsing runs locally; handles 10MB files smoothly.",
+    "link": "https://github.com/theGoodB0rg/json_hub",
+    "live_link": "https://json-hub.vercel.app",
+    "images": [
+      {
+        "url": "/projects/json_hub/hero_22b86abc.png",
+        "caption": "JsonExport Banner showcasing the primary value proposition."
+      },
+      {
+        "url": "/projects/json_hub/export-options_bff5e34b.png",
+        "caption": "Export panel showing options for CSV, Excel, HTML, and ZIP downloads."
+      },
+      {
+        "url": "/projects/json_hub/data-grid_a6b36b6f.png",
+        "caption": "Data Grid UI visualizing the parsed and flattened JSON arrays."
+      }
+    ],
+    "thumb": "/projects/json_hub/data-grid_a6b36b6f.png"
+  },
+  {
+    "id": 1160351622,
+    "title": "Coddle",
+    "category": "web",
+    "tags": [
+      "Vue"
+    ],
+    "description": "No description provided.",
+    "details": "Imported from GitHub. See README for details.",
+    "link": "https://github.com/theGoodB0rg/coddle_coddle",
+    "images": [
+      {
+        "url": "/projects/coddle/01-initial-state.png",
+        "caption": "The initial state of the Coddle game board showing empty tiles ready for user input."
+      },
+      {
+        "url": "/projects/coddle/02-wrong-answer.png",
+        "caption": "Gameplay view demonstrating the color-coded feedback when an incorrect guess is submitted."
+      },
+      {
+        "url": "/projects/coddle/03-win-modal.png",
+        "caption": "Victory modal displaying the user's statistics, streak, and a shareable summary after guessing the correct coding term."
+      }
+    ],
+    "thumb": "/projects/coddle/03-win-modal.png"
+  },
+  {
+    "id": 1069489485,
+    "title": "\ud83c\udfae Coddle - Daily Coding Word Game",
+    "category": "web",
+    "tags": [
+      "TypeScript"
+    ],
+    "description": "No description provided.",
+    "details": "Imported from GitHub. See README for details.",
+    "link": "https://github.com/theGoodB0rg/coddle",
+    "images": [],
+    "thumb": ""
+  },
+  {
+    "id": 1141359518,
+    "title": "CleanCut - AI Background Cleaner",
+    "category": "web",
+    "tags": [
+      "TypeScript"
+    ],
+    "description": "No description provided.",
+    "details": "Imported from GitHub. See README for details.",
+    "link": "https://github.com/theGoodB0rg/smartBackgroundClean",
+    "images": [],
+    "thumb": ""
+  },
+  {
+    "id": 1140138352,
+    "title": "Universal Undo",
+    "category": "mobile",
+    "tags": [
+      "Kotlin"
+    ],
+    "description": "No description provided.",
+    "details": "Imported from GitHub. See README for details.",
+    "link": "https://github.com/theGoodB0rg/Universal_Undo",
+    "images": [],
+    "thumb": ""
+  },
+  {
+    "id": 1142358899,
+    "title": "React + TypeScript + Vite",
+    "category": "web",
+    "tags": [
+      "TypeScript"
+    ],
+    "description": "No description provided.",
+    "details": "Imported from GitHub. See README for details.",
+    "link": "https://github.com/theGoodB0rg/smartFlyer",
+    "images": [],
+    "thumb": ""
+  },
+  {
+    "id": 1137761113,
+    "title": "Habit Tracker",
+    "category": "mobile",
+    "tags": [
+      "Kotlin"
+    ],
+    "description": "No description provided.",
+    "details": "Imported from GitHub. See README for details.",
+    "link": "https://github.com/theGoodB0rg/habit_tracker",
+    "images": [],
+    "thumb": ""
+  },
+  {
+    "id": 1032715695,
+    "title": "Offline Habit Tracker",
+    "category": "mobile",
+    "tags": [
+      "Kotlin"
+    ],
+    "description": "No description provided.",
+    "details": "Imported from GitHub. See README for details.",
+    "link": "https://github.com/theGoodB0rg/Habit-Tracker",
+    "images": [
+      {
+        "url": "/projects/habit_tracker/screenshot.png",
+        "caption": "Main interface of the offline Habit Tracker showing daily progress."
+      }
+    ],
+    "thumb": "/projects/habit_tracker/screenshot.png"
+  },
+  {
+    "id": 1012637446,
+    "title": "CyberSec \u2013 Web SQLi Scanner & Reporting",
+    "category": "web",
+    "tags": [
+      "HTML"
+    ],
+    "description": "No description provided.",
+    "details": "Imported from GitHub. See README for details.",
+    "link": "https://github.com/theGoodB0rg/CyberSec",
+    "images": [],
+    "thumb": ""
+  },
+  {
+    "id": 2,
+    "title": "Product Listing Optimizer (Pivoted from AI Keyword Planner)",
+    "category": "web",
+    "tags": [
+      "TypeScript",
+      "Chrome MV3",
+      "React",
+      "Growth"
+    ],
+    "description": "Chrome extension that grades product pages and suggests high-converting keywords.",
+    "details": "Analyses Amazon/Shopify pages client-side, flags attribute gaps, and offers AI-assisted copy suggestions. Ships with promo creatives for Chrome Web Store.",
+    "link": "https://github.com/theGoodB0rg/Keyword-Planner-Extension",
+    "images": [
+      {
+        "url": "/projects/keyword-planner-extension/og-1200x630_5cb41dc3.png",
+        "caption": "Product Listing Optimizer promotional banner."
+      },
+      {
+        "url": "/projects/keyword-planner-extension/cws-promo-large-920x680_211d9d9f.png",
+        "caption": "Chrome Web Store large promotional graphic demonstrating the grading functionality."
+      },
+      {
+        "url": "/projects/keyword-planner-extension/cws-promo-small-440x280_5aeef6a8.png",
+        "caption": "Chrome Web Store small promo banner."
+      }
+    ],
+    "thumb": "/projects/keyword-planner-extension/cws-promo-large-920x680_211d9d9f.png"
+  },
+  {
+    "id": 1077389286,
+    "title": "Custom Admin Dashboard Welcome",
+    "category": "web",
+    "tags": [
+      "Plugin",
+      "PHP",
+      "WordPress"
+    ],
+    "description": "WordPress plugin that replaces the default admin welcome with branded actions.",
+    "details": "Configurable cards, quick links, and messaging so clients land on a tailored dashboard experience.",
+    "link": "https://github.com/theGoodB0rg/Landing_page_plugin",
+    "images": [],
+    "thumb": ""
+  },
+  {
+    "id": 529321200,
+    "title": "OIT \u2014 Online Educational Tool",
+    "category": "web",
+    "tags": [
+      "PHP",
+      "MySQL",
+      "JavaScript",
+      "Bootstrap"
+    ],
+    "description": "Student portal with calculators, lessons, and messaging.",
+    "details": "PHP 8 + MySQL app: quadratic solver with step-by-step methods, student dashboard, auth, and admin inbox management.",
+    "link": "https://github.com/theGoodB0rg/OIT",
+    "images": [
+      {
+        "url": "/projects/oit/739247_0c2e6948.png",
+        "caption": "Educational Portal landing and portal interface."
+      }
+    ],
+    "thumb": "/projects/oit/739247_0c2e6948.png"
+  },
+  {
+    "id": 977394085,
+    "title": "49Blox - Music Shares & Investment Platform",
+    "category": "web",
+    "tags": [
+      "Node.js",
+      "Marketplace",
+      "Uploads",
+      "JavaScript"
+    ],
+    "description": "Second-gen build of 49Blox with refreshed UI and uploads.",
+    "details": "Vue/Node stack with image upload pipeline and updated artist onboarding.",
+    "link": "https://github.com/BenjaminAJ/49blox-2.0",
+    "live_link": "https://49blox.com",
+    "images": [
+      {
+        "url": "/projects/49blox-2-0/49BloxTeam_aff96b3d.png",
+        "caption": "Team section of the 49Blox platform detailing the creators."
+      },
+      {
+        "url": "/projects/49blox-2-0/coverImage-1745183027334-569409877_938a1d2f.png",
+        "caption": "Audio track listing view showcasing album art and current token valuation."
+      }
+    ],
+    "thumb": "/projects/49blox-2-0/coverImage-1745183027334-569409877_938a1d2f.png"
+  },
+  {
+    "id": 974694398,
+    "title": "49 Blox - Music Share Ownership Platform",
+    "category": "web",
+    "tags": [
+      "Marketplace",
+      "EJS",
+      "JavaScript"
+    ],
+    "description": "Lightweight fork focused on ownership visuals.",
+    "details": "Slimmed-down implementation keeping core cover gallery and profile branding.",
+    "link": "https://github.com/BenjaminAJ/49-blox",
+    "live_link": "https://49blox.com",
+    "images": [
+      {
+        "url": "/projects/49-blox/coverImage-1745183027334-569409877_b9dd8bd2.png",
+        "caption": "Music share listing interface highlighting the visual breakdown of token ownership."
+      }
+    ],
+    "thumb": "/projects/49-blox/coverImage-1745183027334-569409877_b9dd8bd2.png"
+  }
 ]
