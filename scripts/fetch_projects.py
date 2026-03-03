@@ -95,7 +95,22 @@ def slugify(text: str) -> str:
 
 
 def normalize_title(text: str) -> str:
+    """ Aggressively normalize titles to group forks and v2 iterations together """
+    # Split by common separators BEFORE ascii encoding to catch em-dash, en-dash, and parenthesis
+    for sep in ['-', ':', '|', '—', '–', '(']:
+        if sep in text:
+            text = text.split(sep)[0]
+            
+    # Strip emojis and non-ascii characters out entirely
+    text = text.encode('ascii', 'ignore').decode('ascii')
+    
     cleaned = re.sub(r"[^a-zA-Z0-9]+", "", text).lower()
+    
+    # Strip common descriptive prefixes that prevent matches
+    for prefix in ["offline", "online", "my", "the"]:
+        if cleaned.startswith(prefix):
+            cleaned = cleaned[len(prefix):]
+            
     return re.sub(r"(?:v)?\d+$", "", cleaned)
 
 
@@ -116,12 +131,18 @@ def parse_readme_images(readme_text: str, repo_full_name: str, branch: str) -> L
 
     candidates = []
 
-    def to_raw(url: str) -> str:
-        # Already absolute
+    def to_raw(url: str):
         if url.startswith("http://") or url.startswith("https://"):
-            return url
+            if "raw.githubusercontent.com" in url:
+                parts = url.split("raw.githubusercontent.com/")
+                if len(parts) == 2:
+                    subparts = parts[1].split('/')
+                    if len(subparts) >= 4:
+                        # [user, repo, branch, path...]
+                        return url, "/".join(subparts[3:])
+            return url, ""
         cleaned = url.lstrip("./")
-        return f"https://raw.githubusercontent.com/{repo_full_name}/{branch}/{cleaned}"
+        return f"https://raw.githubusercontent.com/{repo_full_name}/{branch}/{cleaned}", cleaned
 
     md_pattern = re.compile(r"!\[(?P<alt>[^\]]*)\]\((?P<src>[^)]+)\)")
     html_pattern = re.compile(r'<img[^>]*src=["\'](?P<src>[^"\']+)["\'][^>]*alt=["\']?(?P<alt>[^"\'>]*)', re.IGNORECASE)
@@ -129,12 +150,14 @@ def parse_readme_images(readme_text: str, repo_full_name: str, branch: str) -> L
     for match in md_pattern.finditer(readme_text):
         src = match.group("src").split()[0]  # drop optional title
         alt = match.group("alt") or ""
-        candidates.append({"src": to_raw(src), "caption": alt.strip(), "score": 50})
+        raw_src, path = to_raw(src)
+        candidates.append({"src": raw_src, "caption": alt.strip(), "score": 50, "path": path})
 
     for match in html_pattern.finditer(readme_text):
         src = match.group("src")
         alt = match.group("alt") or ""
-        candidates.append({"src": to_raw(src), "caption": alt.strip(), "score": 50})
+        raw_src, path = to_raw(src)
+        candidates.append({"src": raw_src, "caption": alt.strip(), "score": 50, "path": path})
 
     return candidates
 
@@ -347,7 +370,7 @@ def main():
     print(f"Discovered {len(repos)} total repositories before filtering.")
     context_content = ["# All Projects Context\n\nThis document contains details of all projects fetched from GitHub.\n\n"]
     new_projects: List[Dict] = []
-    seen_titles = set()
+    seen_titles = {}
 
     for repo in repos:
         if repo.fork:
@@ -357,9 +380,18 @@ def main():
         normalized = normalize_title(display_name)
 
         if normalized in seen_titles:
-            print(f"- Skipping duplicate title: {display_name}")
+            print(f"- Skipping duplicate title: {str(display_name).encode('ascii', 'ignore').decode('ascii')}")
+            # If the duplicate we are skipping has images, and the primary repo we saved earlier didn't, inherit its images.
+            primary_project = seen_titles[normalized]
+            if not primary_project.get("images"):
+                dest_dir = PROJECTS_ASSET_DIR / slugify(primary_project.get("title", repo.name))
+                candidates = discover_image_candidates(repo)
+                downloaded = download_images(repo, candidates, dest_dir)
+                if downloaded:
+                    print(f"  -> Inherited {len(downloaded)} images from skipped duplicate repo.")
+                    primary_project["images"] = downloaded
+                    primary_project["thumb"] = downloaded[0]["url"]
             continue
-        seen_titles.add(normalized)
 
         print(f"Processing: {str(display_name).encode('ascii', 'ignore').decode('ascii')} ({repo.full_name})")
 
@@ -464,6 +496,7 @@ def main():
             project_data["images"] = []
             project_data["thumb"] = ""
 
+        seen_titles[normalized] = project_data
         new_projects.append(project_data)
 
     # Write context

@@ -1,33 +1,15 @@
 [
   {
-    "id": 1171443862,
-    "title": "Dainty Proofreader",
-    "category": "web",
-    "tags": [
-      "JavaScript"
-    ],
-    "description": "No description provided.",
-    "details": "Imported from GitHub. See README for details.",
-    "link": "https://github.com/theGoodB0rg/dainty_proofreader",
-    "images": [
-      {
-        "url": "./projects/dainty_proofreader/apple-icon_17e11e4f.png",
-        "caption": ""
-      }
-    ],
-    "thumb": "./projects/dainty_proofreader/apple-icon_17e11e4f.png"
-  },
-  {
     "id": 4,
     "title": "portfolio-moi",
     "category": "web",
     "tags": [
-      "Vanilla JS",
-      "CSS3",
-      "UX",
       "Animations",
       "Vite",
-      "CSS"
+      "CSS3",
+      "Vanilla JS",
+      "CSS",
+      "UX"
     ],
     "description": "Interactive personal site with glassmorphism UI, fast filtering, and story-driven slideshows.",
     "details": "Purpose-built to showcase projects without heavy frameworks: Vite + vanilla JS, animated filters, and modal slides that highlight outcomes for non-technical viewers. 100/100 Lighthouse performance.",
@@ -58,12 +40,30 @@
     "thumb": "./projects/thegoodportfolio/3-devices-white_03d4468f.png"
   },
   {
+    "id": 1171443862,
+    "title": "Dainty Proofreader",
+    "category": "web",
+    "tags": [
+      "JavaScript"
+    ],
+    "description": "No description provided.",
+    "details": "Imported from GitHub. See README for details.",
+    "link": "https://github.com/theGoodB0rg/dainty_proofreader",
+    "images": [
+      {
+        "url": "./projects/dainty_proofreader/apple-icon_17e11e4f.png",
+        "caption": ""
+      }
+    ],
+    "thumb": "./projects/dainty_proofreader/apple-icon_17e11e4f.png"
+  },
+  {
     "id": 1061267304,
     "title": "Thegoodb0Rg",
     "category": "web",
     "tags": [
-      "Utilities",
-      "Python"
+      "Python",
+      "Utilities"
     ],
     "description": "Personal sandbox for quick Python utilities and experiment spikes.",
     "details": "Mixed scripts, tests, and research notes used as a staging ground for larger projects.",
@@ -102,11 +102,11 @@
     "title": "SMS Hook Module",
     "category": "mobile",
     "tags": [
-      "Security",
-      "Java",
       "LSPosed",
+      "Android",
       "Java/Kotlin",
-      "Android"
+      "Java",
+      "Security"
     ],
     "description": "Intercepts and augments outgoing SMS at the framework level.",
     "details": "Adds smart text appends, multipart handling, and stealth modes across apps\u2014built on LSPosed with focus on stability and safety.",
@@ -180,10 +180,10 @@
     "title": "CameraInterceptor",
     "category": "mobile",
     "tags": [
-      "LSPosed",
-      "C++",
       "Java",
-      "Android"
+      "C++",
+      "Android",
+      "LSPosed"
     ],
     "description": "Swap any Android camera feed with custom imagery (LSPosed module).",
     "details": "Hooks legacy Camera, Camera2, and CameraX APIs to inject gallery images system-wide. Built for Android 8.0+ with toggleable profiles.",
@@ -196,14 +196,14 @@
     "title": "JsonExport",
     "category": "web",
     "tags": [
-      "Monaco",
-      "Next.js",
       "Data Tools",
-      "TypeScript",
-      "client-side",
+      "Next.js",
+      "Monaco",
       "Client-side",
-      "api-tools",
       "Tailwind",
+      "client-side",
+      "TypeScript",
+      "api-tools",
       "converter"
     ],
     "description": "Convert nested JSON to Excel/CSV with auto-unescape & smart flattening | 100% client-side | Monaco editor | Privacy-first",
@@ -250,32 +250,19 @@
     "link": "https://github.com/theGoodB0rg/coddle_coddle",
     "images": [
       {
-        "url": "./projects/coddle/01-initial-state.png",
+        "url": "./projects/coddle_coddle/01-initial-state_c385c524.png",
         "caption": "The initial state of the Coddle game board showing empty tiles ready for user input."
       },
       {
-        "url": "./projects/coddle/02-wrong-answer.png",
+        "url": "./projects/coddle_coddle/02-wrong-answer_4635271a.png",
         "caption": "Gameplay view demonstrating the color-coded feedback when an incorrect guess is submitted."
       },
       {
-        "url": "./projects/coddle/03-win-modal.png",
+        "url": "./projects/coddle_coddle/03-win-modal_f9460b01.png",
         "caption": "Victory modal displaying the user's statistics, streak, and a shareable summary after guessing the correct coding term."
       }
     ],
-    "thumb": "./projects/coddle/03-win-modal.png"
-  },
-  {
-    "id": 1069489485,
-    "title": "\ud83c\udfae Coddle - Daily Coding Word Game",
-    "category": "web",
-    "tags": [
-      "TypeScript"
-    ],
-    "description": "No description provided.",
-    "details": "Imported from GitHub. See README for details.",
-    "link": "https://github.com/theGoodB0rg/coddle",
-    "images": [],
-    "thumb": ""
+    "thumb": "./projects/coddle_coddle/01-initial-state_c385c524.png"
   },
   {
     "id": 1141359518,
@@ -313,8 +300,25 @@
     "description": "No description provided.",
     "details": "Imported from GitHub. See README for details.",
     "link": "https://github.com/theGoodB0rg/smartFlyer",
-    "images": [],
-    "thumb": ""
+    "images": [
+      {
+        "url": "./projects/react-typescript-vite/clean-csv-online_76784f79.png",
+        "caption": ""
+      },
+      {
+        "url": "./projects/react-typescript-vite/fix-excel-date-format_a50f1003.png",
+        "caption": ""
+      },
+      {
+        "url": "./projects/react-typescript-vite/remove-blank-rows_c3212bb9.png",
+        "caption": ""
+      },
+      {
+        "url": "./projects/react-typescript-vite/trim-excel-whitespace_88106727.png",
+        "caption": ""
+      }
+    ],
+    "thumb": "./projects/react-typescript-vite/clean-csv-online_76784f79.png"
   },
   {
     "id": 1137761113,
@@ -326,26 +330,13 @@
     "description": "No description provided.",
     "details": "Imported from GitHub. See README for details.",
     "link": "https://github.com/theGoodB0rg/habit_tracker",
-    "images": [],
-    "thumb": ""
-  },
-  {
-    "id": 1032715695,
-    "title": "Offline Habit Tracker",
-    "category": "mobile",
-    "tags": [
-      "Kotlin"
-    ],
-    "description": "No description provided.",
-    "details": "Imported from GitHub. See README for details.",
-    "link": "https://github.com/theGoodB0rg/Habit-Tracker",
     "images": [
       {
-        "url": "./projects/habit_tracker/screenshot.png",
-        "caption": "Main interface of the offline Habit Tracker showing daily progress."
+        "url": "./projects/habit-tracker/screenshot_4b127d33.png",
+        "caption": "Main App Interface"
       }
     ],
-    "thumb": "./projects/habit_tracker/screenshot.png"
+    "thumb": "./projects/habit-tracker/screenshot_4b127d33.png"
   },
   {
     "id": 1012637446,
@@ -366,9 +357,9 @@
     "category": "web",
     "tags": [
       "Chrome MV3",
+      "TypeScript",
       "React",
-      "Growth",
-      "TypeScript"
+      "Growth"
     ],
     "description": "Chrome extension that grades product pages and suggests high-converting keywords.",
     "details": "Analyses Amazon/Shopify pages client-side, flags attribute gaps, and offers AI-assisted copy suggestions. Ships with promo creatives for Chrome Web Store.",
@@ -406,9 +397,9 @@
     "title": "Custom Admin Dashboard Welcome",
     "category": "web",
     "tags": [
-      "WordPress",
+      "Plugin",
       "PHP",
-      "Plugin"
+      "WordPress"
     ],
     "description": "WordPress plugin that replaces the default admin welcome with branded actions.",
     "details": "Configurable cards, quick links, and messaging so clients land on a tailored dashboard experience.",
@@ -421,8 +412,8 @@
     "title": "OIT \u2014 Online Educational Tool",
     "category": "web",
     "tags": [
-      "Bootstrap",
       "PHP",
+      "Bootstrap",
       "JavaScript",
       "MySQL"
     ],
@@ -448,72 +439,5 @@
       }
     ],
     "thumb": "./projects/oit/bg_b25398fb.jpg"
-  },
-  {
-    "id": 977394085,
-    "title": "49Blox - Music Shares & Investment Platform",
-    "category": "web",
-    "tags": [
-      "JavaScript",
-      "Node.js",
-      "Marketplace",
-      "Uploads"
-    ],
-    "description": "Second-gen build of 49Blox with refreshed UI and uploads.",
-    "details": "Vue/Node stack with image upload pipeline and updated artist onboarding.",
-    "link": "https://github.com/BenjaminAJ/49blox-2.0",
-    "live_link": "https://49blox.com",
-    "images": [
-      {
-        "url": "./projects/49blox-2-0/coverImage-1745325817572-657829527_c69725c0.jpg",
-        "caption": "Platform dashboard displaying digital music collectibles and ownership stakes."
-      },
-      {
-        "url": "./projects/49blox-2-0/coverImage-1746275755427-422306958_388cc44d.jpg",
-        "caption": "Primary orderbook and pricing graph for a tokenized song."
-      },
-      {
-        "url": "./projects/49blox-2-0/coverImage-1746815787502-751151187_15d72b3d.jpg",
-        "caption": "Secondary marketplace view where users can trade their music asset shares."
-      },
-      {
-        "url": "./projects/49blox-2-0/49BloxTeam_aff96b3d.png",
-        "caption": "About us section highlighting the development team."
-      },
-      {
-        "url": "./projects/49blox-2-0/default-profile (2)_30295097.png",
-        "caption": ""
-      },
-      {
-        "url": "./projects/49blox-2-0/coverImage-1745183027334-569409877_938a1d2f.png",
-        "caption": ""
-      }
-    ],
-    "thumb": "./projects/49blox-2-0/coverImage-1745325817572-657829527_c69725c0.jpg"
-  },
-  {
-    "id": 974694398,
-    "title": "49 Blox - Music Share Ownership Platform",
-    "category": "web",
-    "tags": [
-      "JavaScript",
-      "Marketplace",
-      "EJS"
-    ],
-    "description": "Lightweight fork focused on ownership visuals.",
-    "details": "Slimmed-down implementation keeping core cover gallery and profile branding.",
-    "link": "https://github.com/BenjaminAJ/49-blox",
-    "live_link": "https://49blox.com",
-    "images": [
-      {
-        "url": "./projects/49-blox/coverImage-1745325817572-657829527_66918139.jpg",
-        "caption": ""
-      },
-      {
-        "url": "./projects/49-blox/coverImage-1745183027334-569409877_b9dd8bd2.png",
-        "caption": ""
-      }
-    ],
-    "thumb": "./projects/49-blox/coverImage-1745325817572-657829527_66918139.jpg"
   }
 ]
