@@ -72,26 +72,67 @@ function renderProjects(filter = 'all') {
     card.className = 'project-card glass fade-in-up';
     card.style.animationDelay = `${index * 0.1}s`; // Staggered animation
 
-    // Add click handler
-    card.onclick = () => openSlideshow(project.id);
-
     // Image Handling
     let imageContent;
+    let fallbackText = getInitials(project.title);
     if (project.thumb) {
-      imageContent = `<img src="${project.thumb}" alt="${project.title}" onerror="this.parentElement.innerHTML='<div class=\\'card-placeholder\\'>${getInitials(project.title)}</div>'">`;
+      imageContent = `<img src="${project.thumb}" alt="${project.title}" onerror="this.parentElement.innerHTML='<div class=\\'card-placeholder\\'>${fallbackText}</div>'">`;
     } else {
-      imageContent = `<div class="card-placeholder">${getInitials(project.title)}</div>`;
+      imageContent = `<div class="card-placeholder">${fallbackText}</div>`;
     }
 
+    // Determine descriptive text (use rich caption from AI first, then fallback)
+    let displayDesc = "";
+    if (project.images && project.images.length > 0 && project.images[0].caption) {
+      displayDesc = project.images[0].caption;
+    } else {
+      displayDesc = truncateText(project.description || project.details || '', 120);
+    }
+
+    // Determine specific link texts depending on nature of project
+    let isWeb = project.category === 'web';
+    let primaryLinkText = isWeb ? "View Live Site" : "Get App";
+
+    // We assume project.link is the Github Repo for the user, but we will label it cleanly.
+    let secondaryLinkText = "Source Code";
+
+    // Build Action Buttons
+    // Note: To keep the card clickable for the slideshow, we stop event propagation on the external links so the modal doesn't open when attempting to navigate out.
+    let actionsHtml = `<div class="card-actions">`;
+
+    if (project.live_link) {
+      actionsHtml += `
+        <a href="${project.live_link}" target="_blank" class="card-btn live" onclick="event.stopPropagation()">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+            <polyline points="15 3 21 3 21 9"></polyline>
+            <line x1="10" y1="14" x2="21" y2="3"></line>
+          </svg>
+          ${primaryLinkText}
+        </a>`;
+    }
+
+    if (project.link) {
+      actionsHtml += `
+        <a href="${project.link}" target="_blank" class="card-btn source" onclick="event.stopPropagation()">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+             <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+          </svg>
+          ${secondaryLinkText}
+        </a>`;
+    }
+    actionsHtml += `</div>`;
+
     card.innerHTML = `
-      <div class="card-image">
+      <div class="card-image" onclick="openSlideshow(${project.id})" style="cursor: pointer;">
         ${imageContent}
-        <div class="view-overlay flex-center">View Project</div>
+        <div class="view-overlay flex-center">View Screenshots</div>
       </div>
       <div class="card-content">
         <div class="card-tags">${(project.tags || []).slice(0, 3).join(' • ')}</div>
-        <h3>${project.title}</h3>
-        <p class="card-description">${truncateText(project.description || '', 100)}</p>
+        <h3 onclick="openSlideshow(${project.id})" style="cursor: pointer;">${project.title}</h3>
+        <p class="card-description">${displayDesc}</p>
+        ${actionsHtml}
       </div>
     `;
     grid.appendChild(card);

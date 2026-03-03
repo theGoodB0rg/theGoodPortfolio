@@ -14,11 +14,13 @@ from dotenv import load_dotenv
 
 class Config:
     MAX_IMAGES_PER_REPO = 6  # default per user instruction
-    MIN_IMAGE_SIZE = 20_000  # bytes; skip tiny icons
-    IMAGE_EXTS = {".png", ".jpg", ".jpeg", ".webp", ".gif"}
-    IMAGE_KEYWORDS = ("screenshot", "screen", "demo", "preview", "capture", "ui", "mock", "example")
+    MIN_IMAGE_SIZE = 5_000  # bytes; still filters favicons but keeps lightweight PNGs in docs
+    IMAGE_EXTS = {".png", ".jpg", ".jpeg", ".webp", ".gif", ".svg"}
+    IMAGE_KEYWORDS = ("screenshot", "screen", "demo", "preview", "capture", "ui", "mock", "example", "docs")
     SKIP_ICON_NAMES = ("logo", "icon", "favicon", "apple-touch-icon")
     PRESERVE_IF_NO_NEW_IMAGES = True  # keep existing when nothing new discovered
+    MAX_DOWNLOAD_ATTEMPTS_PER_REPO = 8   # keep runs under ~5 minutes
+    REQUEST_TIMEOUT = 10  # seconds per image fetch
 
 
 # ============ Auth Helpers ============
@@ -215,7 +217,7 @@ def discover_image_candidates(repo) -> List[Dict]:
         score = 10
         if any(k in path_lower for k in Config.IMAGE_KEYWORDS):
             score += 15
-        if any(seg in path_lower for seg in ("screenshot", "screens", "docs", "assets", "public", "static", "fastlane")):
+        if any(seg in path_lower for seg in ("screenshot", "screens", "docs", "assets", "public", "static", "fastlane", "images", "img")):
             score += 8
         if any(skip in path_lower for skip in Config.SKIP_ICON_NAMES):
             score -= 8
@@ -231,8 +233,9 @@ def discover_image_candidates(repo) -> List[Dict]:
                 "size": entry.size,
             }
 
-    # Return sorted list
-    return sorted(candidates.values(), key=lambda c: c.get("score", 0), reverse=True)
+    # Return sorted list (highest score first) and cap to avoid huge trees
+    sorted_candidates = sorted(candidates.values(), key=lambda c: c.get("score", 0), reverse=True)
+    return sorted_candidates[: Config.MAX_DOWNLOAD_ATTEMPTS_PER_REPO * 2]  # keep a buffer beyond attempts cap
 
 
 def download_images(repo, candidates: List[Dict], dest_root: Path) -> List[Dict]:
@@ -249,8 +252,12 @@ def download_images(repo, candidates: List[Dict], dest_root: Path) -> List[Dict]
 
     picked = []
     seen_names = set()
+    attempts = 0
     for item in candidates:
         if len(picked) >= Config.MAX_IMAGES_PER_REPO:
+            break
+        if attempts >= Config.MAX_DOWNLOAD_ATTEMPTS_PER_REPO:
+            print(f"    stopping after {attempts} attempts (cap)")
             break
 
         src = item["src"]
@@ -267,16 +274,20 @@ def download_images(repo, candidates: List[Dict], dest_root: Path) -> List[Dict]
 
         dest_file = dest_root / safe_name
 
+        attempts += 1
         try:
-            resp = session.get(src, timeout=15)
+            resp = session.get(src, timeout=Config.REQUEST_TIMEOUT)
             if resp.status_code != 200:
+                print(f"    skip {src} (status {resp.status_code})")
                 continue
             content = resp.content
             if len(content) < Config.MIN_IMAGE_SIZE:
+                print(f"    skip {src} (too small: {len(content)} bytes)")
                 continue
             with open(dest_file, "wb") as f:
                 f.write(content)
-        except Exception:
+        except Exception as exc:
+            print(f"    error downloading {src}: {exc}")
             continue
 
         seen_names.add(safe_name)
@@ -328,7 +339,8 @@ def main():
         if p.get("id"):
             project_map[str(p["id"])] = p
 
-    repos = user.get_repos(sort="updated", direction="desc")
+    repos = list(user.get_repos(type="all", sort="updated", direction="desc"))
+    print(f"Discovered {len(repos)} total repositories before filtering.")
     context_content = ["# All Projects Context\n\nThis document contains details of all projects fetched from GitHub.\n\n"]
     new_projects: List[Dict] = []
     seen_titles = set()
@@ -399,7 +411,9 @@ def main():
         # Discover and download images
         dest_dir = PROJECTS_ASSET_DIR / slugify(repo.name)
         candidates = discover_image_candidates(repo)
+        print(f"  found {len(candidates)} image candidates")
         downloaded = download_images(repo, candidates, dest_dir)
+        print(f"  downloaded {len(downloaded)} images")
 
         if downloaded:
             project_data["images"] = downloaded
