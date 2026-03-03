@@ -213,6 +213,8 @@ function openSlideshow(projectId) {
   modal.classList.add('active');
   document.body.style.overflow = 'hidden';
 }
+window.openSlideshow = openSlideshow;
+
 
 function closeSlideshow() {
   modal.classList.remove('active');
