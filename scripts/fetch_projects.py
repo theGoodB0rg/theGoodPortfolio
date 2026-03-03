@@ -293,7 +293,7 @@ def download_images(repo, candidates: List[Dict], dest_root: Path) -> List[Dict]
         seen_names.add(safe_name)
         picked.append(
             {
-                "url": f"/projects/{dest_root.name}/{safe_name}",
+                "url": f"./projects/{dest_root.name}/{safe_name}",
                 "caption": item.get("caption", "")[:140],
             }
         )

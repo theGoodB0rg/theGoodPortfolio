@@ -31,31 +31,31 @@
     "live_link": "https://thegoodb0rg.github.io/theGoodPortfolio",
     "images": [
       {
-        "url": "/projects/thegoodportfolio/profile_0b0c89f7.png",
+        "url": "./projects/thegoodportfolio/profile_0b0c89f7.png",
         "caption": "A glowing cyber-teal sphere emphasizing the developer's profile picture."
       },
       {
-        "url": "/projects/thegoodportfolio/habit_dashboard_1766166089166_c041888d.png",
+        "url": "./projects/thegoodportfolio/habit_dashboard_1766166089166_c041888d.png",
         "caption": "Main dashboard showing weekly habit streaks with a beautiful glassmorphism card layout."
       },
       {
-        "url": "/projects/thegoodportfolio/habit_stats_1766166110812_817457ea.png",
+        "url": "./projects/thegoodportfolio/habit_stats_1766166110812_817457ea.png",
         "caption": "Analytics view displaying habit completion percentages using sleek circular progress UI elements."
       },
       {
-        "url": "/projects/thegoodportfolio/keyword_overlay_1766166148864_68009428.png",
+        "url": "./projects/thegoodportfolio/keyword_overlay_1766166148864_68009428.png",
         "caption": "In-page Chrome extension overlay analyzing live product listing keywords."
       },
       {
-        "url": "/projects/thegoodportfolio/keyword_popup_1766166128436_b9105eaf.png",
+        "url": "./projects/thegoodportfolio/keyword_popup_1766166128436_b9105eaf.png",
         "caption": "Chrome extension popup interface displaying the keyword SEO score."
       },
       {
-        "url": "/projects/thegoodportfolio/smshook_config_1766166196452_f4a23961.png",
+        "url": "./projects/thegoodportfolio/smshook_config_1766166196452_f4a23961.png",
         "caption": "LSPosed module configuration screen with stealth and append toggles."
       }
     ],
-    "thumb": "/projects/thegoodportfolio/habit_dashboard_1766166089166_c041888d.png"
+    "thumb": "./projects/thegoodportfolio/habit_dashboard_1766166089166_c041888d.png"
   },
   {
     "id": 1162651624,
@@ -99,15 +99,15 @@
     "link": "https://github.com/theGoodB0rg/sms-hook",
     "images": [
       {
-        "url": "/projects/smshook_log_1766166172497.png",
+        "url": "./projects/smshook_log_1766166172497.png",
         "caption": "Real-time system log interception view"
       },
       {
-        "url": "/projects/smshook_config_1766166196452.png",
+        "url": "./projects/smshook_config_1766166196452.png",
         "caption": "Module configuration and stealth settings"
       }
     ],
-    "thumb": "/projects/smshook_log_1766166172497.png"
+    "thumb": "./projects/smshook_log_1766166172497.png"
   },
   {
     "id": 1169171018,
@@ -135,23 +135,23 @@
     "live_link": "https://49blox.com",
     "images": [
       {
-        "url": "/projects/49blox/2813_b15d57d9.jpg",
+        "url": "./projects/49blox/2813_b15d57d9.jpg",
         "caption": "Platform dashboard displaying digital music collectibles and ownership stakes."
       },
       {
-        "url": "/projects/49blox/2814_e7a18a64.jpg",
+        "url": "./projects/49blox/2814_e7a18a64.jpg",
         "caption": "Primary orderbook and pricing graph for a tokenized song."
       },
       {
-        "url": "/projects/49blox/2819_7d97fdba.jpg",
+        "url": "./projects/49blox/2819_7d97fdba.jpg",
         "caption": "Secondary marketplace view where users can trade their music asset shares."
       },
       {
-        "url": "/projects/49blox/49BloxTeam_77302c17.png",
+        "url": "./projects/49blox/49BloxTeam_77302c17.png",
         "caption": "About us section highlighting the development team."
       }
     ],
-    "thumb": "/projects/49blox/2813_b15d57d9.jpg"
+    "thumb": "./projects/49blox/2813_b15d57d9.jpg"
   },
   {
     "id": 1125785452,
@@ -190,19 +190,19 @@
     "live_link": "https://json-hub.vercel.app",
     "images": [
       {
-        "url": "/projects/json_hub/hero_22b86abc.png",
+        "url": "./projects/json_hub/hero_22b86abc.png",
         "caption": "JsonExport Banner showcasing the primary value proposition."
       },
       {
-        "url": "/projects/json_hub/export-options_bff5e34b.png",
+        "url": "./projects/json_hub/export-options_bff5e34b.png",
         "caption": "Export panel showing options for CSV, Excel, HTML, and ZIP downloads."
       },
       {
-        "url": "/projects/json_hub/data-grid_a6b36b6f.png",
+        "url": "./projects/json_hub/data-grid_a6b36b6f.png",
         "caption": "Data Grid UI visualizing the parsed and flattened JSON arrays."
       }
     ],
-    "thumb": "/projects/json_hub/data-grid_a6b36b6f.png"
+    "thumb": "./projects/json_hub/data-grid_a6b36b6f.png"
   },
   {
     "id": 1160351622,
@@ -216,19 +216,19 @@
     "link": "https://github.com/theGoodB0rg/coddle_coddle",
     "images": [
       {
-        "url": "/projects/coddle/01-initial-state.png",
+        "url": "./projects/coddle/01-initial-state.png",
         "caption": "The initial state of the Coddle game board showing empty tiles ready for user input."
       },
       {
-        "url": "/projects/coddle/02-wrong-answer.png",
+        "url": "./projects/coddle/02-wrong-answer.png",
         "caption": "Gameplay view demonstrating the color-coded feedback when an incorrect guess is submitted."
       },
       {
-        "url": "/projects/coddle/03-win-modal.png",
+        "url": "./projects/coddle/03-win-modal.png",
         "caption": "Victory modal displaying the user's statistics, streak, and a shareable summary after guessing the correct coding term."
       }
     ],
-    "thumb": "/projects/coddle/03-win-modal.png"
+    "thumb": "./projects/coddle/03-win-modal.png"
   },
   {
     "id": 1069489485,
@@ -307,11 +307,11 @@
     "link": "https://github.com/theGoodB0rg/Habit-Tracker",
     "images": [
       {
-        "url": "/projects/habit_tracker/screenshot.png",
+        "url": "./projects/habit_tracker/screenshot.png",
         "caption": "Main interface of the offline Habit Tracker showing daily progress."
       }
     ],
-    "thumb": "/projects/habit_tracker/screenshot.png"
+    "thumb": "./projects/habit_tracker/screenshot.png"
   },
   {
     "id": 1012637446,
@@ -341,19 +341,19 @@
     "link": "https://github.com/theGoodB0rg/Keyword-Planner-Extension",
     "images": [
       {
-        "url": "/projects/keyword-planner-extension/og-1200x630_5cb41dc3.png",
+        "url": "./projects/keyword-planner-extension/og-1200x630_5cb41dc3.png",
         "caption": "Product Listing Optimizer promotional banner."
       },
       {
-        "url": "/projects/keyword-planner-extension/cws-promo-large-920x680_211d9d9f.png",
+        "url": "./projects/keyword-planner-extension/cws-promo-large-920x680_211d9d9f.png",
         "caption": "Chrome Web Store large promotional graphic demonstrating the grading functionality."
       },
       {
-        "url": "/projects/keyword-planner-extension/cws-promo-small-440x280_5aeef6a8.png",
+        "url": "./projects/keyword-planner-extension/cws-promo-small-440x280_5aeef6a8.png",
         "caption": "Chrome Web Store small promo banner."
       }
     ],
-    "thumb": "/projects/keyword-planner-extension/cws-promo-large-920x680_211d9d9f.png"
+    "thumb": "./projects/keyword-planner-extension/cws-promo-large-920x680_211d9d9f.png"
   },
   {
     "id": 1077389286,
@@ -385,11 +385,11 @@
     "link": "https://github.com/theGoodB0rg/OIT",
     "images": [
       {
-        "url": "/projects/oit/739247_0c2e6948.png",
+        "url": "./projects/oit/739247_0c2e6948.png",
         "caption": "Educational Portal landing and portal interface."
       }
     ],
-    "thumb": "/projects/oit/739247_0c2e6948.png"
+    "thumb": "./projects/oit/739247_0c2e6948.png"
   },
   {
     "id": 977394085,
@@ -407,15 +407,15 @@
     "live_link": "https://49blox.com",
     "images": [
       {
-        "url": "/projects/49blox-2-0/49BloxTeam_aff96b3d.png",
+        "url": "./projects/49blox-2-0/49BloxTeam_aff96b3d.png",
         "caption": "Team section of the 49Blox platform detailing the creators."
       },
       {
-        "url": "/projects/49blox-2-0/coverImage-1745183027334-569409877_938a1d2f.png",
+        "url": "./projects/49blox-2-0/coverImage-1745183027334-569409877_938a1d2f.png",
         "caption": "Audio track listing view showcasing album art and current token valuation."
       }
     ],
-    "thumb": "/projects/49blox-2-0/coverImage-1745183027334-569409877_938a1d2f.png"
+    "thumb": "./projects/49blox-2-0/coverImage-1745183027334-569409877_938a1d2f.png"
   },
   {
     "id": 974694398,
@@ -432,10 +432,10 @@
     "live_link": "https://49blox.com",
     "images": [
       {
-        "url": "/projects/49-blox/coverImage-1745183027334-569409877_b9dd8bd2.png",
+        "url": "./projects/49-blox/coverImage-1745183027334-569409877_b9dd8bd2.png",
         "caption": "Music share listing interface highlighting the visual breakdown of token ownership."
       }
     ],
-    "thumb": "/projects/49-blox/coverImage-1745183027334-569409877_b9dd8bd2.png"
+    "thumb": "./projects/49-blox/coverImage-1745183027334-569409877_b9dd8bd2.png"
   }
 ]
