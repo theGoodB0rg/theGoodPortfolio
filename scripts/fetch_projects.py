@@ -214,13 +214,18 @@ def discover_image_candidates(repo) -> List[Dict]:
         if entry.size and entry.size < Config.MIN_IMAGE_SIZE:
             continue
 
-        score = 10
+        # Base score. Larger files are typically higher fidelity screenshots/mockups.
+        score = 10 + (min(entry.size, 2000000) // 50000)  # Add up to 40 points based on size
+        
+        # Bonus points for obvious screenshot folders/names
         if any(k in path_lower for k in Config.IMAGE_KEYWORDS):
-            score += 15
+            score += 20
         if any(seg in path_lower for seg in ("screenshot", "screens", "docs", "assets", "public", "static", "fastlane", "images", "img")):
-            score += 8
+            score += 10
+            
+        # Penalize icons/logos but don't ban them completely in case it's the only image
         if any(skip in path_lower for skip in Config.SKIP_ICON_NAMES):
-            score -= 8
+            score -= 20
 
         raw_url = f"https://raw.githubusercontent.com/{repo.full_name}/{branch}/{entry.path}"
         if raw_url not in candidates:
@@ -247,8 +252,6 @@ def download_images(repo, candidates: List[Dict], dest_root: Path) -> List[Dict]
         return []
 
     dest_root.mkdir(parents=True, exist_ok=True)
-    session = requests.Session()
-    session.headers.update({"Authorization": f"token {GITHUB_TOKEN}"})
 
     picked = []
     seen_names = set()
@@ -260,14 +263,17 @@ def download_images(repo, candidates: List[Dict], dest_root: Path) -> List[Dict]
             print(f"    stopping after {attempts} attempts (cap)")
             break
 
-        src = item["src"]
-        filename = Path(src).name
+        src_path = item.get("path")
+        if not src_path:
+             continue
+             
+        filename = Path(src_path).name
         name_root, ext = os.path.splitext(filename)
         if ext.lower() not in Config.IMAGE_EXTS:
             continue
 
-        # Stable filename: original base + short hash of path
-        short_hash = hashlib.sha1(src.encode("utf-8")).hexdigest()[:8]
+        # Stable filename
+        short_hash = hashlib.sha1(item["src"].encode("utf-8")).hexdigest()[:8]
         safe_name = f"{name_root}_{short_hash}{ext}".replace("%", "")
         if safe_name in seen_names:
             continue
@@ -276,18 +282,16 @@ def download_images(repo, candidates: List[Dict], dest_root: Path) -> List[Dict]
 
         attempts += 1
         try:
-            resp = session.get(src, timeout=Config.REQUEST_TIMEOUT)
-            if resp.status_code != 200:
-                print(f"    skip {src} (status {resp.status_code})")
-                continue
-            content = resp.content
+            content_file = repo.get_contents(src_path)
+            content = base64.b64decode(content_file.content)
+            
             if len(content) < Config.MIN_IMAGE_SIZE:
-                print(f"    skip {src} (too small: {len(content)} bytes)")
+                print(f"    skip {src_path} (too small: {len(content)} bytes)")
                 continue
             with open(dest_file, "wb") as f:
                 f.write(content)
         except Exception as exc:
-            print(f"    error downloading {src}: {exc}")
+            print(f"    error downloading {src_path} via API: {exc}")
             continue
 
         seen_names.add(safe_name)
@@ -357,7 +361,7 @@ def main():
             continue
         seen_titles.add(normalized)
 
-        print(f"Processing: {display_name} ({repo.full_name})")
+        print(f"Processing: {str(display_name).encode('ascii', 'ignore').decode('ascii')} ({repo.full_name})")
 
         topics = repo.get_topics()
         language = repo.language or "Unspecified"
@@ -418,6 +422,44 @@ def main():
         if downloaded:
             project_data["images"] = downloaded
             project_data["thumb"] = downloaded[0]["url"]
+            
+            # Re-apply our custom AI captions for the flagship apps
+            if display_name == "portfolio-moi":
+                 for i, img in enumerate(project_data["images"]):
+                     if "habit_dashboard" in img["url"]: img["caption"] = "Main dashboard showing weekly habit streaks with a beautiful glassmorphism card layout."
+                     elif "habit_stats" in img["url"]: img["caption"] = "Analytics view displaying habit completion percentages using sleek circular progress UI elements."
+                     elif "overlay" in img["url"]: img["caption"] = "In-page Chrome extension overlay analyzing live product listing keywords."
+                     elif "popup" in img["url"]: img["caption"] = "Chrome extension popup interface displaying the keyword SEO score."
+                     elif "smshook" in img["url"]: img["caption"] = "LSPosed module configuration screen with stealth and append toggles."
+                     elif "profile" in img["url"]: img["caption"] = "A glowing cyber-teal sphere emphasizing the developer's profile picture."
+            elif "49Blox" in display_name and "Platform" in display_name:
+                 for i, img in enumerate(project_data["images"]):
+                     if i == 0: img["caption"] = "Platform dashboard displaying digital music collectibles and ownership stakes."
+                     elif i == 1: img["caption"] = "Primary orderbook and pricing graph for a tokenized song."
+                     elif i == 2: img["caption"] = "Secondary marketplace view where users can trade their music asset shares."
+                     elif "Team" in img["url"]: img["caption"] = "About us section highlighting the development team."
+            elif "JsonExport" in display_name:
+                 for i, img in enumerate(project_data["images"]):
+                     if "hero" in img["url"]: img["caption"] = "JsonExport Banner showcasing the primary value proposition."
+                     elif "batch" in img["url"] or "edits" in img["url"]: img["caption"] = "Data Grid UI visualizing the parsed and flattened JSON arrays."
+                     elif "open" in img["url"]: img["caption"] = "Export panel showing options for CSV, Excel, HTML, and ZIP downloads."
+            elif "Product Listing Optimizer" in display_name:
+                 for i, img in enumerate(project_data["images"]):
+                     if "og-" in img["url"]: img["caption"] = "Product Listing Optimizer promotional banner."
+                     elif "large" in img["url"]: img["caption"] = "Chrome Web Store large promotional graphic demonstrating the grading functionality."
+                     elif "small" in img["url"]: img["caption"] = "Chrome Web Store small promo banner."
+            elif display_name == "OIT  Online Educational Tool":
+                 for i, img in enumerate(project_data["images"]):
+                     if "739247" in img["url"]: img["caption"] = "Educational Portal landing and portal interface."
+            elif display_name == "Coddle":
+                 for i, img in enumerate(project_data["images"]):
+                     if "initial" in img["url"]: img["caption"] = "The initial state of the Coddle game board showing empty tiles ready for user input."
+                     elif "wrong" in img["url"]: img["caption"] = "Gameplay view demonstrating the color-coded feedback when an incorrect guess is submitted."
+                     elif "win" in img["url"]: img["caption"] = "Victory modal displaying the user's statistics, streak, and a shareable summary after guessing the correct coding term."
+            elif display_name == "Offline Habit Tracker":
+                 for i, img in enumerate(project_data["images"]):
+                     if "screenshot" in img["url"]: img["caption"] = "Main interface of the offline Habit Tracker showing daily progress."
+            
         elif not downloaded and not Config.PRESERVE_IF_NO_NEW_IMAGES:
             project_data["images"] = []
             project_data["thumb"] = ""
