@@ -430,6 +430,31 @@ section {
   font-family: var(--font-mono);
 }
 
+/* About Intro (photo + heading) */
+.about-intro {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 3.5rem;
+}
+
+.about-photo {
+  flex-shrink: 0;
+}
+
+.profile-img {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.about-intro .section-header {
+  margin-bottom: 0;
+}
+
 .about-grid {
   display: grid;
   grid-template-columns: 1.4fr 1fr;
