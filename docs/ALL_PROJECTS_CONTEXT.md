@@ -2,6 +2,17 @@
 
 This document contains details of all projects fetched from GitHub.
 
+## theGoodPortfolio
+**Description**: None
+**URL**: https://github.com/theGoodB0rg/theGoodPortfolio
+### README
+No README found.
+
+### docs/ALL_PROJECTS_CONTEXT.md
+# All Projects Context
+
+This document contains details of all projects fetched from GitHub.
+
 ## thegoodB0rg
 **Description**: None
 **URL**: https://github.com/theGoodB0rg/thegoodB0rg
@@ -25079,6 +25090,7079 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 - Developed for hackathon project
 - Inspired by the need for direct artist-fan connection in the music industry"# 49Blox" 
+
+
+---
+
+
+
+---
+
+## dainty_proofreader
+**Description**: None
+**URL**: https://github.com/theGoodB0rg/dainty_proofreader
+### README
+# Dainty Proofreader
+
+A gentle proofreading tool for fiction writers. Fixes only genuine errors — typos, misspellings, broken grammar — while preserving your voice, style, and sentence structure.
+
+Unlike Grammarly and similar tools that aggressively rewrite toward "ideal" English, Dainty makes the *minimum possible corrections*. Your text stays human, your voice stays yours, and AI detectors won't flag your work.
+
+## Features
+
+- **Minimal corrections** — Only fixes what is objectively wrong. Sentence structure, word choice, fragments, and stylistic decisions are never touched.
+- **Fiction-aware** — Understands that dialogue, pacing devices, and narrative voice are sacred. Won't "fix" intentional rule-breaking.
+- **Diff view** — See every change highlighted inline. Accept or reject each correction individually.
+- **Copy to clipboard** — One click to copy your corrected text.
+- **Daily free quota** — 5,000 words/day per account, no credit card required.
+- **AI-detection safe** — Because so little changes, your text remains indistinguishable from the original.
+
+## Tech Stack
+
+| Layer | Technology |
+|-------|-----------|
+| Framework | Next.js 16 (App Router) |
+| Styling | CSS Modules, mobile-first |
+| Auth | NextAuth.js (email/password, JWT) |
+| Database | Neon PostgreSQL + Drizzle ORM |
+| LLM | OpenAI GPT-4o-mini |
+| Diff | diff-match-patch |
+
+## Project Structure
+
+```
+src/
+├── app/                     # Pages and API routes
+│   ├── (auth)/              # Login, signup pages
+│   ├── proofread/           # Main proofreading page
+│   └── api/                 # Auth, proofread, quota endpoints
+├── components/              # Reusable UI (Button, Input, Card, Header)
+│   ├── ui/
+│   ├── auth/
+│   └── layout/
+├── lib/                     # Business logic (zero UI code)
+│   ├── proofreader.js       # LLM integration + prompt
+│   ├── differ.js            # Diff computation
+│   ├── quota.js             # Daily usage tracking
+│   ├── auth.js              # NextAuth config
+│   └── db/                  # Schema + Drizzle client
+└── middleware.js             # Route protection
+```
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js 18+
+- A [Neon](https://neon.tech) database (free tier)
+- An [OpenAI](https://platform.openai.com) API key
+
+### Setup
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/theGoodB0rg/dainty_proofreader.git
+   cd dainty_proofreader
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Create `.env.local` with your credentials:
+   ```
+   DATABASE_URL=postgresql://user:password@host/database?sslmode=require
+   NEXTAUTH_SECRET=<generate with: node -e "console.log(require('crypto').randomBytes(32).toString('hex'))">
+   NEXTAUTH_URL=http://localhost:3000
+   OPENAI_API_KEY=sk-your-key-here
+   ```
+
+4. Push the database schema:
+   ```bash
+   npx drizzle-kit push
+   ```
+
+5. Run the dev server:
+   ```bash
+   npm run dev
+   ```
+
+Open [http://localhost:3000](http://localhost:3000) to start.
+
+## How It Works
+
+1. **Paste** your text into the editor.
+2. **Proofread** — the LLM makes only essential corrections using a strict prompt that forbids rewrites.
+3. **Review** — see every change highlighted. Accept or reject each one.
+4. **Copy** — grab the final text with one click.
+
+## The Proofreading Philosophy
+
+Most grammar tools are *prescriptive* — they push your writing toward a standardized ideal. This strips away voice, triggers AI detectors, and harms fiction writers who break rules on purpose.
+
+Dainty is *conservative* — it only intervenes when something is genuinely wrong. Sentence fragments for pacing? Left alone. Passive voice? Your choice. Dialogue with bad grammar? That's your character talking.
+
+The guiding principle: **when in doubt, don't change it.**
+
+## License
+
+MIT
+
+
+---
+
+## thegoodB0rg
+**Description**: None
+**URL**: https://github.com/theGoodB0rg/thegoodB0rg
+### README
+<h1 align="center">Hi, I'm Olorunfemi John (theGoodB0rg)</h1>
+<p align="center">
+  Software Engineer — I build browser extensions, focused productivity tools, and explore cybersecurity with my team.
+</p>
+
+<p align="center">
+  <a href="mailto:theregalstarlite@gmail.com"><img alt="Email" src="https://img.shields.io/badge/Email-Contact-0A66C2?style=flat&logo=gmail&logoColor=white"></a>
+  <a href="https://www.linkedin.com/in/john-olorunfemi/"><img alt="LinkedIn" src="https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=flat&logo=linkedin&logoColor=white"></a>
+  <img alt="Open to remote work" src="https://img.shields.io/badge/Open%20to-Remote%20collaboration-2E8B57?style=flat&logo=briefcase&logoColor=white">
+</p>
+
+## About me
+I like shipping small, useful tools that feel good to use. Lately that’s meant Chrome/Edge extensions, habit tracking, and hands-on security learning. I care about clarity, maintainable code, and documentation that helps others move fast.
+
+## Selected work
+<!--START_SECTION:selected_repos-->
+- Keyword Planner Extension - Chrome extension that speeds up keyword research workflows for marketers.  
+  - Repo: https://github.com/theGoodB0rg/Keyword-Planner-Extension
+- Habit Tracker - Lightweight habit tracking app focused on streaks, insight, and consistent routines.  
+  - Repo: https://github.com/theGoodB0rg/Habit-Tracker
+- CyberSec - Hands-on labs, notes, and tooling while I build a strong cybersecurity foundation with my team.  
+  - Repo: https://github.com/theGoodB0rg/CyberSec
+- OIT - PHP-based learning platform bundling math calculators, student dashboards, and an admin panel.  
+  - Repo: https://github.com/theGoodB0rg/OIT
+- 49Blox (client work) - Production website engagement where I shipped front-end features and supported delivery for a live client.  
+  - Site: https://49blox.com
+  - Repo (Jacen-max): https://github.com/Jacen-max/49Blox
+  - Repo (julianhall74): https://github.com/julianhall74/49Blox
+<!--END_SECTION:selected_repos-->
+
+<!--START_SECTION:autogenerated-->
+## Auto-generated snapshot
+
+- Total Stars: 0
+- Total Forks: 0
+- Repos with Releases: 1
+
+### Top Languages
+C++ (46.2%), Kotlin (17.9%), TypeScript (13.0%), JavaScript (8.8%), CSS (3.2%), PHP (2.6%), Java (2.5%), SCSS (2.0%)
+
+### Detected Stacks
+GitHub Actions (CI/CD) ×8, Frontend Tooling ×6, JVM ×4, React ×4, Python ×1, Next.js ×1, Vue ×1
+
+### Recent Activity
+- 2026-03-01 - Push - theGoodB0rg/theGoodPortfolio
+- 2026-02-27 - Push - theGoodB0rg/camera_hook
+- 2026-02-27 - Push - theGoodB0rg/camera_hook
+- 2026-02-24 - Push - theGoodB0rg/camera_hook
+- 2026-02-24 - Push - theGoodB0rg/camera_hook
+- 2026-02-24 - Push - theGoodB0rg/camera_hook
+- 2026-02-22 - Push - theGoodB0rg/json_hub
+- 2026-02-22 - Push - theGoodB0rg/json_hub
+- 2026-02-22 - Push - theGoodB0rg/json_hub
+- 2026-02-22 - Push - theGoodB0rg/json_hub
+
+_Last updated: 2026-03-03 03:50 UTC_
+<!--END_SECTION:autogenerated-->
+
+## What I'm focused on
+- Iterating on the Keyword Planner Extension: faster parsing and smoother UX
+- Habit Tracker improvements: streaks, insights, and backups
+- Cybersecurity study with my team: web app security basics, auth, and secure patterns
+
+## Tech I use
+<!--START_SECTION:tech_stack-->
+<p>
+  <img alt="JavaScript" src="https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&amp;logoColor=000&amp;style=flat">
+  <img alt="TypeScript" src="https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&amp;logoColor=fff&amp;style=flat">
+  <img alt="HTML5" src="https://img.shields.io/badge/HTML5-E34F26?logo=html5&amp;logoColor=fff&amp;style=flat">
+  <img alt="CSS3" src="https://img.shields.io/badge/CSS3-1572B6?logo=css3&amp;logoColor=fff&amp;style=flat">
+  <img alt="React" src="https://img.shields.io/badge/React-61DAFB?logo=react&amp;logoColor=000&amp;style=flat">
+  <img alt="Node.js" src="https://img.shields.io/badge/Node.js-339933?logo=node.js&amp;logoColor=fff&amp;style=flat">
+  <img alt="Python" src="https://img.shields.io/badge/Python-3776AB?logo=python&amp;logoColor=fff&amp;style=flat">
+  <img alt="PHP" src="https://img.shields.io/badge/PHP-777BB4?logo=php&amp;logoColor=fff&amp;style=flat">
+  <img alt="C#" src="https://img.shields.io/badge/C%23-512BD4?logo=csharp&amp;logoColor=fff&amp;style=flat">
+  <img alt="Git" src="https://img.shields.io/badge/Git-F05032?logo=git&amp;logoColor=fff&amp;style=flat">
+  <img alt="Chrome Extensions" src="https://img.shields.io/badge/Chrome%20Extensions-4285F4?logo=google-chrome&amp;logoColor=fff&amp;style=flat">
+</p>
+<!--END_SECTION:tech_stack-->
+## Stats
+<p>
+  <img src="https://github-readme-stats.vercel.app/api?username=theGoodB0rg&show_icons=true&rank_icon=github&theme=transparent" alt="GitHub Stats" height="160" />
+  <img src="https://streak-stats.demolab.com?user=theGoodB0rg&theme=transparent" alt="GitHub Streak" height="160" />
+</p>
+<p>
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=theGoodB0rg&layout=compact&theme=transparent&langs_count=8" alt="Top Languages" height="160" />
+</p>
+
+## Work with me
+- Email: theregalstarlite@gmail.com  
+- LinkedIn: https://www.linkedin.com/in/john-olorunfemi/  
+- Open to remote collaboration in extensions, web tooling, and cybersecurity-related projects
+
+
+---
+
+## writer_agents
+**Description**: None
+**URL**: https://github.com/theGoodB0rg/writer_agents
+### README
+# Writer Agents
+
+Multi-agent novel writing pipeline built from `SPEC (1).md`.
+
+## Project Layout
+
+- `novel-agent/` - runnable Python system
+- `SPEC (1).md` - original master spec
+
+Inside `novel-agent/`:
+
+- `agents/` - Archivist, Continuity Tracker, Bible Keeper, Plot Thread Tracker, Style Enforcer, Writer Agent
+- `core/` - orchestrator pipeline, file manager, logger, token counter, env loader
+- `novel/` - existing works, drafts, approved chapters, bible files
+- `state/` - continuity and plot thread state
+- `prompts/` - locked agent/system prompts
+- `logs/` - JSONL run logs and run summaries
+
+## Quick Start
+
+1. Install dependencies:
+   - `cd novel-agent`
+   - `python -m pip install -r requirements.txt`
+2. Configure model provider + API key:
+   - copy `novel-agent/.env.example` to `novel-agent/.env`
+   - keep both keys in the same file: `OPENAI_API_KEY=...` and `GEMINI_API_KEY=...`
+   - set one toggle for all agents: `LLM_PROVIDER=gemini` or `LLM_PROVIDER=openai`
+   - optional model overrides: `GEMINI_WRITER_MODEL`, `GEMINI_SUPPORT_MODEL`, `OPENAI_WRITER_MODEL`, `OPENAI_SUPPORT_MODEL`
+3. Run one chapter:
+   - `python main.py --brief "Chapter objective: ..."`
+4. Run auto mode from one master summary:
+   - `python main.py --seed-summary-file state/master_summary.txt --auto-chapters 1`
+
+`.env` is auto-loaded at startup by `core/env_loader.py`, so no manual export step is needed.
+
+## Auto Mode
+
+Auto mode creates story intelligence artifacts from a single summary:
+
+- premise expansion (`state/planning/premise_expansion.json`)
+- chapter roadmap (`state/planning/chapter_roadmap.json` and `novel/bible/chapter_roadmap.md`)
+- chapter briefs (`state/chapter_briefs/chapter_###_brief.txt`)
+
+Then it runs the pipeline for the requested number of chapters.
+
+## Safe Story Controls
+
+Destructive operations now require explicit confirmation phrases when triggered from chat:
+
+- new story reset: `CONFIRM_NEW_STORY_RESET`
+- rollback to chapter N: `CONFIRM_RESET_TO_CHAPTER`
+
+The web server also exposes story-state diagnostics:
+
+- `GET /api/story/state`
+- `GET /api/story/status` (story_id, active chapter pointer, allowed next actions, model/provider, sync status)
+- `POST /api/story/dry-run/reset` (preview rollback effects without mutating files)
+- `POST /api/story/dry-run/new-story` (preview new-story reset effects without mutating files)
+
+Migration + repair utility:
+
+- inspect only: `python tools/repair_story_state.py`
+- migrate missing state fields/files: `python tools/repair_story_state.py --migrate`
+- migrate + apply repair: `python tools/repair_story_state.py --migrate --apply --target-chapter 1`
+- apply repair only: `python tools/repair_story_state.py --apply --target-chapter 1`
+
+Requirements:
+
+- `LLM_PROVIDER=gemini|openai` set in `.env` (or `USE_GEMINI=true|false`)
+- matching provider key set in `.env` (`GEMINI_API_KEY` or `OPENAI_API_KEY`)
+- if `novel/existing_works/` is empty, provide `state/style_seed.md` with a substantial prose sample
+
+## Validation Commands
+
+From `novel-agent/`:
+
+- Syntax check:
+  - `python -m py_compile core/*.py agents/*.py main.py`
+- Agent smoke tests:
+  - `python -m agents.archivist`
+  - `python -m agents.continuity_tracker`
+  - `python -m agents.bible_keeper`
+  - `python -m agents.plot_thread_tracker`
+  - `python -m agents.style_enforcer`
+  - `python -m agents.writer_agent`
+
+## Notes
+
+- Secrets are excluded by `.gitignore` (`.env` is not tracked).
+- Runtime outputs (`logs`, draft artifacts, mutable state files) are excluded from git.
+
+
+---
+
+## researcher_train
+**Description**: None
+**URL**: https://github.com/theGoodB0rg/researcher_train
+### README
+# Expert Eureka
+
+Expert Eureka is a multi-agent research system for finding realistic B2B and B2C/Prosumer opportunities with a path to $5k MRR. It combines real-source scouting with deterministic scoring, hard validation gates, and iterative pivots.
+
+## Overview
+
+The system runs as a staged pipeline:
+
+1.  **Trend Scout (Researcher)**: Scans the web using DuckDuckGo to identify real-world complaints, operational inefficiencies, and recurring problems in specific industries.
+2.  **Pain Analyst (Product Manager)**: Analyzes the raw data to filter for "boring but sticky" problems. It evaluates issues based on pain intensity, frequency, and willingness to pay.
+3.  **SaaS Strategist (Founder)**: Develops a concrete MVP (Minimum Viable Product) proposal and business model (specifically targeting \$5k MRR) for the validated problem.
+4.  **Competitor / Willingness / Founder Sales Validators**: Add market saturation, payment intent, and acquisition-feasibility checks.
+5.  **The Skeptic (Venture Capitalist)**: Makes the final GO / QUALIFIED / NO GO recommendation.
+
+## Recent Upgrades (Implemented)
+
+- **Context-aware topic routing**
+  - `B2B_STRICT`: direct B2B topics.
+  - `B2C_PLG`: consumer/prosumer topics stay in self-serve PLG framing.
+  - `B2B_DISCOVERY`: neutral topics are reframed into operational discovery.
+- **Deterministic opportunity scorecard**
+  - Pain severity, frequency, willingness, competition whitespace, buildability, and mode-fit.
+- **Buyer-first entry mode**
+  - Accepts briefs like `buyer: staffing agencies; workflow: candidate intake; pain: manual profile updates`.
+  - Keeps research anchored to explicit buyer/workflow context.
+- **Hard gates before acceptance**
+  - `B2B`: budget owner explicit, monthly pricing generally \$150+, RED competition without wedge blocks, DIFFICULT founder-sales blocks.
+  - `B2C_PLG`: realistic self-serve pricing band (\$5-\$80), explicit PLG acquisition channel, competition wedge checks, and lower willingness threshold.
+- **Non-repeating pivot behavior**
+  - Auto-pivots no longer loop on the same topic text.
+- **Competitor research hardening**
+  - Fixed pitch parsing bug that could produce noisy `pitch pitch ...` queries.
+  - Cleaner search seed extraction.
+- **Validator extraction fixes**
+  - Monthly price extraction no longer misreads `\$5k` as `\$5`.
+  - Willingness validation now uses a composite model (pricing anchors, budget fit, cost-of-inaction, substitution pressure), not only direct quote matching.
+- **Calibration harness**
+  - Batch-run topics and export scorecards, gate failures, verdict stats for threshold tuning.
+
+## Features
+
+-   **Autonomous Web Research**: Uses modular source providers (Reddit, HackerNews, DuckDuckGo) with strict provenance metadata.
+-   **Multi-Agent Architecture**: Implements a modular agent system where context is passed and refined through strictly defined personas.
+-   **OpenAI Integration**: Powered by GPT-4o for high-level reasoning, synthesis, and critique.
+-   **Risk Analysis**: Includes a dedicated adversarial agent to identify "kill switches" and reasons for potential failure.
+-   **Strict Real-Data Mode**: Synthetic fallback is disabled by default (`ALLOW_MOCK_DATA=false`) so results are decision-grade.
+-   **Quality-Filtered Inputs**: Source evidence is scored and low-signal pages are filtered before analysis (`MIN_RECORD_QUALITY_SCORE`).
+-   **Calibration Output**: Captures scorecard and gate telemetry per iteration for post-run tuning.
+
+## Prerequisites
+
+-   Python 3.8+
+-   OpenAI API Key
+
+## Installation
+
+1.  **Clone the repository**
+    ```bash
+    git clone https://github.com/theGoodB0rg/expert-eureka.git
+    cd expert-eureka
+    ```
+
+2.  **Create a virtual environment (Optional but Recommended)**
+    ```bash
+    python -m venv venv
+    # Windows
+    venv\Scripts\activate
+    # macOS/Linux
+    source venv/bin/activate
+    ```
+
+3.  **Install dependencies**
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+## Configuration
+
+1.  Copy the example environment file:
+    ```bash
+    cp .env.example .env
+    # or manually create a .env file
+    ```
+
+2.  Edit `.env` and add your OpenAI API key:
+    ```env
+    OPENAI_API_KEY=sk-your-api-key-here
+    OPENAI_MODEL=gpt-4o
+    MAX_ITERATIONS=5
+    REQUIRE_REAL_DATA=true
+    ALLOW_MOCK_DATA=false
+    ENABLE_REDDIT_SOURCE=false
+    MIN_RECORD_QUALITY_SCORE=0.50
+    SOURCE_TIMEOUT_SEC=8
+    HN_LOOKBACK_DAYS=180
+    HN_INCLUDE_COMMENTS=true
+    ```
+
+    *Note: Set `ENABLE_REDDIT_SOURCE=true` only if you have working Reddit credentials.*
+
+## Usage
+
+Run the main application entry point:
+
+```bash
+python src/main.py
+```
+
+Or use the provided batch script on Windows:
+
+```bash
+run.bat
+```
+
+Run the calibration harness (mock mode by default):
+
+```bash
+python -m src.tools.calibration_harness --topic "small business accounting" --topic "agency operations"
+```
+
+Run harness with live agents/data:
+
+```bash
+python -m src.tools.calibration_harness --live --topics-file topics.txt --max-iterations 3
+```
+
+### Operation
+1.  The system will initialize the agent team.
+2.  Enter a research topic or industry niche (e.g., "dental practice", "inventory management", "portfolio website builder for designers").
+   - Optional buyer-first format: `buyer: staffing agencies; workflow: candidate intake; pain: manual profile updates`
+3.  Observe mode routing, scorecard output, hard-gate decisions, and final verdicts.
+
+## Project Structure
+
+-   `src/core/`: Contains the base `Agent` and `Orchestrator` classes.
+-   `src/agents/`: Specialized agent implementations (e.g., `ScoutAgent`).
+-   `src/utils/`: Utility modules for search and API interactions.
+-   `src/tools/calibration_harness.py`: Batch harness for scoring/gate calibration and threshold tuning.
+-   `src/prompts.py`: System definitions and persona instructions for the AI agents.
+
+## License
+
+This project is open source and available under the MIT License.
+
+
+---
+
+## sms-hook
+**Description**: None
+**URL**: https://github.com/theGoodB0rg/sms-hook
+### README
+# SMS Hook Module
+
+An LSPosed/Xposed module that intercepts outgoing SMS messages and prepends customizable text.
+
+## Features
+
+- ✅ **Universal Interception**: Hooks all outgoing SMS across system and third-party apps
+- ✅ **Smart Appending**: Prepends customizable text (default: "Hello")
+- ✅ **Multipart Support**: Handles long messages correctly (modifies first part only)
+- ✅ **Idempotency**: Prevents double-prefixing if message is processed twice
+- ✅ **Modern Android Support**: Works on Android 8.0 through Android 14 (API 26-34)
+- ✅ **Secure**: Fixed file permissions for Android 7+ (no `SecurityException`)
+- ✅ **Configurable**: Toggle on/off and custom text via Settings UI
+
+## Requirements
+
+- Android 8.0+ (API 26)
+- Rooted device with LSPosed Framework (Zygisk or Riru)
+- LSPosed version 1.8.0+ recommended
+
+## Installation
+
+1. Build the APK or download from Releases
+2. Install the APK on your device
+3. Open LSPosed Manager
+4. Enable the module "SMS Hook"
+5. Select scope: System Framework, Phone, and any SMS apps
+6. Reboot device
+7. Open SMS Hook app to configure prefix text
+
+## Usage
+
+1. Open the SMS Hook app
+2. Toggle "Enable SMS Hook" on
+3. Set your desired prefix text (default: "Hello")
+4. Send an SMS - it will be prepended with your prefix!
+
+## Building from Source
+
+```bash
+git clone https://github.com/theGoodB0rg/sms-hook.git
+cd sms-hook
+./gradlew assembleDebug
+```
+
+The APK will be at `app/build/outputs/apk/debug/app-debug.apk`
+
+## Project Structure
+
+```
+app/
+├── src/main/
+│   ├── java/com/smshook/xposed/
+│   │   ├── SmsHook.java          # Core hooking logic
+│   │   └── SettingsActivity.java # Configuration UI
+│   ├── res/
+│   │   ├── xml/preferences.xml   # Preference definitions
+│   │   └── values/               # Strings, colors, themes
+│   └── assets/xposed_init        # Xposed entry point
+└── build.gradle
+```
+
+## License
+
+MIT License - See LICENSE for details
+
+
+---
+
+## WhisperProof
+**Description**: None
+**URL**: https://github.com/theGoodB0rg/WhisperProof
+### README
+# WhisperProof (Proofreader MVP)
+
+Mobile-first Next.js app that runs a minimal-change AI proofread, shows color-coded diffs, and surfaces optional AI-detector risk. Auth is Google-only; billing uses Paystack checkout; data lives in Postgres (Supabase friendly).
+
+## Stack
+- Next.js 16 (App Router, TypeScript), Tailwind v4
+- tRPC 11 + React Query, superjson
+- NextAuth (Google, database sessions via Prisma)
+- Prisma + Postgres
+- Paystack checkout (starter plan), webhook for activation
+- DeepSeek chat API for proof chain (fallback heuristic when no key)
+- Optional detectors: Sapling + ZeroGPT
+- Upstash Redis rate limit middleware
+- Testing: Vitest + Testing Library (sample unit in `tests/`)
+
+## Quickstart
+1) Copy `.env.example` to `.env.local` and fill keys (Supabase `DATABASE_URL`, Google OAuth, Paystack, DeepSeek).  
+2) Generate the Prisma client & push schema:
+```bash
+npm run db:push
+```
+3) Dev server:
+```bash
+npm run dev
+```
+4) Run tests:
+```bash
+npm test
+```
+
+## Key paths
+- UI: `src/app/page.tsx` (mobile-first paste -> run proof -> color diff -> toggle suggestions, detectors panel)
+- Providers: `src/app/providers.tsx`
+- tRPC handler: `src/app/api/trpc/[trpc]/route.ts`
+- Auth: `src/app/api/auth/[...nextauth]/route.ts`, config `src/server/auth.ts`
+- Paystack webhook: `src/app/api/paystack/webhook/route.ts`
+- AI chain: `src/server/services/aiChain.ts`, prompts `src/lib/prompts.ts`, diff utils `src/lib/diff.ts`
+- Detectors: `src/server/services/detectors.ts`
+- Billing helpers: `src/server/services/billing.ts`
+- Routers: `src/server/trpc/router/*`
+- DB schema: `prisma/schema.prisma`
+- Tests: `tests/diff.test.ts`
+
+## Notes / defaults
+- Free quota: 3k chars/day; starter: 100k/day (see `proof` router).
+- Edit budget default 3%; server enforces budget with diff-match-patch.
+- Detectors are informational; failures are swallowed.
+- React Compiler is enabled in `next.config.ts` by default (from scaffold).
+
+## Deployment checklist
+- Set all secrets on Vercel (NEXTAUTH_SECRET, DATABASE_URL, Paystack keys, DeepSeek, Upstash).
+- Configure Google OAuth callback to `https://<domain>/api/auth/callback/google`.
+- Point Paystack webhooks to `/api/paystack/webhook`.
+- Run `npm run db:push` against the production database before first deploy.
+
+
+---
+
+## 49Blox
+**Description**: None
+**URL**: https://github.com/julianhall74/49Blox
+### README
+# 49Blox - Digital Music Collectibles Platform
+
+> NOTE: Legacy financial-style wording is deprecated in favor of neutral collectible terminology (Blox / collect / collection). See `COPY-SCAN-README.md` and run `npm run copy:scan` to enforce.
+
+**Support Artists – Collect limited digital Blox tied to songs. Optional peer trading. (Not financial advice; no royalties or equity.)**
+
+## Platform Overview
+
+49Blox lets fans and artists engage through scarce digital Blox (a capped supply per song). Fans collect to support; artists receive direct proceeds. No royalties, dividends, or securities are created.
+
+---
+<!-- LEGACY_START (original wording below slated for progressive cleanup) -->
+> Legacy marketing / financial-style wording removed for compliance. Internal database field names (pricePerShare, totalShares, etc.) remain temporarily and do not imply financial instruments.
+
+## Features
+
+- **User Authentication**
+  - Artist accounts
+  - Fan accounts
+  - Email verification system
+  - Secure login/registration
+  - Mandatory Two-Factor Authentication (2FA) for enhanced security
+  - Backup codes for account recovery
+  - Admin users are exempt from 2FA requirements
+
+- **User Profile Management**
+  - Complete profile management for artists and fans
+  - Profile picture upload
+  - Bio and personal information editing
+  - Social media links management
+  - Security settings control
+
+- **Song Upload System**
+  - Artists can upload audio files
+  - Add metadata (title, genre, description)
+  - Configure collectible pricing (legacy field name: pricePerShare)
+
+- **Blox Allocation (Example)**
+  - Majority automatically assigned to artist (creator supply)
+  - Small platform reserve
+  - Public collectible supply (capped)
+
+**Collection & Trading System**
+  - Fans and artists browse available songs
+  - Artists may collect other artists' Blox (never their own initial creator allocation)
+  - Collect available Blox and track lifecycle (held vs listed)
+  - Secondary marketplace (Music Exchange) for peer‑to‑peer collectible re‑sales
+
+**User Dashboards**
+  - Artists: uploaded songs, allocation status, proceeds dashboard, wallet, and cross‑collection tab
+  - Fans: collection holdings, wallet balance, recent activity
+  
+- **Marketplace**
+  - Collect and trade Blox
+  - Track song performance
+  - Filter songs by genre and search functionality
+
+### Trending & Exchange (New)
+
+- 24h Trending endpoint: `GET /api/trending?limit=50` returns ranked songs using sales velocity, USD volume, floor price and floor delta.
+- USD‑quoted Orderbook endpoints:
+  - `POST /api/exchange/order` (auth) → place buy/sell with `{ songId, shareId?, side, priceUsd }`, auto‑matches best bid/ask.
+  - `GET /api/exchange/orderbook/:songId` → orderbook snapshot.
+- Direct Swaps (staged):
+  - `POST /api/exchange/swaps/propose` (auth) → create proposal with EVs; fee computed as max(2.5%, $1). Execution to ship after orderbook.
+  - `GET /api/exchange/swaps/:id` (auth) → fetch proposal.
+
+## Admin Exchange Settings & Config (New)
+
+- Page: Admin → Settings → Exchange (`/admin/settings/exchange`).
+  - Controls the Direct Swaps fee model: `swapFeePct` and `swapFeeMinUsd`.
+  - Values are persisted to the `settings` table with key `exchange.config`.
+  - The page shows a “Current Settings” panel with the active values and a “Last updated” timestamp. After saving, a confirmation panel echoes the saved values.
+  - Changes take effect immediately for swap proposals; the service cache is cleared on save.
+
+- Storage shape
+  - `settings.key = 'exchange.config'`
+  - `settings.value` is JSON: `{ "swapFeePct": number, "swapFeeMinUsd": number }`
+  - Legacy installs might have the JSON stored as a string; the service and admin route both parse stringified JSON defensively.
+
+- Where it’s used
+  - The swap proposal path computes the fee as: `max( EV × (swapFeePct/100), swapFeeMinUsd )`, where EV is the larger leg’s Estimated Value (USD).
+
+- Troubleshooting: seeing NaN in the admin UI?
+  - Cause: malformed or stringified JSON in `settings.value` for `exchange.config`.
+  - Current behavior: routes and service coerce and default values to numbers.
+  - Optional manual check:
+    ```
+    SELECT `key`, `value`, `updatedAt` FROM settings WHERE `key`='exchange.config';
+    ```
+
+## UI wiring guide
+
+1) Order placement (marketplace or song page)
+- Add Collect / List buttons posting to `/api/exchange/order` with `{ songId, shareId?, side: 'buy'|'sell', priceUsd }`.
+- Display local currency using `currencyService.convertCurrency` for previews; submit USD to API.
+- Poll `/api/exchange/orderbook/:songId` for best bid/ask and recent trades.
+
+2) Swap modal (read‑only for now)
+- Modal shows two Blox, Estimated Values, delta, and disclosure: “Informational only, not financial advice.”
+- POST to `/api/exchange/swaps/propose`; disable “Accept” until execution exists.
+
+3) Admin settings for swaps
+- `/admin/settings/exchange` manages enabling/disabling, `swapFeePct`, `swapFeeMinUsd`.
+- Immediate effect; ensure defaults via `node src/scripts/ensureExchangeConfig.js`.
+
+4) UX risk notice
+- “Values can decrease. Collectibles only.”
+
+5) Anti‑gaming guidance
+- Ignore self‑trades; apply liquidity and uniqueness heuristics.
+
+- **Admin Dashboard**
+  - User management
+  - Transaction monitoring
+  - Platform analytics
+  - Admin privilege controls
+
+### Artist Cross-Collection (New)
+
+Artists can collect other artists' Blox (not their own initial allocation).
+
+- Self‑collection prevented in primary allocation
+- Secondary market prevents acquiring own listing
+- Collector purchases (fan or artist) stored with `ownerType = fan` (legacy naming)
+- Creator allocation: `ownerType = artist`; platform: `platform`
+- Route: `/dashboard/artist/collection` (UI may still reference a legacy path until fully migrated)
+- Future: potential ENUM rename to `collector`
+
+### Secondary Marketplace Notes
+
+- Artists may acquire listed Blox from other holders (never their own listing)
+- Listing / cancel limited to current holder
+- Holdings behave uniformly under logic keyed off `ownerType = fan`
+
+## Exchange logging and audit
+
+To improve safety and traceability, the exchange subsystem emits structured logs.
+
+- Logger: `src/utils/exchangeLogger.js` (Winston)
+  - Console + JSON file outputs.
+  - Files at project root:
+    - `exchange.log` (info and above)
+    - `exchange-error.log` (errors only)
+  - Configure via environment:
+    - `EXCHANGE_LOG_LEVEL` (default: `info`)
+    - `EXCHANGE_LOG_FILE` (default: `exchange.log`)
+    - `EXCHANGE_ERROR_LOG_FILE` (default: `exchange-error.log`)
+
+- What’s logged:
+  - Exchange config load (values or default fallback).
+  - Order placement requests and the outcome of matching.
+  - Each match found and whether trade records were persisted.
+  - Orderbook snapshots: best bid/ask and depth counts.
+  - Swap proposals and retrievals.
+  - API request breadcrumbs and error details for the above endpoints.
+
+- Privacy: user ids may appear for audit; no PII or secrets are logged. You can mask/hide ids in `exchangeLogger` or the API hooks if needed.
+
+- Rotation: logs use simple size/file rotation via Winston; for production, forward to centralized logging (e.g., ELK, Datadog, CloudWatch) for retention and alerting.
+
+## Auto‑migration on startup
+
+The app runs an intelligent auto‑migration at startup so deployments don’t require manual DB scripts.
+
+- Behavior:
+  - Verifies DB connection, creates a lightweight JSON backup, compares Sequelize models to the live schema, applies safe changes, and verifies results.
+  - Fixes common issues like missing AUTO_INCREMENT and id=0 PK collisions (e.g., `settings.id`).
+  - Does not auto‑drop columns/tables for safety; risky changes are skipped and logged.
+- Configuration: `auto-migration.config.js`
+  - `AUTO_MIGRATION_ENABLED` (env): set to `false` to disable; enabled by default.
+  - Runs on startup; optional cron scheduling available in the config.
+- Logs: `auto-migration.log` in project root with a summary of applied changes, warnings, and errors.
+- Requirements: DB user must have CREATE/ALTER/INDEX privileges.
+
+### Targeted email_accounts PK/AUTO_INCREMENT fix (New)
+
+Some environments reported a warning about `email_accounts.id` missing AUTO_INCREMENT or an `id=0` row. A focused, safe repair runs automatically at startup after auto‑migration.
+
+- What runs
+  - Script: `src/scripts/fixEmailAccountsPK.js` (invoked once from `src/models/index.js`).
+  - Steps:
+    - Writes a small JSON backup sample of `email_accounts` to project root (e.g., `email-accounts-backup-YYYY-MM-DDTHH-mm-ssZ.json`).
+    - Moves `email_accounts.id=0` → `MAX(id)+1` if present.
+    - Temporarily drops FK `emails.accountId → email_accounts.id`, sets `email_accounts.id` to AUTO_INCREMENT (and re‑adds PK if needed), then restores the FK.
+    - Sets AUTO_INCREMENT to `MAX(id)+1` and verifies no `id=0` remains.
+  - Non‑blocking: any error is logged and startup continues; the warning won’t crash deployment.
+
+- Verify
+  - Check `auto-migration.log` and console for a line like: “email_accounts PK/AUTO_INCREMENT verified”.
+  - Confirm FK exists: `SHOW CREATE TABLE emails;` should include a FK to `email_accounts(id)`.
+  - Confirm AUTO_INCREMENT: `SHOW CREATE TABLE email_accounts;` should show `AUTO_INCREMENT` on `id`.
+
+- Notes
+  - If your schema differs (custom FK names or constraints), the fixer logs a warning and exits gracefully. Contact support or run a targeted migration if needed.
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js (v14+)
+- MySQL Database
+- npm or yarn
+
+### Installation
+
+1. Clone the repository:
+   ```
+   git clone https://github.com/yourusername/49blox.git
+   cd 49blox
+   ```
+
+2. Install dependencies:
+   ```
+   npm install
+   ```
+
+3. Create a `.env` file with the following variables:
+   ```
+   # Database
+   DB_NAME=49blox
+   DB_USER=your_db_user
+   DB_PASSWORD=your_db_password
+   DB_HOST=localhost
+   DB_DIALECT=mysql
+   
+   # Session
+   SESSION_SECRET=your_secret_key
+   
+   # Stripe (for payments)
+   STRIPE_SECRET_KEY=your_stripe_secret
+   STRIPE_PUBLISHABLE_KEY=your_stripe_publishable
+   STRIPE_WEBHOOK_SECRET=your_stripe_webhook_secret
+   ```
+
+4. Initialize the database:
+   ```
+   node database-setup.js
+   ```
+
+5. Start the development server:
+   ```
+   npm run dev
+   ```
+
+6. Open your browser and navigate to:
+   ```
+   http://localhost:9876
+   ```
+
+## Project Structure
+
+```
+49blox/
+│
+├── public/                 # Static files (CSS, JS, uploads)
+│
+├── src/
+│   ├── config/             # Configuration files
+│   ├── controllers/        # Route controllers
+│   ├── models/             # Database models
+│   ├── routes/             # Express routes
+│   ├── middleware/         # Custom middleware
+│   ├── views/              # EJS templates
+│   ├── services/           # Business logic
+│   ├── blockchain/         # Blockchain integration
+│   ├── cron/               # Scheduled tasks
+│   ├── jobs/               # Background jobs
+│   └── app.js              # Main application file
+│
+├── migrations/             # Database migrations
+├── app.js                  # Entry point
+├── package.json            # Dependencies
+└── README.md               # Project documentation
+```
+
+## Technology Stack
+
+- **Backend**: Node.js, Express.js
+- **Database**: MySQL with Sequelize ORM
+- **Frontend**: EJS templates, CSS, JavaScript
+- **Authentication**: Express-session, bcryptjs, Speakeasy (2FA)
+- **Security**: Two-Factor Authentication with TOTP
+- **Payment Processing**: Stripe, Paypal
+- **Blockchain Integration**: Web3.js, Ethereum
+- **File Upload**: Multer
+- **Email Notifications**: Nodemailer
+- **Background Jobs**: Node-cron
+- **Logging**: Winston
+
+## Documentation
+
+- Start here: **[docs/README](./docs/README.md)** for the full index.
+- Quick links:
+  - Admin: `docs/admin/ADMIN-README.md`
+  - Email: `docs/email/EMAIL_SETUP_GUIDE.md`
+  - Payments/Currency: `docs/payments/PAYMENT_TESTING_README.md`
+  - Backups & Migrations: `docs/backups-migrations/AUTO-MIGRATION-README.md`
+  - Security: `docs/security/2FA-IMPLEMENTATION-SUMMARY.md`
+  - Product/UX: `docs/product/CTA-BUTTON-MANAGEMENT-GUIDE.md`
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Join the Music Revolution
+
+This is your backstage pass to support the music you love. Ready to collect the beat?
+
+
+### docs/README.md
+# 49Blox Documentation Index
+
+A quick map to the internal guides. Files stay close to their domains so new contributors can find what they need fast.
+
+## Admin
+- [Admin README](./admin/ADMIN-README.md)
+- [Exchange Settings Guide](./admin/ADMIN-EXCHANGE-SETTINGS-GUIDE.md)
+- [Exchange Quick Reference](./admin/ADMIN-EXCHANGE-QUICK-REFERENCE.md)
+
+## Email & Messaging
+- [Email Setup Guide](./email/EMAIL_SETUP_GUIDE.md)
+- [Email System Summary](./email/EMAIL_SYSTEM_SUMMARY.md)
+- [Email System Updates](./email/EMAIL-SYSTEM-UPDATES.md)
+- [Email Template Fix Implementation](./email/EMAIL-TEMPLATE-FIX-IMPLEMENTATION.md)
+- [Invite Email System](./email/INVITE-EMAIL-SYSTEM.md)
+- [Domain Email Setup Guide](./email/DOMAIN_EMAIL_SETUP_GUIDE.md)
+- [Update ENV for Domain Email](./email/UPDATE_ENV_FOR_DOMAIN_EMAIL.md)
+
+## Payments, Wallets & Currency
+- [PayPal Integration Guide](./payments/PAYPAL-INTEGRATION-GUIDE.md)
+- [PayPal Integration Test Summary](./payments/PAYPAL-INTEGRATION-TEST-SUMMARY.md)
+- [Stripe Country Fix Summary](./payments/STRIPE-COUNTRY-FIX-SUMMARY.md)
+- [Stripe Integration Test Summary](./payments/STRIPE-INTEGRATION-TEST-SUMMARY.md)
+- [Payment Testing README](./payments/PAYMENT_TESTING_README.md)
+- [Currency Enhancement README](./payments/CURRENCY-ENHANCEMENT-README.md)
+- [Currency Localization Implementation](./payments/CURRENCY-LOCALIZATION-IMPLEMENTATION.md)
+- [Currency Preference Bug Fix](./payments/CURRENCY-PREFERENCE-BUG-FIX.md)
+- [Wallet Currency Fixes](./payments/WALLET-CURRENCY-FIXES.md)
+- [Wallet Setup Warning Implementation](./payments/WALLET-SETUP-WARNING-IMPLEMENTATION.md)
+
+## Backups, Migrations & Operations
+- [Auto-Migration README](./backups-migrations/AUTO-MIGRATION-README.md)
+- [Backup README](./backups-migrations/BACKUP-README.md)
+- [Backup Quick Reference](./backups-migrations/BACKUP-QUICK-REFERENCE.md)
+- [Backup Success Summary](./backups-migrations/BACKUP-SUCCESS-SUMMARY.md)
+- [Database Migration](./backups-migrations/DATABASE-MIGRATION.md)
+- [Migration README](./backups-migrations/MIGRATION-README.md)
+- [Live Deployment Checklist](./backups-migrations/LIVE-DEPLOYMENT-CHECKLIST.md)
+- [Nodemon Fix README](./backups-migrations/NODEMON-FIX-README.md)
+
+## Product & UX
+- [CTA Button Management Guide](./product/CTA-BUTTON-MANAGEMENT-GUIDE.md)
+- [CTA Button Switchable Implementation](./product/CTA-BUTTON-SWITCHABLE-IMPLEMENTATION.md)
+- [Mobile Optimization Summary](./product/MOBILE-OPTIMIZATION-SUMMARY.md)
+- [Newsletter System Implementation](./product/NEWSLETTER-SYSTEM-IMPLEMENTATION.md)
+- [Waitlist Enforcement Implementation](./product/WAITLIST-ENFORCEMENT-IMPLEMENTATION.md)
+- [Artist Investments README](./product/ARTIST-INVESTMENTS-README.md)
+- [Buy Blox Issue Resolution](./product/BUY-BLOX-ISSUE-RESOLUTION.md)
+
+## Security & Auth
+- [2FA Implementation Summary](./security/2FA-IMPLEMENTATION-SUMMARY.md)
+- [reCAPTCHA Setup](./security/RECAPTCHA-SETUP.md)
+- [Username Login Implementation](./security/USERNAME-LOGIN-IMPLEMENTATION.md)
+
+
+### docs/client-handoff-2026-02-26.md
+# Client Handoff — Auto Deploy & Repo Cleanup (2026-02-26)
+
+Plain-English summary of what changed, why it matters, and what you need to do next.
+
+## What we did
+- **GitHub Actions deploy pipeline** (`.github/workflows/deploy.yml`): zips the repo, uploads via SSH, installs deps, and restarts with PM2. It preserves `.env`, `uploads`, `data`, `tmp`, and `public/uploads` (user files safe). Uses timestamped releases + `current` symlink; keeps last 5 releases.
+- **Non-root deploy target**: deploy user = `deploy`, app path = `/home/deploy/49blox`.
+- **Server prep (2026-02-28)**: created `/home/deploy/.ssh/authorized_keys`, set perms; created `/home/deploy/49blox/{releases,shared,shared/uploads,shared/public_uploads,shared/data,shared/tmp}` and chowned to `deploy`.
+- **History cleanup**: removed accidental binaries; repo pack ~56 MB → ~8 MB for faster clones.
+- **Docs tidy-up**: consolidated guides into `docs/` with index; removed empty placeholders.
+
+## What to do next (plain English)
+What’s already done: deploy user `deploy`, SSH key installed, `/home/deploy/49blox` with shared dirs is ready.
+
+What you (client) may want to do from your own machine:
+1) **Add GitHub repo secrets** (GitHub → Settings → Secrets and variables → Actions):
+   - `PLESK_HOST` = your server IP (149.255.63.28)
+   - `PLESK_USER` = `deploy`
+   - `PLESK_SSH_KEY` = the *private* key from your `~/.ssh/49blox-deploy`
+   - Optional: `PLESK_PORT` if SSH is not 22; `PLESK_SSH_KEY_PASSPHRASE` if you set one
+
+2) **Test SSH with the key** (from your laptop):
+   ```
+   ssh -i ~/.ssh/49blox-deploy deploy@149.255.63.28
+   ```
+   If it logs in without a password, you’re set.
+
+3) **Deploy when ready**:
+   - GitHub → Actions → “Deploy to Plesk” → Run workflow (branch `main`).
+   - Wait for the green check.
+
+4) **Verify after deploy (as deploy on server)**:
+   ```
+   pm2 status 49blox
+   pm2 logs 49blox --lines 50
+   ```
+
+5) **Optional tweaks**:
+   - Copy an existing `.env` into shared if you have a newer one:  
+     `cp /path/to/old/.env /home/deploy/49blox/shared/.env && chown deploy:deploy /home/deploy/49blox/shared/.env`
+   - Adjust `KEEP_RELEASES` or `DEPLOY_PATH` in `.github/workflows/deploy.yml` if you change retention or paths later.
+
+## Rollback (timestamped releases)
+- Releases live in `/home/deploy/49blox/releases/<timestamp>`. The live symlink is `/home/deploy/49blox/current`.
+- To roll back: `ln -sfn /home/deploy/49blox/releases/<older_timestamp> /home/deploy/49blox/current && pm2 reload 49blox --update-env`.
+
+## After the history rewrite
+- Because we removed big files from history, we force-pushed : `git push origin main --force-with-lease`.
+- All collaborators should re-clone or `git fetch --all --prune` then `git reset --hard origin/main`.
+
+## Status of images and user files
+- All images remain in the repo (we only purged zips and audio from history).  
+- User uploads and `.env` stay outside the zip/deploy so they are not overwritten.
+
+## Open items you can change later
+- Adjust deploy path or user in `.github/workflows/deploy.yml` if you so please.
+- Increase `KEEP_RELEASES` in the workflow env if you want more rollback points.
+
+
+---
+
+## camera_hook
+**Description**: None
+**URL**: https://github.com/theGoodB0rg/camera_hook
+### README
+# CameraInterceptor
+
+**CameraInterceptor** is a powerful Xposed/LSPosed module designed to intercept camera API requests on Android devices. It allows users to replace the live camera feed with a static image selected from their gallery, enabling image injection for testing, privacy, or development purposes.
+
+## 🚀 Features
+
+*   **Universal Camera Hook**: Intercepts multiple camera APIs including:
+    *   `android.hardware.Camera` (Legacy)
+    *   `android.hardware.camera2` (Modern)
+    *   `androidx.camera` (CameraX)
+*   **Image Injection**: Replace the real camera stream with any image from your device storage.
+*   **Custom Image Picker**: Built-in UI to easily select the image you want to inject.
+*   **Seamless Integration**: Works system-wide across apps that use the camera.
+*   **Configurable**: Toggle the module on/off via settings.
+
+## 📋 Prerequisites
+
+*   **Android Device**: Running Android 8.0 (Oreo) or higher (`minSdk 26`).
+*   **Root Access**: Required for Xposed framework.
+*   **Xposed Framework**: LSPosed (recommended) or EdXposed installed and active.
+
+## 🛠️ Installation
+
+1.  **Download the APK**: Download the latest debug APK from the `releases` section or build from source.
+2.  **Install the APK**: Install the `app-debug.apk` on your rooted Android device.
+3.  **Activate Module**:
+    *   Open your Xposed Manager (e.g., LSPosed).
+    *   Enable the **Camera Interceptor** module.
+    *   Select the target applications you want to intercept (e.g., System Framework, specific camera apps).
+    *   **Reboot** your device (or restart the target apps/SystemUI) to apply changes.
+
+## 💻 Usage
+
+1.  Open the **Camera Interceptor** app from your app drawer.
+2.  Grant the necessary permissions (Storage, Camera).
+3.  Tap **Select Injection Image** to choose an image from your gallery.
+4.  Ensure the "Enable Module" switch is turned **ON**.
+5.  Open any app that uses the camera. The camera feed should now display your selected image instead of the live view.
+
+## 🔧 Building from Source
+
+To build this project locally:
+
+1.  Clone the repository:
+    ```bash
+    git clone https://github.com/theGoodB0rg/camera_hook.git
+    ```
+2.  Open the project in **Android Studio**.
+3.  Sync Gradle files.
+4.  Build the project using `Build > Build Bundle(s) / APK(s) > Build APK(s)`.
+
+## ⚠️ Disclaimer
+
+This software is provided for **educational and testing purposes only**. The developers are not responsible for any misuse of this tool. Please use responsibly and respect the privacy and terms of service of third-party applications.
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## 📄 License
+
+This project is open source.
+
+
+### docs/UI_UX_REVAMP_PLAN.md
+# CameraInterceptor UI/UX Revamp Plan
+
+> **Document Status:** 🟢 Living Document  
+> **Created:** January 3, 2026  
+> **Last Updated:** January 3, 2026  
+> **Validation Command:** `gradle assembleDebug`
+
+---
+
+## Document Guidelines
+
+### Keeping This Document Living
+
+This document serves as the **single source of truth** for the UI/UX revamp effort. It must be:
+
+1. **Updated after each phase completion** — Mark phases as complete, add notes about deviations or learnings
+2. **Validated before commits** — Every phase must pass `gradle assembleDebug` before being committed
+3. **Committed phase by phase** — Each phase gets its own commit(s) with clear commit messages referencing this plan
+4. **Reviewed for accuracy** — If implementation differs from plan, update the plan to reflect reality
+
+### Commit Convention
+
+```
+feat(ui): Phase X.Y - <brief description>
+
+Implements <component/feature> as part of UI/UX revamp.
+See docs/UI_UX_REVAMP_PLAN.md Phase X.Y
+
+- Change 1
+- Change 2
+- Change 3
+```
+
+### Validation Workflow
+
+```bash
+# After completing any task:
+gradle assembleDebug
+
+# If successful, stage and commit:
+git add .
+git commit -m "feat(ui): Phase X.Y - <description>"
+
+# If failed, fix errors before proceeding
+```
+
+---
+
+## Project Context
+
+### Current State Analysis
+
+**App Purpose:** CameraInterceptor is an Xposed/LSPosed module that intercepts camera access in Android apps, allowing users to inject custom images instead of live camera feed.
+
+**Current UI Architecture:**
+| Component | Technology | Issues |
+|-----------|------------|--------|
+| Main Screen | `PreferenceFragment` (deprecated) | No custom styling, system defaults |
+| Image Picker | Activity with Dialog theme | Fixed dimensions, poor UX |
+| App Selection | `ListView` with custom adapter | No search, deprecated AsyncTask |
+| Log Viewer | Basic `ScrollView` + `TextView` | No syntax highlighting, manual refresh |
+
+**Resource Inventory (Before Revamp):**
+| Resource Type | Count | Notes |
+|---------------|-------|-------|
+| Layout XML files | 4 | All use `LinearLayout`, hardcoded dimensions |
+| Activities | 4 | Using deprecated APIs |
+| Fragments | 1 | Deprecated `PreferenceFragment` |
+| themes.xml | 0 | ❌ Missing |
+| colors.xml | 0 | ❌ Missing |
+| dimens.xml | 0 | ❌ Missing |
+| styles.xml | 0 | ❌ Missing |
+| Custom drawables | 0 | ❌ Missing |
+| App icon | 0 | ❌ Missing |
+
+**Hardcoded Values Found:**
+- Colors: `#EEEEEE`, `#000000`, `#FFFFFF` (in layouts)
+- Dimensions: `200dp`, `48dp`, `16dp`, `8dp` (scattered)
+- Strings: Some UI text not in `strings.xml`
+
+### Pain Points Identified
+
+1. **No visual identity** — No app icon, no brand colors, no consistent theme
+2. **Deprecated APIs** — `PreferenceFragment`, `AsyncTask`, basic `ListView`
+3. **No responsive design** — Fixed dimensions, no landscape/tablet layouts
+4. **Poor accessibility** — Missing `contentDescription`, small touch targets
+5. **No user guidance** — No onboarding, no contextual help, no documentation
+6. **Minimal feedback** — Only Toast messages, no loading states, no confirmations
+7. **No dark theme** — No night mode support
+
+---
+
+## Revamp Goals
+
+### Primary Objectives
+
+- [ ] **Professional appearance** — Material Design 3 compliance, consistent branding
+- [ ] **Intuitive UX** — Clear navigation, contextual help, proper feedback
+- [ ] **Device responsiveness** — Works on phones, tablets, portrait, landscape
+- [ ] **Accessibility** — WCAG compliance, TalkBack support, proper contrast
+- [ ] **User documentation** — In-app onboarding, help screens, tooltips
+
+### Success Criteria
+
+| Metric | Target |
+|--------|--------|
+| Build success | `gradle assembleDebug` passes after each phase |
+| Touch targets | Minimum 48dp on all interactive elements |
+| Color contrast | Minimum 4.5:1 ratio for text |
+| Loading feedback | All async operations show progress indicator |
+| Help coverage | Every toggle/setting has accessible explanation |
+
+---
+
+## Phase 1: Foundation & Design System
+
+**Status:** ✅ Completed (January 3, 2026)  
+**Estimated Files:** 5-7 new resource files  
+**Dependencies:** None
+
+### 1.1 Create Color Palette
+
+**File:** `app/src/main/res/values/colors.xml`
+
+Define Material Design 3 color tokens:
+- Primary, Secondary, Tertiary color families
+- Surface and background colors
+- Error, warning, success semantic colors
+- On-colors for text/icons on each surface
+
+```xml
+<!-- Example structure -->
+<color name="md_theme_light_primary">#6750A4</color>
+<color name="md_theme_light_onPrimary">#FFFFFF</color>
+<color name="md_theme_light_surface">#FFFBFE</color>
+<!-- ... full palette -->
+```
+
+**Validation:** File created, no XML syntax errors
+
+---
+
+### 1.2 Create Dimension Resources
+
+**File:** `app/src/main/res/values/dimens.xml`
+
+Establish spacing scale and component sizes:
+- Spacing: 4dp, 8dp, 12dp, 16dp, 24dp, 32dp, 48dp
+- Icon sizes: 24dp (small), 40dp (medium), 48dp (large)
+- Touch targets: 48dp minimum
+- Corner radii: 4dp (small), 8dp (medium), 16dp (large), 28dp (full)
+- Elevation levels: 1dp, 3dp, 6dp, 8dp, 12dp
+
+**Validation:** File created, dimensions can be referenced
+
+---
+
+### 1.3 Create Theme Infrastructure
+
+**Files:** 
+- `app/src/main/res/values/themes.xml`
+- `app/src/main/res/values-night/themes.xml`
+
+Configure Material 3 theme with:
+- Parent: `Theme.Material3.DayNight.NoActionBar`
+- Custom color attributes mapped to palette
+- Default typography styles
+- Shape theme (corner radii)
+
+**Validation:** App builds, theme applies without crashes
+
+---
+
+### 1.4 Create Common Styles
+
+**File:** `app/src/main/res/values/styles.xml`
+
+Define reusable component styles:
+- Button styles (filled, outlined, text)
+- Card styles
+- Text appearance overrides
+- Toolbar style
+
+**Validation:** Styles can be referenced in layouts
+
+---
+
+### 1.5 Add Material Components Dependency
+
+**File:** `app/build.gradle`
+
+Add/update dependency:
+```groovy
+implementation 'com.google.android.material:material:1.11.0'
+```
+
+Ensure `compileSdk` and `targetSdk` are adequate (34+).
+
+**Validation:** `gradle assembleDebug` succeeds, no dependency conflicts
+
+---
+
+### 1.6 Create App Icon
+
+**Files:**
+- `app/src/main/res/mipmap-*/ic_launcher.webp`
+- `app/src/main/res/mipmap-*/ic_launcher_round.webp`
+- `app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml`
+- `app/src/main/res/drawable/ic_launcher_foreground.xml`
+- `app/src/main/res/values/ic_launcher_background.xml`
+
+Design adaptive icon with:
+- Camera-related iconography
+- Brand colors from palette
+- Proper safe zone compliance
+
+**Validation:** Icon appears in launcher, no visual cropping issues
+
+---
+
+### Phase 1 Completion Checklist
+
+- [x] `colors.xml` created with full Material 3 palette
+- [x] `dimens.xml` created with spacing scale
+- [x] `themes.xml` (day) created and applied
+- [x] `themes.xml` (night) created for dark mode
+- [x] `styles.xml` created with common component styles
+- [x] Material Components dependency added
+- [x] App icon assets created
+- [x] `gradle assembleDebug` passes
+- [ ] Changes committed: `feat(ui): Phase 1 - Foundation & Design System`
+
+---
+
+## Phase 2: Main Screen Modernization
+
+**Status:** ✅ Completed (January 3, 2026)  
+**Estimated Files:** 3-5 modified files  
+**Dependencies:** Phase 1 complete
+
+### 2.1 Migrate to AndroidX Preferences
+
+**Files:**
+- `app/build.gradle` — Add `androidx.preference:preference:1.2.1`
+- `app/src/main/java/com/camerainterceptor/ui/SettingsActivity.java` — Replace `PreferenceFragment` with `PreferenceFragmentCompat`
+- `app/src/main/res/xml/preferences.xml` — Update namespace if needed
+
+**Changes:**
+- Extend `PreferenceFragmentCompat` instead of `PreferenceFragment`
+- Use `onCreatePreferences()` instead of `onCreate()`
+- Update imports to `androidx.preference.*`
+
+**Validation:** Settings screen loads, all preferences functional
+
+---
+
+### 2.2 Add Toolbar Layout
+
+**File:** `app/src/main/res/layout/activity_settings.xml` (new)
+
+Create layout with:
+- `CoordinatorLayout` root
+- `MaterialToolbar` with app title
+- `FragmentContainerView` for preferences
+
+**File:** `app/src/main/java/com/camerainterceptor/ui/SettingsActivity.java`
+
+Update to:
+- Use `setContentView()` with new layout
+- Set up toolbar with `setSupportActionBar()`
+
+**Validation:** Toolbar appears, preferences display below
+
+---
+
+### 2.3 Add Preference Icons
+
+**Files:**
+- `app/src/main/res/drawable/ic_image.xml`
+- `app/src/main/res/drawable/ic_toggle.xml`
+- `app/src/main/res/drawable/ic_notifications.xml`
+- `app/src/main/res/drawable/ic_apps.xml`
+- `app/src/main/res/drawable/ic_logs.xml`
+- `app/src/main/res/drawable/ic_help.xml`
+- `app/src/main/res/drawable/ic_info.xml`
+
+**File:** `app/src/main/res/xml/preferences.xml`
+
+Add `android:icon` attribute to each preference.
+
+**Validation:** Icons display next to each preference item
+
+---
+
+### 2.4 Style Preference Categories
+
+**File:** `app/src/main/res/values/styles.xml`
+
+Add preference-specific styles:
+- Category header style
+- Preference item padding
+- Switch preference styling
+
+**Validation:** Categories visually distinct, proper spacing
+
+---
+
+### Phase 2 Completion Checklist
+
+- [x] AndroidX Preference dependency added
+- [x] `SettingsActivity` migrated to `PreferenceFragmentCompat`
+- [x] Custom toolbar layout created and integrated
+- [x] Preference icons added (vector drawables)
+- [x] Preference categories styled
+- [x] Dark theme works on settings screen
+- [x] `gradle assembleDebug` passes
+- [x] Changes committed: `feat(ui): Phase 2 - Main Screen Modernization`
+
+---
+
+## Phase 3: Image Picker Redesign
+
+**Status:** ✅ Completed (January 3, 2026)  
+**Estimated Files:** 2-4 modified/new files  
+**Dependencies:** Phase 1 complete
+
+### 3.1 Convert to BottomSheetDialogFragment
+
+**Files:**
+- `app/src/main/java/com/camerainterceptor/ui/ImagePickerFragment.java` (new)
+- `app/src/main/res/layout/fragment_image_picker.xml` (new)
+- `app/src/main/java/com/camerainterceptor/ui/ImagePickerActivity.java` (delete or deprecate)
+
+**Design:**
+- Rounded top corners (28dp radius)
+- Drag handle indicator
+- Swipe-to-dismiss behavior
+- Peek height showing primary action
+
+**Validation:** Bottom sheet opens from settings, can select/clear image
+
+---
+
+### 3.2 Redesign Image Preview
+
+**File:** `app/src/main/res/layout/fragment_image_picker.xml`
+
+Components:
+- `ShapeableImageView` with rounded corners (16dp)
+- Placeholder with camera icon when no image
+- Responsive sizing (match_parent width, aspect ratio constrained)
+- Surface color background with elevation
+
+**Validation:** Preview displays correctly, placeholder shows when empty
+
+---
+
+### 3.3 Upgrade Action Buttons
+
+**File:** `app/src/main/res/layout/fragment_image_picker.xml`
+
+Replace `Button` with `MaterialButton`:
+- Primary action: Filled button with icon (Select Image)
+- Secondary action: Outlined button (Clear Selection)
+- Proper spacing (16dp between buttons)
+- Full-width on mobile, side-by-side on tablet
+
+**Validation:** Buttons styled correctly, actions work
+
+---
+
+### 3.4 Add Loading State
+
+**File:** `app/src/main/java/com/camerainterceptor/ui/ImagePickerFragment.java`
+
+Implement:
+- `CircularProgressIndicator` while image loads
+- Disabled buttons during loading
+- Error state with retry option
+
+**Validation:** Progress shows during image selection, graceful error handling
+
+---
+
+### Phase 3 Completion Checklist
+
+- [x] `ImagePickerFragment` (BottomSheetDialogFragment) created
+- [x] Old `ImagePickerActivity` removed or deprecated
+- [x] Image preview with rounded corners and placeholder
+- [x] MaterialButtons with icons
+- [x] Loading and error states
+- [x] Swipe-to-dismiss works
+- [x] `gradle assembleDebug` passes
+- [x] Changes committed: `feat(ui): Phase 3 - Image Picker Redesign`
+
+---
+
+## Phase 4: App Selection Screen Overhaul
+
+**Status:** ✅ Completed (January 3, 2026)  
+**Estimated Files:** 4-6 modified files  
+**Dependencies:** Phase 1 complete
+
+### 4.1 Replace ListView with RecyclerView
+
+**Files:**
+- `app/src/main/res/layout/activity_app_selection.xml`
+- `app/src/main/java/com/camerainterceptor/ui/AppSelectionActivity.java`
+- `app/src/main/java/com/camerainterceptor/ui/AppListAdapter.java` (new)
+- `app/src/main/java/com/camerainterceptor/ui/AppViewHolder.java` (new)
+
+**Implementation:**
+- `RecyclerView` with `LinearLayoutManager`
+- `ListAdapter` with `DiffUtil.ItemCallback` for efficient updates
+- `ViewBinding` for view references
+
+**Validation:** App list displays with RecyclerView, scrolling smooth
+
+---
+
+### 4.2 Add Search Functionality
+
+**Files:**
+- `app/src/main/res/menu/menu_app_selection.xml` (new)
+- `app/src/main/java/com/camerainterceptor/ui/AppSelectionActivity.java`
+
+**Implementation:**
+- `SearchView` in toolbar
+- Real-time filtering as user types
+- Filter by app name AND package name
+- Clear search button
+- Chip filters: "User Apps" / "System Apps" / "All"
+
+**Validation:** Search filters list, filter chips work
+
+---
+
+### 4.3 Redesign List Item
+
+**File:** `app/src/main/res/layout/item_app.xml` (rename from `app_list_item.xml`)
+
+**New Layout:**
+```
+┌─────────────────────────────────────────────────┐
+│ [Icon 48dp]  App Name                    [Switch]│
+│              com.package.name                    │
+│              Mode: [Chip: Photo/Video/Both]      │
+└─────────────────────────────────────────────────┘
+```
+
+Components:
+- `ConstraintLayout` root
+- `ShapeableImageView` for app icon (rounded square)
+- `MaterialTextView` for app name (titleMedium)
+- `MaterialTextView` for package (bodySmall, secondary color)
+- `MaterialSwitch` for enable/disable
+- `ChipGroup` for mode selection
+
+**Validation:** List items display correctly, all interactive elements work
+
+---
+
+### 4.4 Add Empty and Loading States
+
+**Files:**
+- `app/src/main/res/layout/activity_app_selection.xml`
+- `app/src/main/res/layout/layout_empty_state.xml` (new)
+- `app/src/main/res/drawable/il_empty_apps.xml` (new)
+
+**Empty State:**
+- Illustration/icon
+- "No apps found" message
+- Suggestion text ("Try adjusting your search")
+
+**Loading State:**
+- Shimmer placeholder or `CircularProgressIndicator`
+- Skeleton list items while loading
+
+**Validation:** Empty state shows when search yields no results, loading shows during app enumeration
+
+---
+
+### 4.5 Replace Save Button with FAB
+
+**Files:**
+- `app/src/main/res/layout/activity_app_selection.xml`
+- `app/src/main/java/com/camerainterceptor/ui/AppSelectionActivity.java`
+
+**Implementation:**
+- `ExtendedFloatingActionButton` for "Save" action
+- Collapses to icon-only on scroll down
+- Extends on scroll up
+- Bottom-end positioning with proper margin
+
+**Validation:** FAB visible, save action works, scroll behavior correct
+
+---
+
+### Phase 4 Completion Checklist
+
+- [x] RecyclerView replaces ListView
+- [x] Adapter with DiffUtil implemented
+- [x] Search functionality in toolbar
+- [x] Filter chips (User/System/All apps)
+- [x] List item redesigned with ConstraintLayout
+- [x] MaterialSwitch and mode chips functional
+- [x] Empty state with illustration
+- [x] Loading state (shimmer or progress)
+- [x] ExtendedFAB for save action
+- [x] `gradle assembleDebug` passes
+- [x] Changes committed: `feat(ui): Phase 4 - App Selection Overhaul`
+
+---
+
+## Phase 5: Log Viewer Enhancement
+
+**Status:** ✅ Completed (January 3, 2026)  
+**Estimated Files:** 3-4 modified files  
+**Dependencies:** Phase 1 complete
+
+### 5.1 Redesign Layout with ConstraintLayout
+
+**File:** `app/src/main/res/layout/activity_log_viewer.xml`
+
+**New Structure:**
+- `CoordinatorLayout` root
+- `MaterialToolbar` with title and search action
+- `SwipeRefreshLayout` wrapping content
+- `RecyclerView` for log entries (better performance than TextView)
+- `BottomAppBar` with actions
+
+**Validation:** Layout renders, no overflow issues
+
+---
+
+### 5.2 Add Syntax Highlighting
+
+**Files:**
+- `app/src/main/java/com/camerainterceptor/ui/LogViewerActivity.java`
+- `app/src/main/java/com/camerainterceptor/ui/LogEntryAdapter.java` (new)
+- `app/src/main/res/layout/item_log_entry.xml` (new)
+
+**Color Coding:**
+| Level | Color |
+|-------|-------|
+| ERROR | `?colorError` (red) |
+| WARN | `#FF9800` (amber) |
+| INFO | `?colorPrimary` (brand) |
+| DEBUG | `?colorOnSurfaceVariant` (gray) |
+
+**Implementation:**
+- Parse log lines to extract level
+- Apply `Span` or use RecyclerView with typed ViewHolders
+- Monospace font preserved
+
+**Validation:** Log levels visually distinct, readable
+
+---
+
+### 5.3 Implement Pull-to-Refresh
+
+**Files:**
+- `app/src/main/res/layout/activity_log_viewer.xml`
+- `app/src/main/java/com/camerainterceptor/ui/LogViewerActivity.java`
+
+**Implementation:**
+- Wrap content in `SwipeRefreshLayout`
+- Set brand color for refresh indicator
+- Remove manual "Refresh" button (or move to overflow)
+
+**Validation:** Pull gesture triggers refresh, indicator shows
+
+---
+
+### 5.4 Add Log Filtering and Search
+
+**Files:**
+- `app/src/main/res/menu/menu_log_viewer.xml` (new)
+- `app/src/main/java/com/camerainterceptor/ui/LogViewerActivity.java`
+
+**Features:**
+- SearchView for text search within logs
+- Filter chips: ERROR, WARN, INFO, DEBUG (toggleable)
+- Match highlighting in search results
+
+**Validation:** Search and filters work correctly
+
+---
+
+### 5.5 Improve Actions with BottomAppBar
+
+**Files:**
+- `app/src/main/res/layout/activity_log_viewer.xml`
+- `app/src/main/java/com/camerainterceptor/ui/LogViewerActivity.java`
+
+**Layout:**
+- `BottomAppBar` with navigation icon
+- Actions: Share, Export, Copy All (in overflow)
+- `FloatingActionButton` anchored to BottomAppBar for "Clear Logs"
+
+**Clear Confirmation:**
+- `MaterialAlertDialog` asking "Clear all logs?"
+- Snackbar with "Undo" option after clearing
+
+**Validation:** All actions work, confirmation dialog appears
+
+---
+
+### Phase 5 Completion Checklist
+
+- [x] Layout converted to CoordinatorLayout with ConstraintLayout components
+- [x] RecyclerView replaces ScrollView+TextView
+- [x] Syntax highlighting by log level
+- [x] Pull-to-refresh implemented
+- [x] Search within logs
+- [x] Filter by log level
+- [x] BottomAppBar with actions
+- [x] Clear confirmation with undo
+- [x] Share/Export functionality
+- [x] `gradle assembleDebug` passes
+- [x] Changes committed: `feat(ui): Phase 5 - Log Viewer Enhancement`
+
+---
+
+## Phase 6: Responsive & Adaptive Layouts
+
+**Status:** ⬜ Not Started  
+**Estimated Files:** 8-12 new layout files  
+**Dependencies:** Phases 2-5 complete
+
+### 6.1 Create Landscape Layouts
+
+**Files:**
+- `app/src/main/res/layout-land/activity_settings.xml`
+- `app/src/main/res/layout-land/fragment_image_picker.xml`
+- `app/src/main/res/layout-land/activity_app_selection.xml`
+- `app/src/main/res/layout-land/activity_log_viewer.xml`
+
+**Adaptations:**
+- Side-by-side arrangements where appropriate
+- Adjusted preview sizes
+- Optimal use of horizontal space
+
+**Validation:** Rotate device, layouts adapt without overflow/cropping
+
+---
+
+### 6.2 Create Tablet Layouts
+
+**Files:**
+- `app/src/main/res/layout-sw600dp/` (7" tablets)
+- `app/src/main/res/layout-sw720dp/` (10" tablets)
+
+**Adaptations:**
+- Master-detail pattern for App Selection
+- Two-pane layout for Settings + detail
+- Larger touch targets and spacing
+- Max content width constraints (840dp)
+
+**Validation:** Test on tablet emulator, layouts appropriate
+
+---
+
+### 6.3 Ensure ConstraintLayout Throughout
+
+**Files:** All layout files
+
+**Requirements:**
+- No nested `LinearLayout` more than 2 levels deep
+- Use `ConstraintLayout` chains and barriers
+- Percentage-based constraints where appropriate
+- `Guideline` for consistent margins
+
+**Validation:** Layout inspector shows flat hierarchy
+
+---
+
+### 6.4 Handle Soft Keyboard
+
+**File:** `AndroidManifest.xml`
+
+**Per Activity:**
+```xml
+android:windowSoftInputMode="adjustResize|stateHidden"
+```
+
+**Implementation:**
+- Content scrolls when keyboard appears
+- FAB moves above keyboard
+- No content hidden behind keyboard
+
+**Validation:** Keyboard doesn't obscure input fields or buttons
+
+---
+
+### Phase 6 Completion Checklist
+
+- [ ] Landscape layouts for all screens
+- [ ] Tablet (sw600dp) layouts created
+- [ ] Large tablet (sw720dp) layouts if needed
+- [ ] ConstraintLayout used throughout
+- [ ] Soft keyboard handling configured
+- [ ] Tested on multiple screen sizes
+- [ ] `gradle assembleDebug` passes
+- [ ] Changes committed: `feat(ui): Phase 6 - Responsive Layouts`
+
+---
+
+## Phase 7: In-App Documentation & Onboarding
+
+**Status:** ⬜ Not Started  
+**Estimated Files:** 6-10 new files  
+**Dependencies:** Phase 1 complete
+
+### 7.1 Create Onboarding Flow
+
+**Files:**
+- `app/src/main/java/com/camerainterceptor/ui/OnboardingActivity.java` (new)
+- `app/src/main/res/layout/activity_onboarding.xml` (new)
+- `app/src/main/res/layout/fragment_onboarding_page.xml` (new)
+- `app/src/main/java/com/camerainterceptor/ui/OnboardingAdapter.java` (new)
+
+**Screens:**
+1. **Welcome** — App introduction, purpose explanation
+2. **Activation** — How to enable in LSPosed/Xposed
+3. **Image Selection** — How to select replacement image
+4. **App Targeting** — How to select which apps to intercept
+5. **Get Started** — Button to enter main app
+
+**Components:**
+- `ViewPager2` with `FragmentStateAdapter`
+- Page indicators (dots)
+- Skip button
+- Next/Done buttons
+
+**Validation:** Onboarding displays, navigation works, persists completion state
+
+---
+
+### 7.2 Add First-Run Detection
+
+**Files:**
+- `app/src/main/java/com/camerainterceptor/ui/SettingsActivity.java`
+- `app/src/main/java/com/camerainterceptor/utils/PreferenceManager.java`
+
+**Implementation:**
+- Check SharedPreferences for `onboarding_complete` key
+- Launch OnboardingActivity if false/missing
+- Set flag after onboarding completion
+
+**Validation:** First launch shows onboarding, subsequent launches go to settings
+
+---
+
+### 7.3 Build Help/FAQ Screen
+
+**Files:**
+- `app/src/main/java/com/camerainterceptor/ui/HelpActivity.java` (new)
+- `app/src/main/res/layout/activity_help.xml` (new)
+- `app/src/main/res/layout/item_faq.xml` (new)
+- `app/src/main/res/values/strings_help.xml` (new)
+
+**Content:**
+- Expandable FAQ items (using `MaterialCardView` or `ExpandableListView`)
+- Common questions:
+  - "How do I activate the module?"
+  - "Why isn't it working in [app]?"
+  - "How do I update the replacement image?"
+  - "What modes are available?"
+  - "How do I view logs?"
+- Troubleshooting section
+- Link to GitHub/external docs
+
+**Validation:** Help screen accessible from settings, FAQ expands/collapses
+
+---
+
+### 7.4 Add Contextual Help Tooltips
+
+**Files:**
+- `app/src/main/res/xml/preferences.xml`
+- `app/src/main/java/com/camerainterceptor/ui/SettingsFragment.java`
+
+**Implementation:**
+- Add `android:summary` to all preferences with helpful descriptions
+- For complex settings, add info icon that shows `MaterialAlertDialog` with detailed explanation
+- Use preference `dependency` to show/hide related settings
+
+**Validation:** All settings have summaries, info dialogs work
+
+---
+
+### 7.5 Add Replay Onboarding Option
+
+**Files:**
+- `app/src/main/res/xml/preferences.xml`
+- `app/src/main/java/com/camerainterceptor/ui/SettingsFragment.java`
+
+**Implementation:**
+- Add "View Tutorial" preference in About section
+- Launches OnboardingActivity
+
+**Validation:** Can replay onboarding from settings
+
+---
+
+### Phase 7 Completion Checklist
+
+- [ ] OnboardingActivity with ViewPager2
+- [ ] 4-5 onboarding pages with illustrations
+- [ ] First-run detection logic
+- [ ] HelpActivity with expandable FAQ
+- [ ] Troubleshooting content
+- [ ] Contextual summaries on all preferences
+- [ ] Info dialogs for complex settings
+- [ ] Replay tutorial option
+- [ ] `gradle assembleDebug` passes
+- [ ] Changes committed: `feat(ui): Phase 7 - Documentation & Onboarding`
+
+---
+
+## Phase 8: Polish & Micro-interactions
+
+**Status:** ⬜ Not Started  
+**Estimated Files:** Multiple modifications  
+**Dependencies:** All previous phases complete
+
+### 8.1 Add Activity Transitions
+
+**Files:**
+- `app/src/main/res/values/themes.xml`
+- `app/src/main/res/anim/` (new directory with transition files)
+- Activity Java files
+
+**Transitions:**
+- Fade through for most screen changes
+- Container transform for list item → detail
+- Shared element transitions where appropriate
+
+**Validation:** Smooth transitions between screens
+
+---
+
+### 8.2 Implement Loading Indicators
+
+**Files:** All Activity files
+
+**Requirements:**
+- `CircularProgressIndicator` for async operations
+- Skeleton/shimmer for content loading
+- Disabled state for buttons during operations
+- Minimum display time (300ms) to prevent flicker
+
+**Validation:** No jarring appearance/disappearance of content
+
+---
+
+### 8.3 Add Haptic Feedback
+
+**Files:** Activity/Fragment files with interactive elements
+
+**Implementation:**
+- `HapticFeedbackConstants.CONFIRM` on successful actions
+- `HapticFeedbackConstants.REJECT` on errors
+- Subtle feedback on toggle switches
+
+**Validation:** Tactile feedback felt on interactions (test on physical device)
+
+---
+
+### 8.4 Create Confirmation Dialogs
+
+**Files:** Activities with destructive actions
+
+**Dialogs Needed:**
+- Clear logs confirmation
+- Clear image selection confirmation
+- Reset app selection confirmation
+
+**Implementation:**
+- `MaterialAlertDialog` with title, message, and actions
+- Snackbar with "Undo" after destructive action where possible
+
+**Validation:** Confirmation appears, undo works
+
+---
+
+### 8.5 Accessibility Audit
+
+**Files:** All layout files and Activities
+
+**Requirements:**
+- `contentDescription` on all ImageViews and icon buttons
+- Proper `labelFor` on form fields
+- Minimum touch target size (48dp)
+- Proper focus order (`nextFocusDown`, etc.)
+- Color contrast validation (4.5:1 minimum)
+- Screen reader announcements for state changes
+
+**Testing:**
+- Enable TalkBack and navigate entire app
+- Use Accessibility Scanner tool
+
+**Validation:** Full app navigable with TalkBack, no accessibility warnings
+
+---
+
+### Phase 8 Completion Checklist
+
+- [ ] Activity transitions implemented
+- [ ] Loading indicators on all async operations
+- [ ] Haptic feedback on interactions
+- [ ] Confirmation dialogs for destructive actions
+- [ ] Undo functionality where appropriate
+- [ ] All images have contentDescription
+- [ ] Touch targets meet minimum size
+- [ ] Color contrast verified
+- [ ] TalkBack navigation tested
+- [ ] `gradle assembleDebug` passes
+- [ ] Changes committed: `feat(ui): Phase 8 - Polish & Micro-interactions`
+
+---
+
+## Appendix A: File Inventory
+
+### Files to Create
+
+| Path | Phase | Purpose |
+|------|-------|---------|
+| `res/values/colors.xml` | 1 | Color palette |
+| `res/values/dimens.xml` | 1 | Dimension resources |
+| `res/values/themes.xml` | 1 | Light theme |
+| `res/values-night/themes.xml` | 1 | Dark theme |
+| `res/values/styles.xml` | 1 | Component styles |
+| `res/mipmap-*/ic_launcher.*` | 1 | App icons |
+| `res/layout/activity_settings.xml` | 2 | Settings with toolbar |
+| `res/drawable/ic_*.xml` | 2 | Preference icons |
+| `java/.../ImagePickerFragment.java` | 3 | Bottom sheet picker |
+| `res/layout/fragment_image_picker.xml` | 3 | Picker layout |
+| `java/.../AppListAdapter.java` | 4 | RecyclerView adapter |
+| `res/layout/item_app.xml` | 4 | App list item |
+| `res/layout/layout_empty_state.xml` | 4 | Empty state |
+| `java/.../LogEntryAdapter.java` | 5 | Log RecyclerView adapter |
+| `res/layout/item_log_entry.xml` | 5 | Log entry item |
+| `res/layout-land/*.xml` | 6 | Landscape layouts |
+| `res/layout-sw600dp/*.xml` | 6 | Tablet layouts |
+| `java/.../OnboardingActivity.java` | 7 | Onboarding flow |
+| `java/.../HelpActivity.java` | 7 | Help/FAQ screen |
+| `res/anim/*.xml` | 8 | Transition animations |
+
+### Files to Modify
+
+| Path | Phases | Changes |
+|------|--------|---------|
+| `app/build.gradle` | 1, 2 | Dependencies |
+| `AndroidManifest.xml` | 6, 7 | New activities, soft input mode |
+| `SettingsActivity.java` | 2, 7 | Migrate to AndroidX, first-run check |
+| `ImagePickerActivity.java` | 3 | Deprecate/remove |
+| `AppSelectionActivity.java` | 4 | RecyclerView, search, FAB |
+| `LogViewerActivity.java` | 5 | RecyclerView, pull-refresh |
+| `preferences.xml` | 2, 7 | Icons, summaries |
+| `activity_app_selection.xml` | 4 | Complete redesign |
+| `activity_log_viewer.xml` | 5 | Complete redesign |
+| `app_list_item.xml` | 4 | Rename, redesign |
+| `strings.xml` | All | New string resources |
+
+---
+
+## Appendix B: Resource Links
+
+### Material Design 3
+
+- [Material Design 3 Guidelines](https://m3.material.io/)
+- [Material Components Android](https://github.com/material-components/material-components-android)
+- [Material Theme Builder](https://m3.material.io/theme-builder)
+- [Color System](https://m3.material.io/styles/color/overview)
+
+### Android Documentation
+
+- [AndroidX Preference](https://developer.android.com/develop/ui/views/components/settings)
+- [RecyclerView](https://developer.android.com/develop/ui/views/layout/recyclerview)
+- [ConstraintLayout](https://developer.android.com/develop/ui/views/layout/constraint-layout)
+- [Supporting Different Screens](https://developer.android.com/guide/practices/screens_support)
+- [Accessibility](https://developer.android.com/guide/topics/ui/accessibility)
+
+### Tools
+
+- [Android Asset Studio](https://romannurik.github.io/AndroidAssetStudio/)
+- [Figma Material 3 Kit](https://www.figma.com/community/file/1035203688168086460)
+- [Accessibility Scanner](https://play.google.com/store/apps/details?id=com.google.android.apps.accessibility.auditor)
+
+---
+
+## Revision History
+
+| Date | Version | Changes | Author |
+|------|---------|---------|--------|
+| 2026-01-03 | 1.0 | Initial plan created | - |
+
+---
+
+*This document should be updated as implementation progresses. Mark phases complete, note any deviations, and keep the checklist current.*
+
+
+---
+
+## json_hub
+**Description**: Convert nested JSON to Excel/CSV with auto-unescape & smart flattening | 100% client-side | Monaco editor | Privacy-first
+**URL**: https://github.com/theGoodB0rg/json_hub
+### README
+<div align="center">
+
+![JsonExport Banner](./public/images/readme/hero.png)
+
+# JsonExport
+
+**The Smart JSON Bridge for Developers**
+
+Convert complex, nested JSON to clean Excel/CSV spreadsheets instantly.  
+Auto-Unescape • Smart Flattening • Privacy-First • 100% Client-Side
+
+[![Live Demo](https://img.shields.io/badge/🌐_Live-Demo-2563eb?style=for-the-badge)](https://jsonexport.com)
+[![GitHub Stars](https://img.shields.io/github/stars/theGoodB0rg/json_hub?style=for-the-badge&logo=github)](https://github.com/theGoodB0rg/json_hub/stargazers)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
+[![Build](https://img.shields.io/badge/Tests-98%25-success?style=for-the-badge)](tests/)
+
+</div>
+
+---
+
+## The Problem
+
+Dealing with messy API responses? Complex nested JSON from databases? Double-encoded strings that break everything?
+
+**JsonExport solves this:**
+
+- Automatically detects and unescapes double/triple-encoded JSON
+- Flattens deeply nested structures into spreadsheet-friendly rows
+- Optimized for **API responses and large files** (100MB+)
+- **100% client-side** - your data never leaves your browser
+
+---
+
+## Key Features
+
+### Auto-Unescape Detection
+Automatically handles double or triple-encoded JSON strings without manual intervention.
+
+```javascript
+// Input: "{\"name\":\"John\"}"
+// Output: {name: "John"}
+```
+
+### Smart & Flattening
+Converts nested structures to spreadsheet-friendly format using dot notation.
+
+```javascript
+// Input: {user: {address: {city: "NYC"}}}
+// Output: {"user.address.city": "NYC"}
+```
+
+### Lightweight JSON Editor
+Custom-built editor optimized for quick conversions with error highlighting and line numbers.
+
+### Unified Inline Editing
+Edit data directly in Flat, Table, or Nested views with full undo/redo support.
+
+### Multiple Export Formats
+Download as CSV, Excel (XLSX), HTML, or all formats in a single ZIP file.
+
+### Column Management
+Reorder, hide, and manage columns via intuitive drag & drop interface.
+
+### Privacy-First Architecture
+All processing happens in your browser. Zero network calls. No data upload.
+
+### Growth Execution (Phase 4)
+- UTM source-aware landing banner for campaign traffic (`utm_source=producthunt`, `g2`, `capterra`, etc.)
+- Social proof badges in footer with safe fallback when listing URLs are not configured
+- Conversion telemetry events for parse/export plus growth interactions (campaign detect, badge clicks, affiliate toast shown/clicked)
+
+---
+
+## Screenshots
+
+<table>
+<tr>
+<td width="50%">
+
+### Export Options
+![Export Formats](./public/images/readme/export-options.png)
+
+</td>
+<td width="50%">
+
+### Data Grid Preview
+![Data Grid](./public/images/readme/data-grid.png)
+
+</td>
+</tr>
+</table>
+
+---
+
+## Perfect For
+
+- Converting **Stripe API responses** to Excel for analysis
+- Flattening **Shopify webhook data** to CSV
+- Transforming **MongoDB exports** to spreadsheets
+- Parsing **double-encoded JSON strings** from legacy systems
+- Handling **deeply nested objects** from REST APIs
+- Processing **API responses and large JSON exports** (100MB+)
+- **Database export analysis** and reporting
+- **JSON to Excel converter** with intelligent auto-unescape
+- **API response visualization** in table format
+
+---
+
+## Quick Start
+
+### Online (Recommended)
+
+**[Launch JsonExport →](https://jsonexport.com)**
+
+No installation needed. Works 100% in your browser.
+
+### Local Development
+
+```bash
+# Clone the repository
+git clone https://github.com/theGoodB0rg/json_hub.git
+cd json_hub
+
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+
+# Open http://localhost:3000
+```
+
+Optional growth link configuration for local testing:
+
+```bash
+NEXT_PUBLIC_PRODUCT_HUNT_URL=https://www.producthunt.com/products/your-product-slug
+NEXT_PUBLIC_G2_URL=https://www.g2.com/products/your-product/reviews
+NEXT_PUBLIC_CAPTERRA_URL=https://www.capterra.com/p/your-product-id/
+```
+
+---
+
+## How It Works
+
+1. **Input JSON**: Paste JSON or upload a file (drag & drop supported)
+2. **Auto-Parse**: Automatically detects and unescapes encoded strings
+3. **Smart Flatten**: Converts nested structures to tabular format
+4. **Edit & Review**: Inline editing in your preferred view (Flat/Table/Nested)
+5. **Export**: Download as CSV, Excel, HTML, or all in a ZIP
+
+---
+
+## Tech Stack
+
+| Category | Technology |
+|----------|-----------|
+| **Framework** | Next.js 14 (App Router, Static Export) |
+| **Language** | TypeScript |
+| **Styling** | Tailwind CSS + Shadcn/UI |
+| **State** | Zustand + Zundo (Temporal) |
+| **Editor** | Custom Lightweight |
+| **Table** | TanStack Table v8 + @dnd-kit |
+| **Export** | SheetJS (xlsx), JSZip |
+| **Testing** | Jest + Playwright |
+
+---
+
+## Project Structure
+
+```
+json_hub/
+├── app/                    # Next.js app directory
+│   ├── layout.tsx         # Root layout with SEO
+│   └── page.tsx           # Main converter page
+├── components/            # React components
+│   ├── JsonEditor/       # Monaco editor wrapper
+│   ├── DataGrid/         # Table preview with editing
+│   └── ExportMenu/       # Export controls
+├── lib/
+│   ├── parsers/          # Core parsing logic
+│   │   ├── smartParse.ts # JSON validator with auto-unescape
+│   │   └── flattener.ts  # Nested object flattener
+│   ├── converters/       # Export converters
+│   │   ├── jsonToCsv.ts
+│   │   ├── jsonToXlsx.ts
+│   │   ├── jsonToHtml.ts
+│   │   └── zipExporter.ts
+│   └── store/            # Zustand state management
+└── types/                # TypeScript type definitions
+```
+
+---
+
+## Testing
+
+```bash
+# Run unit tests
+npm test
+
+# Run tests in watch mode
+npm test -- --watch
+
+# Run E2E tests
+npm run test:e2e
+
+# Build for production
+npm run build
+```
+
+### Test Coverage
+
+- **smartParse**: 20/20 tests (100%)
+- **flattener**: 21/21 tests (100%)
+- **converters**: 11/12 tests (92%)
+- **Overall**: 52/53 tests (98%)
+
+---
+
+## Deployment
+
+### GitHub Pages (Current)
+
+This repository uses GitHub Actions for automatic deployment:
+
+1. Push to `main` branch
+2. GitHub Actions builds and deploys automatically
+3. Live at [jsonexport.com](https://jsonexport.com)
+
+### Vercel (Alternative)
+
+Connect your fork to Vercel for instant deployments with preview URLs.
+
+---
+
+## How JsonExport Compares
+
+| Feature | JsonExport | Online Converters | Excel Manual |
+|---------|------------|-------------------|--------------|
+| Auto-Unescape | ✓ Automatic | ✗ Manual | ✗ Not possible |
+| Privacy | ✓ Client-side | ⚠️ Server upload | ✓ Local |
+| File Size | ✓ 100MB+ (Streaming) | ✗ Usually 5MB | ✓ Unlimited |
+| Inline Editing | ✓ All views | ✗ No editing | ✓ Yes |
+| Undo/Redo | ✓ Full history | ✗ None | ⚠️ Limited |
+| Cost | ✓ Free | 💰 Often paid | ✓ Free |
+
+---
+
+## Contributing
+
+Contributions are welcome! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+---
+
+## Security
+
+All processing happens client-side. Your data never leaves your browser. See [SECURITY.md](SECURITY.md) for our security policy.
+
+---
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+## Acknowledgments
+
+Built with amazing open-source tools:
+
+- [Monaco Editor](https://microsoft.github.io/monaco-editor/) by Microsoft
+- [TanStack Table](https://tanstack.com/table) by Tanner Linsley
+- [TanStack Virtual](https://tanstack.com/virtual) for virtualization
+- [@streamparser/json](https://www.npmjs.com/package/@streamparser/json) for streaming large files
+- [SheetJS](https://sheetjs.com/) for Excel export
+- [Shadcn/UI](https://ui.shadcn.com/) for beautiful components
+
+---
+
+## Keywords
+
+`json to excel` • `json to csv` • `json converter` • `flatten json` • `nested json to table` • `json parser` • `unescape json` • `json flattener` • `api response to spreadsheet` • `mongodb export to excel` • `stripe json converter` • `shopify json to csv`
+
+---
+
+<div align="center">
+
+[![GitHub](https://img.shields.io/badge/GitHub-Follow-black?style=social&logo=github)](https://github.com/theGoodB0rg)
+[![Twitter](https://img.shields.io/badge/Share-Tweet-blue?style=social&logo=twitter)](https://twitter.com/intent/tweet?text=Check%20out%20JsonExport%20-%20Convert%20complex%20JSON%20to%20Excel/CSV%20instantly!&url=https://github.com/theGoodB0rg/json_hub)
+
+**[🌐 Live Demo](https://jsonexport.com)** • **[📖 Documentation](https://github.com/theGoodB0rg/json_hub/wiki)** • **[🐛 Report Bug](https://github.com/theGoodB0rg/json_hub/issues)** • **[💡 Request Feature](https://github.com/theGoodB0rg/json_hub/discussions)**
+
+**⭐ Star this repository to support the project!**
+
+Made with ❤️ for developers dealing with messy JSON
+
+</div>
+
+
+### docs/GROWTH_AND_REVENUE_PROJECTIONS.md
+# Growth & Revenue Projections (2026)
+
+**Date:** January 20, 2026
+**Site Age:** < 2 Weeks
+**Data Source:** Google Search Console (Last 7 Days)
+
+---
+
+## 1. Current Health Check 🩺
+**Status:** Healthy Newborn 🌱
+
+| Metric | Value | Interpretation |
+| :--- | :--- | :--- |
+| **Impressions (7 Days)** | 130 | **Strong Signal.** Most new sites see 0-10 impressions in weeks 1-2. Google is testing your pages immediately. |
+| **Clicks** | 2 | **Normal.** You are ranking on Page 4-5 (Avg Pos: 47.6). Users rarely click deep, but they *see* it. |
+| **Indexing Ratio** | 4 / 29 | **Bottleneck.** Only ~14% of your known pages are indexed. This is the "Sandbox Effect". As this ratio improves, traffic will multiply by 6-7x automatically. |
+| **Trend** | Upward 📈 | The impression graph shows a clear upward trajectory, indicating Google is finding more keywords. |
+
+### The "Sandbox" Reality
+For the first 1-3 months, Google deliberately limits high rankings to test site stability and user signals. Your goal is simply to **stay indexed** and **earn links**.
+
+---
+
+## 2. Traffic Projections 📊
+
+We are modeling two scenarios based on standard SEO trajectories for tech tools.
+
+### Scenario A: Conservative (Organic Growth)
+*Assumes no major backlinks, just content consistency.*
+
+| Month | Daily Visitors | Monthly Impressions | Monthly Clicks (Traffic) | Notes |
+| :--- | :--- | :--- | :--- | :--- |
+| **Month 1** | 0 - 5 | 500 | **20 - 50** | Sandbox phase. Mostly direct or long-tail. |
+| **Month 3** | 10 - 20 | 3,000 | **300 - 500** | Indexing ratio hits 50%. First Page 1 rankings. |
+| **Month 6** | 50 - 80 | 15,000 | **1,500 - 2,500** | "Authority" kicks in. Long-tail dominance. |
+| **Month 12** | 200 - 300 | 60,000 | **6,000 - 9,000** | Established data tool. |
+
+### Scenario B: Aggressive (Backlink Domination)
+*Assumes success with Product Hunt, "Free JSON" magnet, and Edu links.*
+
+| Month | Daily Visitors | Monthly Impressions | Monthly Clicks (Traffic) | Notes |
+| :--- | :--- | :--- | :--- | :--- |
+| **Month 1** | 100+ (Spike) | 2,000 | **500 - 1,000** | Product Hunt launch spike. |
+| **Month 3** | 50 - 100 | 10,000 | **1,500 - 3,000** | Post-viral retention. Backlinks start counting. |
+| **Month 6** | 200 - 400 | 50,000 | **6,000 - 10,000** | Dominating "json to excel" alternatives. |
+| **Month 12** | 1,000+ | 150,000+ | **30,000+** | Market leader for casual use. |
+
+---
+
+## 3. Revenue Models 💰
+
+How do we turn these visitors into revenue?
+
+### Model A: Display Ads (Passive)
+*Carbon Ads or AdSense. Non-intrusive tech ads.*
+* **RPM (Revenue Per Mille/1k views):** $10 - $15 (High for dev tools)
+* **Month 6 (Conservative):** ~2,000 views = **$20 - $30 / month**
+* **Month 12 (Conservative):** ~9,000 views = **$90 - $135 / month**
+* **Month 12 (Aggressive):** ~30,000 views = **$300 - $450 / month**
+* **Verdict:** Good for covering hosting costs, not for getting rich.
+
+### Model B: Affiliate / Partnerships (Recommended)
+*Referring users to paid data tools (e.g., ETL tools, proxy services, hosting).*
+* **Conversion Rate:** 0.5% (Tech users are ad-blind but buy tools)
+* **Commission:** $50 CPA (Cost Per Acquisition) is standard for B2B SaaS.
+* **Month 6 (Conservative):** 2,000 users * 0.5% = 10 sales = **$500 / month**
+* **Month 12 (Aggressive):** 30,000 users * 0.5% = 150 sales = **$7,500 / month**
+* **Verdict:** This is where the money is. One signup equals 5,000 ad views.
+
+---
+
+## 4. Immediate Action Plan 🚀
+
+To hit **Scenario B (Aggressive)**, we need to clear the Month 1-3 hurdles:
+
+1.  **Fix Indexing**: 25 pages are not indexed.
+    *   *Action*: Submit sitemap again in GSC.
+    *   *Action*: Ensure every blog post is linked from the Homepage or Footer.
+2.  **Launch Product Hunt**: This is the catalyst for the "Aggressive" curve.
+    *   *Action*: Launch next Tuesday/Wednesday use `docs/PRODUCT_HUNT_STRATEGY.md`.
+3.  **Deploy "Free JSON" Magnet**:
+    *   *Action*: We just deployed this. Share it on Reddit (r/webdev, r/dataanalysis) immediately.
+
+---
+
+### Summary
+Your "Newborn" stats are **excellent**. Most sites are flatlining at 0. You have a pulse (130 impressions) and a trend.
+*   **Realistic Year 1 Goal**: 10,000 visitors/month.
+*   **Realistic Year 1 Revenue**: $1,000 - $3,000 / month (combined Ads + Affiliate).
+
+
+### docs/PRODUCT_HUNT_STRATEGY.md
+# Product Hunt Launch Strategy - JsonExport
+
+## 🚀 Concept
+**Tagline**: The private, client-side data workbench for analysts.
+**Problem**: Existing tools are unsafe (server uploads), slow (network lag), or hard (require Python/Power Query).
+**Solution**: JsonExport runs 100% in your browser. It handles massive files (100MB+), respects privacy, and flattens nested JSON automatically.
+
+## 📝 Listing Details
+
+### Name
+**JsonExport**
+
+### Tagline (60 chars)
+**Convert JSON to Excel instantly. Private, Free & No Limits.**
+
+### Description (260 chars)
+Stop uploading sensitive data to random servers. JsonExport runs 100% locally in your browser. It flattens deeply nested JSON into Excel/CSV automatically. Handles 500MB+ files without crashing. Free to use.
+
+### Topics
+- Developer Tools
+- Data Analysis
+- Open Source
+- Privacy
+- Productivity
+
+---
+
+## 💬 Maker's Comment (First Comment)
+*Post this immediately after launch.*
+
+> Hey Product Hunt! 👋
+>
+> I'm [Your Name], the maker of JsonExport.
+>
+> As a data analyst, I was frustrated with the two main options for converting JSON:
+> 1. **Online Converters**: Creating a privacy nightmare by uploading sensitive client data to unknown servers. Plus, they crash on anything over 10MB.
+> 2. **Python/Power Query**: Overkill for quick tasks and hard for non-technical team members to use.
+>
+> That's why I built **JsonExport**.
+>
+> 🚀 **What makes it different?**
+> *   **100% Local**: Your data never leaves your browser. You can even use it offline.
+> *   **Smart Flattening**: It automatically handles deeply nested arrays and objects.
+> *   **No Limits**: Since it uses your machine's power, we've tested it with 500MB+ files.
+> *   **Developer Friendly**: We have specific modes for Shopify, Jira, and MongoDB exports.
+>
+> I'd love to hear your feedback! What other formats should we support?
+>
+> Happy converting! 📊
+
+---
+
+## 📅 Launch Day Checklist
+
+- [ ] **00:01 AM PST**: Schedule launch (or hit publish).
+- [ ] **00:05 AM PST**: Post Maker's Comment.
+- [ ] **00:10 AM PST**: Share on Twitter/X with hashtags #producthunt #json #opensource.
+- [ ] **00:15 AM PST**: Share on LinkedIn.
+- [ ] **00:30 AM PST**: Email your personal list asking for support (do NOT ask for upvotes directly, ask for "support" or "feedback").
+- [ ] **All Day**: Respond to every comment within 1 hour.
+
+---
+
+## 📧 Outreach Templates
+
+### Template 1: For "Best Developer Tools" List Curators
+
+**Subject**: A privacy-first alternative for your "Best JSON Tools" list?
+
+> Hi [Name],
+>
+> I've been using your list of standard developer tools on [Site Name] for a while - it's a great resource.
+>
+> I noticed you list a few JSON converters that heavily rely on server-side processing. I wanted to suggest **JsonExport** (https://jsonexport.com) as a modern, privacy-focused addition.
+>
+> It runs 100% in the browser (no data upload), handles 100MB+ files, and is completely open source.
+>
+> I think your audience of data privacy-conscious devs would appreciate the secure alternative.
+>
+> Best,
+> [Your Name]
+
+### Template 2: For Reddit (r/dataanalysis)
+
+**Title**: I built a local-only JSON to Excel converter because I didn't want to upload client data
+
+> Hey everyone,
+>
+> Like many of you, I often get massive automated reports in JSON (Shopify exports, etc.) that I need in Excel quickly.
+>
+> I used to use those random online converters, but I realized I was uploading sensitive client data to who-knows-where.
+>
+> So I built **JsonExport**. It runs entirely in your browser (WASM/JS worker), so data never leaves your machine. It also handles huge files that crash the other tools.
+>
+> Check it out here: https://jsonexport.com
+> It's free and open source. Let me know if it breaks on your weirdest JSON files!
+
+
+### docs/README.md
+# JSON Hub Documentation
+
+This directory contains all planning and technical documentation for the JSON Hub project.
+
+## 📚 Documentation Files
+
+### [task.md](file:///c:/Users/HP/Desktop/Personal%20Websites/json_hub/docs/task.md)
+**Purpose**: Comprehensive task breakdown and checklist  
+**Status**: Living document - updated as tasks are completed  
+**Contains**:
+- Phase 1: Core Logic (validator, flattener modules)
+- Phase 2: UI Construction (components, layout)
+- Phase 3: Converter Engines (export functionality)
+- Phase 4: Polish & Deploy (testing, deployment)
+
+---
+
+### [implementation_plan.md](file:///c:/Users/HP/Desktop/Personal%20Websites/json_hub/docs/implementation_plan.md)
+**Purpose**: Detailed technical implementation plan  
+**Status**: Reference document - updated when major changes occur  
+**Contains**:
+- Proposed changes for each phase
+- File-by-file specifications
+- Verification plan (Jest, Playwright, manual testing)
+- Success criteria
+
+---
+
+### [project_status.md](file:///c:/Users/HP/Desktop/Personal%20Websites/json_hub/docs/project_status.md)
+**Purpose**: Current project state tracker  
+**Status**: Living document - updated after each milestone  
+**Contains**:
+- Phase status overview
+- Completed milestones
+- Current work in progress
+- Blockers and issues
+- Recent commits
+- Next steps
+- Code quality metrics
+
+---
+
+### [architecture.md](file:///c:/Users/HP/Desktop/Personal%20Websites/json_hub/docs/architecture.md)
+**Purpose**: Technical architecture documentation  
+**Status**: Reference document - updated when architecture changes  
+**Contains**:
+- System overview
+- Component architecture (with Mermaid diagrams)
+- Data flow diagrams
+- State management schema
+- Technology stack rationale
+- Performance optimizations
+- Security considerations
+- Deployment strategy
+
+---
+
+## 🔄 Document Update Frequency
+
+| Document | Update Frequency |
+|----------|-----------------|
+| `task.md` | After each task completion |
+| `project_status.md` | After each phase/milestone |
+| `implementation_plan.md` | When major changes occur |
+| `architecture.md` | When architecture changes |
+
+---
+
+## 📖 How to Use These Docs
+
+1. **Starting a new phase?** → Check `task.md` for checklist items
+2. **Need technical details?** → Check `implementation_plan.md` for specifications
+3. **Want current status?** → Check `project_status.md` for progress
+4. **Understanding the system?** → Check `architecture.md` for design decisions
+
+---
+
+## 🎯 Project Overview
+
+**The Smart JSON Bridge** is a client-side web application that converts complex, nested JSON data into Excel/CSV formats with zero hosting costs.
+
+**Key Features**:
+- Auto-unescape double/triple-encoded JSON
+- Flatten deeply nested objects into spreadsheet columns
+- Excel-like table preview with cell editing
+- Export to CSV, Excel, Word, HTML, and bundled ZIP
+- Offline-first architecture
+- Mobile-responsive design
+
+**Tech Stack**: Next.js, TypeScript, Tailwind CSS, Shadcn/UI, Zustand, TanStack Table
+
+---
+
+*These documents are maintained throughout the project lifecycle to ensure clarity and continuity.*
+
+
+### docs/architecture.md
+# JSON Hub - Technical Architecture
+
+## System Overview
+
+**The Smart JSON Bridge** is a client-side Single Page Application (SPA) that processes JSON data entirely in the browser. This architecture ensures:
+- **Zero hosting costs** (static deployment on Vercel Free Tier)
+- **Complete data privacy** (no server-side processing)
+- **Maximum performance** (no network latency for processing)
+- **Offline capability** (Service Worker caching)
+
+---
+
+## Component Architecture
+
+### High-Level Component Diagram
+
+```mermaid
+graph TD
+    A[User] -->|Upload JSON| B[JsonEditor Component]
+    B -->|Raw Input| C[Zustand Store]
+    C -->|Trigger Parse| D[smartParse Module]
+    D -->|Parsed Data| C
+    C -->|Trigger Flatten| E[flattener Module]
+    E -->|Flat Data| C
+    C -->|Display| F[DataGrid Component]
+    F -->|Edit Cell| C
+    C -->|Export Request| G[Converter Modules]
+    G -->|Download| A
+    
+    H[ActionBar Component] -->|Control Actions| C
+    I[ExportMenu Component] -->|Select Format| G
+    
+    style C fill:#f9f,stroke:#333,stroke-width:4px
+    style D fill:#bbf,stroke:#333,stroke-width:2px
+    style E fill:#bbf,stroke:#333,stroke-width:2px
+    style G fill:#bfb,stroke:#333,stroke-width:2px
+```
+
+### Component Responsibilities
+
+#### UI Components
+- **JsonEditor**: File upload, drag-and-drop, Monaco Editor integration
+- **ActionBar**: Validation controls, formatting toggles, status indicators
+- **DataGrid**: Virtualized table, cell editing, keyboard navigation
+- **ExportMenu**: Format selection, download triggers, progress indicators
+
+#### Core Logic Modules
+- **smartParse**: JSON validation, auto-unescape, error reporting
+- **flattener**: Nested object flattening, schema inference
+- **Converters**: Format-specific export logic (CSV, Excel, Word, HTML, ZIP)
+
+#### State Management
+- **Zustand Store**: Global state for raw input, parsed data, flat data, UI state
+
+---
+
+## Data Flow
+
+### Processing Pipeline
+
+```mermaid
+sequenceDiagram
+    participant User
+    participant JsonEditor
+    participant Store
+    participant smartParse
+    participant flattener
+    participant DataGrid
+    participant Converter
+    
+    User->>JsonEditor: Upload JSON file
+    JsonEditor->>Store: setRawInput(fileContent)
+    User->>ActionBar: Click "Validate"
+    ActionBar->>Store: parseInput()
+    Store->>smartParse: validateAndParse(rawInput)
+    smartParse->>smartParse: Auto-unescape if needed
+    smartParse-->>Store: ParseResult (success/errors)
+    
+    alt Parse Success
+        Store->>flattener: flattenJSON(parsedData)
+        flattener->>flattener: Recursive traversal
+        flattener-->>Store: FlattenResult (rows, schema)
+        Store->>DataGrid: Update display
+        DataGrid-->>User: Show table preview
+        
+        User->>DataGrid: Edit cell value
+        DataGrid->>Store: updateCell(row, col, value)
+        
+        User->>ExportMenu: Select "Excel"
+        ExportMenu->>Converter: toExcel(flatData)
+        Converter-->>User: Download .xlsx file
+    else Parse Error
+        Store->>JsonEditor: Display errors with line/column
+        JsonEditor-->>User: Show error highlights
+    end
+```
+
+### State Transitions
+
+```mermaid
+stateDiagram-v2
+    [*] --> Empty: App Load
+    Empty --> InputReceived: User uploads file
+    InputReceived --> Parsing: Click "Validate"
+    Parsing --> ParseError: Invalid JSON
+    Parsing --> Parsed: Valid JSON
+    ParseError --> InputReceived: User fixes input
+    Parsed --> Flattened: Auto-flatten
+    Flattened --> Editing: User edits cells
+    Editing --> Flattened: Save changes
+    Flattened --> Exporting: Select format
+    Exporting --> Downloaded: File ready
+    Downloaded --> Flattened: Continue editing
+    Downloaded --> [*]: User closes app
+```
+
+---
+
+## State Management
+
+### Zustand Store Schema
+
+```typescript
+interface AppState {
+  // ===== Input State =====
+  rawInput: string;                    // Original user input
+  isParsed: boolean;                   // Parse success flag
+  parseErrors: ParseError[];           // Detailed error messages
+  
+  // ===== Processed Data =====
+  parsedData: any;                     // Raw parsed JSON
+  flatData: Record<string, any>[];     // Flattened rows
+  schema: string[];                    // Column headers
+  
+  // ===== UI State =====
+  activeTab: 'input' | 'preview' | 'export';
+  selectedFormat: 'csv' | 'xlsx' | 'docx' | 'html' | 'zip';
+  isLoading: boolean;
+  downloadProgress: number;            // 0-100 for large exports
+  
+  // ===== Configuration =====
+  prettyPrint: boolean;                // JSON formatting toggle
+  rowLimit: number;                    // Max rows to display (performance)
+  fileSizeLimit: number;               // Max upload size (10MB)
+  
+  // ===== Actions =====
+  setRawInput: (input: string) => void;
+  parseInput: () => void;
+  flattenData: () => void;
+  updateCell: (rowIndex: number, column: string, value: any) => void;
+  exportData: (format: string) => void;
+  resetState: () => void;
+}
+```
+
+### Why Zustand?
+- **Minimal boilerplate** compared to Redux
+- **No context providers** needed (simpler component tree)
+- **Built-in TypeScript support**
+- **Devtools integration** for debugging
+- **Small bundle size** (~1KB)
+
+---
+
+## File Structure
+
+```
+json_hub/
+├── src/
+│   ├── app/
+│   │   ├── page.tsx                    # Main application page
+│   │   ├── layout.tsx                  # Root layout with metadata
+│   │   └── globals.css                 # Global styles
+│   │
+│   ├── components/
+│   │   ├── ui/                         # Shadcn/UI components
+│   │   │   ├── button.tsx
+│   │   │   ├── card.tsx
+│   │   │   ├── toast.tsx
+│   │   │   └── resizable.tsx
+│   │   │
+│   │   ├── JsonEditor/
+│   │   │   ├── JsonEditor.tsx          # Monaco Editor wrapper
+│   │   │   ├── FileUpload.tsx          # Drag-and-drop zone
+│   │   │   └── ErrorDisplay.tsx        # Parse error viewer
+│   │   │
+│   │   ├── DataGrid/
+│   │   │   ├── DataGrid.tsx            # TanStack Table wrapper
+│   │   │   ├── VirtualizedTable.tsx    # Virtualization logic
+│   │   │   └── CellEditor.tsx          # Inline cell editing
+│   │   │
+│   │   ├── ActionBar/
+│   │   │   ├── ActionBar.tsx           # Control toolbar
+│   │   │   └── StatusIndicator.tsx     # Validation status
+│   │   │
+│   │   └── ExportMenu/
+│   │       ├── ExportMenu.tsx          # Download dropdown
+│   │       └── ProgressBar.tsx         # Export progress
+│   │
+│   ├── lib/
+│   │   ├── parsers/
+│   │   │   ├── smartParse.ts           # JSON validation + auto-unescape
+│   │   │   ├── smartParse.test.ts
+│   │   │   ├── flattener.ts            # Nested object flattening
+│   │   │   └── flattener.test.ts
+│   │   │
+│   │   ├── converters/
+│   │   │   ├── jsonToCsv.ts            # CSV export
+│   │   │   ├── jsonToCsv.test.ts
+│   │   │   ├── jsonToXlsx.ts           # Excel export
+│   │   │   ├── jsonToXlsx.test.ts
+│   │   │   ├── jsonToDocx.ts           # Word export
+│   │   │   ├── jsonToHtml.ts           # HTML export
+│   │   │   ├── zipExporter.ts          # ZIP bundling
+│   │   │   └── zipExporter.test.ts
+│   │   │
+│   │   ├── store/
+│   │   │   └── store.ts                # Zustand global state
+│   │   │
+│   │   └── utils/
+│   │       ├── fileValidation.ts       # File size/type checks
+│   │       └── downloadHelper.ts       # Blob download utility
+│   │
+│   └── types/
+│       ├── parser.types.ts             # Parser interfaces
+│       ├── converter.types.ts          # Converter interfaces
+│       └── store.types.ts              # Store interfaces
+│
+├── public/
+│   ├── service-worker.js               # Offline support
+│   └── manifest.json                   # PWA manifest
+│
+├── e2e/
+│   ├── happy-path.spec.ts              # E2E test: upload → export
+│   ├── error-handling.spec.ts          # E2E test: malformed JSON
+│   └── performance.spec.ts             # E2E test: large datasets
+│
+├── .github/
+│   └── workflows/
+│       └── ci.yml                      # GitHub Actions CI/CD
+│
+├── jest.config.js                      # Jest configuration
+├── playwright.config.ts                # Playwright configuration
+├── next.config.js                      # Next.js configuration
+├── tailwind.config.js                  # Tailwind CSS configuration
+├── tsconfig.json                       # TypeScript configuration
+└── package.json                        # Dependencies
+```
+
+---
+
+## Technology Stack Rationale
+
+### Framework: Next.js (App Router)
+**Why?**
+- **Static export** for $0 hosting on Vercel
+- **Built-in TypeScript** support
+- **Optimized bundling** with webpack/turbopack
+- **SEO-friendly** (even though this is a tool, not content)
+- **Easy deployment** (one command to Vercel)
+
+**Alternatives Considered**:
+- Vite + React: More manual setup, no built-in routing
+- Create React App: Deprecated, slower builds
+
+---
+
+### Language: TypeScript
+**Why?**
+- **Catch bugs at compile time** (e.g., wrong data types in state)
+- **Better IDE support** (autocomplete, refactoring)
+- **Self-documenting code** (interfaces serve as documentation)
+- **Easier maintenance** (refactoring is safer)
+
+---
+
+### Styling: Tailwind CSS + Shadcn/UI
+**Why?**
+- **Utility-first** approach speeds up development
+- **Shadcn/UI** provides accessible, customizable components
+- **No runtime CSS-in-JS** overhead (unlike styled-components)
+- **Consistent design system** out of the box
+
+---
+
+### State: Zustand
+**Why?**
+- **Simpler than Redux** (less boilerplate)
+- **No context providers** (cleaner component tree)
+- **TypeScript-first** design
+- **Small bundle size** (~1KB vs Redux ~3KB)
+
+**Alternatives Considered**:
+- Redux: Too much boilerplate for this app
+- Context API: Performance issues with frequent updates
+
+---
+
+### Table: TanStack Table v8
+**Why?**
+- **Built-in virtualization** (critical for 100K+ rows)
+- **Headless UI** (full control over styling)
+- **TypeScript-first** design
+- **Excellent performance** (only renders visible rows)
+
+**Alternatives Considered**:
+- ag-grid: Heavier bundle, less customizable
+- react-window: Lower-level, more manual work
+
+---
+
+### Editor: Monaco Editor
+**Why?**
+- **Same editor as VS Code** (familiar to developers)
+- **Syntax highlighting** for JSON
+- **Error squiggles** (visual feedback for parse errors)
+- **Professional appearance**
+
+**Alternatives Considered**:
+- CodeMirror: Good, but Monaco has better TypeScript support
+- Plain textarea: No syntax highlighting
+
+---
+
+## Performance Optimizations
+
+### 1. Table Virtualization
+**Problem**: Rendering 100K rows freezes the browser  
+**Solution**: TanStack Table only renders visible rows (~20 at a time)  
+**Impact**: 100K rows render in <3 seconds instead of crashing
+
+### 2. Web Workers (Future Enhancement)
+**Problem**: Flattening large datasets blocks the main thread  
+**Solution**: Move `flattener.ts` logic to Web Worker  
+**Impact**: UI stays responsive during processing
+
+### 3. Lazy Loading Monaco Editor
+**Problem**: Monaco Editor is ~2MB (large initial bundle)  
+**Solution**: Code-split with `next/dynamic` and load on demand  
+**Impact**: Faster initial page load
+
+### 4. Service Worker Caching
+**Problem**: App reloads slowly on repeat visits  
+**Solution**: Cache static assets (JS, CSS, fonts) with Service Worker  
+**Impact**: Instant load on repeat visits
+
+### 5. Memoization in Flattener
+**Problem**: Repeated nested structures cause redundant work  
+**Solution**: Cache flattened results for identical objects  
+**Impact**: 2-3x faster for datasets with repeated structures
+
+---
+
+## Security Considerations
+
+### 1. Client-Side Only Processing
+**Benefit**: No data leaves the user's browser  
+**Implication**: No server-side vulnerabilities (XSS, SQL injection, etc.)
+
+### 2. File Size Limits
+**Threat**: Malicious user uploads 1GB file to crash browser  
+**Mitigation**: Enforce 10MB upload limit with graceful error message
+
+### 3. Circular Reference Detection
+**Threat**: Malicious JSON with circular refs causes infinite loop  
+**Mitigation**: `smartParse.ts` detects circular refs and returns error
+
+### 4. Content Security Policy (CSP)
+**Threat**: XSS attacks via injected scripts  
+**Mitigation**: Set strict CSP headers in `next.config.js`
+
+### 5. Dependency Auditing
+**Threat**: Vulnerable npm packages  
+**Mitigation**: Run `npm audit` before each deployment
+
+---
+
+## Deployment Strategy
+
+### Hosting: Vercel Free Tier
+**Why?**
+- **$0 cost** for static sites
+- **Global CDN** (fast worldwide)
+- **Automatic HTTPS**
+- **One-command deployment** (`vercel deploy`)
+
+### CI/CD: GitHub Actions
+**Workflow**:
+1. Developer pushes to `main` branch
+2. GitHub Actions runs:
+   - `npm run test` (Jest unit tests)
+   - `npm run test:e2e` (Playwright E2E tests)
+   - `npm run build` (TypeScript compilation)
+   - `npm run lint` (ESLint checks)
+3. If all pass, auto-deploy to Vercel
+4. If any fail, block deployment and notify developer
+
+### Error Monitoring: Sentry
+**Setup**:
+- Add Sentry SDK to `app/layout.tsx`
+- Capture unhandled errors and promise rejections
+- Track user sessions for debugging
+
+**Alerts**:
+- Email on new error types
+- Slack notification for high error rates
+
+---
+
+## Accessibility Compliance
+
+### WCAG 2.1 AA Requirements
+
+#### Keyboard Navigation
+- ✅ All buttons accessible via Tab
+- ✅ Table navigation with arrow keys
+- ✅ Modal dialogs trap focus
+- ✅ Skip links for screen readers
+
+#### Screen Reader Support
+- ✅ ARIA labels on all interactive elements
+- ✅ ARIA live regions for dynamic content (e.g., "Parsing complete")
+- ✅ Semantic HTML (`<table>`, `<button>`, `<nav>`)
+
+#### Color Contrast
+- ✅ Minimum 4.5:1 contrast ratio for text
+- ✅ Error messages use icons + color (not color alone)
+
+#### Focus Indicators
+- ✅ Visible focus outlines on all interactive elements
+- ✅ Custom focus styles for better visibility
+
+---
+
+## Testing Strategy
+
+### Unit Tests (Jest)
+**Coverage Target**: 80%+ on core logic  
+**Focus Areas**:
+- Parser logic (`smartParse.ts`)
+- Flattener logic (`flattener.ts`)
+- Converter functions (`jsonToCsv.ts`, etc.)
+
+### E2E Tests (Playwright)
+**Coverage**: All user workflows  
+**Focus Areas**:
+- Upload → Preview → Download
+- Error handling for malformed JSON
+- Mobile responsiveness
+- Keyboard navigation
+
+### Performance Tests
+**Benchmarks**:
+- 100K row dataset flattens in <2 seconds
+- Table renders in <3 seconds
+- Memory usage stays below 500MB
+
+### Accessibility Tests
+**Tools**: axe DevTools, Lighthouse  
+**Target**: 90+ Lighthouse accessibility score
+
+---
+
+## Future Enhancements
+
+### Phase 5 (Post-MVP)
+- **Web Worker for flattening** (keep UI responsive)
+- **Custom column mapping** (user-defined header names)
+- **Filter/search in table** (find specific rows)
+- **Dark mode** (user preference)
+- **Export templates** (save custom export settings)
+- **Batch processing** (upload multiple files at once)
+
+---
+
+*This architecture is designed for scalability, maintainability, and professional-grade quality.*
+
+
+### docs/implementation_plan.md
+# JSON Hub - Implementation Plan
+
+## Project Overview
+
+**The Smart JSON Bridge** is a client-side web application that converts complex, nested JSON data into Excel/CSV formats with zero hosting costs. The app runs entirely in the browser, ensuring data privacy and maximum performance.
+
+### Key Features
+- Auto-unescape double/triple-encoded JSON
+- Flatten deeply nested objects into spreadsheet columns
+- Excel-like table preview with cell editing
+- Export to CSV, Excel, Word, HTML, and bundled ZIP
+- Offline-first architecture with Service Worker
+- Mobile-responsive design
+
+## User Review Required
+
+> [!IMPORTANT]
+> **Technology Stack Confirmation**
+> - **Framework**: Next.js (App Router) with TypeScript
+> - **Styling**: Tailwind CSS + Shadcn/UI
+> - **State**: Zustand
+> - **Testing**: Jest (unit) + Playwright (E2E)
+> 
+> This stack ensures $0 hosting on Vercel Free Tier and maximum client-side performance.
+
+> [!WARNING]
+> **File Size Limits**
+> The app will enforce a 10MB upload limit to prevent browser memory issues. Larger files will require graceful error handling with user feedback.
+
+> [!IMPORTANT]
+> **Accessibility Commitment**
+> All UI components will be WCAG 2.1 AA compliant from the start, including keyboard navigation, ARIA labels, and screen reader support.
+
+## Proposed Changes
+
+### Phase 1: Project Setup & Core Logic
+
+#### [NEW] Project Initialization
+- Initialize Next.js 14+ with TypeScript and App Router
+- Configure `tsconfig.json` with strict mode
+- Set up Tailwind CSS and Shadcn/UI
+- Install dependencies:
+  - `zustand` - state management
+  - `monaco-editor` - code editor
+  - `@tanstack/react-table` - virtualized table
+  - `xlsx` - Excel export
+  - `jszip` - ZIP bundling
+  - `json-parse-better-errors` - error reporting
+  - `jest` + `@testing-library/react` - unit testing
+  - `@playwright/test` - E2E testing
+
+#### [NEW] [smartParse.ts](file:///c:/Users/HP/Desktop/Personal%20Websites/json_hub/src/lib/parsers/smartParse.ts)
+**Purpose**: Validate and parse JSON with auto-unescape for double-encoded strings
+
+**Key Functions**:
+```typescript
+export interface ParseResult {
+  success: boolean;
+  data?: any;
+  errors?: ParseError[];
+}
+
+export interface ParseError {
+  message: string;
+  line?: number;
+  column?: number;
+}
+
+export function validateAndParse(input: string): ParseResult
+```
+
+**Logic**:
+1. Attempt `JSON.parse(input)` using `json-parse-better-errors`
+2. If result is a string, recursively parse again (auto-unescape)
+3. Handle circular references with `JSON.stringify` detection
+4. Return detailed errors with line/column numbers
+5. Limit recursion depth to 10 to prevent infinite loops
+
+**Testing**:
+- Valid JSON objects and arrays
+- Double/triple-encoded JSON strings
+- Malformed JSON with syntax errors
+- Circular reference detection
+- Very large objects (1MB+)
+- Deeply nested structures (100+ levels)
+
+---
+
+#### [NEW] [flattener.ts](file:///c:/Users/HP/Desktop/Personal%20Websites/json_hub/src/lib/parsers/flattener.ts)
+**Purpose**: Convert nested JSON objects into flat spreadsheet rows
+
+**Key Functions**:
+```typescript
+export interface FlattenResult {
+  rows: Record<string, any>[];
+  schema: string[];
+}
+
+export function flattenJSON(data: any): FlattenResult
+```
+
+**Logic**:
+1. Detect if input is array or single object
+2. Recursively traverse nested objects using dot notation (`user.address.city`)
+3. Handle arrays by creating indexed columns (`items.0.name`, `items.1.name`)
+4. Infer schema from first 50 rows to detect all unique headers
+5. Fill missing columns with `null` for consistency
+6. Optimize with memoization for repeated structures
+
+**Testing**:
+- Simple flat objects
+- Deeply nested objects (10+ levels)
+- Arrays of objects
+- Mixed types (strings, numbers, booleans, null)
+- Circular reference handling
+- Performance with 100K+ row datasets
+
+---
+
+#### [NEW] [store.ts](file:///c:/Users/HP/Desktop/Personal%20Websites/json_hub/src/lib/store/store.ts)
+**Purpose**: Zustand global state management
+
+**State Schema**:
+```typescript
+interface AppState {
+  // Input
+  rawInput: string;
+  isParsed: boolean;
+  parseErrors: ParseError[];
+  
+  // Processed Data
+  flatData: Record<string, any>[];
+  schema: string[];
+  
+  // UI State
+  activeTab: 'input' | 'preview' | 'export';
+  selectedFormat: 'csv' | 'xlsx' | 'docx' | 'html' | 'zip';
+  isLoading: boolean;
+  downloadProgress: number;
+  
+  // Configuration
+  prettyPrint: boolean;
+  rowLimit: number;
+  
+  // Actions
+  setRawInput: (input: string) => void;
+  parseInput: () => void;
+  flattenData: () => void;
+  updateCell: (rowIndex: number, column: string, value: any) => void;
+}
+```
+
+---
+
+### Phase 2: UI Construction
+
+#### [NEW] [page.tsx](file:///c:/Users/HP/Desktop/Personal%20Websites/json_hub/src/app/page.tsx)
+**Purpose**: Main application page with three-pane layout
+
+**Layout Structure**:
+- Desktop: Resizable panels (Input | Bridge | Preview)
+- Mobile: Tabs (Input | Preview | Export)
+- Uses Shadcn/UI `ResizablePanelGroup` component
+
+---
+
+#### [NEW] [JsonEditor.tsx](file:///c:/Users/HP/Desktop/Personal%20Websites/json_hub/src/components/JsonEditor/JsonEditor.tsx)
+**Purpose**: Input pane with Monaco Editor and drag-and-drop
+
+**Features**:
+- Monaco Editor with JSON syntax highlighting
+- Drag-and-drop file upload area
+- File size validation (10MB limit)
+- Error display with line/column highlighting
+- "Clear" and "Format" buttons
+
+**Accessibility**:
+- ARIA labels for file upload zone
+- Keyboard shortcuts (Ctrl+V for paste, Ctrl+K for format)
+- Screen reader announcements for errors
+
+---
+
+#### [NEW] [ActionBar.tsx](file:///c:/Users/HP/Desktop/Personal%20Websites/json_hub/src/components/ActionBar/ActionBar.tsx)
+**Purpose**: Central toolbar with validation and formatting controls
+
+**Controls**:
+- "Validate" button (triggers parsing)
+- "Unescape" toggle (auto-enabled)
+- "Pretty Print" / "Minified" toggle
+- Status indicator (✓ Valid | ✗ Invalid)
+
+---
+
+#### [NEW] [DataGrid.tsx](file:///c:/Users/HP/Desktop/Personal%20Websites/json_hub/src/components/DataGrid/DataGrid.tsx)
+**Purpose**: Spreadsheet-like table preview with editing
+
+**Features**:
+- TanStack Table v8 with virtualization
+- Double-click to edit cells
+- Keyboard navigation (arrow keys, Tab, Enter)
+- Column sorting and filtering
+- Performance optimized for 100K+ rows
+
+**Accessibility**:
+- ARIA grid role
+- Row/column headers
+- Keyboard-only navigation support
+
+---
+
+#### [NEW] [ExportMenu.tsx](file:///c:/Users/HP/Desktop/Personal%20Websites/json_hub/src/components/ExportMenu/ExportMenu.tsx)
+**Purpose**: Download dropdown with format options
+
+**Options**:
+- CSV (`.csv`)
+- Excel (`.xlsx`)
+- Word (`.docx`)
+- HTML (`.html`)
+- Download All (`.zip`)
+
+**Features**:
+- Progress indicator for large exports
+- File naming with timestamp
+- Error handling for export failures
+
+---
+
+### Phase 3: Converter Engines
+
+#### [NEW] [jsonToCsv.ts](file:///c:/Users/HP/Desktop/Personal%20Websites/json_hub/src/lib/converters/jsonToCsv.ts)
+**Purpose**: Convert flat JSON to CSV with proper escaping
+
+**Logic**:
+- Escape quotes and commas
+- Handle newlines in cell values
+- UTF-8 BOM for Excel compatibility
+- Return Blob for download
+
+---
+
+#### [NEW] [jsonToXlsx.ts](file:///c:/Users/HP/Desktop/Personal%20Websites/json_hub/src/lib/converters/jsonToXlsx.ts)
+**Purpose**: Generate real Excel files using SheetJS
+
+**Logic**:
+- Create workbook with single sheet
+- Auto-size columns based on content
+- Apply header styling (bold, background color)
+- Return Blob for download
+
+---
+
+#### [NEW] [jsonToDocx.ts](file:///c:/Users/HP/Desktop/Personal%20Websites/json_hub/src/lib/converters/jsonToDocx.ts)
+**Purpose**: Generate Word document with table
+
+**Logic**:
+- Create table with headers
+- Apply basic styling
+- Return Blob for download
+
+---
+
+#### [NEW] [jsonToHtml.ts](file:///c:/Users/HP/Desktop/Personal%20Websites/json_hub/src/lib/converters/jsonToHtml.ts)
+**Purpose**: Generate HTML table with styling
+
+**Logic**:
+- Create semantic `<table>` with `<thead>` and `<tbody>`
+- Apply CSS for readability
+- Return HTML string
+
+---
+
+#### [NEW] [zipExporter.ts](file:///c:/Users/HP/Desktop/Personal%20Websites/json_hub/src/lib/converters/zipExporter.ts)
+**Purpose**: Bundle all formats into single ZIP
+
+**Logic**:
+- Use JSZip to create archive
+- Include CSV, Excel, JSON, HTML files
+- Return Blob for download
+
+---
+
+### Phase 4: Polish & Deploy
+
+#### [NEW] [service-worker.js](file:///c:/Users/HP/Desktop/Personal%20Websites/json_hub/public/service-worker.js)
+**Purpose**: Enable offline functionality
+
+**Caching Strategy**:
+- Cache static assets (JS, CSS, fonts)
+- Network-first for API calls (none in this app)
+- Fallback to cache on offline
+
+---
+
+#### [MODIFY] [next.config.js](file:///c:/Users/HP/Desktop/Personal%20Websites/json_hub/next.config.js)
+**Purpose**: Configure Next.js for production
+
+**Changes**:
+- Enable PWA support
+- Configure Monaco Editor webpack loader
+- Optimize bundle size
+
+---
+
+#### [NEW] [.github/workflows/ci.yml](file:///c:/Users/HP/Desktop/Personal%20Websites/json_hub/.github/workflows/ci.yml)
+**Purpose**: Automated testing on push
+
+**Jobs**:
+- Run Jest unit tests
+- Run Playwright E2E tests
+- Check TypeScript compilation
+- Lint with ESLint
+
+---
+
+## Verification Plan
+
+### Automated Tests
+
+#### Unit Tests (Jest)
+**Location**: `src/lib/**/*.test.ts`
+
+**Run Command**:
+```bash
+npm run test
+```
+
+**Coverage Target**: 80%+ on core logic
+
+**Test Suites**:
+
+1. **smartParse.test.ts**
+   - Valid JSON parsing
+   - Double-encoded JSON auto-unescape
+   - Triple-encoded JSON auto-unescape
+   - Malformed JSON error reporting
+   - Circular reference detection
+   - Large object handling (1MB+)
+   - Deep nesting (100+ levels)
+
+2. **flattener.test.ts**
+   - Simple flat objects
+   - Nested objects (dot notation)
+   - Arrays of objects (indexed columns)
+   - Mixed data types
+   - Schema inference from multiple rows
+   - Performance benchmark (100K rows in <2s)
+
+3. **jsonToCsv.test.ts**
+   - Basic CSV generation
+   - Quote escaping
+   - Comma escaping
+   - Newline handling
+   - UTF-8 BOM inclusion
+
+4. **jsonToXlsx.test.ts**
+   - Excel file generation
+   - Header styling
+   - Column auto-sizing
+   - Multi-row data
+
+5. **zipExporter.test.ts**
+   - ZIP file creation
+   - Multiple file inclusion
+   - File naming
+
+---
+
+#### E2E Tests (Playwright)
+**Location**: `e2e/**/*.spec.ts`
+
+**Run Command**:
+```bash
+npm run test:e2e
+```
+
+**Test Scenarios**:
+
+1. **Happy Path - Simple JSON**
+   - Upload valid JSON file
+   - Verify table preview displays correctly
+   - Download CSV and verify content
+   - Download Excel and verify content
+
+2. **Auto-Unescape Flow**
+   - Upload double-encoded JSON string
+   - Verify auto-unescape triggers
+   - Verify flattened data is correct
+
+3. **Error Handling**
+   - Upload malformed JSON
+   - Verify error message displays with line/column
+   - Fix JSON and retry
+   - Verify success
+
+4. **Large Dataset**
+   - Upload 10K row JSON file
+   - Verify table renders without freezing
+   - Verify virtualization works (only visible rows rendered)
+   - Download ZIP bundle
+
+5. **Mobile Responsiveness**
+   - Resize viewport to mobile size
+   - Verify tabs appear instead of panels
+   - Verify all functionality works on mobile
+
+6. **Cell Editing**
+   - Double-click cell in table
+   - Edit value
+   - Verify change persists in export
+
+7. **Keyboard Navigation**
+   - Navigate table with arrow keys
+   - Tab through form controls
+   - Verify all actions accessible via keyboard
+
+---
+
+### Manual Verification
+
+#### Real-World Data Testing
+**Tester**: User or developer
+
+**Steps**:
+1. Obtain messy real-world JSON files:
+   - Stripe API export
+   - Twitter API response
+   - Deeply nested configuration file
+2. Upload each file to the app
+3. Verify parsing succeeds
+4. Verify table preview is readable
+5. Download Excel and open in Microsoft Excel
+6. Verify data integrity
+
+---
+
+#### Accessibility Audit
+**Tool**: axe DevTools or Lighthouse
+
+**Steps**:
+1. Open app in Chrome DevTools
+2. Run Lighthouse accessibility audit
+3. Verify score is 90+
+4. Fix any identified issues
+5. Test keyboard-only navigation:
+   - Tab through all controls
+   - Use Enter/Space to activate buttons
+   - Navigate table with arrow keys
+6. Test with screen reader (NVDA or JAWS):
+   - Verify all labels are announced
+   - Verify table structure is clear
+
+---
+
+#### Performance Testing
+**Tool**: Chrome DevTools Performance tab
+
+**Steps**:
+1. Upload 100K row JSON file
+2. Record performance profile
+3. Verify table renders in <3 seconds
+4. Verify memory usage stays below 500MB
+5. Verify no memory leaks on repeated uploads
+
+---
+
+#### Browser Compatibility
+**Browsers**: Chrome, Firefox, Safari, Edge
+
+**Steps**:
+1. Test full workflow in each browser
+2. Verify Monaco Editor loads correctly
+3. Verify downloads work
+4. Verify mobile view works on iOS Safari and Chrome Android
+
+---
+
+### Deployment Verification
+
+#### Vercel Deployment
+**Steps**:
+1. Push code to GitHub
+2. Connect repository to Vercel
+3. Deploy to production
+4. Verify app loads at production URL
+5. Test full workflow on production
+
+---
+
+#### Error Monitoring Setup
+**Tool**: Sentry
+
+**Steps**:
+1. Create Sentry project
+2. Add Sentry SDK to Next.js app
+3. Deploy with Sentry integration
+4. Trigger test error
+5. Verify error appears in Sentry dashboard
+
+---
+
+## Success Criteria
+
+✅ All unit tests pass with 80%+ coverage  
+✅ All E2E tests pass  
+✅ Lighthouse accessibility score 90+  
+✅ App handles 100K row datasets without freezing  
+✅ Deployed to Vercel with zero hosting cost  
+✅ Error monitoring active in production  
+✅ Mobile-responsive design works on all devices  
+✅ Keyboard navigation fully functional  
+✅ Real-world messy JSON files parse successfully
+
+
+### docs/phase1_walkthrough.md
+# Phase 1 Completion Walkthrough
+
+**Date**: 2026-01-09  
+**Phase**: Core Logic (The "Brain")  
+**Status**: ✅ Complete
+
+---
+
+## Overview
+
+Phase 1 focused on building the foundational logic for JSON Hub - the parser and flattener modules that power the entire application. All objectives have been successfully completed with comprehensive test coverage and performance validation.
+
+---
+
+## What Was Built
+
+### 1. Project Infrastructure
+
+#### Next.js 14 Setup
+- ✅ TypeScript configuration with strict mode
+- ✅ Tailwind CSS with Shadcn/UI color system
+- ✅ App Router architecture for modern React patterns
+- ✅ Static export configuration for $0 hosting
+
+#### Testing Framework
+- ✅ Jest configured with 80% coverage threshold
+- ✅ Playwright configured for E2E testing (3 browsers)
+- ✅ Testing Library for React component testing
+
+#### Dependencies Installed
+- 722 packages including:
+  - `next` 14.2.35
+  - `react` 18.3.0
+  - `zustand` 4.5.0
+  - `@tanstack/react-table` 8.20.0
+  - `xlsx` 0.18.5
+  - `jszip` 3.10.1
+
+---
+
+### 2. smartParse Module
+
+**File**: [lib/parsers/smartParse.ts](file:///c:/Users/HP/Desktop/Personal%20Websites/json_hub/lib/parsers/smartParse.ts)
+
+#### Features Implemented
+- ✅ JSON validation with detailed error reporting
+- ✅ Auto-unescape for double/triple-encoded JSON strings
+- ✅ Circular reference detection
+- ✅ Line and column error information
+- ✅ Recursion depth limiting (max 10 levels)
+
+#### Test Results
+```
+✓ 20/20 tests passing
+✓ Coverage: 100% of core functionality
+✓ Performance: Handles large objects (10K+ keys) efficiently
+```
+
+#### Key Test Cases
+- Valid JSON objects and arrays
+- Double-encoded JSON: `"{\"key\":\"value\"}"` → `{key: "value"}`
+- Triple-encoded JSON with recursive parsing
+- Malformed JSON with detailed error messages
+- Empty input and whitespace handling
+- Deeply nested objects (100+ levels)
+- Large objects (10,000 keys)
+- Special characters in strings
+- Circular reference detection
+
+---
+
+### 3. flattener Module
+
+**File**: [lib/parsers/flattener.ts](file:///c:/Users/HP/Desktop/Personal%20Websites/json_hub/lib/parsers/flattener.ts)
+
+#### Features Implemented
+- ✅ Recursive object flattening with dot notation
+- ✅ Array handling with indexed columns (`items.0`, `items.1`)
+- ✅ Schema inference from first N rows
+- ✅ Missing column filling with `null`
+- ✅ Circular reference handling
+- ✅ Unflatten utility for reversing the process
+
+#### Test Results
+```
+✓ 21/21 tests passing
+✓ Performance: 1,000 rows in < 1 second
+✓ Handles deeply nested structures (10+ levels)
+```
+
+#### Key Test Cases
+- Simple flat objects
+- Nested objects: `{user: {name: "John"}}` → `{"user.name": "John"}`
+- Arrays of objects with consistent schema
+- Nested arrays with indexed columns
+- Mixed data types (strings, numbers, booleans, null)
+- Missing columns filled with null
+- Deeply nested objects (4+ levels)
+- Large datasets (1,000 rows)
+- Circular references
+- Special characters in keys
+
+#### Example Transformation
+
+**Input**:
+```json
+{
+  "user": {
+    "name": "John",
+    "address": {
+      "city": "NYC",
+      "zip": "10001"
+    }
+  },
+  "items": ["apple", "banana"]
+}
+```
+
+**Output**:
+```json
+{
+  "user.name": "John",
+  "user.address.city": "NYC",
+  "user.address.zip": "10001",
+  "items.0": "apple",
+  "items.1": "banana"
+}
+```
+
+---
+
+### 4. Zustand Store
+
+**File**: [lib/store/store.ts](file:///c:/Users/HP/Desktop/Personal%20Websites/json_hub/lib/store/store.ts)
+
+#### State Management
+- ✅ Input state (raw JSON, parse status, errors)
+- ✅ Processed data (parsed JSON, flat data, schema)
+- ✅ UI state (active tab, format selection, loading)
+- ✅ Configuration (pretty print, row limit, file size limit)
+
+#### Actions Implemented
+- `setRawInput()` - Update raw JSON input
+- `parseInput()` - Validate and parse JSON
+- `flattenData()` - Flatten parsed data
+- `updateCell()` - Edit cell values in table
+- `exportData()` - Export to various formats (placeholder)
+- `resetState()` - Clear all state
+- `setActiveTab()` - Switch between tabs
+- `setSelectedFormat()` - Select export format
+- `setPrettyPrint()` - Toggle JSON formatting
+
+#### Integration
+- ✅ Integrated with smartParse module
+- ✅ Integrated with flattener module
+- ✅ Devtools middleware for debugging
+- ✅ TypeScript types for all state and actions
+
+---
+
+## Validation Results
+
+### Build Verification
+```bash
+npm run build
+```
+**Result**: ✅ Success
+- Compiled successfully
+- Linting passed
+- Type checking passed
+- Static pages generated (4/4)
+- Bundle size: 87.5 kB (First Load JS)
+
+### Test Suite
+```bash
+npm test
+```
+**Result**: ✅ All Passing
+```
+Test Suites: 2 passed, 2 total
+Tests:       41 passed, 41 total
+Time:        2.175 s
+```
+
+**Coverage**:
+- smartParse: 100% (20/20 tests)
+- flattener: 100% (21/21 tests)
+
+### Performance Benchmarks
+
+#### smartParse Performance
+- Small JSON (< 1KB): < 1ms
+- Medium JSON (10KB): < 10ms
+- Large JSON (1MB): < 100ms
+- 10,000 key object: < 50ms
+
+#### flattener Performance
+- 100 rows: < 50ms
+- 1,000 rows: < 500ms ✅ (< 1s requirement met)
+- 10,000 rows: ~3s (within acceptable range)
+
+---
+
+## Git Commits
+
+### Commit History
+1. **feat: Initialize Next.js project with smartParse module**
+   - Set up Next.js 14 with TypeScript
+   - Created smartParse with auto-unescape logic
+   - 20/20 tests passing
+
+2. **feat: Add flattener module with comprehensive tests**
+   - Recursive object flattening with dot notation
+   - 21/21 tests passing
+   - Performance benchmarks
+
+3. **feat: Add Zustand store for global state management**
+   - Created store with input state, parsed data, flat data
+   - Implemented actions for parsing, flattening, cell updates
+   - Build successful
+
+4. **docs: Update project status for Phase 1 completion**
+   - Marked Phase 1 as complete
+   - Updated milestones and next steps
+
+---
+
+## Success Criteria Met
+
+### From Implementation Plan
+
+✅ **All unit tests pass with 80%+ coverage**  
+→ Achieved 100% coverage (41/41 tests passing)
+
+✅ **Build compiles successfully**  
+→ Next.js build successful, TypeScript compilation passing
+
+✅ **Performance requirements met**  
+→ 1,000 rows flatten in < 1 second
+
+✅ **Error handling implemented**  
+→ Detailed error messages with line/column information
+
+✅ **Edge cases handled**  
+→ Circular references, empty input, deeply nested structures
+
+✅ **Code committed to Git**  
+→ 4 commits with descriptive messages
+
+---
+
+## Technical Highlights
+
+### Auto-Unescape Logic
+The smartParse module intelligently detects double/triple-encoded JSON strings and automatically unescapes them:
+
+```typescript
+// Input: "{\"name\":\"John\"}"
+// Output: {name: "John"}
+```
+
+This eliminates manual string manipulation for users dealing with API responses that encode JSON multiple times.
+
+### Dot Notation Flattening
+The flattener module converts nested objects into flat spreadsheet rows using intuitive dot notation:
+
+```typescript
+// Input: {user: {address: {city: "NYC"}}}
+// Output: {"user.address.city": "NYC"}
+```
+
+This makes deeply nested JSON structures easily viewable and editable in Excel/CSV format.
+
+### Performance Optimization
+Both modules are optimized for large datasets:
+- Memoization for repeated structures
+- Efficient recursion with depth limits
+- Minimal memory allocation
+- Tested with 10,000+ row datasets
+
+---
+
+## Next Steps (Phase 2)
+
+With the core logic complete, Phase 2 will focus on building the user interface:
+
+1. **Shadcn/UI Setup** - Install and configure component library
+2. **JsonEditor Component** - Monaco Editor integration with drag-and-drop
+3. **DataGrid Component** - TanStack Table with virtualization
+4. **ActionBar Component** - Validation controls and formatting toggles
+5. **ExportMenu Component** - Download dropdown with format options
+
+---
+
+## Files Created
+
+### Core Modules
+- [lib/parsers/smartParse.ts](file:///c:/Users/HP/Desktop/Personal%20Websites/json_hub/lib/parsers/smartParse.ts) - JSON validator with auto-unescape
+- [lib/parsers/smartParse.test.ts](file:///c:/Users/HP/Desktop/Personal%20Websites/json_hub/lib/parsers/smartParse.test.ts) - 20 test cases
+- [lib/parsers/flattener.ts](file:///c:/Users/HP/Desktop/Personal%20Websites/json_hub/lib/parsers/flattener.ts) - Recursive flattener
+- [lib/parsers/flattener.test.ts](file:///c:/Users/HP/Desktop/Personal%20Websites/json_hub/lib/parsers/flattener.test.ts) - 21 test cases
+- [lib/store/store.ts](file:///c:/Users/HP/Desktop/Personal%20Websites/json_hub/lib/store/store.ts) - Zustand global state
+
+### Configuration
+- [package.json](file:///c:/Users/HP/Desktop/Personal%20Websites/json_hub/package.json) - Dependencies and scripts
+- [tsconfig.json](file:///c:/Users/HP/Desktop/Personal%20Websites/json_hub/tsconfig.json) - TypeScript config
+- [next.config.js](file:///c:/Users/HP/Desktop/Personal%20Websites/json_hub/next.config.js) - Next.js config
+- [tailwind.config.js](file:///c:/Users/HP/Desktop/Personal%20Websites/json_hub/tailwind.config.js) - Tailwind config
+- [jest.config.js](file:///c:/Users/HP/Desktop/Personal%20Websites/json_hub/jest.config.js) - Jest config
+- [playwright.config.ts](file:///c:/Users/HP/Desktop/Personal%20Websites/json_hub/playwright.config.ts) - Playwright config
+
+### Documentation
+- [docs/task.md](file:///c:/Users/HP/Desktop/Personal%20Websites/json_hub/docs/task.md) - Task breakdown (Phase 1 complete)
+- [docs/project_status.md](file:///c:/Users/HP/Desktop/Personal%20Websites/json_hub/docs/project_status.md) - Current status
+- [docs/implementation_plan.md](file:///c:/Users/HP/Desktop/Personal%20Websites/json_hub/docs/implementation_plan.md) - Technical plan
+- [docs/architecture.md](file:///c:/Users/HP/Desktop/Personal%20Websites/json_hub/docs/architecture.md) - System design
+
+---
+
+## Conclusion
+
+Phase 1 has been successfully completed with all objectives met:
+- ✅ Project infrastructure set up
+- ✅ Core parser modules implemented and tested
+- ✅ State management configured
+- ✅ All builds passing
+- ✅ Comprehensive test coverage
+- ✅ Performance requirements met
+- ✅ Code committed to Git
+
+The foundation is solid and ready for Phase 2 UI construction.
+
+
+### docs/project_status.md
+# JSON Hub - Project Status
+
+**Last Updated**: 2026-01-14
+**Current Phase**: Phase 5: Post-Launch Enhancements
+**Overall Progress**: 100% (Core Features Complete + Pro Features Added)
+
+---
+
+## 📊 Phase Status
+
+| Phase | Status | Progress | Last Updated |
+|-------|--------|----------|--------------|
+| Phase 1: Core Logic | ✅ Complete | 3/3 modules | 2026-01-09 |
+| Phase 2: UI Construction | ✅ Complete | 5/5 components | 2026-01-09 |
+| Phase 3: Converter Engines | ✅ Complete | 4/4 converters | 2026-01-09 |
+| Phase 4: Polish & Deploy | ✅ Complete | 4/4 tasks | 2026-01-09 |
+| Phase 5: Pro Features | ✅ Complete | 3/3 tasks | 2026-01-14 |
+
+**Legend**: ⚪ Pending | 🔵 In Progress | ✅ Complete | ⚠️ Blocked
+
+---
+
+## ✅ Completed Milestones
+
+### Planning Phase (2026-01-09)
+- ✅ Analyzed project requirements from `project_plan.txt`
+- ✅ Created comprehensive task breakdown in `task.md`
+- ✅ Documented implementation plan with technical specifications
+- ✅ Defined verification strategy (Jest + Playwright + manual testing)
+- ✅ Established success criteria
+
+### Phase 1: Core Logic (2026-01-09)
+- ✅ Initialized Next.js 14 with TypeScript and App Router
+- ✅ Configured Tailwind CSS with Shadcn/UI color system
+- ✅ Set up Jest with 80% coverage threshold
+- ✅ Set up Playwright for E2E testing
+- ✅ Installed all core dependencies (722 packages)
+- ✅ Created directory structure (app, components, lib, types, e2e)
+- ✅ **smartParse Module**: Auto-unescape logic, circular reference detection, 20/20 tests passing
+- ✅ **flattener Module**: Recursive flattening, schema inference, 21/21 tests passing
+- ✅ **Zustand Store**: Global state management with devtools
+- ✅ All builds successful, TypeScript compilation passing
+
+### Phase 5: Pro Features (2026-01-14)
+- ✅ **Unified Editing**: Enabled inline editing in Flat, Table, and Nested views
+- ✅ **Column Management**: Implemented Drag & Drop header reordering and visibility toggles
+- ✅ **State Management**: Added Undo/Redo support with `zundo`
+- ✅ **Verification**: Automated tests for View Sync and Export consistency
+
+---
+
+## 🔄 Current Work
+
+### Active Tasks
+- None (awaiting user approval to begin Phase 1)
+
+### In Progress
+- None
+
+---
+
+## 🚧 Blockers & Issues
+
+### Current Blockers
+- None
+
+### Resolved Issues
+- None
+
+---
+
+## 📝 Recent Commits
+
+### Latest Commits
+1. **feat: Add Zustand store for global state management** (2026-01-09)
+   - Created store with input state, parsed data, and flat data
+   - Implemented actions for parsing, flattening, and cell updates
+   - Build successful
+
+2. **feat: Add flattener module with comprehensive tests** (2026-01-09)
+   - Recursive object flattening with dot notation
+   - 21/21 tests passing, performance benchmarks
+
+3. **feat: Initialize Next.js project with smartParse module** (2026-01-09)
+   - Set up Next.js 14 with TypeScript and Tailwind CSS
+   - Created smartParse with auto-unescape logic
+   - 20/20 tests passing
+
+---
+
+## 🎯 Next Steps
+
+### Immediate Actions (Phase 2: UI Construction)
+1. **Set up Shadcn/UI Components**
+   - Initialize Shadcn/UI CLI
+   - Install base components (Button, Card, Toast, Resizable)
+   - Create component library structure
+
+2. **Build JsonEditor Component**
+   - Integrate Monaco Editor for syntax highlighting
+   - Add drag-and-drop file upload
+   - Implement error display with line/column highlighting
+
+3. **Build DataGrid Component**
+   - Integrate TanStack Table with virtualization
+   - Implement cell editing
+   - Add keyboard navigation
+
+### Upcoming (Phase 3)
+- CSV export module
+- Excel export module
+- ZIP bundling
+
+---
+
+## 📈 Metrics
+
+### Code Quality
+- **Unit Test Coverage**: N/A (not started)
+- **E2E Test Coverage**: N/A (not started)
+- **TypeScript Errors**: N/A (not started)
+- **Lint Warnings**: N/A (not started)
+
+### Performance
+- **Bundle Size**: N/A (not started)
+- **Lighthouse Score**: N/A (not started)
+- **Table Render Time (100K rows)**: N/A (not started)
+
+---
+
+## 🔗 Key Documents
+
+- [Task Breakdown](file:///C:/Users/HP/.gemini/antigravity/brain/064b2b41-7d87-4b36-b69b-6ff42f9c5fed/task.md) - Detailed checklist of all tasks
+- [Implementation Plan](file:///C:/Users/HP/.gemini/antigravity/brain/064b2b41-7d87-4b36-b69b-6ff42f9c5fed/implementation_plan.md) - Technical specifications and verification strategy
+- [Project Plan](file:///c:/Users/HP/Desktop/Personal%20Websites/json_hub/project_plan.txt) - Original project requirements
+
+---
+
+## 💡 Notes
+
+### Design Decisions
+- **Client-side only**: All processing happens in browser for $0 hosting and data privacy
+- **Zustand over Redux**: Simpler API, less boilerplate for this use case
+- **TanStack Table**: Better virtualization support than ag-grid for large datasets
+- **Monaco Editor**: Professional code editing experience
+
+### Technical Considerations
+- File size limit set to 10MB to prevent browser memory issues
+- Table virtualization critical for 100K+ row performance
+- Service Worker for offline support and instant loading
+- WCAG 2.1 AA compliance from the start, not retrofitted
+
+### Risk Mitigation
+- Comprehensive testing before each commit (per agent.md guidelines)
+- Performance benchmarks for large datasets
+- Browser compatibility testing across Chrome, Firefox, Safari, Edge
+- Real-world data testing with messy JSON files
+
+---
+
+## 📅 Timeline
+
+### Week 1: Core Logic (Estimated)
+- Day 1-2: Project setup and configuration
+- Day 3-4: Validator module + tests
+- Day 5-7: Flattener module + tests
+
+### Week 2: UI Construction (Estimated)
+- Day 1-2: Shadcn/UI setup and base layout
+- Day 3-4: Monaco Editor integration
+- Day 5-7: Table preview with virtualization
+
+### Week 3: Converters (Estimated)
+- Day 1-3: CSV and Excel exporters
+- Day 4-5: Word and HTML exporters
+- Day 6-7: ZIP bundling and export UI
+
+### Week 4: Polish & Deploy (Estimated)
+- Day 1-2: Service Worker and offline support
+- Day 3-5: Comprehensive testing and bug fixes
+- Day 6-7: Deployment and monitoring setup
+
+---
+
+*This document is updated after each significant milestone or phase completion.*
+
+
+### docs/task.md
+# JSON Hub - Task Breakdown
+
+## Phase 1: Core Logic (The "Brain")
+- [x] Project Setup
+  - [x] Initialize Next.js with TypeScript
+  - [x] Configure Tailwind CSS + Shadcn/UI
+  - [x] Set up Jest for unit testing
+  - [x] Set up Playwright/Cypress for E2E testing
+  - [x] Configure Zustand for state management
+  - [x] Install core dependencies (monaco-editor, tanstack-table, xlsx, jszip)
+  - [x] Create initial directory structure
+  - [x] Initialize Git repository and commit initial setup
+
+- [x] Validator Module (`smartParse.ts`)
+  - [x] Implement `validateAndParse(input)` function
+  - [x] Add auto-unescape logic for double-encoded JSON
+  - [x] Use standard error handling for detailed error reporting
+  - [x] Handle edge cases (circular references, large objects, deeply nested structures)
+  - [x] Write comprehensive unit tests (valid JSON, escaped JSON, malformed input, edge cases)
+  - [x] Achieve 100% test coverage (20/20 tests passing)
+  - [x] Commit validated module
+
+- [x] Flattener Module (`flattener.ts`)
+  - [x] Implement recursive flattening logic for nested objects
+  - [x] Add schema inference (scan first 50 rows for unique headers)
+  - [x] Optimize for performance with large datasets (100K+ rows)
+  - [x] Handle arrays, mixed types, and circular references
+  - [x] Write comprehensive unit tests
+  - [x] Performance benchmark with large datasets (1000 rows < 1s)
+  - [x] Commit validated module
+
+## Phase 2: UI Construction (The "Shell")
+- [x] Setup Shadcn/UI Components
+  - [x] Install and configure Shadcn/UI
+  - [x] Set up Buttons, Toasts, Cards, Resizable Panels
+  - [x] Create base layout structure
+
+- [x] Input Component (Pane A)
+  - [x] Integrate Monaco Editor for syntax highlighting
+  - [x] Add file upload capability
+  - [x] Implement error display with line/column numbers
+  - [x] Test with various file sizes and formats
+  - [x] Commit validated component
+
+- [x] Action Bar (Pane B)
+  - [x] Create Parse & Flatten button
+  - [x] Add Clear button
+  - [x] Add success/error status display
+  - [x] Test all controls
+  - [x] Commit validated component
+
+- [x] Table Preview (Pane C)
+  - [x] Integrate TanStack Table
+  - [x] Display flattened data in spreadsheet view
+  - [x] Implement cell editing (double-click to edit)
+  - [x] Add row/column count display
+  - [x] Commit validated component
+
+- [x] Mobile Responsiveness
+  - [x] Create resizable panel layout
+  - [x] Test on various screen sizes
+  - [x] Ensure interactions work properly
+  - [x] Commit validated responsive design
+
+## Phase 3: Converter Engines (The "Output")
+- [x] Export Modules
+  - [x] Implement `toCSV(data)` with proper escaping
+  - [x] Write unit tests for CSV export
+  - [x] Implement `toExcel(data)` using xlsx library
+  - [x] Write unit tests for Excel export
+  - [x] Implement `toHTML(data)` for HTML table generation
+  - [x] Write unit tests for HTML export
+  - [x] Commit validated export modules
+
+- [x] Zip All Feature
+  - [x] Implement JSZip bundling for all formats
+  - [x] Create `export.zip` with CSV, Excel, HTML, JSON files
+  - [x] Test with large datasets
+  - [x] Commit validated feature
+
+- [x] Export UI
+  - [x] Create download dropdown menu
+  - [x] Add individual format download buttons
+  - [x] Add "Download All" button
+  - [x] Test all download options
+  - [x] Commit validated UI
+
+## Phase 4: Polish & Deploy
+- [ ] Performance Optimization
+  - [ ] Implement file size limits (10MB cap)
+  - [ ] Add graceful handling for oversized files
+  - [ ] Optimize table rendering performance
+  - [ ] Test memory usage with large files
+  - [ ] Commit optimizations
+
+- [ ] Offline Support
+  - [ ] Add Service Worker for offline functionality
+  - [ ] Test offline loading
+  - [ ] Commit Service Worker
+
+- [ ] Comprehensive Testing
+  - [ ] Complete unit test suite (80%+ coverage)
+  - [ ] E2E tests for full workflows (upload → preview → download)
+  - [ ] Test with real-world messy data (Stripe exports, Twitter API, nested structures)
+  - [ ] Run WCAG compliance checks
+  - [ ] Test keyboard-only navigation
+  - [ ] Fix any identified bugs
+  - [ ] Commit test suite and fixes
+
+- [ ] Deployment
+  - [ ] Deploy to Vercel (Free Tier)
+  - [ ] Set up Sentry for error monitoring
+  - [ ] Verify production deployment
+  - [ ] Document deployment process
+
+- [ ] Documentation
+  - [ ] Create user documentation
+  - [ ] Create developer documentation
+  - [ ] Update README with usage instructions
+  - [ ] Commit documentation
+
+
+---
+
+## coddle_coddle
+**Description**: None
+**URL**: https://github.com/theGoodB0rg/coddle_coddle
+### README
+# Coddle
+
+Daily Coding Challenge. Guess the output of a new code snippet every day at 00:00 UTC.
+
+**Status:** In Development (v2.0 Pivot)
+
+## Preview
+
+| Challenge | Wrong Answer | Correct Answer |
+|---|---|---|
+| ![Initial state](docs/screenshots/01-initial-state.png) | ![Wrong answer](docs/screenshots/02-wrong-answer.png) | ![Win modal](docs/screenshots/03-win-modal.png) |
+
+### Game Flow
+
+![Game flow recording](docs/screenshots/game-flow.webp)
+
+## Tech Stack
+
+- **Framework:** Nuxt 3 (Vue 3 + SSR)
+- **Styling:** Tailwind CSS
+- **Language:** TypeScript
+- **Hosting:** Vercel / GitHub Pages
+
+## Quick Start
+
+```bash
+# Install dependencies
+pnpm install
+
+# Validate challenge data
+pnpm run validate-challenges
+
+# Sync the sitemap before running locally
+pnpm run gen-sitemap
+
+# Start dev server
+pnpm run dev
+```
+
+### Build
+
+Build for production:
+
+```bash
+pnpm run build
+```
+
+## Project Structure
+
+- `/src/components` – Vue components (`CodeSnippet`, `OptionGrid`, `AttemptTracker`, `Explanation`)
+- `/src/composables` – Reusable logic (`useChallenge`, `useShare`, `useStats`)
+- `/src/utils` – Pure functions (`challengeBank`, `date`, `seo`)
+- `/src/static-data` – Challenge data (`challenges.json`)
+- `/scripts` – Build & validation scripts
+- `/docs` – Documentation & screenshots
+
+## Available Scripts
+
+| Command | Description |
+| --- | --- |
+| `pnpm run dev` | Launch Nuxt in development mode with HMR |
+| `pnpm run build` | Create the production build |
+| `pnpm run lint` | ESLint across `.ts`, `.js`, and `.vue` files |
+| `pnpm run typecheck` | Vue/TypeScript type checking (no emit) |
+| `pnpm run test` | Run Vitest unit tests |
+| `pnpm run validate-challenges` | Assert structure and quality of challenges |
+| `pnpm run gen-sitemap` | Generate `public/sitemap.xml` from Nuxt routes |
+| `pnpm run deploy:vercel` | Deploy the prebuilt bundle to Vercel |
+
+## Features
+
+- Daily "Guess the Output" coding challenge
+- 30 hand-curated JavaScript challenges
+- Syntax-highlighted code snippets
+- 3-attempt multiple-choice answers
+- Detailed explanations after each challenge
+- Share results with visual score
+- Mobile-first responsive design
+- Dark mode
+- LocalStorage persistence for stats and streaks
+- Server-rendered SEO (meta tags, OG, JSON-LD, sitemap)
+
+## Roadmap
+
+See [ROADMAP.md](./ROADMAP.md) for detailed version plans.
+
+## License
+
+MIT License
+
+## Contact
+
+- GitHub: [@theGoodB0rg](https://github.com/theGoodB0rg)
+
+
+---
+
+## smartBackgroundClean
+**Description**: None
+**URL**: https://github.com/theGoodB0rg/smartBackgroundClean
+### README
+# CleanCut - AI Background Cleaner
+
+CleanCut is a powerful, locally-running web application for removing image backgrounds with high precision. It uses the state-of-the-art **BriaAI RMBG-1.4** model to ensure crisp edges and handles complex details like hair and transparent objects effortlessly.
+
+![Editor Screenshot](https://placehold.co/600x400?text=App+Screenshot+Placeholder)
+
+## Distribution Overview
+- Bundled Python runtime (no system Python required in packaged app).
+- Backend binds to loopback only and chooses a random free port per launch; Electron passes the port + an auth token to the renderer.
+- Local model served from disk (`backend/local_model`); offline by default (`TRANSFORMERS_OFFLINE=1`, `HF_HUB_OFFLINE=1`).
+- Installer output: `electron-app/dist/CleanCut Pro Setup 1.0.0.exe`.
+
+## Quick Start (Unified Setup)
+From the repo root:
+```bash
+python scripts/setup.py
+```
+- Creates backend venv (`backend/.venv`), installs deps, downloads the RMBG model.
+- Installs frontend and Electron deps.
+- Use `--pack` to build the installer (`npm run dist`).
+- Flags: `--skip-model`, `--skip-frontend`, `--skip-electron`, `--force-venv`.
+
+## Features
+
+-   **AI Background Removal**: Instant, high-quality background removal using the BriaAI RMBG-1.4 model.
+-   **Privacy First**: All processing happens locally on your machine. No images are uploaded to the cloud.
+-   **Smart Editor**:
+    -   **Crop**: detailed cropping before processing.
+    -   **Rotate**: Fix image orientation.
+    -   **Zoom & Pan**: Inspect details closely.
+    -   **Compare**: Hold to verify the original vs. processed image.
+-   **Background Application**:
+    -   Transparent (default)
+    -   Solid Colors (White, Black)
+    -   Custom Color Picker
+-   **High Quality Download**: Export full-resolution PNG images.
+
+## Technology Stack
+
+-   **Frontend**: Next.js 14, React, TypeScript, Tailwind CSS
+-   **Backend**: Python, FastAPI, Transformers (PyTorch)
+-   **AI Model**: [briaai/RMBG-1.4](https://huggingface.co/briaai/RMBG-1.4)
+
+## Prerequisites (dev)
+
+-   **Node.js** (v18 or higher)
+-   **Python** (v3.10 or higher)
+-   **Git**
+
+## Installation
+
+1.  **Clone the repository**:
+    ```bash
+    git clone https://github.com/theGoodB0rg/smartBackgroundClean.git
+    cd smartBackgroundClean
+    ```
+
+2.  **Setup Backend**:
+    ```bash
+    cd backend
+    python -m venv venv
+    
+    # Windows
+    .\venv\Scripts\activate
+    # Linux/Mac
+    # source venv/bin/activate
+    
+    pip install -r requirements.txt
+    
+    # Optional: Pre-download the model
+    python download_model.py
+    ```
+
+3.  **Setup Frontend**:
+    ```bash
+    cd ../frontend
+    npm install
+    ```
+
+## Running the App
+
+The easiest way to run the application is using the provided start script:
+
+**Windows**:
+Double-click `start_app.bat` or run it from the terminal:
+```bash
+.\start_app.bat
+```
+
+**Manual Start**:
+
+1.  **Backend** (Terminal 1):
+    ```bash
+    cd backend
+    .\venv\Scripts\activate
+    uvicorn main:app --reload --port 8000
+    ```
+
+2.  **Frontend** (Terminal 2):
+    ```bash
+    cd frontend
+    npm run dev
+    ```
+
+Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+## Building the Packaged App (Electron + Bundled Runtime)
+From `electron-app/`:
+1) Ensure backend runtime + app are staged (already in repo): `backend/runtime`, `backend/app`, `backend/local_model`.
+2) Build installer: `npm run dist`
+   - Outputs to `electron-app/dist/CleanCut Pro Setup 1.0.0.exe`.
+   - During launch, Electron selects a random loopback port and generates an auth token passed to the renderer; CORS is limited to local origins.
+
+## Security Notes
+- Backend binds to `127.0.0.1` only; random port per launch reduces clashes.
+- Requests must include `X-CleanCut-Key` when the launcher sets a token (handled automatically by the packaged app).
+- CORS restricted to local origins; no open `*`.
+- Logs: `%APPDATA%\CleanCut Pro\backend-runtime.log` (packaged) for diagnostics.
+
+## Troubleshooting
+
+-   **500 Error on Upload**: Ensure the backend dependencies are installed correctly and the model downloaded successfully.
+-   **Hydration Error**: This is usually harmless and caused by browser extensions.
+-   **Model Download**: The first run might take a moment to download the RMBG-1.4 model (~170MB) if not already cached.
+
+## License
+
+MIT
+
+
+### docs/monetization.md
+# CleanCut Monetization Strategy & Business Blueprint
+
+## 1. Executive Summary
+**CleanCut** is positioning itself as the "Anti-SaaS" alternative in the background removal market. While competitors charge recurring subscriptions or per-image usage fees (API credits), CleanCut offers a **one-time purchase** desktop application that processes images **100% locally**.
+
+**Core Value Proposition:**
+*   **Unmatched Privacy:** No image ever leaves the user's device. Critical for NDAs, legal, and medical use cases.
+*   **Zero Recurring Costs:** Pay once, process forever. No "credits" to run out of.
+*   **Offline Reliability:** Works without internet.
+
+---
+
+## 2. Competitive Analysis
+
+| Feature | Remove.bg / Slazzer | Adobe Express / Canva | **CleanCut (Us)** |
+| :--- | :--- | :--- | :--- |
+| **Pricing Model** | Subscription / Pay-per-credit | Subscription (SaaS) | **One-Time License** |
+| **Cost per 1k Images** | ~$200 - $400/mo | Included in ~$20/mo | **$0** (after purchase) |
+| **Privacy** | Cloud Upload (Risk) | Cloud Upload (Risk) | **100% Local (Safe)** |
+| **Speed** | Network Dependent | Network Dependent | **Local GPU/CPU** |
+| **Max Resolution** | Often Limited (unless paid) | High | **Unlimited** (Hardware dependent) |
+
+**Conclusion:** We cannot compete on "convenience" for the casual user who edits 1 photo a year. We **win** by targeting the "Prosumer" and "SMB" market who process 100+ images/month and hate subscriptions.
+
+---
+
+## 3. Pricing Strategy: "Fair Software"
+
+### A. The Product: CleanCut Pro (Desktop)
+*   **Price Point:** $39.00 USD (Launch Price $29.00).
+*   **License Type:** Lifetime License (per version) + 1 Year Updates.
+*   **Distribution:**
+    *   **Direct:** LemonSqueezy / Gumroad (Key delivery).
+    *   **App Stores:** Windows Store / Mac App Store (30% cut, but higher trust).
+
+### B. The Free Version (Lead Magnet)
+*   **Functionality:**
+    *   Unlimited processing.
+    *   **Limitation:** Maximum 1000px export resolution.
+    *   **Limitation:** No Batch Processing (Folder capability disabled).
+*   **Upsell Trigger:** "Unlock 4K Export & Batch Mode".
+
+### C. Enterprise / Volume Licensing
+*   **Target:** Real Estate Agencies, Car Dealerships, E-commerce operations.
+*   **Offer:** Bulk seat keys + MSI Installer for IT deployment.
+*   **Price:** Negotiated (e.g., $500 for 20 seats).
+
+---
+
+## 4. Marketing Angles "Domination"
+
+1.  **"Stop Renting Your Tools"**: Attack the SaaS fatigue.
+2.  **"Your Data is Yours"**: Fear-based marketing regarding AI data scraping.
+3.  **"Infinite ROI"**: Show a calculator comparing Remove.bg costs vs CleanCut.
+
+---
+
+## 5. Implementation Roadmap (Monetization Features)
+
+1.  **License Key System**:
+    *   Simple offline check: `SHA256(Email + Salt) == Key` (Easier to crack but good enough for MVP).
+    *   OR Online Activation: Key check against LemonSqueezy API (More secure, requires internet once).
+    *   *Decision:* **Online Activation** to prevent rampant piracy on day 1.
+
+2.  **Obfuscation**:
+    *   Critical. Python byte-code is easy to reverse. We must use **PyArmor** to protect the licensing logic and core AI pipeline integration.
+
+3.  **Free vs Pro Toggle**:
+    *   Codebase must support a global `isPro` state that disables specific UI elements (Batch Button, Resolution Selector).
+
+
+### docs/packaging.md
+# Packaging Guide for CleanCut Pro
+
+This guide explains how to bundle the application into a standalone installer (`.exe`, `.dmg`).
+
+## Prerequisites
+
+- Node.js (v18+)
+- Python (v3.10+)
+- PyArmor (Optional, for obfuscation)
+
+## Step 1: Build the Backend
+
+Compile the Python API into a standalone executable.
+
+1.  **Obfuscate (Optional)**:
+    ```bash
+    python build_scripts/obfuscate.py
+    ```
+
+2.  **Compile to Exe**:
+    Use PyInstaller to bundle dependencies (Torch, Pillow, etc.).
+    ```bash
+    cd backend
+    pyinstaller --name "main" --onefile --distpath ../electron-app/backend_dist main.py
+    ```
+    *Note: You may need to add `--hidden-import` flags for `uvicorn`, `fastapi`, and `transformers` depending on your environment.*
+
+## Step 2: Build the Frontend
+
+Export the Next.js app as a static site.
+
+```bash
+cd frontend
+npm run build
+```
+The output will be in `frontend/out` (Ensure `output: 'export'` is set in `next.config.mjs` if not using the dev server proxy).
+*Current Setup uses `localhost:3000` for development flexiblity, but for production, you should serve static files from the electron app.*
+
+## Step 3: Package with Electron
+
+Bundle everything into an installer.
+
+```bash
+cd electron-app
+npm install
+npm run dist
+```
+
+## Output
+
+The installer (e.g., `CleanCut-Setup-1.0.0.exe`) will be generated in `electron-app/dist`.
+
+
+---
+
+## Universal_Undo
+**Description**: None
+**URL**: https://github.com/theGoodB0rg/Universal_Undo
+### README
+# Universal Undo
+
+Universal Undo is a professional-grade Android productivity utility that provides system-wide "Undo" (Ctrl+Z) functionality for text input fields. By leveraging Android Accessibility Services, it maintains a secure, volatile history of text states, allowing users to restore accidentally deleted or modified text through intuitive gestures and a detailed timeline view.
+
+## Core Features
+
+### System-Wide Undo Support
+*   **Accessibility Integration**: Operates across most Android applications by monitoring text change events.
+*   **Context-Aware**: Recognizes individual input fields to ensure undo operations are applied accurately to the focused area.
+
+### Advanced Triggers
+*   **Shake-to-Undo**: A native-feeling physical gesture trigger.
+*   **Haptic Feedback**: Provides physical confirmation via subtle vibration when an undo operation is successful.
+
+### Productivity Tools
+*   **Undo Timeline**: A comprehensive "Time Machine" interface allowing users to review and restore specific historical text states with timestamps.
+*   **Productivity Dashboard**: Real-time analytics tracking characters saved and successful undo operations performed.
+*   **Navigation Drawer**: A centralized sidebar for seamless access to settings, blacklist management, and history.
+
+## Privacy and Security
+
+Universal Undo is designed with a "Privacy First" philosophy. It handles sensitive user data with extreme care:
+
+*   **Zero Internet Access**: The application does not request the INTERNET permission, ensuring that tracked text data never leaves the device.
+*   **Volatile Memory**: All text buffers and history are stored strictly in RAM and are cleared automatically upon device reboot.
+*   **Smart Privacy Filtering**: Automatically detects and ignores fields marked as sensitive or password types.
+*   **Application Blacklist**: Users can manually exclude specific applications (e.g., banking or messaging apps) from being monitored.
+*   **Package Visibility**: Uses authorized system queries to allow users to manage their blacklist across all installed applications.
+
+## Technical Architecture
+
+*   **Language**: Kotlin
+*   **UI Framework**: Material 3 with Responsive ConstraintLayouts.
+*   **State Management**: Thread-safe Singleton BufferManager with a rolling ArrayDeque.
+*   **Minimum SDK**: API 26 (Android 8.0)
+*   **Target SDK**: API 34 (Android 14)
+*   **Build System**: Gradle 8.13 with JDK 25 support.
+
+## Development and Build Instructions
+
+### Prerequisites
+*   Android Studio Jellyfish or newer.
+*   JDK 25.
+*   Git for version control.
+
+### Building from Source
+1. Clone the repository: `git clone https://github.com/theGoodB0rg/Universal_Undo.git`
+2. Open the project in Android Studio.
+3. Ensure `JAVA_HOME` points to a JDK 25 installation.
+4. Build the project using Gradle:
+   ```bash
+   ./gradlew assembleDebug
+   ```
+
+### Running Tests
+Unit tests for the core logic can be executed via:
+```bash
+./gradlew test
+```
+
+## Usage
+1. Install the application.
+2. Launch Universal Undo and follow the "How it Works" guide.
+3. Enable the Accessibility Service in Android Settings when prompted.
+4. Type text in any application.
+5. Shake the device to undo the last action, or use the Sidebar to access the full Timeline.
+
+## License
+This project is developed for productivity and safety. Please refer to the LICENSE file for full terms.
+
+
+### docs/ASSETS.md
+# Universal Undo Design Studio
+
+This directory contains the source code for the official Play Store graphics. We use a **Code-as-Design** approach to ensure version control and consistency.
+
+## Directory Structure
+- `generator.html`: The visual canvas (Open this in Chrome/Edge to view or manually download).
+- `generate.js`: The automation robot (Uses Puppeteer to take screenshots).
+
+## How to use
+
+### Option 1: The "Visual" Way (Manual)
+1. Open `generator.html` in your web browser.
+2. You will see the App Icon and Feature Graphic rendered with CSS.
+3. Click the **Download** buttons below each asset.
+4. The files will save to your downloads folder.
+
+### Option 2: The "CLI" Way (Automated)
+If you have Node.js installed, you can generate all assets with one command.
+
+1. Install dependencies (first time only):
+   ```bash
+   cd docs/assets
+   npm install
+   ```
+
+2. Generate assets:
+   ```bash
+   node generate.js
+   ```
+
+3. Check the output:
+   The images will be generated in `release_assets/` (in the project root).
+
+## Editing Designs
+To change colors, text, or layout, edit `generator.html`.
+- **Colors**: Change the CSS Variables in `:root` (top of style block).
+- **Text**: Edit the HTML directly in the body.
+
+
+### docs/play_store_listing.md
+# Google Play Store Listing
+
+## App Details
+
+| Field | Content | Character Limit |
+| :--- | :--- | :--- |
+| **App Name** | **Universal Undo: Global Redo** | 30 |
+| **Short Description** | **The Ctrl+Z for Android. Instantly undo and redo text anywhere.** | 80 |
+
+## Full Description
+
+**Ever accidentally deleted a long message?** 😱
+
+We've all been there: you type a long email, note, or chat message, select it all to copy, and... *poof*. You accidentally hit backspace. The text is gone.
+
+**Universal Undo brings the power of `Ctrl+Z` to your Android device.**
+
+With Universal Undo, you can instantly recover deleted text in virtually any app. It works silently in the background, listening for text changes and keeping a secure, local history of your typing.
+
+### 🚀 Key Features
+
+*   **Global Undo/Redo**: Works in WhatsApp, Telegram, Gmail, Keep, and most other apps.
+*   **Seamless Integration**: Use gestures (swipe from edge), a floating button, or simply **shake your device** to undo!
+*   **Smart History**: Remembers your recent typing for every app independently.
+*   **Safety First**: Passwords and sensitive fields are **ignored** automatically.
+*   **Battery Friendly**: Optimized to use zero battery when you aren't typing.
+
+### 🔒 Privacy & Security
+
+Your data is yours.
+*   **100% Local**: No internet access permission required.
+*   **Encrypted Storage**: Your undo history stays in memory or secure local storage.
+*   **Nothing leaves your phone**.
+
+---
+
+**Accessibility Service Disclosure:**
+Universal Undo uses the AccessibilityService API to detect text changes in input fields. This allows the app to record text states so you can "Undo" accidental deletions. No data tracked by the Accessibility Service is ever transmitted from your device.
+
+---
+
+**Download Universal Undo today and never lose a thought again!**
+
+
+### docs/privacy_policy.md
+# Privacy Policy for Universal Undo
+
+**Last Updated:** January 29, 2026
+
+## 1. Introduction
+Your privacy is our top priority. **Universal Undo ("the App") does not collect, transmit, or sell your personal data.** We believe that a utility app should be useful, not invasive.
+
+## 2. Accessibility Service API Usage
+Universal Undo uses the Android AccessibilityService API (`AccessibilityService`) to function.
+
+**Why we use it:**
+The sole purpose of using this API is to detect changes in text fields (EditText widgets) across other applications. This allows the App to keep a temporary history of your typing, enabling the "Undo" and "Redo" functionality.
+
+**What we access:**
+*   Text content in input fields where you have focus.
+*   Package names (to categorize undo history by app).
+
+**What we DO NOT do:**
+*   **No Internet**: We do **NOT** transmit this data to any server. The App does not have Internet permissions.
+*   **No Permanent Storage**: History is cleared when the service stops or app memory is reclaimed.
+*   **No Sensitive Data**: We do **NOT** read password fields. The App explicitly ignores fields marked as 'password' or 'sensitive'.
+
+## 3. Data Collection and Sharing
+*   **Personal Data**: We collect NO personal data (names, emails, locations).
+*   **Usage Data**: We do NOT track analytics or crash reports via third-party SDKs that transmit data off-device.
+*   **Sharing**: Since we collect no data, we share no data with third parties.
+
+## 4. Permissions
+The App requires the following permissions:
+*   **Accessibility Service**: To monitor text changes.
+*   **Overlay (System Alert Window)**: To display the "Undo" floating button (if enabled) or visual feedback.
+*   **Vibration**: To provide haptic feedback when undoing/redoing.
+
+## 5. Contact Us
+If you have any questions about this Privacy Policy, please contact us at: [Your Support Email]
+
+
+---
+
+## smartFlyer
+**Description**: None
+**URL**: https://github.com/theGoodB0rg/smartFlyer
+### README
+# React + TypeScript + Vite
+
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+
+Currently, two official plugins are available:
+
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+## React Compiler
+
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+
+## Expanding the ESLint configuration
+
+If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+
+```js
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
+
+      // Remove tseslint.configs.recommended and replace with this
+      tseslint.configs.recommendedTypeChecked,
+      // Alternatively, use this for stricter rules
+      tseslint.configs.strictTypeChecked,
+      // Optionally, add this for stylistic rules
+      tseslint.configs.stylisticTypeChecked,
+
+      // Other configs...
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
+```
+
+You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+
+```js
+// eslint.config.js
+import reactX from 'eslint-plugin-react-x'
+import reactDom from 'eslint-plugin-react-dom'
+
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
+      // Enable lint rules for React
+      reactX.configs['recommended-typescript'],
+      // Enable lint rules for React DOM
+      reactDom.configs.recommended,
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
+```
+
+
+---
+
+## habit_tracker
+**Description**: None
+**URL**: https://github.com/theGoodB0rg/habit_tracker
+### README
+No README found.
+
+---
+
+## CyberSec
+**Description**: None
+**URL**: https://github.com/theGoodB0rg/CyberSec
+### README
+# CyberSec – Web SQLi Scanner & Reporting
+
+A practical, developer-friendly web app for running focused SQL injection assessments with SQLMap, recon-assisted targeting, real‑time output, and client‑ready reports. Now multi‑user with JWT auth, target ownership verification, usage quotas, and structured exports.
+
+> Masters project context: This project originated as a Masters-level learning tool to teach SQL injection safely to non‑technical users by abstracting SQLMap complexity and providing explainable results. It also evolves into a developer‑friendly, team‑ready tool with integrations and pricing. The README highlights both tracks.
+
+## 🚀 What’s Included (Current State)
+
+### Core
+- SQLMap orchestration with prebuilt profiles (basic, deep, enumeration, dump, custom)
+- Real‑time scan output over WebSockets; start/terminate from the UI
+- Structured results parsing (CSV dumps, session DB, traffic logs)
+- Report generation with evidence, risk summary, and multi‑format export (JSON/HTML/PDF)
+- Lightweight recon/parameter discovery to prioritize likely injection points
+ - Per‑user scan settings and reusable profiles (save, load, set default; last‑used profile remembered)
+
+### Security & Multi‑Tenancy
+- JWT auth (REST + Socket.io) with per‑user/org scoping
+- Target ownership verification (HTTP file or DNS TXT) enforced by default, with built-in safe demo hosts (e.g. `testphp.vulnweb.com`) and optional `SAFE_PUBLIC_TARGETS` overrides for training environments
+- Safe demo hosts such as `testphp.vulnweb.com` remain usable by every account, and you can extend the shared list with `SAFE_PUBLIC_TARGETS`
+- Rate limiting, input validation/sanitization, and command whitelisting
+- Per‑user concurrency caps and monthly scan quotas
+- Audit/event logs for scan lifecycle and security events
+
+### UX
+- Modern React + Tailwind UI (Dashboard, Targets, Reports, Report Details, Terminal, Usage, Settings)
+- Dark theme, responsive layout, scan history and details
+ - Settings page with collapsible sections: My Defaults, Custom Builder (live server validation), Preconfigured Types, Saved Profiles
+- Zero-trust landing flow (“Review Access Controls”) that routes every visitor—academic or professional—through acceptable-use context before tooling unlocks
+- Five-step methodology timeline that walks new researchers through discovery → verification → reporting with plain-language guidance
+- Expandable FAQ covering ethics approvals, data handling, supervisor oversight, and project workflow expectations
+- Persistent legal disclaimer emphasising authorised use, plus a discreet researcher profile drawer that introduces the supervising analyst
+- Terminal view includes an authenticated-only accordion that enumerates the server-enforced base SQLMap flags with a copy-to-clipboard summary for audit trails, plus per-profile overlays and a quick link from the Settings builder for consistent transparency
+- Landing contact form with consent gating that launches the visitor’s email client by default (SMTP delivery available via optional backend integration)
+
+### Technical
+- Node/Express + Socket.io backend; SQLite persistence with indices/migrations
+- Winston logging to files (combined, error, security, exceptions, rejections)
+- Puppeteer‑based PDF export with HTML fallback
+- Daily retention cleanup for old scan output dirs
+
+## 🛠️ Tech Stack
+## 🎓 Learning Track vs Pro Track
+
+- Learning Mode (Masters focus)
+   - Guided wizard (no flags), Practice Mode with simulated outputs (no SQLMap required), explainability panels (Why/Signals/Verify/Fix), safe defaults and enforced target verification.
+- Pro/Team Mode (Product focus)
+   - Real scans with SQLMap orchestration, multi-user quotas, PDF/CSV exports, Slack/Jira (planned), scheduler/queue, and team audit.
+
+Both tracks share the same backend, so you can start in Learning Mode for education and later enable Pro features for production use.
+
+
+### Backend
+- Express.js, Socket.io, SQLite, Winston, Helmet, Rate‑limit, sanitize‑html, validator
+
+### Frontend
+- React 18 + TypeScript, Vite, Tailwind, Zustand, React Router, xterm.js
+
+### Security
+- Input sanitization, URL validation, CORS/Helmet, rate limiting, error handling
+
+## 📦 Installation & Dev
+
+### Prerequisites
+- Node.js (v16 or higher)
+- npm (v8 or higher)
+- Latest SQLMap dev build available on the PATH (clone `https://github.com/sqlmapproject/sqlmap.git` and point `SQLMAP_PATH` at a wrapper such as `python3 /opt/sqlmap/sqlmap.py`; on Windows you can install via `py -m pip install --upgrade "git+https://github.com/sqlmapproject/sqlmap.git@master"`)
+- Git for version control
+
+### Quick Start
+
+1. Clone
+   ```bash
+   git clone https://github.com/theGoodB0rg/CyberSec.git
+   cd CyberSec
+   ```
+
+2. Install
+   ```bash
+   npm run install-all
+   ```
+
+3. **Set up environment variables**
+   ```bash
+   cp .env.example .env
+   # Edit .env with your configuration
+   ```
+
+   #### Optional client runtime flags
+
+   | Variable | Default | Purpose |
+   | --- | --- | --- |
+   | `VITE_ENABLE_CONNECTION_DEBUG` | `false` | When `true`, surfaces the live socket connection toasts and the floating "Disconnected" badge even outside local development. Useful for staging or diagnosing flaky networks. |
+   | `VITE_ENABLE_STORE_DEVTOOLS` | `false` | Forces the Zustand devtools bridge on non-dev builds. Leave disabled in production to avoid exposing state snapshots to browsers. |
+
+4. Start dev (runs server and client together)
+   ```bash
+   npm run dev
+   ```
+
+5. **Access the application**
+   - Open your browser to `http://localhost:5173`
+   - The backend API runs on `http://localhost:3001`
+
+### Production
+1) Build client and prepare server bundle
+```bash
+npm run build
+```
+2) Start
+```bash
+npm start
+```
+
+## 📊 Data Export & Analysis
+
+The application now includes comprehensive data export capabilities for thesis evaluation and offline analysis:
+
+### Export Endpoints
+
+- **CSV Export** - Export scans and vulnerabilities to CSV for spreadsheet analysis
+  - `GET /api/export/scans/csv` - All scan records with duration, status, timestamps
+  - `GET /api/export/vulnerabilities/csv` - All vulnerability findings with payloads and techniques
+
+- **JSON Export** - Export aggregated metrics for statistical analysis
+  - `GET /api/export/metrics/json` - Total scans, completion rates, technique distribution, target summary
+
+### Python Analysis Scripts
+
+Two publication-quality analysis scripts are provided in `scripts/`:
+
+- **`analyze-metrics.py`** - Generates charts from metrics JSON (completion rates, technique distribution, duration analysis)
+- **`analyze-scans.py`** - Creates detailed visualizations from scan CSV (time series, status distribution, target analysis)
+
+All generated visualizations are 300 DPI publication-ready PNG files suitable for thesis inclusion.
+
+**Quick Example:**
+```bash
+# Export data
+curl -H "Authorization: Bearer $TOKEN" \
+  http://localhost:5000/api/export/metrics/json -o metrics.json
+
+# Generate thesis figures
+python scripts/analyze-metrics.py metrics.json ./thesis-figures
+```
+
+See [Data Export Documentation](docs/EXPORT_FEATURE.md) and [Python Analysis Guide](scripts/ANALYSIS_README.md) for complete usage instructions.
+
+## 🌍 Deployment
+
+The repository now ships with a Dockerfile, Fly launch configuration (`fly.toml`), and an automated workflow for deploying the backend to Fly.io. See [`docs/deployment/fly.md`](docs/deployment/fly.md) for a full walkthrough.
+
+### Fly.io quick start
+
+1. Install and authenticate the Fly CLI: `fly auth login`.
+2. Initialize the app (non-destructive):
+   ```powershell
+   fly launch --name cybersec-backend --no-deploy
+   ```
+3. Provision persistent storage for SQLite, temp artifacts, and evidence bundles:
+   ```powershell
+   fly volumes create app_data --region <your-region> --size 1
+   ```
+4. Update `fly.toml` to mount the volume at `/data` and set:
+   - `DB_PATH = "/data/cybersecurity.db"`
+   - `TEMP_DIR = "/data/temp"`
+   - `EVIDENCE_DIR = "/data/evidence"`
+   - `SQLMAP_PATH = "/usr/local/bin/sqlmap"`
+   - `PUPPETEER_EXECUTABLE_PATH = "/usr/bin/chromium"`
+5. Configure secrets for the initial admin and JWT signing key:
+   ```powershell
+   fly secrets set JWT_SECRET=<secure-value> ADMIN_EMAIL=<admin-email> ADMIN_PASSWORD=<strong-password>
+   ```
+6. Deploy and tail logs to confirm the service boots and the health checks pass:
+   ```powershell
+   fly deploy
+   fly logs
+   ```
+
+The `/api/health` endpoint returns a JSON object with status for SQLite, job queue, and SQLMap. If any dependency is unavailable, the endpoint returns `status: "degraded"` and Fly will mark the instance unhealthy for auto-recovery.
+
+## 🏁 Landing Page Overview
+
+The default landing experience now guides both academic learners and professional operators from the very first screen:
+
+- **Hero flow** – The primary “Review Access Controls” action now walks visitors through the acceptable-use charter before navigating to authentication. Supporting links still highlight the research methodology and documentation trails.
+- **Responsible use charter** – A dedicated `/acceptable-use` route captures the zero-trust policy in plain language and is linked from the login banner so faculty, internal security teams, and consulting partners acknowledge expectations before signing in—including the requirement to verify control of any non-demo target.
+- **Ownership verification workflow** – Built-in HTTP proof file and DNS TXT checks keep live tooling locked until an operator demonstrates control of the asset they intend to scan.
+- **Learning vs Pro tracks** – An above-the-fold explainer clarifies that the Masters learning path emphasises explainability and guided practice, while the professional mode enables full SQLMap orchestration with team workflows and assurance reporting.
+- **Methodology timeline** – A five-step strip (Discover → Prepare → Execute → Verify → Report) outlines what the platform automates at each phase, with cues pointing to relevant in-app pages.
+- **Ethics & safety FAQ** – Collapsible FAQ items cover supervisor approvals, data-handling guarantees, consent-driven evidence storage, and how we handle demo targets. Each entry links deeper into the README or in-app settings when appropriate.
+- **Legal disclaimer & researcher profile** – A fixed footer card reiterates the authorised-use policy, while an unobtrusive drawer introduces the supervising analyst/researcher for credibility and contact context.
+- **Visual polish** – Updated illustrations, subtle motion, and the existing colour palette make the educational focus clear without sacrificing the pro tooling aesthetic.
+
+👉 Tip: Pair the landing page with the in-app `Settings → Custom Command Builder` and the Terminal defaults accordion to reinforce what the platform adds automatically during live scans.
+
+## �🎯 Usage (Typical Flow)
+
+### Basic Workflow
+
+1) Login (register first if needed). The UI attaches your JWT to API and socket connections.
+
+2) Verify target ownership (Targets page) via HTTP file or DNS TXT; non‑verified targets are blocked unless admin allows.
+
+3) Start a scan (Dashboard/Terminal)
+- Choose profile (basic/deep/enumeration/dump/custom)
+- Optional options: cookie, headers, data, method, proxy, timeout/delay
+- See real‑time `scan-output`, completion status, and link to report
+
+4) Review results
+- Report includes parsed findings, CSV dumps, session DB path, traffic log, risk summary
+- Export as JSON/HTML/PDF; CSV files downloadable via signed file route
+
+4. **Manage Reports**
+   - Browse historical scan reports
+   - Filter and search capabilities
+   - Export and share findings
+
+### Scan Profiles (preconfigured)
+
+#### Basic Scan
+```bash
+sqlmap -u <target> --batch --random-agent --level=1 --risk=1
+```
+
+#### Deep Scan
+```bash
+sqlmap -u <target> --batch --random-agent --level=3 --risk=2 --threads=2
+```
+
+#### Database Enumeration
+```bash
+sqlmap -u <target> --batch --random-agent --dbs --tables --columns
+```
+
+#### Data Extraction
+```bash
+sqlmap -u <target> --batch --random-agent --dump --exclude-sysdbs
+```
+
+### Custom Builder & Validation
+
+The Settings page includes a Custom Builder powered by a server‑side validator. It safely parses and normalizes allowed flags (no sqlmap spawn) and returns:
+
+- ok, disallowed, warnings
+- normalizedArgs (flags that will be applied)
+- commandPreview (what would run)
+- description and impact (speed/stealth/exfil heuristics)
+
+API:
+```http
+POST /api/sqlmap/validate
+Body: { target?: string, profile: string, customFlags?: string, options?: object }
+```
+The UI shows syntax feedback and blocks saving disallowed flags.
+
+### User Settings & Profiles
+
+- Per‑user settings: default_profile, defaults (level/risk/threads/tamper), last_used_profile
+- Reusable profiles (per user): name, description, flags[]; unique by name
+- The Terminal auto‑selects your last_used_profile (fallback to default_profile) on load
+
+APIs:
+```http
+GET  /api/user/scan-settings
+PUT  /api/user/scan-settings         # { default_profile, defaults, last_used_profile? }
+
+GET  /api/user/profiles              # list
+POST /api/user/profiles              # { name, description?, flags[] }
+PUT  /api/user/profiles/:id          # { name?, description?, flags? }
+DEL  /api/user/profiles/:id
+
+GET  /api/sqlmap/profiles            # server preconfigured profiles (list for UI)
+```
+
+### Terminal Commands (whitelisted)
+- `sqlmap-help`, `sqlmap-version`, `list-profiles`, `validate-target <url>`
+
+## 📄 Reports & Structured Output
+
+The application now provides comprehensive structured output from SQLMap scans:
+
+### Output
+
+### Exports and Downloads
+
+You can export reports in multiple formats from the UI or via REST endpoints:
+
+- GET `/api/reports/:id/export/json` → JSON
+- GET `/api/reports/:id/export/html` → HTML
+- GET `/api/reports/:id/export/csv` → CSV (findings table)
+- GET `/api/reports/:id/export/pdf` → PDF
+
+If the server cannot render a PDF (Chromium/Puppeteer unavailable), it returns a PDF-styled HTML instead with header `X-PDF-Fallback: true` and the UI will save it as `*.html`. You can print it to PDF via the browser (Ctrl+P → Save as PDF).
+
+For csv dumps produced by sqlmap (tables content), use:
+`GET /api/reports/:id/files/:filename` (ownership enforced) to download individual CSV artifacts located under the scan output directory. The server recognizes both `results.csv` and `results-*.csv` naming patterns.
+
+---
+### 📤 **Report Export & Download – Professional Usage & Troubleshooting**
+
+#### **Export Endpoints**
+
+- `GET /api/reports/:id/export/json` – Download full report as JSON
+- `GET /api/reports/:id/export/html` – Download full report as HTML
+- `GET /api/reports/:id/export/pdf` – Download full report as PDF (uses Puppeteer; falls back to HTML if headless Chromium is unavailable)
+- `GET /api/reports/:id/export/csv` – Download findings table as CSV (not raw SQLMap dump)
+- `GET /api/reports/:id/files/:filename` – Download raw SQLMap CSV dump or other artifacts (ownership enforced)
+
+#### **How to Export Reports**
+
+- **From the UI**: On the Reports list or Report Details page, use the download buttons to export in your preferred format. PDF, HTML, JSON, and CSV are available. CSV (findings) is distinct from raw SQLMap CSV dumps.
+- **From the API**: Use the endpoints above with your JWT token. For file downloads, ensure you have access rights to the report.
+
+#### **PDF Export Details**
+
+- PDF export uses Puppeteer (headless Chromium). If Puppeteer is not available or fails, the server returns a styled HTML with header `X-PDF-Fallback: true`. The UI will save this as `.html` and prompt you to print to PDF via your browser.
+- A legacy Markdown-to-PDF workflow powered by `markdown-pdf`/PhantomJS is still bundled for future use. The Docker image now installs the PhantomJS prerequisites (`bzip2`, font libraries, GTK stack) so this path can be re-enabled without additional setup.
+- All binary downloads set correct `Content-Type` and `Content-Disposition` headers for professional compatibility.
+
+#### **CSV Export Details**
+
+- The `/export/csv` endpoint provides a clean, findings-only CSV (not a raw SQLMap dump).
+- For raw SQLMap CSVs (table dumps), use `/files/:filename` with the correct filename (e.g., `results.csv`, `results-20240629_0929pm.csv`).
+- The server detects all `results-*.csv` files in the scan output directory.
+
+#### **Troubleshooting PDF/CSV Exports**
+
+- **Malformed PDF or unopenable file?**
+   - Ensure Puppeteer/Chromium is installed and accessible on the server.
+   - If you receive an HTML file instead of PDF, check for the `X-PDF-Fallback: true` header. Open in browser and print to PDF.
+   - If you reinstate the Markdown/PhantomJS export, keep the Dockerfile’s `bzip2`/font stack in place so `phantomjs-prebuilt` can extract successfully during image builds.
+- **Empty CSV file?**
+   - Ensure the scan produced findings. The `/export/csv` endpoint only exports findings, not raw dumps.
+   - For raw SQLMap CSVs, verify the file exists in the scan output directory and use the `/files/:filename` endpoint.
+- **Download fails or file is corrupt?**
+   - Ensure you are authenticated and have access to the report.
+   - Check that your client handles binary downloads correctly (the UI uses Blob and detects PDF/HTML fallback automatically).
+
+#### **Client/Server Download Behavior**
+
+- The client detects PDF fallbacks and saves as `.html` if needed.
+- All downloads use proper headers for browser compatibility.
+- Ownership and path traversal are enforced on all file downloads.
+
+---
+
+### Report Features
+- **Professional Formatting**: Clean, organized vulnerability reports
+- **Downloadable Files**: Access to all generated CSV and log files
+- **Structured Findings**: Parsed vulnerability data with:
+  - Parameter names and injection points
+  - SQL injection techniques detected
+  - Database version and system information
+  - Risk classifications and severity levels
+
+### File Access
+Secure route to download CSV dumps for your scan only:
+`GET /api/reports/:id/files/:filename` (ownership enforced; path traversal protected)
+
+This ensures you have access to well-formatted, professional results suitable for:
+- Security audit documentation
+- Client reporting
+- Further analysis and research
+- Integration with other security tools
+
+## � Quick Verify & Evidence Capture
+
+Quick Verify replays lightweight boolean/time/error probes (and, when safe, your strongest SQLMap payload) to validate findings without a full SQLMap rerun. The workflow now captures forensic evidence with explicit user consent:
+
+- **Consent-aware prompt** – When you verify a finding (single or bulk), the Report Details UI asks whether to store raw HTTP responses. You can store or skip, and optionally remember the decision for future runs.
+- **Evidence vault** – When storage is allowed, the backend writes JSON bundles under `server/temp/quick-verify-evidence/<report>/<finding>/<timestamp>/`. Each bundle contains headers, payload metadata, a base64-encoded body, and integrity hashes.
+- **Per-run feedback** – The verification panel shows whether raw responses were stored, highlights the latest consent preference, and lists the captured evidence with status codes, timings, hashes, and download links.
+- **Safer previews** – Proof-of-concept cards now display compact response snapshots (status, latency, size, hash, optional excerpt) and download buttons that pull the full JSON via an authenticated route. If storage was skipped, the UI makes that explicit.
+
+### Managing consent preferences
+
+Preferences are persisted per user. You can adjust them directly via the API:
+
+```http
+GET    /api/quick-verify/preferences           # fetch your current preference
+POST   /api/quick-verify/preferences           # body: { storeEvidence, rememberChoice?, promptVersion?, source? }
+DELETE /api/quick-verify/preferences           # clears the saved preference
+```
+
+Skipping storage keeps Quick Verify fast and ephemeral. Allowing storage creates an audit trail you can download or share later.
+
+### Working with stored evidence programmatically
+
+List or download stored responses for a finding:
+
+```http
+GET /api/reports/:reportId/findings/:findingId/quick-verify/evidence?limit=50
+GET /api/quick-verify/evidence/:evidenceId/download
+```
+
+Both routes enforce user/org ownership unless the caller is an admin. Downloads stream the exact JSON blob written during verification (headers, metadata, base64 body, SHA-256 digest).
+
+## �🔧 Configuration
+
+### Environment Variables
+
+Create a `.env` in the repo root (values shown are examples; see server/index.js for defaults):
+
+```env
+# Server Configuration
+NODE_ENV=development
+PORT=3001
+LOG_LEVEL=info
+
+# Database Configuration
+DB_PATH=./server/data/cybersecurity.db
+
+# Security Configuration
+# JWT secret for auth tokens
+JWT_SECRET=change-me
+RATE_LIMIT_WINDOW=900000
+RATE_LIMIT_MAX=100
+
+# SQLMap Configuration
+# Should resolve to the latest sqlmap dev build (e.g. /usr/local/bin/sqlmap or python3 -m sqlmap)
+SQLMAP_PATH=sqlmap
+# Optional: enforce proxy usage for scans
+REQUIRE_PROXY=false
+# Retain scan output dirs for N days (cleanup scheduled daily at 03:30)
+OUTPUT_RETENTION_DAYS=7
+
+# Multi-user Controls
+# Max concurrent scans allowed per non-admin user
+MAX_CONCURRENT_SCANS_PER_USER=2
+# Monthly scan quota per non-admin user (YYYY-MM buckets)
+MAX_SCANS_PER_MONTH=100
+# Require target domain verification before scanning (recommended true)
+ALLOW_UNVERIFIED_TARGETS=false
+
+# Scheduler / Queue
+ENABLE_JOB_QUEUE=true
+JOB_POLL_INTERVAL_MS=3000
+JOB_FETCH_BATCH=10
+JOB_BACKOFF_BASE_SECONDS=10
+JOB_BACKOFF_FACTOR=2.0
+JOB_BACKOFF_MAX_SECONDS=600
+```
+
+#### Contact form email routing
+
+By default the landing page opens a prefilled email in the visitor’s mail client. Configure the following variables if
+you prefer the backend to deliver submissions directly to your inbox. Without SMTP credentials the server will
+continue to log any API-originating requests under `server/logs/contact-submissions.log` for manual follow-up.
+
+```env
+CONTACT_EMAIL_TO=theregalstarlite@gmail.com
+CONTACT_EMAIL_FROM=cybersec-contact@example.com
+CONTACT_SMTP_SERVICE=gmail
+# or specify host/port instead of service
+CONTACT_SMTP_HOST=
+CONTACT_SMTP_PORT=587
+CONTACT_SMTP_SECURE=false
+CONTACT_SMTP_USER=
+CONTACT_SMTP_PASSWORD=
+```
+
+### Application Settings
+
+Settings can be configured through the web interface:
+
+- **Theme**: Dark/Light mode
+- **Terminal Font Size**: Adjustable font size
+- **Notifications**: Enable/disable notifications
+- **Auto-save**: Automatic saving of scans
+- **Concurrent Scans**: Maximum simultaneous scans
+
+## 📊 API (REST)
+
+### Health Check
+```http
+GET /api/health
+```
+
+Returns `200 OK` when core subsystems (SQLite, job queue, SQLMap integration) are healthy and responds with `503 Service Unavailable` plus `status: "degraded"` when any dependency is offline. Example response:
+
+```json
+{
+   "status": "healthy",
+   "uptimeSeconds": 123,
+   "environment": "production",
+   "timestamp": "2025-10-02T22:28:16.000Z",
+   "database": { "ok": true },
+   "queue": {
+      "enabled": true,
+      "running": true,
+      "timerActive": true,
+      "pollIntervalMs": 3000,
+      "ok": true
+   },
+   "sqlmap": {
+      "available": true,
+      "path": "/usr/local/bin/sqlmap",
+      "ok": true
+   }
+}
+```
+
+When `sqlmap.available` is `false` or the queue is paused, the endpoint reports `status: "degraded"` so load balancers can mark the instance unhealthy.
+
+### Auth
+```http
+POST /api/auth/register
+POST /api/auth/login
+GET  /api/auth/me
+```
+
+### Targets (ownership verification)
+```http
+GET    /api/targets
+POST   /api/targets                 # { hostname, method: http-file|dns-txt } -> token issued
+POST   /api/targets/:id/verify      # performs file/DNS check; sets verified_at
+DELETE /api/targets/:id
+```
+
+### Recon
+```http
+POST /api/recon  # { target }
+GET  /api/recon?target=...
+```
+
+### Reports
+```http
+GET /api/reports
+GET /api/reports/:id
+GET /api/reports/:id/export/:format
+GET /api/reports/:id/files/:filename   # secure CSV download
+DELETE /api/reports/:id
+```
+
+### Usage and Quotas
+```http
+GET /api/usage  # returns current period usage and configured limits for the authenticated user
+```
+
+### Scans
+```http
+GET /api/scans           # list scans for current user (admin may see all)
+GET /api/scans/running   # list only running scans for current user
+GET /api/scans/:id/events # audit/event stream for a scan (ownership enforced)
+```
+
+### WebSocket Events
+- `start-sqlmap-scan`  { target, options, scanProfile, userProfileId?, userProfileName? }
+-  • If a saved profile is provided, the server merges its flags and uses `custom` as the effective profile; it remembers it as `last_used_profile`.
+- `terminate-scan`     { scanId? }
+- `execute-command`    { command, args }
+- `scan-output`        { scanId, type, output }
+- `scan-completed`     { scanId, status, reportId, hasStructuredResults }
+- `scan-error`         { message }
+- `auth-ok`            { userId, role, orgId }
+
+## 🛡️ Security Considerations
+
+### Input Validation
+- All user inputs are validated and sanitized
+- URL validation prevents access to internal networks
+- Command whitelisting ensures only safe commands are executed
+
+### Rate Limiting
+- API requests are limited to prevent abuse
+- Scan requests are limited per hour per IP
+- WebSocket connections are monitored and limited
+
+### Process Security
+- Per‑user output directories in OS temp; daily cleanup by retention policy
+- Background scans continue on socket disconnect; server restart marks running as interrupted
+ - Server‑side flag whitelist/normalization on `/api/sqlmap/validate` and safe merging of saved profile flags when starting scans
+
+### Data Protection
+- Sensitive data is masked in reports
+- Database queries are parameterized
+- Error messages don't leak system information
+
+## 🧪 Dev Tips
+- Lint backend: `npm run lint`
+- Lint client: `npm run client:lint`
+- Build all: `npm run build`
+ - Validate flags (no sqlmap spawn): POST `/api/sqlmap/validate`
+
+## 📱 Mobile Support
+
+The application is fully responsive and supports:
+- Touch interactions for mobile devices
+- Responsive terminal interface
+- Mobile-optimized navigation
+- Gesture support for common actions
+
+## � Evaluation & Research Tools
+
+This project includes comprehensive evaluation infrastructure for thesis research and academic analysis.
+
+### Resource Monitoring
+
+**Automatic CPU and Memory Tracking**
+
+Every scan automatically collects resource usage metrics using the integrated `resourceMonitor` utility:
+
+- **CPU Usage**: User and system time in milliseconds, CPU utilization percentage
+- **Memory Usage**: Peak and average RSS (Resident Set Size) and heap usage in MB
+- **Zero Dependencies**: Uses Node.js built-in `process.cpuUsage()` and `process.memoryUsage()` APIs
+- **Minimal Overhead**: Lightweight monitoring with negligible performance impact
+
+Resource statistics are stored in the `scans.resource_usage` column as JSON:
+
+```json
+{
+  "cpu": {
+    "total_ms": 1234,
+    "user_ms": 890,
+    "system_ms": 344,
+    "utilization_percent": 45.2
+  },
+  "memory": {
+    "peak_rss_mb": 256.5,
+    "avg_rss_mb": 203.1,
+    "peak_heap_mb": 128.3,
+    "avg_heap_mb": 95.7
+  },
+  "duration_ms": 12500
+}
+```
+
+### Ground-Truth Validation Dataset
+
+**Authoritative Vulnerability Benchmark**
+
+The system includes a curated ground-truth dataset (`server/data/ground-truth-vulnerabilities.json`) containing 15 documented SQL injection vulnerabilities:
+
+- **Targets**: testphp.vulnweb.com, demo.testfire.net, bWAPP, OWASP Juice Shop
+- **Authoritative Sources**: Acunetix (2025), IBM Security (2025), bWAPP GitHub (Mesellem & McCune, 2025), OWASP Foundation (2025)
+- **Each Entry Includes**: URL, parameter, HTTP method, injection technique, severity, source documentation
+
+This dataset enables accuracy validation through true positive/false positive/false negative analysis.
+
+### Data Export Scripts
+
+**Reproducible Research Pipeline**
+
+Export complete evaluation datasets from the database:
+
+```bash
+# Export metrics, scans, and reports to JSON/CSV
+node scripts/export-data.js
+
+# Generates in thesis/data/:
+# - metrics.json (aggregated statistics)
+# - scans.csv (detailed scan records with timestamps, durations, resource usage)
+# - reports.json (vulnerability findings and report metadata)
+```
+
+### Visualization & Analysis Scripts
+
+**Publication-Quality Figures**
+
+Generate thesis figures and statistical analysis:
+
+```bash
+# Install Python dependencies
+pip install pandas matplotlib seaborn numpy
+
+# Generate all 9 thesis figures
+python scripts/generate-thesis-figures.py
+
+# Generates in thesis/figures/:
+# - Figure 4.1: Scan completion rates
+# - Figure 4.2: Profile distribution  
+# - Figure 4.3: Target frequency analysis
+# - Figure 4.4: Scan duration by profile
+# - Figure 4.5: Temporal activity patterns
+# - Figure 4.6: Status breakdown
+# - Figure 4.7: CPU/Memory resource usage by profile
+# - Figure 4.8: Error frequency and success rates
+# - Figure 4.9: Feature adoption patterns
+# - summary-statistics.txt (comprehensive metrics)
+
+# Generate additional comparative figures
+python scripts/generate-additional-figures.py
+```
+
+**Figure 4.7 Requirements**: Requires scans with resource monitoring data. If resource data is unavailable, the script will skip Figure 4.7 with a warning message.
+
+### Accuracy Validation
+
+**Precision, Recall, F1-Score Against Ground Truth**
+
+Validate detection accuracy:
+
+```bash
+# Calculate TP/FP/FN and generate accuracy metrics
+python scripts/validate-accuracy.py
+
+# Generates:
+# - Confusion matrix visualization
+# - Accuracy metrics bar chart (Precision, Recall, F1-Score)
+# - Detection rate breakdown by SQLi technique
+# - thesis/figures/ACCURACY_VALIDATION_REPORT.md
+```
+
+### Evaluation Metrics Summary
+
+| **Metric Category** | **What It Measures** | **Data Source** | **Script** |
+|---------------------|----------------------|-----------------|------------|
+| **Accuracy** | TP/FP/FN, Precision, Recall, F1 | ground-truth-vulnerabilities.json | `validate-accuracy.py` |
+| **Efficiency - Duration** | Scan time by profile | scans.duration_seconds | `figure_4_4` |
+| **Efficiency - Resources** | CPU time, memory usage | scans.resource_usage | `figure_4_7` |
+| **Usability - Completion** | Task success rates | scans.status | `figure_4_1` |
+| **Usability - Errors** | Error frequencies | scans.error | `figure_4_8` |
+| **Usability - Adoption** | Profile usage patterns | usage_counters | `figure_4_9` |
+
+### Research Reproducibility
+
+All evaluation scripts read from exported data files, ensuring:
+
+- **Independent Verification**: External researchers can validate results
+- **Transparent Methodology**: Complete SQL queries and calculations documented in scripts
+- **Version Control**: Analysis scripts tracked in Git for audit trail
+- **Publication Standards**: All visualizations at 300 DPI with consistent styling
+
+For detailed methodology, see `thesis/data/` and `docs/TESTING.md`.
+
+## �🔍 Troubleshooting
+
+### Common Issues
+
+1. **SQLMap not found**
+   - Ensure SQLMap is installed and in PATH
+   - Update SQLMAP_PATH in environment variables
+
+2. **Connection issues**
+   - Check if backend server is running
+   - Verify firewall settings
+   - Check network connectivity
+
+3. **Permission errors**
+   - Ensure proper file permissions
+   - Check SQLMap execution permissions
+   - Verify output directory write access
+
+### Windows-specific tips
+
+- Client OOM or sudden crash at startup:
+   - Ensure the client does not depend on the repo root. We removed a local file dependency to prevent Vite from crawling the entire workspace.
+   - Vite watch ignores heavy folders (server/, logs/, temp/, data/) via `client/vite.config.ts` to reduce file watcher load.
+   - Tailwind content is scoped to `client/` only.
+- Port conflicts (EADDRINUSE: :3001 or Vite port bump):
+   - Make sure you run `npm run dev` once from the repo root. If you accidentally start multiple sessions, kill stray Node processes or close duplicate terminals.
+   - Nodemon is configured via `nodemon.json` to watch only `server/**`.
+- Proxy errors in Vite (`/api/health` ECONNREFUSED):
+   - This is transient while the server boots. It should clear once the backend is listening on 3001.
+
+### Proxy and trust-proxy configuration
+
+You can configure whether scans must use an outbound proxy, and how Express calculates client IPs (trust proxy):
+
+- REQUIRE_PROXY: if set to `true`/`1`/`yes`/`on`, scans must include a valid proxy URL (http(s):// or socks5:// host:port). Example:
+   - `REQUIRE_PROXY=false` (default)
+
+- TRUST_PROXY: controls Express "trust proxy". Accepts:
+   - `auto` (default; trusts loopback/linklocal/uniquelocal)
+   - `true` (trust all)
+   - `false` (trust none)
+   - or a comma-separated list of IP/CIDR values
+
+Admin overrides: As an admin, you can change these sitewide at runtime in Admin → Site Settings. Changes are persisted in the DB and applied immediately; they override env at runtime. If you see an express-rate-limit error about X-Forwarded-For in dev, set TRUST_PROXY to `auto` or `true`.
+
+### Debug Mode
+
+Enable debug mode by setting:
+```env
+LOG_LEVEL=debug
+NODE_ENV=development
+```
+
+## 📈 Notes & Caveats
+- SQLMap must be installed and reachable (PATH or SQLMAP_PATH). Clone the upstream dev branch (`git clone https://github.com/sqlmapproject/sqlmap.git /opt/sqlmap`) and expose it via a wrapper like `/usr/local/bin/sqlmap` → `python3 /opt/sqlmap/sqlmap.py`; on Windows, use `py -m pip ...` and `py -m sqlmap`.
+- PDF export uses Puppeteer; when headless is unavailable, the server falls back to HTML export and sets `X-PDF-Fallback: true`.
+- Scanning non‑verified targets is blocked unless ALLOW_UNVERIFIED_TARGETS=true or you’re admin.
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Add tests if applicable
+5. Submit a pull request
+
+### Development Guidelines
+- Follow TypeScript best practices
+- Use ESLint and Prettier for code formatting
+- Write comprehensive tests
+- Update documentation as needed
+
+## 📄 License
+
+CyberSec is proprietary software. Evaluation access is provided solely for
+portfolio review. All other rights—including copying, modifying, distributing,
+or running commercially—require a separate written agreement with the author.
+See the [LICENSE](LICENSE) file for the full terms and
+[THIRD_PARTY_NOTICES](THIRD_PARTY_NOTICES.md) for external component licenses
+such as SQLMap, React, Tailwind, and related tooling.
+
+## 🙏 Acknowledgments
+
+- SQLMap team for the excellent security testing tool
+- React and Node.js communities
+- XTerm.js for the terminal interface
+- Tailwind CSS for the design system
+
+## 📞 Support
+- Open an issue on GitHub
+- Check Troubleshooting below
+
+---
+
+**⚠️ Legal Notice**: Use only on assets you own or are authorized to test. Target ownership verification is enforced by default.
+
+**🔒 Security Disclosure**: If you discover a security vulnerability, please report it responsibly to the maintainers.
+
+
+### docs/TESTING.md
+# Unit Testing Guide
+
+This project uses **Jest** as the testing framework for unit and integration tests.
+
+## Test Structure
+
+```
+server/
+├── __tests__/                    # General server tests
+│   ├── database.test.js         # Database operations
+│   ├── demoTargets.test.js      # Demo target validation
+│   ├── quickVerify.test.js      # Quick verify functionality
+│   ├── sqlmapBaseFlags.test.js  # SQLMap flag validation
+│   ├── sqlmapLogParsing.test.js # Log parsing utilities
+│   └── verifier.test.js         # Verifier utilities
+│       ├── payloadGenerators.test.js      # Payload recipe safety/duplication checks
+│       └── payloadLabEvaluator.test.js    # Adaptive payload scoring + WAF heuristics
+├── middleware/
+│   └── __tests__/
+│       ├── auth.test.js         # Authentication middleware
+│       └── security.test.js     # Security middleware
+└── helpers/
+    └── __tests__/
+        └── scanHelpers.test.js  # Scan helper utilities
+```
+
+## Running Tests
+
+### Run all tests
+```bash
+npm test
+```
+
+### Run tests in watch mode (re-runs on file changes)
+```bash
+npm run test:watch
+```
+
+### Run tests with coverage report
+```bash
+npm run test:coverage
+```
+
+### Run tests with verbose output
+```bash
+npm run test:verbose
+```
+
+### Run tests in CI mode (with coverage)
+```bash
+npm run test:ci
+```
+
+## Test Configuration
+
+### jest.config.js
+Main Jest configuration file that defines:
+- Test environment (Node.js)
+- Coverage thresholds (50% minimum)
+- Test file patterns
+- Coverage exclusions
+
+### jest.setup.js
+Global test setup that:
+- Suppresses console logs during tests
+- Sets test environment variables
+- Configures JWT secrets for testing
+
+## Writing Tests
+
+### Basic Test Structure
+
+```javascript
+/* eslint-env jest */
+const myModule = require('../myModule');
+
+describe('MyModule', () => {
+  // Setup before each test
+  beforeEach(() => {
+    // Initialize test data
+  });
+
+  // Cleanup after each test
+  afterEach(() => {
+    // Clean up resources
+  });
+
+  describe('myFunction', () => {
+    it('should handle valid input', () => {
+      const result = myModule.myFunction('valid');
+      expect(result).toBe(expected);
+    });
+
+    it('should handle invalid input', () => {
+      expect(() => myModule.myFunction(null)).toThrow();
+    });
+  });
+});
+```
+
+### Testing Middleware
+
+```javascript
+const middleware = require('../middleware');
+
+describe('Middleware', () => {
+  let req, res, next;
+
+  beforeEach(() => {
+    req = { headers: {}, body: {} };
+    res = {
+      status: jest.fn().mockReturnThis(),
+      json: jest.fn().mockReturnThis()
+    };
+    next = jest.fn();
+  });
+
+  it('should call next() on valid request', () => {
+    middleware(req, res, next);
+    expect(next).toHaveBeenCalled();
+  });
+});
+```
+
+### Testing Async Functions
+
+```javascript
+it('should handle async operations', async () => {
+  const result = await asyncFunction();
+  expect(result).toBeDefined();
+});
+```
+
+### Mocking
+
+```javascript
+// Mock entire module
+jest.mock('../module');
+
+// Mock specific function
+const spy = jest.spyOn(obj, 'method').mockImplementation(() => 'mocked');
+
+// Restore mock
+spy.mockRestore();
+```
+
+## Coverage Reports
+
+After running `npm run test:coverage`, coverage reports are generated in:
+- `coverage/lcov-report/index.html` - HTML report (open in browser)
+- `coverage/lcov.info` - LCOV format
+- Terminal output - Summary
+
+### Coverage Thresholds
+
+Current minimum coverage requirements:
+- **Branches**: 50%
+- **Functions**: 50%
+- **Lines**: 50%
+- **Statements**: 50%
+
+## Best Practices
+
+## Smoke Tests
+
+### Payload Lab Smoke Run
+
+Use the dedicated helper to trigger a single harness + payload lab cycle against a known parameter. This requires an admin token and a recon record for the target/parameter.
+
+```bash
+PAYLOAD_LAB_SMOKE_API=https://staging.yourapp.com \
+PAYLOAD_LAB_SMOKE_TOKEN=eyJhbGciOi... \
+PAYLOAD_LAB_SMOKE_TARGET=https://target.example.com \
+PAYLOAD_LAB_SMOKE_PARAMETER=username \
+npm run smoke:payload-lab
+```
+
+Optional environment variables:
+
+| Variable | Purpose |
+| --- | --- |
+| `PAYLOAD_LAB_SMOKE_RECIPES` | Comma-separated recipe IDs (default: unicode-fullwidth-boolean, inline-comment-or) |
+| `PAYLOAD_LAB_SMOKE_HEADERS` | JSON blob of headers to include during harness replay |
+| `PAYLOAD_LAB_SMOKE_COOKIE` | Cookie header to reuse during the run |
+| `PAYLOAD_LAB_SMOKE_CANARY` | Override the harness canary payload |
+
+The script prints a JSON summary (`reflectionHits`, payload attempts, successes, WAF blocks) and exits non-zero if the harness run fails.
+
+1. **Test Isolation**: Each test should be independent
+2. **Descriptive Names**: Use clear, descriptive test names
+3. **Arrange-Act-Assert**: Structure tests with clear setup, execution, and verification
+4. **Mock External Dependencies**: Isolate the code under test
+5. **Test Edge Cases**: Include tests for error conditions and boundary cases
+6. **Keep Tests Fast**: Use in-memory databases and avoid unnecessary delays
+7. **Clean Up**: Always clean up resources (files, connections, etc.)
+
+## Common Test Patterns
+
+### Testing Express Routes
+```javascript
+const request = require('supertest');
+const app = require('../app');
+
+describe('GET /api/endpoint', () => {
+  it('should return 200', async () => {
+    const response = await request(app)
+      .get('/api/endpoint')
+      .expect(200);
+    
+    expect(response.body).toHaveProperty('data');
+  });
+});
+```
+
+### Testing Database Operations
+```javascript
+describe('Database', () => {
+  let db;
+
+  beforeEach(() => {
+    db = new Database(':memory:');
+  });
+
+  afterEach(async () => {
+    await db.close();
+  });
+
+  it('should insert record', async () => {
+    await db.insert(data);
+    const result = await db.get(id);
+    expect(result).toEqual(data);
+  });
+});
+```
+
+### Testing with Timeouts
+```javascript
+it('should complete within timeout', async () => {
+  const result = await someOperation();
+  expect(result).toBeDefined();
+}, 10000); // 10 second timeout
+```
+
+## Troubleshooting
+
+### Tests timing out
+- Increase timeout in jest.config.js or individual tests
+- Check for unresolved promises
+- Ensure all async operations complete
+
+### Memory leaks
+- Close database connections in afterEach/afterAll
+- Clean up temporary files
+- Clear timers and intervals
+
+### Flaky tests
+- Avoid time-dependent tests
+- Mock external dependencies
+- Use proper async/await patterns
+- Ensure proper test isolation
+
+## CI/CD Integration
+
+Tests run automatically in CI with:
+```bash
+npm run test:ci
+```
+
+This command:
+- Runs all tests once (no watch mode)
+- Generates coverage report
+- Limits workers for CI environment
+- Fails if coverage thresholds aren't met
+
+## Responsive QA
+
+### Manual smoke checks (XS / SM / MD)
+1. Run `npm run client:dev` and open the app in your browser.
+2. Verify key routes (`/login`, `/dashboard`, `/reports`, `/terminal`, `/settings`, `/targets`, `/usage`, `/admin`) at `375px`, `640px`, and `768px` widths.
+3. Confirm navigation, primary actions, and long content (IDs, hostnames, table rows) stay within the viewport without horizontal scrolling.
+4. Record any deviations in `docs/responsive-plan.md` under **Notes** so the backlog stays current.
+
+### Automated narrow-viewport snapshots
+- Run `npm run smoke:responsive` to capture 360 px-wide screenshots into `artifacts/responsive/` using Puppeteer.
+- Override defaults with `RESPONSIVE_BASE_URL`, `RESPONSIVE_ROUTES`, or `RESPONSIVE_WIDTHS` (comma-separated) to target specific deployments or breakpoints, e.g.:
+  ```bash
+  RESPONSIVE_BASE_URL=https://staging.example.com \
+  RESPONSIVE_ROUTES=/login,/dashboard \
+  RESPONSIVE_WIDTHS=360,640 \
+  npm run smoke:responsive
+  ```
+- Share the generated PNG assets with design/review partners when validating fixes or investigating regressions.
+
+## Admin Analytics QA
+
+1. **API smoke tests**
+   - Hit the protected endpoints with an admin token:  
+     `curl -H "Authorization: Bearer <token>" http://localhost:3001/api/admin/metrics/visitors?days=14`  
+     `curl -H "Authorization: Bearer <token>" http://localhost:3001/api/admin/metrics/scans?days=14`  
+     `curl -H "Authorization: Bearer <token>" http://localhost:3001/api/admin/metrics/funnel?days=14`  
+     `curl -H "Authorization: Bearer <token>" http://localhost:3001/api/admin/metrics/top-pages?days=14`  
+     Confirm all return HTTP 200 with `daily`, `totals`, or `items` arrays, and that non-admin tokens receive `403`.
+   - Verify the in-memory cache works by hitting the same endpoint twice within five minutes and observing log silence / consistent payloads. Set `METRICS_CACHE_TTL_SECONDS=1` during dev to exercise cache eviction.
+
+2. **UI verification**
+   - Run `npm run client:dev`, log in as an admin, and open `/admin`.
+   - Toggle the visitor, scan, funnel, and top-pages window controls (`7d`, `14d`, `30d`) and ensure charts + KPI cards refresh without console errors. Watch the network tab to confirm the corresponding API query is fired once per toggle.
+   - Validate top block reasons, transport breakdown, funnel conversion, and the top pages table reflect the data returned by their respective endpoints.
+
+3. **Regression checks**
+   - Kill the API server while keeping the client open; ensure toast errors appear for telemetry fetches and the page degrades gracefully (charts show error state, not blank white screens).
+   - Confirm retention job logs (`Telemetry retention job failed/succeeded`) appear at least once every 12 hours in staging logs so we know old telemetry is pruned.
+
+## Precision Scanning Telemetry QA
+
+1. **Unit coverage**
+   - `server/__tests__/metricsApi.test.js` now seeds telemetry rows for `param-harness.run`, `payload-lab.batch`, `payload-lab.evasion`, `scan.prescan-summary`, and `scan.stage-latency` to ensure `database.getPrecisionScanMetrics` produces stable rollups.
+   - Run `npm test -- metricsApi.test.js` (or `npm test`) before landing telemetry changes to guarantee the coverage math stays intact.
+
+2. **Smoke helper**
+   - `npm run smoke:precision-scan` loads the SQLite database at `DB_PATH` (defaults to `server/data/cybersecurity.db`), fetches the last `PRECISION_METRICS_DAYS` (default `7`) of precision metrics, and prints coverage/diversity/latency snapshots.
+   - The smoke exits non-zero if no harness runs or payload batches exist inside the selected window-ideal for post-deploy validation that advanced scanning remains enabled.
+
+### SQLi Technique Normalization Regression
+
+- Run `npm test -- sqlmapLogParsing reports exporters` after changing SQLMap parsing, report generation, or metrics exporters to ensure shorthand inputs resolve to canonical technique arrays and metadata end-to-end.
+- Confirm reports with tester-supplied `--technique` flags continue to expose both the raw flag string and the normalized labels in UI metadata before shipping.
+- When validating Admin analytics, inspect `/api/admin/metrics/scans` and the dashboard "Technique Distribution" widget to ensure no raw shorthand (e.g., `BEU`, `TQ`) leaks into `metrics.techniques_distribution`. Escalate new labels via `docs/sqlmap-technique-alignment-plan.md`.
+
+## Evidence Ledger QA
+
+1. **API smoke tests**
+   - `curl -H "Authorization: Bearer <token>" http://localhost:3001/api/reports/<reportId>/evidence-ledger?limit=25`  
+     Confirms ParamHarness, Payload Lab, and Quick Verify entries are present and properly typed.
+2. **Export verification**
+   - Export HTML (or PDF) via `curl -H "Authorization: Bearer <token>" http://localhost:3001/api/reports/<reportId>/export/html > report.html` and ensure the "Evidence ledger snapshot" table matches the API output.
+   - Trigger a quick-verify capture and confirm the ledger exposes scope, HTTP status, and the `stored_path` (if evidence retention is enabled).
+
+## Scan Governance QA
+
+1. **Policy API smoke tests**
+   - `curl -H "Authorization: Bearer <token>" http://localhost:3001/api/admin/scan-policy` returns the three booleans plus `updatedAt/updatedBy`.
+   - Toggle values via `curl -X PUT -H "Authorization: Bearer <token>" -H "Content-Type: application/json" -d '{"disableNonAdminScans":true}' http://localhost:3001/api/admin/scan-policy` and verify the response mirrors the change.
+   - Watch for `scan-policy-block` telemetry entries and `scan-policy-block-spike` logs if you intentionally hammer blocked states. Tweak `SCAN_BLOCK_SPIKE_THRESHOLD` / `SCAN_BLOCK_SPIKE_WINDOW_SECONDS` locally to exercise the alert path.
+
+2. **Verification gating**
+   - Set `allowArbitraryVerification=false` and attempt to `POST /api/targets` with a non safe-list hostname as a non-admin; expect HTTP 403 + `scan-policy-block` telemetry.
+   - Repeat with a preapproved hostname and confirm the request still succeeds.
+
+3. **Scan enforcement**
+   - Enable `enforcePreapprovedTargets` and verify `/api/scans`, WebSocket `start-sqlmap-scan`, and `/api/scans/schedule` all reject non-safe hostnames even if they were previously verified.
+   - Flip `disableNonAdminScans=true` and ensure REST, WS, and scheduled jobs immediately return 423/403 responses while admins remain unaffected.
+   - Watch the queue logs for `policy-block` entries and confirm telemetry counts increase under `scan-policy-block`.
+
+4. **Admin UI toggles**
+   - Load `/admin` as an operator, ensure the “Scan Governance Controls” card mirrors the API response (including helper text and last updated metadata).
+   - Toggle each control, confirm the confirmation dialog appears, the button enters an “Updating…” state, and the sockets update any open admin tabs without a refresh.
+
+5. **Regression**
+   - With the kill switch enabled, create a queued scan as a non-admin and confirm the queue runner marks it failed (reason recorded in `jobs.last_error`).
+   - Re-run `npm test -- database.test.js` to exercise the scan-policy persistence helpers.
+   - Run `npm test -- scanPolicy.test.js metricsApi.test.js` for focused coverage, and `npm --prefix client run test` to revalidate the Vitest/RTL analytics suite.
+   - Simulate unique visitors by starting the dev stack, visiting `/` in private windows (ensures new `cybersec_vid` cookies), and confirm `Admin` shows the uptick. Force blocked scans by toggling the kill switch, starting HTTP + WebSocket scans as a non-admin, and watch for `scan-policy-block` counters in the UI.
+
+## Emergency scan kill switch runbook
+
+1. **Engage**  
+   - Use the `/admin` Scan Governance panel or `PUT /api/admin/scan-policy {"disableNonAdminScans":true}`. Confirm the toast + API response indicate the kill switch is on.
+2. **Verify effect**  
+   - Attempt a non-admin scan (HTTP + socket). Expect HTTP 423 / `scan-error` toast and `scan-policy-block` telemetry with reason `non-admin-disabled`.
+   - Monitor logs for `non-admin-scan-kill-switch` (should emit once per transition) and for spike warnings if blocked attempts exceed the configured threshold.
+3. **Communicate & monitor**  
+   - Notify stakeholders why scanning is paused. Use `docs/admin-analytics-plan.md` tracking section to log start time and operator.
+   - Keep `/api/admin/metrics/scans` open: `blocked` should increase while `accepted` stays flat. Consider adjusting `SCAN_BLOCK_SPIKE_THRESHOLD` temporarily if you need denser alerting.
+4. **Restore access**  
+   - When ready, set `disableNonAdminScans=false`. Confirm the audit log (`scan-policy-block` reason `policy-reset`) and a `Non-admin scan kill switch disabled` info log.
+   - Re-run a non-admin scan to confirm the system processes requests again, then reset any temporary env overrides.
+
+## Additional Resources
+
+- [Jest Documentation](https://jestjs.io/)
+- [Jest Matchers](https://jestjs.io/docs/expect)
+- [Jest Mock Functions](https://jestjs.io/docs/mock-functions)
+- [Jest CLI Options](https://jestjs.io/docs/cli)
+
+
+### docs/admin-analytics-plan.md
+# Admin Analytics & Scan Governance Plan
+
+_Updated: 2025-11-09_
+
+This plan replaces the legacy “Admin visits” card with trustworthy traffic insights and adds fine-grained scan controls so we can safely invite early testers without risking abuse or surprise Fly.io spend.
+
+## Objectives & Guardrails
+- Distinguish total vs. unique vs. returning visitors using lightweight telemetry (cookie-based UUID + optional `userId`) without third-party analytics.
+- Keep ingestion cost low: append-only logs, hourly rollups, and API responses capped to <=30 datapoints per chart.
+- Allow administrators to flip three policies from the UI: `allowArbitraryVerification`, `enforceApprovedTargetsOnly`, and `disableNonAdminScans`. Admin accounts always bypass the last toggle.
+- Surface professional-grade visualizations (trend lines, funnels, distribution cards) that make anomalies obvious without overloading the client bundle.
+- Every phase must land as a reviewable change (tests + docs) with a visible impact on either insight quality or abuse prevention.
+
+## Phase Breakdown
+
+### Phase 0 – Discovery & Risk Assessment *(in-progress)*
+- [x] Inventory current metrics sources (Admin page counters, scan logs, Fly metrics) and mark which are trustworthy vs. inferred. *(See Phase 0 findings 2025-11-09.)*
+- [x] Define KPIs for preview mode: daily unique visitors, 7d returning visitors, verifications initiated/completed, scans blocked by policy.
+- [ ] Capture baseline traffic volume and CPU/memory footprints so we know the headroom for additional logging. *(Traffic baselines captured 2025-11-09 via `server/tools/db_inspect.js`; CPU/memory telemetry still missing.)*
+- [ ] Align with policy stakeholders on how long raw visit logs must be retained and who can query them. *(Pending product/legal guidance.)*
+
+### Phase 1 - Visitor Identity & Event Logging *(in-progress)*
+- [x] Issue a first-party `visitor_id` cookie plus server-side fallback (hashed IP + UA) and store in a new `visit_log` table (`timestamp`, `visitor_id`, `user_id`, `is_admin`, `route`, `source`). *(Implemented 2025-11-09 via `ensureVisitorIdentity` middleware + `visit_log` table.)*
+- [x] Instrument key flows (landing page load, admin login, verification start/finish, scan request) to emit structured events via existing middleware with back-pressure safeguards. *(2025-11-09 update: login, domain verification lifecycle, and HTTP/WS scan attempts now log status + reasons; all requests carry `X-Visitor-ID`.)*
+- [x] Ensure admin traffic is tagged so we can exclude our own usage from public metrics. *(New `is_admin` column + client source tagging.)*
+- [x] Add lightweight pruning (e.g., 30-day retention) and document opt-out handling for privacy requests. *(Retention job trims `telemetry_events` (90d) + `visit_log` (60d); need policy confirmation for deletion requests.)*
+
+### Phase 2 - Aggregation & Metrics API *(complete)*
+- [x] Create nightly/hourly rollup job (Node worker or SQL materialized view) producing `daily_metrics` rows (total visits, unique visitors, returning visitors, verifications, scans started/completed, blocked attempts). *(Daily cron now calls `database.generateDailyMetrics`, with backfill on startup.)*
+- [x] Expose `/api/admin/metrics/visitors`, `/api/admin/metrics/scans`, and `/api/admin/metrics/funnel` endpoints returning pre-aggregated JSON sized for charting. *(All three endpoints prefer rollup data and fall back to raw aggregation when needed.)*
+- [x] Cache responses in Redis/memory for 5 minutes to avoid repeating heavy GROUP BY queries under traffic spikes. *(Implemented in-memory cache; document requirement to switch to Redis before GA.)*
+- [x] Document data definitions and refresh cadence in `docs/TESTING.md` so QA can validate expected numbers. *(See “Admin analytics QA” section.)*
+
+### Phase 3 - Admin Analytics UX *(complete)*
+- [x] Replace the current "Visits (last 14 days)" block with a dual-series chart (total vs unique) and a separate returning-user sparkline using Recharts (already in bundle) with lazy loading. *(Delivered 2025-11-09 with visitor timeline + daily snapshot.)*
+- [x] Add KPI cards for `Daily Active Visitors`, `Repeat Visitors (7d)`, `Verifications Completed`, `Scans Blocked`, each referencing Phase 2 endpoints and showing +/- deltas vs. prior period. *(Visitor + scan KPI rows live; verification cards now use the funnel API.)*
+- [x] Introduce a mini table highlighting top entry pages/actions plus a stacked bar showing verification funnel (initiated -> ownership proof submitted -> approved). *(Funnel chart + crosstab hooked to `/api/admin/metrics/funnel`; top pages table reads from `/api/admin/metrics/top-pages`.)*
+- [x] Audit the layout for accessibility/perf: suspense fallbacks, skeleton loading, and memoized selectors so the charts stay smooth on low-end hardware. *(New charts wrap in memoized cards with lightweight loaders and keyboard-accessible toggles.)*
+- [x] Surface precision-scanning KPIs (harness coverage, adoption, payload diversity, latency medians, evasion counts) using `/api/admin/metrics/precision` so operators can prove the ParamHarness + Payload Lab impact without digging into raw telemetry. *(2025-11-13 update: Admin page includes a dedicated "Precision scanning" panel with window selectors + cards.)*
+
+#### Precision dashboard thresholds (live in Admin UI)
+
+| KPI | Healthy | Warn | Action | Notes |
+| --- | --- | --- | --- | --- |
+| Harness coverage | >= 85% of recon parameters replayed | 70-84% | < 70% | Coverage looks at unique `param_harness_runs` per recon parameter in the chosen window. |
+| Harness adoption | >= 80% of prescan jobs execute the harness | 55-79% | < 55% | Calculated from `scan.prescan-summary` telemetry (`harnessStatus`). |
+| Payload adoption | >= 55% of prescan jobs execute payload lab | 30-54% | < 30% | Keeps adaptive payloads honest; low adoption usually means target toggles are disabled. |
+| Harness median latency | <= 1.5s | 1.5s - 2.5s | > 2.5s | Higher medians can signal throttling or over-aggressive parameter limits. |
+
+The Admin dashboard now surfaces these KPIs with status badges (healthy / monitor / action) and contextual alerts. The same thresholds are referenced in the operations runbook so support/on-call engineers have a single source of truth.
+
+### Phase 4 - Scan Governance Controls *(complete)*
+- [x] Create a secure `scan_policy` table (single row) holding booleans: `allow_arbitrary_verification`, `enforce_preapproved_targets`, `disable_non_admin_scans`, and expose CRUD via `/api/admin/scan-policy`. *(SQLite table + helpers added 2025-11-09; defaults seeded + Redis-free caching.)*
+- [x] Update verification + scan creation endpoints to enforce policy: 
+  - Reject arbitrary domains when disabled unless they exist in the approved targets table.
+  - Short-circuit all non-admin scan requests when `disable_non_admin_scans` is true; admins bypass via role check.
+  - Emit audit log entries whenever a request is denied (who, target, reason) for future anomaly detection. *(HTTP/WS/queue paths now depend on `getScanPolicy` with telemetry event `scan-policy-block`.)*
+- [x] Add a policy panel in `Admin.tsx` with three toggles, clear helper text, confirmation modals, and optimistic UI syncing with the backend. *(Live Recharts page now includes “Scan Governance Controls” with socket-driven updates.)*
+- [x] Broadcast policy changes via the existing socket layer so queued workers pick up the new rules without redeploy. *(`scan-policy:update` socket event informs clients + queue runner receives hot updates.)*
+
+**Phase 4 implementation notes (2025-11-09)**
+- Admin API: `GET/PUT /api/admin/scan-policy` caches for 5s, records `updated_by`, and invalidates worker caches.
+- Enforcement: HTTP + WS + scheduler + queue runner share `enforceScanPolicyForRequest`, guaranteeing kill-switch + preapproved-only flows halt instantly.
+- Verification requests respect `allowArbitraryVerification` and rely on the safe-target inventory as the approved list.
+- Auditing: each policy denial emits both `Logger.audit('scan-policy-block', …)` and `telemetry_events.event_type = 'scan-policy-block'` so anomalies surface in dashboards.
+
+### Phase 5 - Verification, Testing & Runbooks *(complete)*
+- [x] Expand `server/__tests__/` to cover policy enforcement (approved list, arbitrary toggle, non-admin kill switch) and add integration tests for the metrics API. *(New `scanPolicy.test.js` exercises the helper logic while `metricsApi.test.js` seeds rollups + telemetry to assert visitor/scan/funnel rollups.)*
+- [x] Add frontend tests (React Testing Library) confirming that charts render with mocked data and toggles persist state. *(Vitest + RTL render `Admin` with mocked API responses to verify the analytics panels and scan-governance switches.)*
+- [x] Update `docs/TESTING.md` with new QA steps (simulating unique visitors, forcing blocked scans) plus a runbook for emergency "stop all scans" toggle usage. *(See “Scan Governance QA” + “Kill switch runbook”.)*
+- [x] Hook key metrics (blocked scans, disabled-scan mode) into alerting so we know when the kill switch is engaged or when blocked attempts spike. *(`setCachedScanPolicy` and `recordPolicyBlock` now emit `Logger.suspiciousActivity` events; thresholds tunable via `SCAN_BLOCK_SPIKE_THRESHOLD` / `SCAN_BLOCK_SPIKE_WINDOW_SECONDS`.)*
+
+**Phase 5 implementation notes (2025-11-10)**
+- Added `server/utils/scanPolicy.js` so both the API and test suite share the same enforcement/verification logic.
+- `docs/TESTING.md` now documents scripted QA (admin analytics vitest suite, blocked-scan drills, emergency toggle runbook).
+- Alerting: enabling the kill switch triggers an explicit security log, and policy blocks trip a spike detector so operators get warned when preview users hammer forbidden targets.
+
+### Pending - Normalized SQLi Technique Distribution
+- [ ] Add an "SQLi Technique Distribution" widget to `/admin` that reads `metrics.techniques_distribution` (fed by canonical technique arrays) so ops can spot regressions back to shorthand labels. *(Tie-in: `docs/sqlmap-technique-alignment-plan.md` Phase 4, exporters metrics.)*
+- [ ] Emit a weekly telemetry snapshot (log/alert) whenever a new technique label appears in the distribution to flag normalization misses.
+
+### Phase 0 Findings – 2025-11-09
+
+**Current data sources & reliability**
+
+| Source | Table / Endpoint | Reliability | Notes |
+| --- | --- | --- | --- |
+| Authenticated route telemetry | `POST /api/telemetry/visit` -> `telemetry_events` (`server/index.js:730`, `database.js:461`) | Low for public traffic | Requires `AuthMiddleware.requireAuth`, so only signed-in users visiting in-app routes fire events. No cookie/fingerprint -> cannot distinguish uniques or returners. |
+| Scan lifecycle stats | `scan_events`, `scans` (`database.getScansStatsSince`, `countVerificationEventsSince`, etc.) | Medium | Captures start/completion timestamps accurately but lacks context (plan, policy, requester type). Need event metadata for blocked attempts. |
+| Reports / TTFR | `reports`, `reports.created_at` vs. scan start (`database.getAverageTimeToFirstReportSince`) | Medium | Works for completed scans only; queue delays before `sqlmap_start_time` not recorded. |
+| Usage counters | `usage_counters` monthly rollups | Medium-high | Useful for per-user quotas but not exposed in admin dashboard today. |
+| Visit “top pages” list | `database.getTopPages` using `json_extract(metadata,'$.path')` | Low | Shares same limitations as visit events; returning identical path per route change inflates counts. |
+| Fly / runtime metrics | _None wired in-app_ | N/A | No process-level CPU/memory instrumentation or Fly metrics ingestion detected; requires external dashboard or new endpoint. |
+
+**Preview-mode KPIs defined**
+- Daily Active Visitors (total + unique).
+- 7-day Returning Visitors.
+- Verification funnel: initiated -> token served -> ownership approved -> scans scheduled for that domain.
+- Scan governance: number of scan requests blocked by allowlist, arbitrary verification toggle, and kill switch; timestamp of last policy change and operator.
+- Resource health: queue depth, avg time-to-first-report, and worker saturation (post Phase 2 data).
+
+**Baseline datapoints (SQLite snapshot 2025-11-09 via `node server/tools/db_inspect.js`)**
+- Users: 2 total / 1 admin.
+- Scans: 198 all-time, 124 in last 30d (115 reports in same period).
+- Visits: 864 all-time, 445 in last 30d (authenticated-only telemetry).
+- Verifications: 23 in last 30d; false positives logged: 0.
+- Queue/runtime telemetry: **missing**. Need lightweight probe (e.g., process metrics endpoint or Fly `fly apps metrics`) before Phase 2.
+
+**Open policy items**
+- Retention defaults to 90d (`telemetry_events`) / 60d (`visit_log`); confirm if shorter windows or self-serve deletion tools are required.
+- Need definition of who can toggle `disable_non_admin_scans` and whether it must auto-expire or require two-person approval.
+
+### Phase 1 Notes - 2025-11-09
+- Added `visit_log` table plus `Database#logVisitEvent`, allowing us to capture visitor ID, admin flag, route, and hashed IP/UA without touching raw addresses.
+- Frontend now generates/stores `cybersec_vid` in both localStorage and SameSite cookie, and every `apiFetch` emits `X-Visitor-ID`. All routes (including `/login`) fire unauthenticated telemetry with source buckets (`auth`, `admin`, `app`).
+- Backend `ensureVisitorIdentity` middleware ensures cookies are synchronized and calculates a SHA-256 fingerprint for fallback deduping.
+- Auth + verification + scan endpoints emit telemetry: `login-success`/`admin-login-success`, `target-verification-request|success|failed|error`, and `scan-request` (status = accepted/blocked/error with reasons + transport). Both HTTP and WS flows share the same event schema so we can count blocked attempts vs. successful starts.
+- Introduced `Database#pruneTelemetry` plus a scheduled job (default every 12h) that enforces 60d retention for `visit_log` and 90d for `telemetry_events`; env vars (`VISIT_LOG_RETENTION_DAYS`, `TELEMETRY_RETENTION_DAYS`) allow future tweaks without code.
+
+### Telemetry Retention Policy (Draft - Pending Stakeholder Alignment)
+- **Defaults**: `visit_log` trimmed after 60 days; `telemetry_events` (including `scan-request` records) trimmed after 90 days. Values may be overridden per environment using `VISIT_LOG_RETENTION_DAYS` and `TELEMETRY_RETENTION_DAYS`.
+- **Data categories**: visit metadata (anonymous visitor ID, hashed IP/UA, route), login success events, verification lifecycle events, and scan-request outcomes (accepted/blocked/error with reason + transport).
+- **Deletion workflow**: No self-service tooling yet. Product/legal stakeholders must confirm whether (a) users can request deletion of telemetry tied to their account and (b) retention needs to shorten when we process production customer data. Capture the agreed process in `docs/TESTING.md` and surface a runbook for manual purges.
+- **Next actions**:
+  1. Review the draft policy with security/legal before enabling public preview.
+  2. Decide if admin-only traffic should bypass retention limits (currently included).
+  3. Document an emergency procedure for pausing telemetry ingestion if compliance issues arise.
+
+## Tracking & Notes
+- Record status flips (e.g., when the kill switch is enabled) in this file so the next session knows the current operating mode.
+- When a phase completes, check off the bullets above and summarize findings or regressions discovered during implementation.
+- Current scan policy (2025-11-09): `allowArbitraryVerification=true`, `enforcePreapprovedTargets=false`, `disableNonAdminScans=false`. Update via `/api/admin/scan-policy` or the Admin UI toggles to lock preview testers to safe targets.
+
+
+### docs/precision-scanning-operations.md
+# Precision Scanning Operations Runbook
+
+This guide explains how operators control the pre-scan harness + adaptive payload lab and how to validate the pipeline end-to-end.
+
+## 1. Target-Specific Controls
+
+Every verified target now carries two feature flags:
+
+- **Parameter Harness** (`enable_param_harness`): when disabled, the queue skips all harness replays for the target.
+- **Adaptive Payload Lab** (`enable_payload_lab`): enables recipe-driven payload batches during harness runs. Defaults to off.
+
+### Updating Flags
+
+1. Navigate to **Settings → Adaptive Payload Controls** (admins see all targets; members see their own).
+2. Toggle *Harness* or *Payload Lab* per hostname. Changes persist immediately through `/api/targets/:id/adaptive-controls`.
+3. The queue reads these flags before every job. Expect the `Running Scans` panel to show the updated stage badges on the next run.
+
+CLI fallback (for emergencies):
+
+```bash
+sqlite3 server/data/cybersecurity.db \
+  "UPDATE verified_targets SET enable_payload_lab = 0 WHERE hostname = 'example.com';"
+```
+
+## 2. Pre-Scan Stage Visibility
+
+- The queue stores stage summaries in `scans.pre_scan_meta`.
+- `/api/admin/scans/running` broadcasts the latest `preScanStages` payload, which the Admin dashboard renders as Harness/Payload badges.
+- When troubleshooting, grab the raw JSON via:
+  ```bash
+  curl -H "Authorization: Bearer <token>" https://api.../api/admin/scans/running
+  ```
+
+## 3. Smoke / Validation
+
+Before enabling adaptive payloads for a new customer:
+
+1. Toggle the target on via Settings.
+2. Kick off a scan with a low-impact profile.
+3. Watch the `Running Scans` panel—Harness should move to *Completed*, Payload Lab should show attempt counts.
+4. Inspect `server/logs/queue.log` for `payloadLab` telemetry (`generated`, `blocked`, `signals.hit`).
+
+If payload lab errors or a target reports WAF issues, disable the toggle and restart the job; the harness will still run if its toggle stays enabled.
+
+## 4. Precision dashboard playbook
+
+The Admin dashboard (Precision section) reflects `/api/admin/metrics/precision`. Use these guardrails during daily reviews:
+
+| Metric | Healthy | Investigate | Action |
+| --- | --- | --- | --- |
+| Harness coverage | >= 85% | 70-84% | < 70% (check recon freshness / per-target toggles) |
+| Harness adoption | >= 80% of prescan jobs | 55-79% | < 55% (queue or policy flag disabled) |
+| Payload adoption | >= 55% | 30-54% | < 30% (targets likely opted-out) |
+| Harness median latency | <= 1.5s | 1.5s-2.5s | > 2.5s (throttling or large payloads) |
+
+When the dashboard raises an alert:
+
+1. Confirm toggles in **Settings  Adaptive Payload Controls** for the affected target(s).
+2. Re-run `npm run smoke:precision-scan` (or call `/api/admin/metrics/precision`) to see whether telemetry recovered after changes.
+3. If latency is the issue, lower `PRESCAN_HARNESS_LIMIT` temporarily or schedule a dedicated recon refresh.
+
+## 5. Security & feature gates
+
+- **Precision metrics API toggle:** set `ENABLE_PRECISION_METRICS_API=false` to disable `/api/admin/metrics/precision` (the Admin UI hides the panel automatically). Use this for incident response or when precision telemetry needs quarantining.
+- **Evidence ledger API toggle:** `ENABLE_EVIDENCE_LEDGER_API=false` disables `/api/reports/:id/evidence-ledger` and removes the ledger snapshot from exports.
+- **Rate limits:** the evidence ledger endpoint is capped at 10 requests/minute/IP to prevent exfiltration of archived evidence. Operators should prefer the HTML/PDF export when sharing data externally.
+
+
+### docs/precision-scanning-plan.md
+# Precision Scanning Program (Living Plan)
+
+This plan breaks the "no-toy" mandate into incremental, traceable phases. Each phase ends with artifacts that can be linked to PRs, tests, and telemetry. Keep this file up to date (check boxes, add notes) so future conversations never lose context.
+
+## Reference Docs
+
+- `docs/precision-scanning-architecture.md`: canonical recon → queue → SQLMap → verification flow + gaps.
+- `docs/precision-scanning-db.md`: tables/columns already available for recon, jobs, telemetry, and how we extend them.
+- `docs/precision-scanning-metrics.md`: success metrics and the telemetry hooks we need to populate them.
+- `docs/param-harness.md`: design + UX plan for the Phase 1 harness subsystem.
+
+## Guiding Objectives
+
+- **Parameter-centric accuracy**: treat every discovered input (query, form, JSON, header) as a first-class asset, not just a string SQLMap touches.
+- **Adversarial payload evolution**: generate, score, and store payload variants (LLM + heuristics) to outpace WAFs instead of replaying stock wordlists.
+- **Evidence-first UX**: every automation stage must emit machine- and human-readable evidence (diffs, screenshots, curl snippets) so reports stand on their own.
+- **Operational safety**: respect policy gates (`server/queue.js`, `server/utils/concurrency.js`) while running more complex workflows.
+
+## Phase 0 – Situational Baseline
+
+| Status | Task | Notes / Entry Points |
+| --- | --- | --- |
+| [x] | Capture current recon → queue → SQLMap → verifier data flow in a short architecture note. | See `docs/precision-scanning-architecture.md` (highlights modules + gaps). |
+| [x] | Inventory DB schemas relevant to recon parameters + queued jobs to see what metadata already exists. | Summary in `docs/precision-scanning-db.md`. |
+| [x] | Define metrics we’ll track to prove value (e.g., “% parameters exercised beyond SQLMap”, “# WAF evasions discovered”). | Drafted in `docs/precision-scanning-metrics.md`. |
+
+**Exit criteria:** Shared understanding doc + metric list checked in, so later PRs can cite them.
+
+## Phase 1 – Parameter Harness & Form Graphs
+
+Goal: deterministically replay forms and body payloads using recon metadata so we can probe inputs without SQLMap.
+
+| Status | Task | Notes |
+| --- | --- | --- |
+| [x] | Extend `ReconEngine` output + DB persistence to capture enough detail for POST bodies (field order, enctype, CSRF hints). | `server/recon.js` now emits `form_contexts`; persisted via `database.saveReconParameters` + new column. |
+| [x] | Build a `ParamHarness` service/module that consumes recon rows and issues baseline requests (respecting `prepareAuthContext`). | `server/paramHarness.js` + admin-only `/api/param-harness/run`. |
+| [x] | Store harness runs + fingerprints alongside recon data for re-use (maybe new table `recon_parameter_runs`). | Added `param_harness_runs` table + helpers; see `docs/param-harness.md` for UI plan. |
+| [x] | Surface harness previews in admin UI (new panel or add to `client/src/pages/Reports.tsx`). | `Reports` page now shows “Latest Parameter Harness Runs” fed by `/api/param-harness/runs`. |
+
+**Exit criteria:** We can replay any recorded parameter (GET/POST/JSON) end-to-end, capture response fingerprints, and show them in the UI.
+
+## Phase 2 – Adaptive Payload Lab
+
+Goal: generate and evaluate adversarial payloads (LLM or rule-based) to bypass WAFs and confirm findings without relying solely on SQLMap.
+
+| Status | Task | Notes |
+| --- | --- | --- |
+| [x] | Define payload recipe schema (encodings, insertion strategy, expected signal) stored per parameter. | `server/database.js` now seeds `payload_recipes` + `payload_lab_runs/results`, with loader + API in `server/helpers/payloadRecipes.js` / `/api/payload-recipes`. |
+| [x] | Implement generator(s): start with deterministic transformations (unicode, comment wrapping), then optionally LLM-backed suggestions gated by policy flags (`client/src/config/runtimeFlags.ts`). | Deterministic set (`server/payloadLab/generators/*.js`) produces sanitized variants; runtime flags documented for future LLM gates. |
+| [x] | Integrate with ParamHarness to execute payload batches, scoring responses using `verifyFinding` primitives (diffs, WAF detection). | `server/paramHarness.js` accepts recipe-driven batches and pipes responses through `server/payloadLab/evaluator.js` for signal scoring/WAF detection. |
+| [x] | Persist successful evasions (`payload`, `signals`, `wafIndicators`) for reporting + reuse in future scans. | Attempts + winning payloads stored via `database.recordPayloadLabRun/Result` so reports/exports can reuse them; schema captured in `docs/precision-scanning-db.md`. |
+| [x] | Add telemetry + tests (Jest) to ensure payload lab never emits dangerous shell data and respects policy toggles. | Jest suites (`server/__tests__/payloadGenerators.test.js`, `payloadLabEvaluator.test.js`) + `docs/TESTING.md` updates guard generator safety/WAF heuristics. |
+
+**Exit criteria:** For a chosen target set, we can prove new payload variants that either (a) bypass WAF indicators or (b) tighten confirmation confidence beyond SQLMap output.
+
+## Phase 3 – Pipeline & UX Integration
+
+Goal: chain recon → harness → payload lab → SQLMap/verification into a coherent workflow with operator controls.
+
+| Status | Task | Notes |
+| --- | --- | --- |
+| [x] | Update `QueueRunner` to schedule pre-scan harness/payload lab jobs before SQLMap, honoring concurrency + policy checks. | Harness probes now fire automatically from `server/queue.js` before SQLMap launches. |
+| [x] | Expose job state + artifacts in Admin UI (`client/src/pages/Admin.tsx`, `RunningScansPanel.tsx`). | Running scans table now shows harness + payload lab stages with live status chips. |
+| [x] | Enhance reports (`server/reports.js`, `client/src/pages/ReportDetails.tsx`) to embed harness/payload evidence (diffs, screenshots). | ReportDetails + HTML/Markdown exports now include ParamHarness insights. |
+| [x] | Document operational runbooks (e.g., how to add new payload generators, how to interpret metrics) in `docs/`. | `docs/precision-scanning-operations.md` now covers adaptive toggles + validation steps. |
+
+**Exit criteria:** End users can see richer scan stages, retrieve evidence, and toggle the advanced pipeline per target/org.
+
+## Phase 4 - Evidence & Metrics Hardening
+
+| Status | Task | Notes |
+| --- | --- | --- |
+| [x] | Instrument Phase 0 metrics end-to-end. | `database.getPrecisionScanMetrics` aggregates the Phase 0 KPIs, `/api/admin/metrics/precision` exposes them for the Admin UI, and Jest coverage/smoke scripts guard the math. |
+| [x] | Build an evidence ledger + export hooks. | `database.getEvidenceLedger` + `/api/reports/:id/evidence-ledger` unify ParamHarness, Payload Lab, and Quick Verify artifacts (now rendered inside report exports). |
+| [x] | Surface dashboards + docs for operators. | Admin precision panel now shows threshold badges/alerts + trend sparkline, and both `docs/admin-analytics-plan.md` / `docs/precision-scanning-operations.md` describe the guardrails. |
+| [x] | Automate regression + smoke coverage. | Added telemetry math assertions to `server/__tests__/metricsApi.test.js`, created `scripts/precision-scan-smoke.js` (`npm run smoke:precision-scan`), and documented the flow inside `docs/TESTING.md`. |
+| [x] | Complete security/perf reviews + guardrails. | Precision metrics + evidence ledger now have feature toggles, audit logs, and rate limits documented in the ops runbook. |
+
+**Exit criteria:** Operators can point to dashboards proving harness/payload impact, exports share a single evidence ledger, and regression/safety guardrails keep the system non-toy.
+
+---
+
+### Working Notes
+
+- When a phase task starts, add sub-bullets or link to tickets/PRs underneath the checklist item.
+- If requirements change, append a "Decision Log" section with timestamps so future sessions understand pivots.
+- Keep reiterating: every code change should map back to this plan to avoid drifting toward "toy" territory. 
+- Before any commit, run `npm run lint` followed by `npm test` so we always land validated changes. 
+
+### Next Conversation Seeds
+
+To keep momentum when we spin up the next chat, pick up one (or more) of these threads:
+
+- **Precision metrics UX**: wire the new `/api/admin/metrics/precision` payload into the Admin analytics cards and document alert thresholds per `docs/admin-analytics-plan.md`.
+- **Evidence ledger design**: decide whether the shared summary lives as a materialized table or view, and outline how `reports` + exports consume it without bespoke queries.
+- **Security/perf drills**: enumerate RBAC/rate-limit verifications plus the smoke commands we expect on-call engineers to run before toggling the new features.
+
+#### Phase 2 - Detailed Working Thread
+
+1. **Payload recipe schema + storage.** Draft the schema in `docs/precision-scanning-db.md`, then codify it via a migration that introduces `payload_recipes` (base definitions) and `payload_lab_runs` (executions keyed to `param_harness_runs_id`). Each recipe row should capture `insertion_vector`, `encoders[]`, `mutation_strategy`, `expected_signal`, and `safety_tags` so policy logic can filter unsafe combinations. Add a lightweight loader in `server/helpers/payloadRecipes.js` that returns typed objects (with validation) for the generators.
+   - *2025-11-10:* `payload_recipes` / `payload_lab_runs` / `payload_lab_results` tables landed with sync helper + admin API for recipe inspection.
+2. **Deterministic generator scaffolding.** Stand up `server/payloadLab/generators/` with pure functions (e.g., `unicodeBypass`, `commentWrapping`, `caseRandomizer`). Each generator receives the base parameter context and a recipe, emits payload candidates, and tags required preconditions (auth state, CSRF token availability). Gate optional LLM-backed generators behind `runtimeFlags.enableAdaptivePayloadLab` and persist prompts/responses for auditing.
+   - *2025-11-10:* Added deterministic generator set + Jest harnesses to ensure outputs stay shell-safe.
+3. **ParamHarness integration + scoring.** Extend `server/paramHarness.js` so harness runs can accept a `payloadBatch` array. After replaying, feed responses through an evaluator module (new `server/payloadLab/evaluator.js`) that leverages `verifyFinding` primitives, collects WAF indicators (status codes, headers, body regexes), and maps them to `signals` persisted with each run.
+   - *2025-11-10:* Harness now accepts recipe-driven batches, records payload attempts, and persists evaluator signals + summaries per run.
+4. **Persistence + evidence.** Add `payload_lab_results` (or extend existing evidence tables) to store winning payloads, response excerpts, diff artifacts, and reproducible curl snippets. Surface the storage contract in `docs/precision-scanning-architecture.md` so downstream services know how to query the data.
+   - *2025-11-10:* `database.recordPayloadLabRun/Result` now persists attempts + evidence, and `docs/precision-scanning-db.md` documents query shapes for downstream consumers.
+5. **Safety, observability, and tests.** Introduce Jest suites around the new generator/evaluator modules (e.g., `server/__tests__/payloadGenerators.test.js`) to assert that dangerous substrings (`&&`, `;`, `|`) are never emitted when policy flags are disabled. Emit structured logs + telemetry counters (`payloadLab.generated`, `.blocked`, `.signals.hit`) so Phase 4 metrics can hook in later.
+   - *2025-11-10:* Generator/evaluator Jest suites plus structured logging landed; `docs/TESTING.md` references the new coverage to keep the harness non-destructive.
+
+#### Phase 3 - Detailed Working Thread
+
+1. **Queue + job state plumbing.** Extend `server/queue.js` job payloads so each queued scan advertises `preScanStages` with status enums (`PENDING`, `RUNNING`, `SUCCEEDED`, `FAILED`). Ensure transitions are emitted over the websocket channel consumed by `useSocket.tsx`, and expose REST fallbacks in `server/index.js` for historical views.
+   - *2025-11-10:* `pre_scan_meta` now persists harness/payload summaries per scan, and `/api/admin/scans/running` includes these snapshots for UI/state streaming.
+2. **Admin UI visibility.** Update `client/src/pages/Admin.tsx` + `client/src/components/admin/RunningScansPanel.tsx` to display a stage timeline (Recon → Harness → Payload Lab → SQLMap → Verify). Include evidence badges that deep-link into Reports/ReportDetails when payload lab results exist, and let operators re-run a failed stage in-place with permission checks.
+   - *2025-11-10:* RunningScansPanel shows harness/payload lab badges with status + counts so operators can triage without leaving the dashboard.
+3. **Operator controls + runbook.** Add toggles in `client/src/pages/Settings.tsx` for enabling adaptive payload runs per target/org, backed by new fields in `server/targets.js` (or equivalent). Document how to use these controls, what telemetry to watch, and rollback steps inside `docs/` (e.g., `docs/precision-scanning-operations.md`).
+   - *2025-11-10:* Settings page exposes per-target Harness/Payload toggles wired to verified target rows; runbook added to `docs/precision-scanning-operations.md`.
+4. **Report + export alignment.** Although ReportDetails already embeds harness evidence, extend `server/reports.js` so exported artifacts include payload lab metadata (successful evasions, WAF fingerprints, curl repro commands). Ensure the new persistence schema (above) supports this without extra JOIN nightmares.
+   - *2025-11-11:* Reports now bundle payload lab attempts/results (HTML/PDF/Markdown/CSV) with curl-ready repro snippets sourced from `payload_lab_runs`.
+5. **Smoke + regression paths.** Define a CLI helper (maybe `scripts/payload-lab-smoke.js`) that triggers a dry-run harness+payload flow against fixtures so on-call engineers can validate the stack after deployments. Reference it from `docs/TESTING.md` so Phase 3 exit criteria stay objective.
+   - *2025-11-11:* Added `npm run smoke:payload-lab` helper (documented in `docs/TESTING.md`) to exercise `/api/param-harness/run` with recipe overrides post-deploy.
+
+#### Phase 4 - Detailed Working Thread
+
+1. **Metric instrumentation + rollups.** Map each Phase 0 KPI to structured telemetry emitted from `server/queue.js`, `server/paramHarness.js`, `server/payloadLab/evaluator.js`, and `server/sqlmap.js`. Define enums (`param-harness.coverage`, `payload-lab.diversity`, `scan.latency-budget`, etc.), extend `database.logTelemetry`, and update `/api/admin/metrics` queries + retention jobs so dashboards stay accurate.
+   - *2025-11-12:* Telemetry event + retention spec locked (see **Phase 4 Telemetry Contract**) so instrumentation can proceed without churn.
+   - *2025-11-13:* `database.getPrecisionScanMetrics` + `/api/admin/metrics/precision` return coverage/diversity/latency rollups for Admin dashboards.
+2. **Evidence ledger + retention.** Introduce an `evidence_summary` view/table that denormalizes `param_harness_runs`, `payload_lab_results`, `reports`, and artifact blobs (diff hashes, curl snippets, screenshots). Point `server/reports.js` exporters and `client/src/pages/Reports.tsx` to the ledger and describe the contract in `docs/precision-scanning-architecture.md`.
+   - *2025-11-13:* `database.getEvidenceLedger` + `/api/reports/:id/evidence-ledger` ship a unioned ledger; report exports now render the shared snapshot.
+3. **Analytics UX + documentation.** Ship Phase 4 widgets inside `client/src/pages/Admin.tsx` (or the analytics panel) showing coverage, latency deltas, and WAF evasion counts with alert thresholds. Keep the layout in sync with `docs/admin-analytics-plan.md` and document operator workflows/runbooks inside `docs/precision-scanning-operations.md`.
+   - *Pending:* Prototype the card layout + threshold text with design/ops stakeholders before implementation.
+4. **Regression + smoke automation.** Create Jest suites validating telemetry math (e.g., `server/__tests__/precisionMetrics.test.js`), extend `npm run smoke:payload-lab` or add `npm run smoke:precision-scan` to fire harness/payload runs plus metrics reads, and document the checklist in `docs/TESTING.md`.
+   - *2025-11-13:* `metricsApi.test.js` covers precision rollups and `npm run smoke:precision-scan` warns when harness/payload telemetry dries up; documented in `docs/TESTING.md`.
+5. **Security/performance review.** Audit RBAC, rate limits, and feature flags across telemetry/evidence routes (`server/middleware/auth.js`, `server/index.js`, `server/utils/concurrency.js`, `client/src/config/runtimeFlags.ts`). Add logging/alerting for anomalous throughput and publish rollback + incident response steps.
+   - *Pending:* Schedule the review with security since the telemetry payloads touch recon-derived metadata.
+
+##### Phase 4 Telemetry Contract (Finalized)
+
+To unblock instrumentation, the telemetry event enums, required metadata, and retention windows are now frozen. Retention tiers will be enforced by `database.pruneTelemetry` via a prefix map (`audit-long` → 365d, `pipeline` → 120d, `debug-short` → 45d) plus the existing `visit_log` 60d window.
+
+| Event Type | Emitted From | Purpose / Metrics | Required Metadata | Retention Tier (days) |
+| --- | --- | --- | --- | --- |
+| `param-harness.run` | `server/paramHarness.js` after each parameter replay | Parameter Harness Coverage, Pre-SQLMap adoption, stage latency | `runId`, `parameterId`, `jobId`, `scanId`, `targetHost`, `method`, `payloadProfile`, `authState`, `status`, `durationMs`, `fingerprintHash` | `pipeline` (120) |
+| `param-harness.skipped` | `server/paramHarness.js` when a parameter cannot run | Coverage gaps + policy/debug visibility | `parameterId`, `jobId`, `targetHost`, `reason`, `policyGate`, `authState` | `debug-short` (45) |
+| `payload-lab.batch` | `server/payloadLab/evaluator.js` per recipe batch | Payload Diversity Index, latency impact | `batchId`, `parameterId`, `jobId`, `recipeCount`, `variantsAttempted`, `uniqueSignatures`, `signalsHit`, `wafIndicators`, `durationMs` | `pipeline` (120) |
+| `payload-lab.evasion` | `server/payloadLab/evaluator.js` when a bypass is confirmed | WAF Evasion Confirmations, evidence cross-links | `parameterId`, `jobId`, `runId`, `recipeId`, `variantSignature`, `signal`, `signalStrength`, `latencyDelta`, `wafIndicator` | `audit-long` (365) |
+| `scan.prescan-summary` | `server/queue.js` right before SQLMap start | Pre-SQLMap Validation Rate, coverage snapshot | `scanId`, `jobId`, `harnessStatus`, `payloadStatus`, `parametersExercised`, `preSqlmapLatencyMs`, `payloadLatencyMs`, `queueLatencyMs` | `pipeline` (120) |
+| `scan.stage-latency` | `server/queue.js` / `server/index.js` when a stage completes | Latency Impact metric + alerting | `scanId`, `jobId`, `stage`, `durationMs`, `startedAt`, `completedAt`, `exitCode` (if any) | `pipeline` (120) |
+| `verification.mode` | Verification flows (`server/index.js`) | Automation-to-Manual ratio | `scanId`, `reportId`, `findingId`, `mode` (`auto`/`manual`), `initiatedBy`, `success` | `pipeline` (120) |
+| `evidence.bundle` | `server/reports.js` / evidence writers | Evidence Completeness metric | `scanId`, `reportId`, `findingId`, `source` (`harness`/`payload`/`verify`), `hasBaseline`, `hasCurl`, `hasScreenshot`, `blobIds` | `audit-long` (365) |
+| `scan-policy-block` | Existing policy guard (`server/index.js`, `server/queue.js`) | Safe Host Enforcement Hits | `reason`, `hostname`, `route`, `via`, `transport`, `orgId`, `userId` | `audit-long` (365) |
+
+**Implementation notes**
+- Instrumentation must pass the metadata keys verbatim so `/api/admin/metrics` can hydrate dashboards without schema guessing.
+- `TELEMETRY_RETENTION_DAYS` default shifts to 120 once pruning respects tier overrides; visit events remain capped at 60d via `VISIT_LOG_RETENTION_DAYS`.
+- `/api/admin/metrics` should prefer rollups sourced from these events and only fall back to aggregating base tables (`param_harness_runs`, `payload_lab_results`, `scans`) when event coverage is <95% for a window.
+
+
+### docs/sqlmap-technique-alignment-plan.md
+# SQLMap Technique Alignment Program (Living Plan)
+
+This plan mirrors `docs/precision-scanning-plan.md` so we can track every change related to custom `--technique` inputs, prove the behavior with tests/lint, and checkpoint commits after each phase.
+
+## Reference Docs
+
+- `server/sqlmap.js`: parsing, `mapSqlmapTechnique`, parameter analysis, CSV ingestion.
+- `server/reports.js`: structured findings, summary rendering, export helpers.
+- `server/utils/exporters.js`, `client/src/pages/ReportDetails.tsx`: consumers that surface technique metadata.
+- `server/__tests__/sqlmapLogParsing.test.js`, `server/__tests__/reports.test.js`: regression harnesses to extend.
+- `docs/precision-scanning-plan.md`: template for status tracking discipline.
+
+## Guiding Objectives
+
+- **Canonical technique vocabulary**: every path (logs, CSV, exports, UI) must resolve shorthand like `BEU` or `T` to the same Boolean/Union/Time labels SQLMap already understands.
+- **Custom flag transparency**: reports keep calling out when testers overrode defaults without confusing that signal with technique classification.
+- **Safety + telemetry**: normalization code must be reusable, unit-tested, and instrumented so exporters/metrics stay accurate.
+- **Incremental validation**: after each phase, run `npm run lint`, `npm run client:lint`, and targeted Jest suites; commit when green to preserve history for future conversations.
+
+## Phase 0 – Baseline Inventory & Signals
+
+Goal: document exactly where shorthand techniques enter/exit the system so fixes stay scoped.
+
+| Status | Task | Notes / Entry Points |
+| --- | --- | --- |
+| [x] | Trace technique data flow from SQLMap logs -> `analysis.parameters` -> API responses -> UI. | `server/sqlmap.js:1057-1993` builds `analysis.parameters[].techniques` from log + CSV data via `mapSqlmapTechnique`, `server/queue.js:360-414` persists that payload inside `verdict_meta`, `server/index.js:1778-1815` and socket events forward it, `client/src/store/appStore.ts:156-657` stores `verdictMeta`, and `client/src/pages/ReportDetails.tsx:1275-1670` renders badges straight from those raw values (so `B`, `U`, `T`, etc. leak through). |
+| [x] | Capture how CSV + exporter paths store technique keys today. | `server/sqlmap.js:1101-1113` merges CSV rows into `analysis`, `server/reports.js:653-776` converts them into `vuln.technique` / `techniqueSummary`, and `server/utils/exporters.js:150-180` (plus `exportVulnerabilitiesToCSV`) serializes whatever string exists, so shorthand tokens become distinct buckets in metrics and CSV exports. |
+| [x] | List current UX points that mention "custom technique flags." | Terminal + Settings builders (`client/src/pages/Terminal.tsx:58-1200`, `client/src/pages/Settings.tsx:40-460`) accept arbitrary `--technique` overrides, and Report Details (`client/src/pages/ReportDetails.tsx:1569-2106`, `2679-2690`) shows parameter badges, SQLMap summary "attempted techniques," and rerun CTAs straight from `verdictMeta`, without mapping them back to Boolean/Union labels. |
+
+**Exit criteria:** diagram or bullet list checked into this doc (link to lines) plus TODO notes pointing to the exact log/CSV/UI entry points that mislabel shorthand.
+
+## Phase 1 – Normalization Helper & Vocabulary
+
+Goal: create a shared module that expands shorthand (single letter or combos) and still handles descriptive phrases.
+
+| Status | Task | Notes / Entry Points |
+| --- | --- | --- |
+| [x] | Implement `server/utils/sqlmapTechniques.js` exporting `normalizeTechniques(raw: string | string[]): string[]`. | Helper now maps CLI shorthand (B/E/U/S/T/Q) and textual descriptions to canonical labels; see `server/utils/sqlmapTechniques.js`. |
+| [x] | Add Jest coverage for helper: single letters, concatenated strings (`BE`, `TQ`), lowercase/uppercase, unknown inputs. | `server/__tests__/sqlmapTechniques.test.js` covers single-letter, combined flags, textual matches, dedupe, and fallback behavior. |
+| [x] | Document helper usage in this plan and reference in `docs/precision-scanning-architecture.md` if needed. | Logged status + validation commands here; architecture doc noting the helper will follow alongside Phase 2 wiring. |
+
+**Exit criteria:** helper + tests merged; `npm run lint && npm test -- sqlmapTechniques` (or filtered run) executed and results noted here before committing.
+
+_Validation (Phase 1)_: `npm run lint` ✅, `npm test -- sqlmapTechniques` ✅ (both run after adding the helper + tests).
+
+## Phase 2 – Server Integration
+
+Goal: replace ad-hoc `mapSqlmapTechnique` logic with the shared helper and ensure every code path stores canonical arrays.
+
+| Status | Task | Notes / Entry Points |
+| --- | --- | --- |
+| [x] | Wire helper into `server/sqlmap.js` (log parser, CSV ingestion, inline confirmations). Ensure we add all returned techniques, not just the first. | `server/sqlmap.js:1-1990` now imports `normalizeTechniques`, adds `mapSqlmapTechniques`, and stores `techniques` arrays on findings/parameters + CSV merges. |
+| [x] | Remove duplicate logic in `server/reports.js` and reuse helper. | `server/reports.js:1-900` consumes the helper for summary parsing, CSV ingestion, and structured findings, persisting `techniques` arrays end-to-end. |
+| [x] | Update exporters/metrics to aggregate canonical names (including multi-tech combos). | `server/utils/exporters.js:150-165` now counts each canonical technique (with Set dedupe) instead of single raw strings. |
+| [x] | Run affected Jest suites (`npm test -- sqlmapLogParsing reports exporters`) plus linters, capture output, then commit. | `npm run lint` ✅, `npm test -- sqlmapLogParsing reports exporters` ✅ prior to commit. |
+
+**Exit criteria:** API payloads, report JSON, and HTML exports all emit canonical technique arrays even when scans run with `--technique=BEUSTQ`.
+
+_Validation (Phase 2)_: `npm run lint` ✅, `npm test -- sqlmapLogParsing reports exporters` ✅.
+
+## Phase 3 – Reporting & UI Cohesion
+
+Goal: surface normalized names in the UI while still showing the tester’s custom flag string for context.
+
+| Status | Task | Notes / Entry Points |
+| --- | --- | --- |
+| [x] | Update `client/src/pages/ReportDetails.tsx` to read technique arrays (falling back gracefully). | New chips + callout render canonical techniques and tester-supplied flags; consumes `metadata.customTechniqueFlags` + `entry.techniques`. |
+| [x] | Ensure admin dashboards (`client/src/pages/Reports.tsx`, `RunningScansPanel.tsx`) and CSV exports match the new structure. | These views never rendered technique strings, so no code change required after verifying usages. |
+| [x] | Add screenshots or notes to `/docs/responsive-plan.md` or similar if UX changes are significant. | Logged the UX delta in this plan (badge + callout additions); future responsive snapshots unchanged, so no extra asset needed. |
+| [x] | Run client lint/tests (`npm run client:lint`, any relevant React tests) before committing this phase. | `npm run client:lint` ✅ (server lint also rerun). |
+
+**Exit criteria:** UI clearly distinguishes “Technique(s): Boolean-based…, Union query…” plus a secondary line such as “Custom flag provided: `--technique=BEU`”.
+
+_Validation (Phase 3)_: `npm run lint` ✅, `npm run client:lint` ✅.
+
+## Phase 4 – Telemetry, Regression Tests, and Rollout
+
+Goal: lock in the behavior with automation and provide operators with visibility.
+
+| Status | Task | Notes / Entry Points |
+| --- | --- | --- |
+| [x] | Expand Jest coverage (`server/__tests__/reports.test.js`, `server/__tests__/sqlmapLogParsing.test.js`) to feed shorthand inputs and assert normalized outputs. | New suites verify findings carry `techniques` arrays and that custom `--technique=BEU` flags map to canonical labels. |
+| [x] | Add smoke test or CI checklist entry ensuring `npm run check` touches this path before release. | `docs/TESTING.md` now calls out `npm test -- sqlmapLogParsing reports` under "Technique Normalization Regression". |
+| [x] | Monitor metrics dashboard to confirm updated technique distribution stays stable post-deploy. | Tracking TODO added under "Pending - Normalized SQLi Technique Distribution" in `docs/admin-analytics-plan.md`; ops will watch `metrics.techniques_distribution` for new labels. |
+
+**Exit criteria:** green CI (`npm run check`), updated documentation, and at least one recorded QA run referencing this plan.
+
+_Validation (Phase 4)_: `npm run lint` ✅, `npm test -- sqlmapLogParsing reports exporters` ✅.
+
+## Validation & Release Checklist
+
+Use this list at every checkpoint (end of each phase or meaningful sub-task):
+
+1. `npm run lint`
+2. `npm run client:lint`
+3. Targeted Jest suites (`npm test -- sqlmap` subset) or full `npm test` when touching shared libs.
+4. Optional smoke run: `npm run smoke:scan` if we need end-to-end confirmation.
+5. Update this file with status + command outputs (pass/fail, timestamps).
+6. Commit with message `feat: normalize sqlmap techniques - phase X` (or similar) so future conversations can reference the state.
+
+Keep this doc living: check boxes, add links to PRs/commits, and note any deviations from the checklist.
+
+
+---
+
+## Keyword-Planner-Extension
+**Description**: None
+**URL**: https://github.com/theGoodB0rg/Keyword-Planner-Extension
+### README
+# Product Listing Optimizer (Pivoted from AI Keyword Planner)
+
+[![Build Status](https://github.com/theGoodB0rg/Keyword-Planner-Extension/actions/workflows/build.yml/badge.svg)](https://github.com/theGoodB0rg/Keyword-Planner-Extension/actions/workflows/build.yml)
+
+An AI-assisted Chrome Extension that analyzes live e‑commerce product pages (Amazon, Shopify, WooCommerce & generic storefronts) and generates:
+- Attribute gap insights (what’s missing vs expected)
+- Long‑tail & variant keyword modifiers
+- Rewritten SEO bullets & meta title/description
+- Offline heuristic suggestions when AI is unavailable
+
+This repository was originally an AI Keyword Planner; it is being refactored toward a focused Product Listing Optimizer. Some sections below refer to legacy functionality and will be updated as the pivot progresses.
+
+## Current Feature Set (Transition State)
+
+Implemented (Transition + New Pivot Elements):
+- Real-time page content scraping (generic)
+- Product attribute scraping scaffold (title, price, bullets, specs, variants)
+- AI keyword text suggestions (legacy raw → structured parsing WIP)
+- Product optimization panel (long-tail, meta, bullets, gaps) with cached persistence
+- Hero dashboard with analysis progress meter, skeleton loading states, and toast notifications for key actions
+- Per-keyword controls: demand scoring, competitor snapshot, and one-click copy for each keyword row
+- Preview meter + BYOK toggle to bring your own provider key without shipping secrets
+- Split loading states (keywords vs optimization) for faster perceived response
+- Refresh optimization action (re-runs tasks without reloading page keywords)
+- Export & copy (text export + JSON copy for optimization result)
+- Offline mode flag + heuristic fallbacks (meta, long-tail, bullets, gaps)
+- Multi-provider AI fallback + retries + mock data
+- Basic optimization history (latest + rolling list persisted)
+
+In Progress (Pivot Features):
+- Enhanced attribute normalization (dimensions, material, weight)
+- Advanced gap scoring (severity weighting + platform expectations)
+- Provider cost-aware caching & task-level telemetry (planned)
+- Streaming task updates (task-level progress events)
+- Side panel / overlay UI (beyond popup) with progressive rendering
+
+Planned (Roadmap):
+- Variant matrix expansion & enrichment heuristics
+- Structured data (JSON-LD) suggestions
+- Multi-language expansion (ES/DE/FR)
+- Image alt text enhancement & compression hints
+- Usage limits & plan gating
+- Bulk export (CSV / JSON / clipboard bundles, multi-product)
+- Historical comparison diffing (optimization snapshots)
+- Optional OpenAPI local micro-backend (for secure provider keys)
+
+## Tech Stack
+
+- React + TypeScript for UI
+- Chrome Extension Manifest V3
+- Styled Components for styling
+- Local storage fallbacks for offline usage
+
+## Development Setup
+
+1. Clone the repository
+
+```
+git clone https://github.com/theGoodB0rg/Keyword-Planner-Extension.git
+cd Keyword-Planner-Extension
+```
+
+2. Install dependencies
+
+```
+npm install
+```
+
+3. Run in development mode
+
+```
+npm run dev
+```
+
+This will compile the extension and watch for changes.
+
+4. Load the extension in Chrome
+
+- Open Chrome and navigate to `chrome://extensions/`
+- Enable "Developer mode" (toggle in the top right)
+- Click "Load unpacked" and select the `dist` folder from your project directory
+
+5. Testing offline mode
+
+The extension is built with offline capabilities by default. Toggle "Offline Mode" in the popup to test functionality without external API calls.
+
+### Market intelligence backend
+- The Market Intelligence panel calls the proxy service in `token-proxy-service`. Start it locally with:
+
+  ```bash
+  cd token-proxy-service
+  npm install
+  npm run dev
+  ```
+
+- During development the bundle falls back to `http://localhost:8787`. For packaged builds set `MARKET_PROXY_BASE` when running `npm run build`, for example:
+
+  ```bash
+  MARKET_PROXY_BASE=https://your-proxy.example.com npm run build
+  ```
+
+- The proxy includes optional shared-secret protection via `EXT_SHARED_SECRET` in `token-proxy-service/.env`. If you enable it, provide the same value as an `X-EXT-SECRET` header from a secure extension configuration path.
+
+### Provider keys & BYOK
+- For development you can rely on the built-in preview allowance (three AI runs) or toggle "Use your AI key" in the sidebar to persist a BYOK token in local storage.
+- Optional: set environment variables (e.g. `GEMINI_API_KEY`, `OPENAI_API_KEY`) before running `npm run dev` or `npm run build`. They are consumed at build time and skipped if not defined.
+- See `PROVIDER_CONFIG.md` for proxy recommendations and key management guidance.
+
+## Building for Production
+
+```
+npm run build
+```
+
+This will create a production-ready build in the `dist` folder.
+
+## Asset Pipeline
+
+The extension includes a complete branding and asset generation pipeline:
+
+```bash
+# Generate all assets from source SVG
+npm run assets
+
+# Build assets individually
+npm run optimize:svgs  # Optimize SVG files
+npm run build:assets   # Generate PNG files from SVG
+```
+
+### Assets Structure
+- **Source**: `assets/src/logo.svg` - Single source vector file
+- **Output**: `assets/dist/**` - Generated raster images for all use cases
+  - Extension icons (16px - 256px)
+  - Toolbar/action icons
+  - Social media images (Open Graph, etc.)
+  - Chrome Web Store promotional tiles
+  - Favicons for documentation
+
+The asset pipeline automatically generates all required PNG files from the source SVG with appropriate sizing, backgrounds, and optimization. The GitHub Actions workflow automatically regenerates assets when the source SVG changes.
+
+See `assets/README.md` for detailed usage instructions.
+
+## Architecture (High-Level)
+
+See `ARCHITECTURE.md` for the evolving module map.
+
+Core layers:
+- Scraper (platform-aware product data extraction)
+- AI Orchestrator (task routing, provider fallback, caching)
+- Generators / Heuristics (offline & hybrid logic)
+- UI (popup + forthcoming injected side panel / overlay)
+- Telemetry (opt-in, privacy-preserving)
+- Storage (chrome.storage + local fallback, namespaced keys)
+
+## Resilience & Fallback Layers
+
+1. API retry logic (exponential backoff)
+2. Multi-provider AI fallback chain
+3. Offline heuristic generation (long-tail, meta, bullets)
+4. Local storage + in-memory caching
+5. Mock data injection (developer mode)
+
+Planned:
+6. Token cost estimation + caching dashboard
+7. Graceful degradation (progressive UI updates)
+ 8. Task-level streaming progress (per sub-task)
+ 9. Persistent optimization history timeline
+
+## Privacy & Data Handling
+
+See `PRIVACY.md` for details.
+
+- Only analyzes the active page when invoked
+- Stores results locally (chrome.storage.local)
+- Offline heuristics avoid network calls
+- For online AI usage, configure a secure proxy for provider keys; keys are never shipped in the extension
+
+## Contributing & Roadmap
+
+Roadmap highlights (see `ROADMAP.md` soon):
+- Phase 1: Core pivot (scraper refactor, orchestrator, heuristics)
+- Phase 2: Panel UX, export, gating
+- Phase 3: Multi-language & structured data
+
+Contributions welcome once interfaces stabilize (target v0.9.x).
+
+## License
+
+ISC (subject to change if commercial licensing introduced for Pro tiers)
+
+---
+For detailed architecture decisions refer to: `ARCHITECTURE.md` (present) and forthcoming: `SECURITY.md`, `CONFIGURATION.md`, `PROMPTS.md`.
+
+---
+
+## Landing_page_plugin
+**Description**: None
+**URL**: https://github.com/theGoodB0rg/Landing_page_plugin
+### README
+# Custom Admin Dashboard Welcome
+
+A WordPress plugin that adds a customizable welcome widget to the WordPress admin dashboard with quick links and messaging.
+
+## Description
+
+This plugin provides site administrators with a friendly, branded welcome panel on the WordPress dashboard. The welcome widget displays:
+
+- A customizable title and welcome message
+- Quick action links for common admin tasks
+- Beautiful gradient design with modern styling
+- Responsive layout that works on all devices
+
+## Features
+
+- **Professional Dashboard Widget**: Clean white background with dark blue border and subtle shadows—clearly distinguished from default WordPress widgets
+- **Customizable Welcome Message**: Add a professional greeting with rich text formatting support
+- **Quick Links Management**: Add up to 10 quick action links with custom icons and labels
+- **Dynamic Hover Effects**: Links highlight with blue background and smooth animations on hover
+- **Open in New Tab**: Option to open links in new tabs
+- **Dashicons Support**: Use any WordPress Dashicon for visual cues
+- **Easy Settings Page**: Intuitive admin interface for configuration
+- **Responsive Design**: Works seamlessly on desktop, tablet, and mobile admin interfaces
+- **Professional Color Scheme**: Modern dark blue (#1e3a5f) with clean, minimal design—no gradients or decorative elements
+
+## Installation
+
+1. Upload the `custom-admin-dashboard-welcome` folder to `/wp-content/plugins/`
+2. Activate the plugin through the Plugins menu in WordPress
+3. Navigate to the "Welcome Widget" settings page to customize
+
+## Usage
+
+### Basic Setup
+
+1. Go to **Welcome Widget** in the main admin menu
+2. Edit the widget title (e.g., "Welcome Back!" or "Good Morning!")
+3. Craft your welcome message using the rich text editor
+4. Add quick links that your team uses most frequently
+5. Click **Save Changes**
+
+### Quick Links
+
+- **Label**: The text displayed for the link
+- **URL**: The destination URL (can be internal or external)
+- **Dashicon**: WordPress icon class (e.g., `dashicons-edit`, `dashicons-admin-page`)
+- **Open in New Tab**: Check to open the link in a new browser tab
+
+## Settings
+
+All plugin settings are stored in the WordPress options table under the `cadw_settings` key.
+
+### Default Settings
+
+```php
+array(
+    'welcome_title'   => 'Welcome Back!',
+    'welcome_message' => 'Here are a few quick links to get you started today.',
+    'quick_links'     => array(
+        array(
+            'label'   => 'Add New Post',
+            'url'     => admin_url( 'post-new.php' ),
+            'icon'    => 'dashicons-edit',
+            'new_tab' => false,
+        ),
+        // ... more default links
+    ),
+)
+```
+
+## Requirements
+
+- WordPress 5.0 or higher
+- PHP 7.2 or higher
+
+## Design
+
+The plugin features a professional, modern design that immediately stands out in the WordPress admin:
+
+- **Color Scheme**: Dark blue (#1e3a5f) primary color with clean white background
+- **Widget Styling**: Clean white box with blue border and subtle drop shadow
+- **Interactive Elements**: Quick links feature smooth hover animations with blue background transitions
+- **Professional Typography**: Clean, readable fonts with proper hierarchy and spacing
+- **Minimal Design**: No gradients, no emojis, or trendy visual effects—just professional simplicity
+- **Visibility**: Prominently placed in the admin sidebar with a home icon, making it immediately recognizable as an active plugin
+
+## Sidebar Integration
+
+The plugin automatically adds itself to the WordPress admin sidebar as "Welcome Widget" with a home icon. After activation, site administrators are redirected to the settings page where they can customize the widget content.
+
+## Author
+
+**theGoodB0rg**
+
+## Version
+
+1.0.0
+
+## License
+
+GPL v2 or later
+
+## Support
+
+For issues or feature requests, please contact the plugin author.
+
+
+---
+
+## OIT
+**Description**: None
+**URL**: https://github.com/theGoodB0rg/OIT
+### README
+# OIT — Online Educational Tool
+
+OIT is a PHP-based learning platform designed to help students practice math skills while providing a simple admin interface to manage content. The project bundles several calculators and learning aids inside a Bootstrap-driven UI.
+
+## Features
+
+- **Quadratic Equation Solver** with step-by-step, multi-method explanations.
+- **Calculator utilities** including percentage and geometry helpers.
+- **Student dashboard** for quick access to available tools.
+- **Authentication system** for students and an **admin login** for message management.
+- **Responsive frontend** built with Bootstrap 5 and Font Awesome icons.
+
+## Project Structure
+
+```
+├── index.php                # Landing page
+├── dashboard.php            # Student dashboard
+├── tools/                   # Calculator tools (quadratic solver, etc.)
+├── login/                   # Student login & registration
+├── admin/                   # Admin panel & plugins
+├── config/database.php      # Database connection helper
+└── css/, js/, images/, fonts/ and assets
+```
+
+## Requirements
+
+- PHP 8.x
+- MySQL 5.7+ (or compatible MariaDB)
+- Composer (optional, not required currently)
+- Node.js (optional, for frontend tooling if needed)
+
+## Getting Started
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/theGoodB0rg/OIT.git
+   cd OIT
+   ```
+
+2. **Set up the database**
+   - Import the schema from `sql/oit.sql` (or `sql/id19550623_oit.sql`).
+   - Update credentials in `config/database.php`.
+
+3. **Configure your web server**
+   - Point your local Apache/Nginx virtual host to the project root (`OIT/`).
+   - Ensure PHP sessions are enabled.
+
+4. **Login**
+   - Navigate to `/login/` to create a user account, or use the admin panel via `/admin/login/` with the credentials seeded in your database.
+
+## Development Tips
+
+- The project uses Bootstrap 5 via CDN; adjust styling in `css/style.css`.
+- JavaScript utilities live under `js/` and `tools/` pages include inline scripts.
+- Keep sensitive configuration (e.g., DB password) out of source control—use environment variables if you extend the app.
+
+## Contributing
+
+1. Fork the repository.
+2. Create a feature branch: `git checkout -b feature/my-improvement`.
+3. Commit your changes and open a Pull Request against `master`.
+
+## License
+
+This project is currently unlicensed. Contact the repository owner if you plan to reuse or distribute it.
+
+---
+
+Have ideas for new tools or improvements? Open an issue or reach out via the repository discussions!
 
 
 ---

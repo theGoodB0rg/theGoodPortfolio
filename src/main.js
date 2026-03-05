@@ -305,6 +305,30 @@ const observer = new IntersectionObserver((entries) => {
 document.querySelectorAll('section').forEach(section => observer.observe(section));
 
 // ============================================
+// SCROLL-BASED HEADER & DESKTOP CTA
+// ============================================
+
+const headerEl = document.querySelector('header');
+const desktopCta = document.getElementById('desktop-cta');
+
+function handleScroll() {
+  const scrollY = window.scrollY;
+
+  // Header scroll state
+  if (headerEl) {
+    headerEl.classList.toggle('scrolled', scrollY > 80);
+  }
+
+  // Desktop CTA visibility (show after scrolling past hero)
+  if (desktopCta) {
+    desktopCta.classList.toggle('visible', scrollY > 600);
+  }
+}
+
+window.addEventListener('scroll', handleScroll, { passive: true });
+handleScroll();
+
+// ============================================
 // TESTIMONIALS CAROUSEL
 // ============================================
 
@@ -424,8 +448,8 @@ function resetTestimonialAutoRotate() {
   startTestimonialAutoRotate();
 }
 
-// Load testimonials
-loadTestimonials();
+// TODO: Re-enable when real testimonials are added
+// loadTestimonials();
 
 // ============================================
 // BLOG PREVIEW ON HOMEPAGE
