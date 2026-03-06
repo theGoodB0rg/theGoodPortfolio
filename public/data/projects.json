@@ -136,6 +136,7 @@
     "description": "Wordle for coders — guess the programming term. Color-coded feedback, streak tracking, and shareable results.",
     "details": "Vue-based word game where players guess coding terms. Features animated tile reveals, win/loss statistics, streak tracking, and a shareable results modal.",
     "link": "https://github.com/theGoodB0rg/coddle_coddle",
+    "live_link": "https://thegoodb0rg.github.io/coddle_coddle/",
     "images": [
       {
         "url": "./projects/coddle_coddle/01-initial-state_c385c524.png",
