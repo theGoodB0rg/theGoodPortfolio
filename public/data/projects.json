@@ -13,7 +13,7 @@
     "description": "Convert nested JSON to Excel/CSV with auto-unescape & smart flattening. Handles 100MB files — all client-side, zero server.",
     "details": "Client-side Next.js app with Monaco editor, smart flattening, and instant exports (CSV, Excel, HTML, ZIP). Privacy-first: all parsing runs locally; handles 100MB files smoothly.",
     "link": "https://github.com/theGoodB0rg/json_hub",
-    "live_link": "https://json-hub.vercel.app",
+    "live_link": "https://jsonexport.com",
     "images": [
       {
         "url": "./projects/json_hub/slide-hero_b355babd.png",
