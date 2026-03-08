@@ -269,7 +269,8 @@ function updateSlide() {
     // Set Content
     infoTitle.textContent = currentProject.title;
     infoDesc.textContent = currentProject.details || currentProject.description || "No specific details available.";
-    infoLink.href = currentProject.link;
+    infoLink.href = currentProject.live_link || currentProject.link || '#';
+    infoLink.style.display = (currentProject.live_link || currentProject.link) ? '' : 'none';
 
     slideCounter.textContent = `Project Details`;
   }

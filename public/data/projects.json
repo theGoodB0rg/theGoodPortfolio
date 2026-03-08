@@ -53,7 +53,6 @@
     ],
     "description": "Platform where fans own fractional music rights. Live orderbook, secondary marketplace, and artist dashboards.",
     "details": "Full-stack marketplace for tokenized music assets. Users buy, sell, and trade shares of songs with real-time pricing and portfolio tracking.",
-    "link": "https://github.com/julianhall74/49Blox",
     "live_link": "https://49blox.com",
     "images": [
       {
@@ -82,6 +81,46 @@
       }
     ],
     "thumb": "./projects/49blox/Gemini_Generated_Image_l7lersl7lersl7le_8cae1e40.jpg"
+  },
+  {
+    "id": 5,
+    "title": "Universal Undo",
+    "category": "mobile",
+    "tags": [
+      "Kotlin",
+      "Android",
+      "Productivity"
+    ],
+    "description": "The Ctrl+Z your Android never had. Shake to undo any deleted text, in any app. Works system-wide, runs 100% offline, under 3MB.",
+    "details": "System-wide undo for Android. Monitors text fields via Accessibility, saves keystrokes locally in RAM, and lets you shake to restore. Supports WhatsApp, Gmail, Telegram, Keep, and more. No internet permission, no root required.",
+    "live_link": "https://universalundo.pages.dev/",
+    "images": [
+      {
+        "url": "./projects/universal_undo/main_dashboard.png",
+        "caption": "Live service status and quick controls at a glance."
+      },
+      {
+        "url": "./projects/universal_undo/preferences.png",
+        "caption": "Trigger mode, history limits, and notification settings."
+      },
+      {
+        "url": "./projects/universal_undo/how_it_works.png",
+        "caption": "Simple onboarding guide for enabling and using undo."
+      },
+      {
+        "url": "./projects/universal_undo/blacklist_apps.png",
+        "caption": "Exclude sensitive apps from undo history."
+      },
+      {
+        "url": "./projects/universal_undo/undo_timeline.png",
+        "caption": "Browse and restore prior text states with timestamps."
+      },
+      {
+        "url": "./projects/universal_undo/about_privacy.png",
+        "caption": "Privacy commitments and support links."
+      }
+    ],
+    "thumb": "./projects/universal_undo/feature_graphic.png"
   },
   {
     "id": 1125785452,
