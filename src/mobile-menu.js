@@ -24,3 +24,9 @@ function setupMobileNav() {
 
 // Initialize on load
 setupMobileNav();
+
+// Update Copyright Year dynamically
+const currentYear = new Date().getFullYear();
+document.querySelectorAll('.copyright-year').forEach(el => {
+    el.textContent = currentYear;
+});
