@@ -94,7 +94,7 @@ body::before {
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 var(--spacing-sm);
+  padding-inline: var(--spacing-sm);
   position: relative;
   z-index: 1;
 }
@@ -401,7 +401,7 @@ header nav {
 /* ========== FEATURED PROJECT ========== */
 
 #featured {
-  padding: 4rem 0 6rem;
+  padding: 4rem var(--spacing-sm) 6rem;
 }
 
 .featured-project {
