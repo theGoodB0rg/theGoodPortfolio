@@ -112,6 +112,16 @@ function renderProjects(filter = 'all') {
         </a>`;
     }
 
+    if (project.play_store_link) {
+      actionsHtml += `
+        <a href="${project.play_store_link}" target="_blank" class="card-btn live" onclick="event.stopPropagation()">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="5 3 19 12 5 21 5 3"></polygon>
+          </svg>
+          Google Play
+        </a>`;
+    }
+
     if (project.link) {
       actionsHtml += `
         <a href="${project.link}" target="_blank" class="card-btn source" onclick="event.stopPropagation()">

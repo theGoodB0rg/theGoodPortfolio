@@ -51,8 +51,8 @@
       "Web3",
       "Marketplace"
     ],
-    "description": "Platform where fans own fractional music rights. Live orderbook, secondary marketplace, and artist dashboards.",
-    "details": "Full-stack marketplace for tokenized music assets. Users buy, sell, and trade shares of songs with real-time pricing and portfolio tracking.",
+    "description": "Full-stack platform where fans own fractional music rights. Live orderbook, secondary marketplace, artist dashboards — backed by Node.js APIs.",
+    "details": "Full-stack marketplace for tokenized music assets built on React and Node.js. Users buy, sell, and trade shares of songs with real-time pricing, portfolio tracking, and secure API-driven transactions.",
     "live_link": "https://49blox.com",
     "images": [
       {
@@ -94,6 +94,7 @@
     "description": "The Ctrl+Z your Android never had. Shake to undo any deleted text, in any app. Works system-wide, runs 100% offline, under 3MB.",
     "details": "System-wide undo for Android. Monitors text fields via Accessibility, saves keystrokes locally in RAM, and lets you shake to restore. Supports WhatsApp, Gmail, Telegram, Keep, and more. No internet permission, no root required.",
     "live_link": "https://universalundo.pages.dev/",
+    "play_store_link": "https://play.google.com/store/apps/details?id=com.universalundo",
     "images": [
       {
         "url": "./projects/universal_undo/main_dashboard.png",
@@ -230,12 +231,13 @@
     "category": "web",
     "tags": [
       "JavaScript",
-      "AI",
-      "Writing Tools"
+      "LLM",
+      "Node.js",
+      "AI"
     ],
-    "description": "AI-powered proofreading tool that polishes your text with context-aware suggestions.",
-    "details": "Web-based proofreader that uses AI to check grammar, style, and tone. Built for writers who want clean copy without the complexity of enterprise tools.",
-    "link": "https://github.com/theGoodB0rg/dainty_proofreader",
+    "description": "LLM-powered proofreading tool — context-aware grammar, style, and tone corrections via API-orchestrated language models.",
+    "details": "Full-stack proofreader that orchestrates LLM APIs on the backend to deliver context-aware grammar, style, and tone corrections. Built with Node.js and a clean JS frontend.",
+    "live_link": "https://daintyproofreader.com",
     "images": [
       {
         "url": "./projects/dainty_proofreader/apple-icon_17e11e4f.png",
