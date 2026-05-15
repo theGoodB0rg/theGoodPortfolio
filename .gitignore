@@ -9,3 +9,4 @@ task.md
 *.md
 !readme.md
 *pdf
+*.webp
