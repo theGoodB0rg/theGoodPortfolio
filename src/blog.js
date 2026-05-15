@@ -96,7 +96,7 @@ function createBlogCard(post, index) {
     card.innerHTML = `
     <div class="blog-card-image">
       ${post.thumbnail ?
-            `<img src="${post.thumbnail}" alt="${post.title}" onerror="this.parentElement.innerHTML='<div class=\\'blog-placeholder\\'>${getInitials(post.title)}</div>'">` :
+            `<picture><source srcset="${post.thumbnail.replace(/\.(png|jpg|jpeg)$/i, '.webp')}" type="image/webp"><img src="${post.thumbnail}" alt="${post.title}" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\\'blog-placeholder\\'>${getInitials(post.title)}</div>'"></picture>` :
             `<div class="blog-placeholder">${getInitials(post.title)}</div>`
         }
       ${post.featured ? '<span class="featured-badge">Featured</span>' : ''}
@@ -189,7 +189,7 @@ function renderBlogPost(post) {
     // Featured image
     const featuredImageContainer = document.getElementById('featured-image-container');
     if (post.thumbnail) {
-        featuredImageContainer.innerHTML = `<img src="${post.thumbnail}" alt="${post.title}">`;
+        featuredImageContainer.innerHTML = `<picture><source srcset="${post.thumbnail.replace(/\.(png|jpg|jpeg)$/i, '.webp')}" type="image/webp"><img src="${post.thumbnail}" alt="${post.title}" loading="lazy"></picture>`;
     } else {
         featuredImageContainer.style.display = 'none';
     }

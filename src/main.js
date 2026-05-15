@@ -76,7 +76,8 @@ function renderProjects(filter = 'all') {
     let imageContent;
     let fallbackText = getInitials(project.title);
     if (project.thumb) {
-      imageContent = `<img src="${project.thumb}" alt="${project.title}" onerror="this.parentElement.innerHTML='<div class=\\'card-placeholder\\'>${fallbackText}</div>'">`;
+      const thumbWebp = project.thumb.replace(/\.(png|jpg|jpeg)$/i, '.webp');
+      imageContent = `<picture><source srcset="${thumbWebp}" type="image/webp"><img src="${project.thumb}" alt="${project.title}" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\\'card-placeholder\\'>${fallbackText}</div>'"></picture>`;
     } else {
       imageContent = `<div class="card-placeholder">${fallbackText}</div>`;
     }
@@ -171,7 +172,10 @@ const modalHtml = `
       <div class="slide-container">
         <!-- Image Slide -->
         <div id="image-slide" class="slide-view active">
-          <img id="slide-img" src="" alt="Project Slide">
+          <picture>
+            <source id="slide-source" srcset="" type="image/webp">
+            <img id="slide-img" src="" alt="Project Slide" loading="lazy">
+          </picture>
           <div class="slide-caption-wrapper">
              <p id="slide-caption"></p>
           </div>
@@ -261,7 +265,9 @@ function updateSlide() {
 
     // Set Content
     const data = images[currentSlideIndex];
+    const slideSource = document.getElementById('slide-source');
     slideImg.src = data.url;
+    slideSource.srcset = data.url.replace(/\.(png|jpg|jpeg)$/i, '.webp');
     slideCaption.textContent = data.caption || '';
 
     // Hide caption if empty
@@ -377,7 +383,7 @@ function renderTestimonials() {
       <p class="testimonial-text">${testimonial.testimonial}</p>
       <div class="testimonial-author">
         ${testimonial.avatar ?
-      `<img src="${testimonial.avatar}" alt="${testimonial.name}" class="author-avatar">` :
+      `<picture><source srcset="${testimonial.avatar.replace(/\.(png|jpg|jpeg)$/i, '.webp')}" type="image/webp"><img src="${testimonial.avatar}" alt="${testimonial.name}" class="author-avatar" loading="lazy"></picture>` :
       `<div class="author-avatar-placeholder">${testimonial.name.charAt(0)}</div>`
     }
         <div class="author-info">
@@ -506,7 +512,7 @@ function createBlogPreviewCard(post, index) {
   card.innerHTML = `
     <div class="blog-card-image">
       ${post.thumbnail ?
-      `<img src="${post.thumbnail}" alt="${post.title}" onerror="this.parentElement.innerHTML='<div class=\\'blog-placeholder\\'>${getInitials(post.title)}</div>'">` :
+      `<picture><source srcset="${post.thumbnail.replace(/\.(png|jpg|jpeg)$/i, '.webp')}" type="image/webp"><img src="${post.thumbnail}" alt="${post.title}" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\\'blog-placeholder\\'>${getInitials(post.title)}</div>'"></picture>` :
       `<div class="blog-placeholder">${getInitials(post.title)}</div>`
     }
       ${post.featured ? '<span class="featured-badge">Featured</span>' : ''}

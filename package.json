@@ -6,7 +6,7 @@
   "scripts": {
     "generate-og": "node scripts/generate-og-image.js",
     "dev": "vite",
-    "build": "node scripts/generate-og-image.js && vite build",
+    "build": "node scripts/optimize-images.js && node scripts/generate-og-image.js && vite build",
     "preview": "vite preview"
   },
   "devDependencies": {
