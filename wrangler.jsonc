@@ -1,6 +1,6 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "thegoodportfolio",
+  "name": "thegoodb0rg",
   "pages_build_output_dir": "dist",
   "compatibility_date": "2026-05-15"
 }
