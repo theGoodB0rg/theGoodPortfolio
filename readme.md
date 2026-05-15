@@ -32,6 +32,7 @@ This is my personal portfolio — a single-page site that showcases who I am, wh
 | Fonts | Outfit (display), Inter (body), JetBrains Mono (code) |
 | Deployment | [Cloudflare Pages](https://pages.cloudflare.com/) |
 | OG image | Generated at build time with [sharp](https://sharp.pixelplumbing.com/) |
+| Image optimization | Build-time PNG/JPG → WebP via sharp — auto-skips if larger (8 of ~90 images) |
 
 ## Getting started
 
@@ -50,7 +51,11 @@ Open the URL Vite prints (usually `http://localhost:5173`). Hot reload is on —
 npm run build
 ```
 
-Generates the OG preview image, then bundles everything into `dist/`. Deploy the contents of `dist/` to any static host.
+1. **Optimize images** — Converts all PNG/JPG/JPEG files in `public/` to WebP (quality 80, resizes over 2000px). Skips any WebP that would be larger than the original.
+2. **Generate OG image** — Renders the 1200×630 social preview card.
+3. **Vite build** — Bundles everything into `dist/`.
+
+Deploy the contents of `dist/` to any static host.
 
 ## Structure
 
@@ -71,6 +76,7 @@ Generates the OG preview image, then bundles everything into `dist/`. Deploy the
 │   ├── projects/         # Project screenshots
 │   └── blog/             # Blog thumbnails
 ├── scripts/
+│   ├── optimize-images.js    # PNG/JPG → WebP pipeline (runs before build)
 │   └── generate-og-image.js  # OG image generator
 └── wrangler.jsonc        # Cloudflare Pages config
 ```
