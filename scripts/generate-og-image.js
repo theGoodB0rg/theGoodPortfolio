@@ -48,10 +48,10 @@ async function generate() {
 
   const textOverlay = () => Buffer.from(`
     <svg width="${W}" height="${H}">
-      <text x="55" y="220" font-family="'Outfit','Segoe UI',sans-serif" font-size="52" font-weight="700" fill="#F5F0E8">Olorunfemi John</text>
-      <text x="55" y="270" font-family="'JetBrains Mono','Consolas',monospace" font-size="18" fill="#E8A84C" letter-spacing="2">FULL-STACK DEVELOPER &amp; TECHNICAL ARCHITECT</text>
-      <text x="55" y="330" font-family="'Inter','Segoe UI',sans-serif" font-size="16" fill="rgba(245,240,232,0.55)" font-style="italic">"I build tools people actually use"</text>
-      <text x="55" y="570" font-family="'JetBrains Mono','Consolas',monospace" font-size="13" fill="rgba(245,240,232,0.25)" letter-spacing="1">thegoodb0rg.pages.dev</text>
+      <text x="55" y="205" font-family="'Outfit','Segoe UI',sans-serif" font-size="60" font-weight="700" fill="#F5F0E8">Olorunfemi John</text>
+      <text x="55" y="268" font-family="'JetBrains Mono','Consolas',monospace" font-size="22" fill="#E8A84C" letter-spacing="2">FULL-STACK DEVELOPER &amp; TECHNICAL ARCHITECT</text>
+      <text x="55" y="335" font-family="'Inter','Segoe UI',sans-serif" font-size="19" fill="rgba(245,240,232,0.55)" font-style="italic">"I build tools people actually use"</text>
+      <text x="55" y="570" font-family="'JetBrains Mono','Consolas',monospace" font-size="15" fill="rgba(245,240,232,0.3)" letter-spacing="1">thegoodb0rg.pages.dev</text>
     </svg>
   `);
 
