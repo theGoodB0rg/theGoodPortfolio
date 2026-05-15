@@ -157,9 +157,27 @@ async function initBlogPost() {
 }
 
 function renderBlogPost(post) {
+    const baseUrl = 'https://thegoodb0rg.pages.dev';
+    const postUrl = `${baseUrl}/blog-post?slug=${post.slug}`;
+
     // Update page title and meta
     document.getElementById('page-title').textContent = `${post.title} - Olorunfemi John`;
     document.getElementById('page-description').setAttribute('content', post.excerpt);
+
+    // Update OG tags
+    const ogTitle = `${post.title} — Olorunfemi John`;
+    const ogImage = post.thumbnail ? `${baseUrl}${post.thumbnail}` : `${baseUrl}/og-image.png`;
+
+    setMeta('og-title', 'content', ogTitle);
+    setMeta('og-description', 'content', post.excerpt);
+    setMeta('og-image', 'content', ogImage);
+    setMeta('twitter-title', 'content', ogTitle);
+    setMeta('twitter-description', 'content', post.excerpt);
+    setMeta('twitter-image', 'content', ogImage);
+
+    // Update og:url to point to the specific post
+    const ogUrl = document.querySelector('meta[property="og:url"]');
+    if (ogUrl) ogUrl.setAttribute('content', postUrl);
 
     // Update article header
     document.getElementById('article-category').textContent = getCategoryLabel(post.category);
@@ -343,6 +361,11 @@ function formatDate(dateString) {
 function getInitials(title) {
     if (!title) return '??';
     return title.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase();
+}
+
+function setMeta(id, attr, value) {
+    const el = document.getElementById(id);
+    if (el) el.setAttribute(attr, value);
 }
 
 function showError(message) {
