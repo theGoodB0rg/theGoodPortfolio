@@ -4,12 +4,12 @@ import './style.css'
 let blogPosts = [];
 
 // Determine which page we're on
-const currentPage = window.location.pathname.split('/').pop();
+const currentPage = window.location.pathname.split('/').pop().replace(/\.html$/, '');
 
 // Initialize based on page
-if (currentPage === 'blog.html' || currentPage === '') {
+if (currentPage === 'blog' || currentPage === '') {
     initBlogIndex();
-} else if (currentPage === 'blog-post.html') {
+} else if (currentPage === 'blog-post') {
     initBlogPost();
 }
 
@@ -166,7 +166,7 @@ function renderBlogPost(post) {
 
     // Update OG tags
     const ogTitle = `${post.title} — Olorunfemi John`;
-    const ogImage = post.thumbnail ? `${baseUrl}${post.thumbnail}` : `${baseUrl}/og-image.png`;
+    const ogImage = post.thumbnail ? `${baseUrl}/${post.thumbnail}` : `${baseUrl}/og-image.png`;
 
     setMeta('og-title', 'content', ogTitle);
     setMeta('og-description', 'content', post.excerpt);
