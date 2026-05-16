@@ -10,3 +10,8 @@ task.md
 !readme.md
 *pdf
 *.webp
+*.docx
+output/
+docs/screenshots/
+scripts/generate_application_documents.py
+scripts/pdf_extractor.py
