@@ -1665,7 +1665,8 @@ footer {
 
 /* Blog filter row — compact, no full section padding */
 #blog-filters {
-  padding: 1rem 0 1.5rem;
+  padding-top: 1rem;
+  padding-bottom: 1.5rem;
 }
 
 /* Blog list — cards start close to filters */
