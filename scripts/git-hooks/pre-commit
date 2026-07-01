@@ -1,0 +1,93 @@
+#!/usr/bin/env bash
+# Pre-commit hook to prevent sensitive data, forbidden files, and IP addresses
+# Runs custom checks or gitleaks if available
+
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+NC='\033[0m'
+
+FAILED=0
+
+# === Pattern check: forbidden files ===
+check_forbidden_files() {
+  local patterns=(
+    "ALL_PROJECTS_CONTEXT\.md"
+    "\.docx$"
+  )
+  for pattern in "${patterns[@]}"; do
+    while IFS=: read -r file line content; do
+      # Only check added/modified, not deleted
+      if git diff --cached --name-only --diff-filter=ACMR | grep -q "$file"; then
+        echo -e "${RED}⛔ Forbidden file pattern '$pattern' matches: $file${NC}"
+        FAILED=1
+      fi
+    done < <(git diff --cached --name-only --diff-filter=ACMR | grep -E "$pattern" | sed 's/$/::/')
+  done
+}
+
+# === Pattern check: hardcoded IPs (non-private) ===
+check_ips() {
+  while IFS=: read -r file line content; do
+    echo -e "${RED}⛔ Possible server IP found in $file:$line${NC}"
+    echo "       $content"
+    FAILED=1
+  done < <(git diff --cached -G'([0-9]{1,3}\.){3}[0-9]{1,3}' --pickaxe-all 2>/dev/null |
+    grep -E '^\+.*([0-9]{1,3}\.){3}[0-9]{1,3}' |
+    while IFS= read -r line; do
+      # Filter out common safe IPs
+      if ! echo "$line" | grep -qE '127\.0\.0\.1|0\.0\.0\.0|192\.168\.|10\.[0-9]+\.[0-9]+\.[0-9]+|172\.(1[6-9]|2[0-9]|3[01])\.'; then
+        echo "$line"
+      fi
+    done)
+}
+
+# === Pattern check: credentials/tokens ===
+check_credentials() {
+  local patterns=(
+    'api[_-]?key'
+    'secret[_-]?key'
+    'private[_-]?key'
+    'sk-[a-zA-Z0-9]{10,}'
+    'ghp_[a-zA-Z0-9]{36}'
+    'github_pat_[a-zA-Z0-9]{36}'
+    'AKIA[0-9A-Z]{16}'
+    'xox[bpasr]-[a-zA-Z0-9]{10,}'
+    '(postgresql|mysql|mongodb(\+srv)?)://[^: ]+:[^@ ]+@'
+  )
+  for pattern in "${patterns[@]}"; do
+    while IFS= read -r result; do
+      if [ -n "$result" ]; then
+        echo -e "${RED}⛔ Possible credential/token found:${NC}"
+        echo "       $result"
+        FAILED=1
+      fi
+    done < <(git diff --cached -G"$pattern" --pickaxe-all 2>/dev/null | grep -E -i '^\+.*'"$pattern" | head -5)
+  done
+}
+
+# === Try gitleaks if available ===
+if command -v gitleaks &>/dev/null; then
+  echo -e "${YELLOW}🔍 Running gitleaks...${NC}"
+  gitleaks git --pre-commit --no-banner 2>/dev/null || {
+    echo -e "${RED}⛔ gitleaks detected secrets in staged changes.${NC}"
+    FAILED=1
+  }
+else
+  echo -e "${YELLOW}🔍 Running custom checks...${NC}"
+  check_forbidden_files
+  check_ips
+  check_credentials
+fi
+
+if [ "$FAILED" -ne 0 ]; then
+  echo ""
+  echo -e "${RED}============================================${NC}"
+  echo -e "${RED}  COMMIT REJECTED — sensitive content found  ${NC}"
+  echo -e "${RED}  Review above, fix issues, then commit again${NC}"
+  echo -e "${RED}============================================${NC}"
+  exit 1
+fi
+
+echo -e "${GREEN}✅ Pre-commit checks passed${NC}"
+exit 0
