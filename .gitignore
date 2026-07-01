@@ -13,5 +13,7 @@ task.md
 *.docx
 output/
 docs/screenshots/
+docs/ALL_PROJECTS_CONTEXT.md
+__pycache__/
 scripts/generate_application_documents.py
 scripts/pdf_extractor.py
