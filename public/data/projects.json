@@ -43,6 +43,115 @@
     "thumb": "./projects/json_hub/slide-hero_b355babd.png"
   },
   {
+    "id": 1342295537,
+    "title": "VideoMascot",
+    "category": "python",
+    "featured": true,
+    "tags": [
+      "Python",
+      "FFmpeg",
+      "Kinematics",
+      "Lip-Sync",
+      "Pydantic"
+    ],
+    "description": "Modular 2.5D mascot animation engine in Python. 9-viseme lip-sync, analytical kinematics, and zero-disk in-memory FFmpeg alpha video streaming.",
+    "details": "Modular 2.5D layered mascot and puppet animation engine designed for automated video pipelines. Features Preston Blair 9-viseme speech lip-sync from audio timestamps, analytical forward & inverse kinematics (FK/IK) for pointing and gestures, procedural breathing and gaze tracking, and in-memory RGBA streaming directly to FFmpeg in constant O(1) RAM without intermediate disk writes.",
+    "link": "https://github.com/theGoodB0rg/VideoMascot",
+    "images": [
+      {
+        "url": "./projects/videomascot/demo_overlay.gif",
+        "caption": "In-memory video streaming overlay demo: 9-viseme speech lip-sync and pointer stick gesturing over background video."
+      },
+      {
+        "url": "./projects/videomascot/visemes_grid_9set.png",
+        "caption": "Preston Blair standard 9-viseme phonetic speech lip-sync set mapped to audio timestamps."
+      },
+      {
+        "url": "./projects/videomascot/pose_point_up_right.png",
+        "caption": "Kinematic gesture solving: Pointing up-right with modular prop using analytical 2-joint kinematics."
+      },
+      {
+        "url": "./projects/videomascot/pose_happy_wave.png",
+        "caption": "Kinematic pose gallery: Cheerful waving gesture."
+      },
+      {
+        "url": "./projects/videomascot/pose_thinking.png",
+        "caption": "Kinematic pose gallery: Thinking pose with procedural eye tracking."
+      },
+      {
+        "url": "./projects/videomascot/pose_thumbs_up.png",
+        "caption": "Kinematic pose gallery: Thumbs up gesture."
+      }
+    ],
+    "thumb": "./projects/videomascot/demo_overlay.gif"
+  },
+  {
+    "id": 1342295538,
+    "title": "MediTrace Health",
+    "category": "security",
+    "featured": false,
+    "tags": [
+      "FastAPI",
+      "React",
+      "Python",
+      "Cybersecurity",
+      "OWASP Top 10"
+    ],
+    "description": "Deliberately vulnerable hospital web platform & companion lab for SQL Injection (SQLi) and OWASP Top 10 security training.",
+    "details": "Full-stack healthcare management web app built with FastAPI, React/Vite, and SQLite. Features real clinical workflows (patient registry, appointments, lab results, diagnostics) paired with intentional OWASP Top 10 vulnerabilities (5 flavors of SQLi, command injection, IDOR, XSS, SSRF) for offensive exploit testing and defensive secure architecture training.",
+    "link": "https://github.com/theGoodB0rg/meditrace",
+    "images": [
+      {
+        "url": "./projects/meditrace/meditrace_dashboard.png",
+        "caption": "MediTrace Health clinical dashboard and OWASP Top 10 security testing sandbox."
+      }
+    ],
+    "thumb": "./projects/meditrace/meditrace_dashboard.png"
+  },
+  {
+    "id": 5,
+    "title": "Universal Undo",
+    "category": "mobile",
+    "featured": true,
+    "tags": [
+      "Kotlin",
+      "Android",
+      "Accessibility",
+      "Productivity"
+    ],
+    "description": "The Ctrl+Z your Android never had. Shake to undo any deleted text, in any app. Works system-wide, runs 100% offline, under 3MB.",
+    "details": "System-wide undo for Android. Monitors text fields via Accessibility, saves keystrokes locally in RAM, and lets you shake to restore. Supports WhatsApp, Gmail, Telegram, Keep, and more. No internet permission, no root required.",
+    "live_link": "https://universalundo.pages.dev/",
+    "play_store_link": "https://play.google.com/store/apps/details?id=com.universalundo",
+    "images": [
+      {
+        "url": "./projects/universal_undo/main_dashboard.png",
+        "caption": "Live service status and quick controls at a glance."
+      },
+      {
+        "url": "./projects/universal_undo/preferences.png",
+        "caption": "Trigger mode, history limits, and notification settings."
+      },
+      {
+        "url": "./projects/universal_undo/how_it_works.png",
+        "caption": "Simple onboarding guide for enabling and using undo."
+      },
+      {
+        "url": "./projects/universal_undo/blacklist_apps.png",
+        "caption": "Exclude sensitive apps from undo history."
+      },
+      {
+        "url": "./projects/universal_undo/undo_timeline.png",
+        "caption": "Browse and restore prior text states with timestamps."
+      },
+      {
+        "url": "./projects/universal_undo/about_privacy.png",
+        "caption": "Privacy commitments and support links."
+      }
+    ],
+    "thumb": "./projects/universal_undo/feature_graphic.png"
+  },
+  {
     "id": 970917953,
     "title": "49Blox — Digital Music Collectibles",
     "category": "web",
@@ -81,47 +190,6 @@
       }
     ],
     "thumb": "./projects/49blox/Gemini_Generated_Image_l7lersl7lersl7le_8cae1e40.jpg"
-  },
-  {
-    "id": 5,
-    "title": "Universal Undo",
-    "category": "mobile",
-    "tags": [
-      "Kotlin",
-      "Android",
-      "Productivity"
-    ],
-    "description": "The Ctrl+Z your Android never had. Shake to undo any deleted text, in any app. Works system-wide, runs 100% offline, under 3MB.",
-    "details": "System-wide undo for Android. Monitors text fields via Accessibility, saves keystrokes locally in RAM, and lets you shake to restore. Supports WhatsApp, Gmail, Telegram, Keep, and more. No internet permission, no root required.",
-    "live_link": "https://universalundo.pages.dev/",
-    "play_store_link": "https://play.google.com/store/apps/details?id=com.universalundo",
-    "images": [
-      {
-        "url": "./projects/universal_undo/main_dashboard.png",
-        "caption": "Live service status and quick controls at a glance."
-      },
-      {
-        "url": "./projects/universal_undo/preferences.png",
-        "caption": "Trigger mode, history limits, and notification settings."
-      },
-      {
-        "url": "./projects/universal_undo/how_it_works.png",
-        "caption": "Simple onboarding guide for enabling and using undo."
-      },
-      {
-        "url": "./projects/universal_undo/blacklist_apps.png",
-        "caption": "Exclude sensitive apps from undo history."
-      },
-      {
-        "url": "./projects/universal_undo/undo_timeline.png",
-        "caption": "Browse and restore prior text states with timestamps."
-      },
-      {
-        "url": "./projects/universal_undo/about_privacy.png",
-        "caption": "Privacy commitments and support links."
-      }
-    ],
-    "thumb": "./projects/universal_undo/feature_graphic.png"
   },
   {
     "id": 1125785452,

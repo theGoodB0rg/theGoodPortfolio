@@ -31,14 +31,31 @@ const filterContainer = document.querySelector('.portfolio-filters');
 let currentProject = null;
 let currentSlideIndex = 0;
 
+// Category display labels and preferred ordering (Option A)
+const categoryLabels = {
+  all: 'All',
+  web: 'Web',
+  python: 'Python & AI',
+  mobile: 'Android',
+  security: 'Security'
+};
+
+const categoryOrder = ['all', 'web', 'python', 'mobile', 'security'];
+
 // Dynamic Filters
 function generateFilters() {
-  // Get unique categories
-  const categories = ['all', ...new Set(projects.map(p => p.category || 'other'))];
+  // Get unique categories from data and sort by preferred order
+  const existingCategories = new Set(projects.map(p => p.category || 'other'));
+  const categories = categoryOrder.filter(cat => cat === 'all' || existingCategories.has(cat));
+
+  // Add any extra categories not in preferred order
+  existingCategories.forEach(cat => {
+    if (!categories.includes(cat)) categories.push(cat);
+  });
 
   const html = categories.map(cat => `
         <button class="filter-btn ${cat === 'all' ? 'active' : ''}" data-filter="${cat}">
-            ${cat.charAt(0).toUpperCase() + cat.slice(1)}
+            ${categoryLabels[cat] || (cat.charAt(0).toUpperCase() + cat.slice(1))}
         </button>
     `).join('');
 
@@ -91,19 +108,17 @@ function renderProjects(filter = 'all') {
     }
 
     // Determine specific link texts depending on nature of project
-    let isWeb = project.category === 'web';
-    let primaryLinkText = isWeb ? "View Live Site" : "Get App";
+    let isWeb = project.category === 'web' || project.category === 'security';
+    let primaryLinkText = isWeb ? "View Live Site" : (project.category === 'mobile' ? "Get App" : "Live Demo");
 
-    // We assume project.link is the Github Repo for the user, but we will label it cleanly.
     let secondaryLinkText = "Source Code";
 
     // Build Action Buttons
-    // Note: To keep the card clickable for the slideshow, we stop event propagation on the external links so the modal doesn't open when attempting to navigate out.
     let actionsHtml = `<div class="card-actions">`;
 
     if (project.live_link) {
       actionsHtml += `
-        <a href="${project.live_link}" target="_blank" class="card-btn live" onclick="event.stopPropagation()">
+        <a href="${project.live_link}" target="_blank" rel="noopener noreferrer" class="card-btn live" onclick="event.stopPropagation()">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
             <polyline points="15 3 21 3 21 9"></polyline>
@@ -115,7 +130,7 @@ function renderProjects(filter = 'all') {
 
     if (project.play_store_link) {
       actionsHtml += `
-        <a href="${project.play_store_link}" target="_blank" class="card-btn live" onclick="event.stopPropagation()">
+        <a href="${project.play_store_link}" target="_blank" rel="noopener noreferrer" class="card-btn live" onclick="event.stopPropagation()">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <polygon points="5 3 19 12 5 21 5 3"></polygon>
           </svg>
@@ -125,7 +140,7 @@ function renderProjects(filter = 'all') {
 
     if (project.link) {
       actionsHtml += `
-        <a href="${project.link}" target="_blank" class="card-btn source" onclick="event.stopPropagation()">
+        <a href="${project.link}" target="_blank" rel="noopener noreferrer" class="card-btn source" onclick="event.stopPropagation()">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
              <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
           </svg>
@@ -285,8 +300,11 @@ function updateSlide() {
     // Set Content
     infoTitle.textContent = currentProject.title;
     infoDesc.textContent = currentProject.details || currentProject.description || "No specific details available.";
-    infoLink.href = currentProject.live_link || currentProject.link || '#';
-    infoLink.style.display = (currentProject.live_link || currentProject.link) ? '' : 'none';
+    const targetUrl = currentProject.live_link || currentProject.play_store_link || currentProject.link || '#';
+    infoLink.href = targetUrl;
+    infoLink.setAttribute('rel', 'noopener noreferrer');
+    infoLink.textContent = currentProject.live_link ? 'Visit Live Site' : (currentProject.play_store_link ? 'View on Google Play' : 'View on GitHub');
+    infoLink.style.display = (currentProject.live_link || currentProject.play_store_link || currentProject.link) ? '' : 'none';
 
     slideCounter.textContent = `Project Details`;
   }
