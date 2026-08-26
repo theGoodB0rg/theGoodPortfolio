@@ -1,4 +1,8 @@
 import './style.css'
+import { SlideshowModal } from './components/SlideshowModal/SlideshowModal.js'
+
+// Slideshow Modal Instance
+const slideshowModal = new SlideshowModal().init();
 
 // Project Data State
 let projects = [];
@@ -177,154 +181,14 @@ function truncateText(text, limit) {
   return text.substring(0, limit) + '...';
 }
 
-// Slideshow Modal Logic
-const modalHtml = `
-  <div id="slideshow-modal" class="modal">
-    <button class="close-btn">&times;</button>
-    <div class="modal-content glass">
-      <button class="nav-btn prev-btn">&#10094;</button>
-      
-      <div class="slide-container">
-        <!-- Image Slide -->
-        <div id="image-slide" class="slide-view active">
-          <picture>
-            <source id="slide-source" srcset="" type="image/webp">
-            <img id="slide-img" src="" alt="Project Slide" loading="lazy">
-          </picture>
-          <div class="slide-caption-wrapper">
-             <p id="slide-caption"></p>
-          </div>
-        </div>
-        
-        <!-- Final Info Slide -->
-        <div id="info-slide" class="slide-view">
-          <div class="info-content">
-             <h2 id="info-title"></h2>
-             <div class="info-details">
-               <p id="info-desc"></p>
-             </div>
-             <a id="info-link" href="#" target="_blank" class="btn btn-primary">Visit Project</a>
-           </div>
-        </div>
-      </div>
-
-      <button class="nav-btn next-btn">&#10095;</button>
-      
-      <div class="slide-info-footer">
-        <h3 id="footer-title"></h3>
-        <p id="slide-counter"></p>
-      </div>
-    </div>
-  </div>
-`;
-document.body.insertAdjacentHTML('beforeend', modalHtml);
-
-const modal = document.getElementById('slideshow-modal');
-const imageSlide = document.getElementById('image-slide');
-const infoSlide = document.getElementById('info-slide');
-
-const slideImg = document.getElementById('slide-img');
-const slideCaption = document.getElementById('slide-caption');
-const infoTitle = document.getElementById('info-title');
-const infoDesc = document.getElementById('info-desc');
-const infoLink = document.getElementById('info-link');
-
-const footerTitle = document.getElementById('footer-title');
-const slideCounter = document.getElementById('slide-counter');
-
-// Modal Controls
+// Slideshow Modal Bridge
 function openSlideshow(projectId) {
-  currentProject = projects.find(p => p.id === projectId);
-  if (!currentProject) return;
-
-  currentSlideIndex = 0;
-  updateSlide();
-  modal.classList.add('active');
-  document.body.style.overflow = 'hidden';
-}
-window.openSlideshow = openSlideshow;
-
-
-function closeSlideshow() {
-  modal.classList.remove('active');
-  document.body.style.overflow = '';
-}
-
-function nextSlide() {
-  if (!currentProject) return;
-  const images = currentProject.images || [];
-  const totalSlides = images.length + 1;
-  currentSlideIndex = (currentSlideIndex + 1) % totalSlides;
-  updateSlide();
-}
-
-function prevSlide() {
-  if (!currentProject) return;
-  const images = currentProject.images || [];
-  const totalSlides = images.length + 1;
-  currentSlideIndex = (currentSlideIndex - 1 + totalSlides) % totalSlides;
-  updateSlide();
-}
-
-function updateSlide() {
-  if (!currentProject) return;
-  const images = currentProject.images || [];
-
-  // Footer Info
-  footerTitle.textContent = currentProject.title;
-
-  if (currentSlideIndex < images.length) {
-    // Image Slide
-    imageSlide.style.display = 'flex';
-    infoSlide.style.display = 'none';
-
-    // Set Content
-    const data = images[currentSlideIndex];
-    const slideSource = document.getElementById('slide-source');
-    slideImg.src = data.url;
-    slideSource.srcset = data.url.replace(/\.(png|jpg|jpeg)$/i, '.webp');
-    slideCaption.textContent = data.caption || '';
-
-    // Hide caption if empty
-    let captionWrapper = document.querySelector('.slide-caption-wrapper');
-    if (captionWrapper) {
-      captionWrapper.style.display = data.caption ? 'block' : 'none';
-    }
-
-    slideCounter.textContent = `Image ${currentSlideIndex + 1} of ${images.length}`;
-  } else {
-    // Final Info Slide
-    imageSlide.style.display = 'none';
-    infoSlide.style.display = 'flex';
-
-    // Set Content
-    infoTitle.textContent = currentProject.title;
-    infoDesc.textContent = currentProject.details || currentProject.description || "No specific details available.";
-    const targetUrl = currentProject.live_link || currentProject.play_store_link || currentProject.link || '#';
-    infoLink.href = targetUrl;
-    infoLink.setAttribute('rel', 'noopener noreferrer');
-    infoLink.textContent = currentProject.live_link ? 'Visit Live Site' : (currentProject.play_store_link ? 'View on Google Play' : 'View on GitHub');
-    infoLink.style.display = (currentProject.live_link || currentProject.play_store_link || currentProject.link) ? '' : 'none';
-
-    slideCounter.textContent = `Project Details`;
+  const project = projects.find(p => p.id === projectId);
+  if (project) {
+    slideshowModal.open(project);
   }
 }
-
-// Modal Listeners
-document.querySelector('.close-btn').onclick = closeSlideshow;
-document.querySelector('.next-btn').onclick = (e) => { e.stopPropagation(); nextSlide(); };
-document.querySelector('.prev-btn').onclick = (e) => { e.stopPropagation(); prevSlide(); };
-
-modal.onclick = (e) => {
-  if (e.target === modal) closeSlideshow();
-};
-
-document.addEventListener('keydown', (e) => {
-  if (!modal.classList.contains('active')) return;
-  if (e.key === 'Escape') closeSlideshow();
-  if (e.key === 'ArrowRight') nextSlide();
-  if (e.key === 'ArrowLeft') prevSlide();
-});
+window.openSlideshow = openSlideshow;
 
 // Initial Render
 loadProjects();
