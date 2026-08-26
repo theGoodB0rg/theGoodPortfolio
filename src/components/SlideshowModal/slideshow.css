@@ -17,13 +17,15 @@
   justify-content: center;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  visibility: hidden;
+  transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.25s ease;
   box-sizing: border-box;
 }
 
 .modal-backdrop.active {
   opacity: 1;
   pointer-events: auto;
+  visibility: visible;
 }
 
 /* Modal Dialog Box */
@@ -68,7 +70,7 @@
 }
 
 .modal-header-info {
-  pointer-events: auto;
+  pointer-events: none;
   display: inline-flex;
   align-items: center;
   gap: 0.75rem;
@@ -81,6 +83,10 @@
   max-width: calc(100% - 60px);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
   min-width: 0;
+}
+
+.modal-backdrop.active .modal-header-info {
+  pointer-events: auto;
 }
 
 .modal-title {
@@ -105,7 +111,7 @@
 }
 
 .modal-close-btn {
-  pointer-events: auto;
+  pointer-events: none;
   background: rgba(15, 23, 42, 0.75);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
@@ -123,6 +129,10 @@
   transition: all 0.2s ease;
   flex-shrink: 0;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.modal-backdrop.active .modal-close-btn {
+  pointer-events: auto;
 }
 
 .modal-close-btn:hover {

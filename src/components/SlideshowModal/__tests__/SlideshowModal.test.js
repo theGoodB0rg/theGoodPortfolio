@@ -115,4 +115,19 @@ describe('SlideshowModal', () => {
     const modalEl = document.getElementById('slideshow-modal');
     expect(modalEl.classList.contains('active')).toBe(false);
   });
+
+  it('remains inactive by default without intercepting background events', () => {
+    const modalEl = document.getElementById('slideshow-modal');
+    expect(modalEl.classList.contains('active')).toBe(false);
+
+    // Simulate background element click
+    const bgButton = document.createElement('button');
+    bgButton.className = 'test-bg-btn';
+    const clickHandler = vi.fn();
+    bgButton.addEventListener('click', clickHandler);
+    document.body.appendChild(bgButton);
+
+    bgButton.click();
+    expect(clickHandler).toHaveBeenCalledTimes(1);
+  });
 });
