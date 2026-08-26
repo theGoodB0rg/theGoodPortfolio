@@ -51,12 +51,7 @@ export function renderImageContent(project) {
   if (!project.thumb) {
     return `<div class="card-placeholder" aria-hidden="true">${fallbackText}</div>`;
   }
-  const isGif = project.thumb.toLowerCase().endsWith('.gif');
-  const thumbWebp = project.thumb.replace(/\.(png|jpg|jpeg)$/i, '.webp');
-
-  if (isGif) {
-    return `<img src="${project.thumb}" alt="${project.title}" loading="lazy" decoding="async" onerror="this.parentElement.innerHTML='<div class=\\'card-placeholder\\'>${fallbackText}</div>'">`;
-  }
+  const thumbWebp = project.thumb.replace(/\.(png|jpg|jpeg|gif)$/i, '.webp');
 
   return `<picture>
     <source srcset="${thumbWebp}" type="image/webp">

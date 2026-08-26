@@ -4,11 +4,13 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "optimize-images": "node scripts/optimize-images.js",
+    "validate-images": "node scripts/validate-images.js",
     "generate-og": "node scripts/generate-og-image.js",
     "dev": "vite",
-    "build": "node scripts/optimize-images.js && node scripts/generate-og-image.js && vite build",
+    "build": "node scripts/optimize-images.js && node scripts/validate-images.js && node scripts/generate-og-image.js && vite build",
     "preview": "vite preview",
-    "test": "vitest run",
+    "test": "node scripts/validate-images.js && vitest run",
     "test:watch": "vitest"
   },
   "devDependencies": {
