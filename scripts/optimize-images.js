@@ -73,15 +73,31 @@ export async function optimizeImageFile(filePath, force = false) {
         didResize = true;
       }
 
-      await pipeline
+      let currentQuality = isGif ? CONFIG.GIF_WEBP_QUALITY : CONFIG.WEBP_QUALITY;
+      const maxBudget = isGif ? 2000 * 1024 : 240 * 1024; // 240KB target to safely pass 250KB budget
+
+      let outBuffer = await pipeline
+        .clone()
         .webp({
-          quality: isGif ? CONFIG.GIF_WEBP_QUALITY : CONFIG.WEBP_QUALITY,
+          quality: currentQuality,
           effort: 6
         })
-        .toFile(webpPath);
+        .toBuffer();
 
-      const webpStat = await fs.promises.stat(webpPath);
-      webpSaved = Math.max(0, originalSize - webpStat.size);
+      // Adaptively step down quality if over budget for static images
+      while (!isGif && outBuffer.length > maxBudget && currentQuality > 55) {
+        currentQuality -= 6;
+        outBuffer = await pipeline
+          .clone()
+          .webp({
+            quality: currentQuality,
+            effort: 6
+          })
+          .toBuffer();
+      }
+
+      await fs.promises.writeFile(webpPath, outBuffer);
+      webpSaved = Math.max(0, originalSize - outBuffer.length);
     } catch (err) {
       console.error(`  ✘ WebP Error on ${path.relative(PUBLIC, filePath)}: ${err.message}`);
     }
