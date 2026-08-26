@@ -81,4 +81,37 @@ describe('Mobile Navigation Component', () => {
     expect(hamburger.classList.contains('is-active')).toBe(false);
     expect(hamburger.getAttribute('aria-expanded')).toBe('false');
   });
+
+  it('delegates clicks from inner span elements to toggle the menu', () => {
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    const firstSpan = hamburger.querySelector('span');
+
+    // Click on the child span element directly
+    firstSpan.click();
+    expect(navLinks.classList.contains('nav-active')).toBe(true);
+    expect(hamburger.classList.contains('is-active')).toBe(true);
+    expect(hamburger.getAttribute('aria-expanded')).toBe('true');
+
+    // Click span again to close
+    firstSpan.click();
+    expect(navLinks.classList.contains('nav-active')).toBe(false);
+    expect(hamburger.classList.contains('is-active')).toBe(false);
+    expect(hamburger.getAttribute('aria-expanded')).toBe('false');
+  });
+
+  it('handles rapid toggling consistently', () => {
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+
+    for (let i = 0; i < 5; i++) {
+      hamburger.click();
+      expect(navLinks.classList.contains('nav-active')).toBe(true);
+      expect(hamburger.getAttribute('aria-expanded')).toBe('true');
+
+      hamburger.click();
+      expect(navLinks.classList.contains('nav-active')).toBe(false);
+      expect(hamburger.getAttribute('aria-expanded')).toBe('false');
+    }
+  });
 });
