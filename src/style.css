@@ -660,8 +660,36 @@ section {
   line-height: 1.7;
 }
 
-.about-card strong {
+.about-pillars {
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+}
+
+.pillar-item {
+  position: relative;
+  padding-left: 0.9rem;
+  border-left: 2px solid rgba(255, 255, 255, 0.1);
+  transition: border-color 0.3s ease;
+}
+
+.pillar-item:hover {
+  border-left-color: var(--color-primary);
+}
+
+.pillar-item h4 {
+  font-size: 0.95rem;
+  font-weight: 600;
   color: var(--color-text-main);
+  margin-bottom: 0.25rem;
+  letter-spacing: -0.2px;
+}
+
+.pillar-item p {
+  font-size: 0.86rem;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+  margin: 0;
 }
 
 .skills {
