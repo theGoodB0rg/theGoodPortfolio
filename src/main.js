@@ -2,70 +2,157 @@ import './style.css'
 import { SlideshowModal } from './components/SlideshowModal/SlideshowModal.js'
 
 // Slideshow Modal Instance
-const slideshowModal = new SlideshowModal().init();
+const slideshowModal = typeof document !== 'undefined' ? new SlideshowModal().init() : null;
 
 // Project Data State
 let projects = [];
 
-// Fetch Projects
-async function loadProjects() {
-  try {
-    const response = await fetch('data/projects.json');
-    if (!response.ok) throw new Error('Failed to load projects');
-    projects = await response.json();
+// DOM Elements (guarded for node / test environments)
+const grid = typeof document !== 'undefined' ? document.getElementById('portfolio-grid') : null;
+const filterContainer = typeof document !== 'undefined' ? document.querySelector('.portfolio-filters') : null;
 
-    generateFilters();
-    renderProjects();
-
-    // Update Intersection Observer for new elements
-    setTimeout(() => {
-      document.querySelectorAll('.project-card').forEach(card => observer.observe(card));
-    }, 100);
-  } catch (error) {
-    console.error('Error loading projects:', error);
-    grid.innerHTML = '<p class="error-msg">Failed to load projects. Please try again later.</p>';
-  }
-}
-
-// DOM Elements
-const grid = document.getElementById('portfolio-grid');
-const filterContainer = document.querySelector('.portfolio-filters');
-
-// Slideshow State
-let currentProject = null;
-let currentSlideIndex = 0;
-
-// Category display labels and preferred ordering (Option A)
-const categoryLabels = {
+// Category display labels and preferred ordering
+export const categoryLabels = {
   all: 'All',
-  web: 'Web',
+  mobile: 'Android & Systems',
+  web: 'Web & Tools',
   python: 'Python & AI',
-  mobile: 'Android',
   security: 'Security'
 };
 
-const categoryOrder = ['all', 'web', 'python', 'mobile', 'security'];
+export const categoryOrder = ['all', 'mobile', 'web', 'python', 'security'];
+
+// Filter Helper
+export function filterProjects(allProjects, filter = 'all') {
+  if (!allProjects || !Array.isArray(allProjects)) return [];
+  if (filter === 'all') return allProjects;
+  return allProjects.filter(p => p.category === filter);
+}
+
+// Helpers
+export function getInitials(title) {
+  if (!title) return '??';
+  const words = title.split(/[\s—–-]+/).filter(Boolean);
+  if (words.length >= 2) {
+    return (words[0][0] + words[1][0]).toUpperCase();
+  }
+  return title.substring(0, 2).toUpperCase();
+}
+
+export function truncateText(text, limit = 120) {
+  if (!text) return '';
+  if (text.length <= limit) return text;
+  return text.substring(0, limit).trimEnd() + '...';
+}
+
+// Safe Image Markup Renderer
+export function renderImageContent(project) {
+  const fallbackText = getInitials(project.title);
+  if (!project.thumb) {
+    return `<div class="card-placeholder" aria-hidden="true">${fallbackText}</div>`;
+  }
+  const isGif = project.thumb.toLowerCase().endsWith('.gif');
+  const thumbWebp = project.thumb.replace(/\.(png|jpg|jpeg)$/i, '.webp');
+
+  if (isGif) {
+    return `<img src="${project.thumb}" alt="${project.title}" loading="lazy" decoding="async" onerror="this.parentElement.innerHTML='<div class=\\'card-placeholder\\'>${fallbackText}</div>'">`;
+  }
+
+  return `<picture>
+    <source srcset="${thumbWebp}" type="image/webp">
+    <img src="${project.thumb}" alt="${project.title}" loading="lazy" decoding="async" onerror="this.closest('.card-image').innerHTML='<div class=\\'card-placeholder\\'>${fallbackText}</div>'">
+  </picture>`;
+}
+
+// Action Buttons Renderer
+export function renderActionButtons(project) {
+  const isWeb = project.category === 'web' || project.category === 'security';
+  const primaryLinkText = isWeb ? "View Live Site" : (project.category === 'mobile' ? "Get App" : "Live Demo");
+  let actionsHtml = `<div class="card-actions">`;
+
+  if (project.live_link) {
+    actionsHtml += `
+      <a href="${project.live_link}" target="_blank" rel="noopener noreferrer" class="card-btn live" onclick="event.stopPropagation()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+          <polyline points="15 3 21 3 21 9"></polyline>
+          <line x1="10" y1="14" x2="21" y2="3"></line>
+        </svg>
+        ${primaryLinkText}
+      </a>`;
+  }
+
+  if (project.play_store_link) {
+    actionsHtml += `
+      <a href="${project.play_store_link}" target="_blank" rel="noopener noreferrer" class="card-btn live" onclick="event.stopPropagation()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <polygon points="5 3 19 12 5 21 5 3"></polygon>
+        </svg>
+        Google Play
+      </a>`;
+  }
+
+  if (project.link) {
+    actionsHtml += `
+      <a href="${project.link}" target="_blank" rel="noopener noreferrer" class="card-btn source" onclick="event.stopPropagation()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+           <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+        </svg>
+        Source Code
+      </a>`;
+  }
+  actionsHtml += `</div>`;
+  return actionsHtml;
+}
+
+// Project Card DOM Generator
+export function createProjectCard(project, index = 0) {
+  const card = document.createElement('div');
+  card.className = 'project-card glass fade-in-up';
+  card.style.animationDelay = `${index * 0.08}s`;
+
+  const imageContent = renderImageContent(project);
+  const displayDesc = project.description || project.details || '';
+  const actionsHtml = renderActionButtons(project);
+  const hasImages = project.images && project.images.length > 0;
+
+  const overlayHtml = hasImages ? `<div class="view-overlay flex-center">View Screenshots</div>` : '';
+  const cursorStyle = hasImages ? 'cursor: pointer;' : '';
+  const clickAttr = hasImages ? `onclick="openSlideshow(${project.id})" tabindex="0" role="button" aria-label="View screenshots for ${project.title}"` : '';
+
+  card.innerHTML = `
+    <div class="card-image" ${clickAttr} style="${cursorStyle}">
+      ${imageContent}
+      ${overlayHtml}
+    </div>
+    <div class="card-content">
+      <div class="card-tags">${(project.tags || []).slice(0, 3).join(' • ')}</div>
+      <h3 ${hasImages ? `onclick="openSlideshow(${project.id})" style="cursor: pointer;"` : ''}>${project.title}</h3>
+      <p class="card-description">${displayDesc}</p>
+      ${actionsHtml}
+    </div>
+  `;
+  return card;
+}
 
 // Dynamic Filters
-function generateFilters() {
-  // Get unique categories from data and sort by preferred order
+export function generateFilters() {
+  if (!filterContainer) return;
   const existingCategories = new Set(projects.map(p => p.category || 'other'));
   const categories = categoryOrder.filter(cat => cat === 'all' || existingCategories.has(cat));
 
-  // Add any extra categories not in preferred order
   existingCategories.forEach(cat => {
     if (!categories.includes(cat)) categories.push(cat);
   });
 
   const html = categories.map(cat => `
-        <button class="filter-btn ${cat === 'all' ? 'active' : ''}" data-filter="${cat}">
-            ${categoryLabels[cat] || (cat.charAt(0).toUpperCase() + cat.slice(1))}
-        </button>
-    `).join('');
+    <button class="filter-btn ${cat === 'all' ? 'active' : ''}" data-filter="${cat}">
+      ${categoryLabels[cat] || (cat.charAt(0).toUpperCase() + cat.slice(1))}
+    </button>
+  `).join('');
 
   filterContainer.innerHTML = html;
 
-  // Add Listeners
   document.querySelectorAll('.filter-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
@@ -76,12 +163,11 @@ function generateFilters() {
 }
 
 // Render Projects
-function renderProjects(filter = 'all') {
+export function renderProjects(filter = 'all') {
+  if (!grid) return;
   grid.innerHTML = '';
 
-  const filtered = filter === 'all'
-    ? projects
-    : projects.filter(p => p.category === filter);
+  const filtered = filterProjects(projects, filter);
 
   if (filtered.length === 0) {
     grid.innerHTML = '<div class="empty-state">No projects found in this category.</div>';
@@ -89,306 +175,76 @@ function renderProjects(filter = 'all') {
   }
 
   filtered.forEach((project, index) => {
-    const card = document.createElement('div');
-    card.className = 'project-card glass fade-in-up';
-    card.style.animationDelay = `${index * 0.1}s`; // Staggered animation
-
-    // Image Handling
-    let imageContent;
-    let fallbackText = getInitials(project.title);
-    if (project.thumb) {
-      const thumbWebp = project.thumb.replace(/\.(png|jpg|jpeg)$/i, '.webp');
-      imageContent = `<picture><source srcset="${thumbWebp}" type="image/webp"><img src="${project.thumb}" alt="${project.title}" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\\'card-placeholder\\'>${fallbackText}</div>'"></picture>`;
-    } else {
-      imageContent = `<div class="card-placeholder">${fallbackText}</div>`;
-    }
-
-    // Determine descriptive text (use rich caption from AI first, then fallback)
-    let displayDesc = "";
-    if (project.images && project.images.length > 0 && project.images[0].caption) {
-      displayDesc = project.images[0].caption;
-    } else {
-      displayDesc = truncateText(project.description || project.details || '', 120);
-    }
-
-    // Determine specific link texts depending on nature of project
-    let isWeb = project.category === 'web' || project.category === 'security';
-    let primaryLinkText = isWeb ? "View Live Site" : (project.category === 'mobile' ? "Get App" : "Live Demo");
-
-    let secondaryLinkText = "Source Code";
-
-    // Build Action Buttons
-    let actionsHtml = `<div class="card-actions">`;
-
-    if (project.live_link) {
-      actionsHtml += `
-        <a href="${project.live_link}" target="_blank" rel="noopener noreferrer" class="card-btn live" onclick="event.stopPropagation()">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-            <polyline points="15 3 21 3 21 9"></polyline>
-            <line x1="10" y1="14" x2="21" y2="3"></line>
-          </svg>
-          ${primaryLinkText}
-        </a>`;
-    }
-
-    if (project.play_store_link) {
-      actionsHtml += `
-        <a href="${project.play_store_link}" target="_blank" rel="noopener noreferrer" class="card-btn live" onclick="event.stopPropagation()">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <polygon points="5 3 19 12 5 21 5 3"></polygon>
-          </svg>
-          Google Play
-        </a>`;
-    }
-
-    if (project.link) {
-      actionsHtml += `
-        <a href="${project.link}" target="_blank" rel="noopener noreferrer" class="card-btn source" onclick="event.stopPropagation()">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-             <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-          </svg>
-          ${secondaryLinkText}
-        </a>`;
-    }
-    actionsHtml += `</div>`;
-
-    card.innerHTML = `
-      <div class="card-image" onclick="openSlideshow(${project.id})" style="cursor: pointer;">
-        ${imageContent}
-        <div class="view-overlay flex-center">View Screenshots</div>
-      </div>
-      <div class="card-content">
-        <div class="card-tags">${(project.tags || []).slice(0, 3).join(' • ')}</div>
-        <h3 onclick="openSlideshow(${project.id})" style="cursor: pointer;">${project.title}</h3>
-        <p class="card-description">${displayDesc}</p>
-        ${actionsHtml}
-      </div>
-    `;
+    const card = createProjectCard(project, index);
     grid.appendChild(card);
   });
 }
 
-// Helpers
-function getInitials(title) {
-  if (!title) return '??';
-  return title.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase();
-}
+// Fetch Projects
+export async function loadProjects() {
+  if (typeof fetch === 'undefined') return;
+  try {
+    const response = await fetch('data/projects.json');
+    if (!response.ok) throw new Error('Failed to load projects');
+    projects = await response.json();
 
-function truncateText(text, limit) {
-  if (!text) return '';
-  if (text.length <= limit) return text;
-  return text.substring(0, limit) + '...';
+    generateFilters();
+    renderProjects();
+
+    if (typeof observer !== 'undefined') {
+      setTimeout(() => {
+        document.querySelectorAll('.project-card').forEach(card => observer.observe(card));
+      }, 100);
+    }
+  } catch (error) {
+    console.error('Error loading projects:', error);
+    if (grid) {
+      grid.innerHTML = '<p class="error-msg">Failed to load projects. Please try again later.</p>';
+    }
+  }
 }
 
 // Slideshow Modal Bridge
-function openSlideshow(projectId) {
+export function openSlideshow(projectId) {
   const project = projects.find(p => p.id === projectId);
-  if (project) {
+  if (project && slideshowModal) {
     slideshowModal.open(project);
   }
 }
-window.openSlideshow = openSlideshow;
 
-// Initial Render
-loadProjects();
-
-// Intersection Observer
-const observerOptions = { threshold: 0.1 };
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) entry.target.classList.add('visible');
-  });
-}, observerOptions);
-
-document.querySelectorAll('section').forEach(section => observer.observe(section));
-
-// ============================================
-// SCROLL-BASED HEADER & DESKTOP CTA
-// ============================================
-
-const headerEl = document.querySelector('header');
-const desktopCta = document.getElementById('desktop-cta');
-
-function handleScroll() {
-  const scrollY = window.scrollY;
-
-  // Header scroll state
-  if (headerEl) {
-    headerEl.classList.toggle('scrolled', scrollY > 80);
-  }
-
-  // Desktop CTA visibility (show after scrolling past hero)
-  if (desktopCta) {
-    desktopCta.classList.toggle('visible', scrollY > 600);
-  }
+if (typeof window !== 'undefined') {
+  window.openSlideshow = openSlideshow;
 }
-
-window.addEventListener('scroll', handleScroll, { passive: true });
-handleScroll();
-
-// ============================================
-// TESTIMONIALS CAROUSEL
-// ============================================
-
-let testimonials = [];
-let currentTestimonialIndex = 0;
-let testimonialInterval;
-
-async function loadTestimonials() {
-  try {
-    const response = await fetch('data/testimonials.json');
-    if (!response.ok) return; // Silently fail if testimonials not available
-
-    testimonials = await response.json();
-
-    if (testimonials.length === 0) return;
-
-    renderTestimonials();
-    setupTestimonialNavigation();
-    startTestimonialAutoRotate();
-  } catch (error) {
-    console.error('Error loading testimonials:', error);
-  }
-}
-
-function renderTestimonials() {
-  const track = document.getElementById('testimonials-track');
-  const dotsContainer = document.getElementById('testimonial-dots');
-
-  if (!track || !dotsContainer) return;
-
-  // Render testimonial cards
-  track.innerHTML = testimonials.map((testimonial, index) => `
-    <div class="testimonial-card glass ${index === 0 ? 'active' : ''}">
-      <div class="quote-icon">"</div>
-      <p class="testimonial-text">${testimonial.testimonial}</p>
-      <div class="testimonial-author">
-        ${testimonial.avatar ?
-      `<picture><source srcset="${testimonial.avatar.replace(/\.(png|jpg|jpeg)$/i, '.webp')}" type="image/webp"><img src="${testimonial.avatar}" alt="${testimonial.name}" class="author-avatar" loading="lazy"></picture>` :
-      `<div class="author-avatar-placeholder">${testimonial.name.charAt(0)}</div>`
-    }
-        <div class="author-info">
-          <h4>${testimonial.name}</h4>
-          <p>${testimonial.role} at ${testimonial.company}</p>
-        </div>
-      </div>
-      ${testimonial.rating ? `
-        <div class="testimonial-rating">
-          ${'★'.repeat(testimonial.rating)}${'☆'.repeat(5 - testimonial.rating)}
-        </div>
-      ` : ''}
-    </div>
-  `).join('');
-
-  // Render dots
-  dotsContainer.innerHTML = testimonials.map((_, index) => `
-    <button class="testimonial-dot ${index === 0 ? 'active' : ''}" data-index="${index}" aria-label="Go to testimonial ${index + 1}"></button>
-  `).join('');
-}
-
-function setupTestimonialNavigation() {
-  const prevBtn = document.querySelector('.prev-testimonial');
-  const nextBtn = document.querySelector('.next-testimonial');
-  const dots = document.querySelectorAll('.testimonial-dot');
-
-  if (prevBtn) {
-    prevBtn.addEventListener('click', () => {
-      showTestimonial(currentTestimonialIndex - 1);
-      resetTestimonialAutoRotate();
-    });
-  }
-
-  if (nextBtn) {
-    nextBtn.addEventListener('click', () => {
-      showTestimonial(currentTestimonialIndex + 1);
-      resetTestimonialAutoRotate();
-    });
-  }
-
-  dots.forEach(dot => {
-    dot.addEventListener('click', () => {
-      showTestimonial(parseInt(dot.dataset.index));
-      resetTestimonialAutoRotate();
-    });
-  });
-}
-
-function showTestimonial(index) {
-  if (testimonials.length === 0) return;
-
-  // Wrap around
-  if (index < 0) index = testimonials.length - 1;
-  if (index >= testimonials.length) index = 0;
-
-  currentTestimonialIndex = index;
-
-  // Update cards
-  const cards = document.querySelectorAll('.testimonial-card');
-  cards.forEach((card, i) => {
-    card.classList.toggle('active', i === index);
-  });
-
-  // Update dots
-  const dots = document.querySelectorAll('.testimonial-dot');
-  dots.forEach((dot, i) => {
-    dot.classList.toggle('active', i === index);
-  });
-}
-
-function startTestimonialAutoRotate() {
-  testimonialInterval = setInterval(() => {
-    showTestimonial(currentTestimonialIndex + 1);
-  }, 5000); // Rotate every 5 seconds
-}
-
-function resetTestimonialAutoRotate() {
-  clearInterval(testimonialInterval);
-  startTestimonialAutoRotate();
-}
-
-// TODO: Re-enable when real testimonials are added
-// loadTestimonials();
 
 // ============================================
 // BLOG PREVIEW ON HOMEPAGE
 // ============================================
 
-async function loadBlogPreview() {
-  try {
-    const response = await fetch('data/blog.json');
-    if (!response.ok) return; // Silently fail if blog not available
-
-    const blogPosts = await response.json();
-
-    // Sort by date and get latest 3
-    const latestPosts = blogPosts
-      .sort((a, b) => new Date(b.date) - new Date(a.date))
-      .slice(0, 3);
-
-    const previewGrid = document.getElementById('blog-preview-grid');
-    if (!previewGrid) return;
-
-    previewGrid.innerHTML = '';
-
-    latestPosts.forEach((post, index) => {
-      const card = createBlogPreviewCard(post, index);
-      previewGrid.appendChild(card);
-    });
-
-    // Observe blog cards for animations
-    document.querySelectorAll('.blog-card').forEach(card => observer.observe(card));
-  } catch (error) {
-    console.error('Error loading blog preview:', error);
-  }
+export function getBlogCategoryLabel(category) {
+  const labels = {
+    'web': 'Web Dev',
+    'mobile': 'Mobile Dev',
+    'tutorial': 'Tutorial',
+    'thoughts': 'Thoughts'
+  };
+  return labels[category] || category;
 }
 
-function createBlogPreviewCard(post, index) {
+export function formatBlogDate(dateString) {
+  const date = new Date(dateString);
+  return date.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric'
+  });
+}
+
+export function createBlogPreviewCard(post, index) {
   const card = document.createElement('div');
   card.className = 'blog-card glass fade-in-up';
   card.style.animationDelay = `${index * 0.1}s`;
 
-  const categoryLabel = getCategoryLabel(post.category);
+  const categoryLabel = getBlogCategoryLabel(post.category);
   const formattedDate = formatBlogDate(post.date);
 
   card.innerHTML = `
@@ -424,24 +280,72 @@ function createBlogPreviewCard(post, index) {
   return card;
 }
 
-function getCategoryLabel(category) {
-  const labels = {
-    'web': 'Web Dev',
-    'mobile': 'Mobile Dev',
-    'tutorial': 'Tutorial',
-    'thoughts': 'Thoughts'
-  };
-  return labels[category] || category;
+export async function loadBlogPreview() {
+  if (typeof fetch === 'undefined') return;
+  try {
+    const response = await fetch('data/blog.json');
+    if (!response.ok) return;
+
+    const blogPosts = await response.json();
+    const latestPosts = blogPosts
+      .sort((a, b) => new Date(b.date) - new Date(a.date))
+      .slice(0, 3);
+
+    const previewGrid = document.getElementById('blog-preview-grid');
+    if (!previewGrid) return;
+
+    previewGrid.innerHTML = '';
+
+    latestPosts.forEach((post, index) => {
+      const card = createBlogPreviewCard(post, index);
+      previewGrid.appendChild(card);
+    });
+  } catch (error) {
+    console.error('Error loading blog preview:', error);
+  }
 }
 
-function formatBlogDate(dateString) {
-  const date = new Date(dateString);
-  return date.toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'short',
-    day: 'numeric'
-  });
-}
+// Browser Runtime Initialization
+const isTestEnv = typeof process !== 'undefined' && process.env && process.env.NODE_ENV === 'test';
 
-// Load blog preview
-loadBlogPreview();
+if (typeof window !== 'undefined' && typeof document !== 'undefined' && !isTestEnv) {
+  // Initial Render
+  loadProjects();
+
+  // Intersection Observer
+  if (typeof IntersectionObserver !== 'undefined') {
+    const observerOptions = { threshold: 0.1 };
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('section').forEach(section => observer.observe(section));
+  }
+
+  // ============================================
+  // SCROLL-BASED HEADER & DESKTOP CTA
+  // ============================================
+
+  const headerEl = document.querySelector('header');
+  const desktopCta = document.getElementById('desktop-cta');
+
+  function handleScroll() {
+    const scrollY = window.scrollY;
+
+    if (headerEl) {
+      headerEl.classList.toggle('scrolled', scrollY > 80);
+    }
+
+    if (desktopCta) {
+      desktopCta.classList.toggle('visible', scrollY > 600);
+    }
+  }
+
+  window.addEventListener('scroll', handleScroll, { passive: true });
+  handleScroll();
+
+  // Load blog preview
+  loadBlogPreview();
+}

@@ -41,6 +41,16 @@ PRESETS = {
         "resume_title": "Olorunfemi John - MyHabitra Mobile Engineer Resume",
         "cover_title": "Olorunfemi John - MyHabitra Mobile Engineer Cover Letter",
     },
+    "primote_software_engineer": {
+        "resume_md": PUBLIC / "resume_primote_software_engineer.md",
+        "cover_md": PUBLIC / "cover_letter_primote_software_engineer.md",
+        "resume_docx": PUBLIC / "Olorunfemi_John_Primote_Software_Engineer_Resume.docx",
+        "resume_pdf": PUBLIC / "Olorunfemi_John_Primote_Software_Engineer_Resume.pdf",
+        "cover_docx": PUBLIC / "Olorunfemi_John_Primote_Software_Engineer_Cover_Letter.docx",
+        "cover_pdf": PUBLIC / "Olorunfemi_John_Primote_Software_Engineer_Cover_Letter.pdf",
+        "resume_title": "Olorunfemi John - Primote Africa Software Engineer Resume",
+        "cover_title": "Olorunfemi John - Primote Africa Software Engineer Cover Letter",
+    },
 }
 
 
@@ -53,6 +63,10 @@ ACCENT_HEX = "#1B365D"
 def normalize_text(text: str) -> str:
     text = LINK_RE.sub(r"\1: \2", text)
     text = text.replace("**", "")
+    text = text.replace("—", " - ").replace("–", "-")
+    text = text.replace("“", '"').replace("”", '"')
+    text = text.replace("‘", "'").replace("’", "'")
+    text = text.replace("•", "-")
     return text.strip()
 
 
@@ -208,7 +222,7 @@ def build_resume_docx(data: dict, output_path: Path) -> None:
                 p = doc.add_paragraph()
                 p.paragraph_format.space_before = Pt(4)
                 p.paragraph_format.space_after = Pt(2)
-                r = p.add_run(item["heading"])
+                r = p.add_run(normalize_text(item["heading"]))
                 r.bold = True
                 r.font.name = "Calibri"
                 r.font.size = Pt(10.75)
@@ -334,7 +348,7 @@ def build_resume_pdf(data: dict, output_path: Path, document_title: str) -> None
         story.append(HRFlowable(width="100%", thickness=0.8, color=colors.HexColor(ACCENT_HEX), spaceBefore=0, spaceAfter=4))
         for item in section["items"]:
             if item["heading"]:
-                story.append(Paragraph(item["heading"], heading_style))
+                story.append(Paragraph(normalize_text(item["heading"]), heading_style))
             for line in item["lines"]:
                 if line.startswith("- "):
                     story.append(Paragraph(f"- {normalize_text(line[2:])}", bullet_style))
