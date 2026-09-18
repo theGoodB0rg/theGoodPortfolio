@@ -9,6 +9,8 @@ task.md
 *.md
 !readme.md
 *pdf
+!public/Olorunfemi_John_CLSN_Software_Engineer_Resume.pdf
+!public/Olorunfemi_John_CLSN_Software_Engineer_Cover_Letter.pdf
 *.webp
 *.docx
 output/
@@ -17,3 +19,5 @@ docs/ALL_PROJECTS_CONTEXT.md
 __pycache__/
 scripts/generate_application_documents.py
 scripts/pdf_extractor.py
+# Interview dossier (private prep material)
+/virtual_nation_brief/
