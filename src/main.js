@@ -343,4 +343,34 @@ if (typeof window !== 'undefined' && typeof document !== 'undefined' && !isTestE
 
   // Load blog preview
   loadBlogPreview();
+
+  // ============================================
+  // CERTIFICATE LIGHTBOX
+  // ============================================
+  const certThumbBtn = document.getElementById('cert-thumb-btn');
+  const certLightbox = document.getElementById('cert-lightbox');
+  const certLightboxClose = document.getElementById('cert-lightbox-close');
+
+  function openCertLightbox() {
+    certLightbox.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+    certLightboxClose.focus();
+  }
+
+  function closeCertLightbox() {
+    certLightbox.classList.remove('is-open');
+    document.body.style.overflow = '';
+    certThumbBtn.focus();
+  }
+
+  if (certThumbBtn && certLightbox && certLightboxClose) {
+    certThumbBtn.addEventListener('click', openCertLightbox);
+    certLightboxClose.addEventListener('click', closeCertLightbox);
+    certLightbox.addEventListener('click', (e) => {
+      if (e.target === certLightbox) closeCertLightbox();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && certLightbox.classList.contains('is-open')) closeCertLightbox();
+    });
+  }
 }

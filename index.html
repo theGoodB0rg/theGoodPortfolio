@@ -27,6 +27,7 @@
       <ul class="nav-links flex-center">
         <li><a href="#about">About</a></li>
         <li><a href="#portfolio">Work</a></li>
+        <li><a href="#research">Research</a></li>
         <li><a href="#services">Services</a></li>
         <li><a href="blog.html">Blog</a></li>
         <li><a href="#contact">Contact</a></li>
@@ -240,10 +241,68 @@
               Deepened expertise in secure systems architecture, threat modeling, and
               building resilient infrastructure that stands up to real-world attacks.
             </p>
+            <p class="exp-pub-note">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              Research accepted for Springer LNNS publication — <a href="#research" class="pub-inline-link">WorldS4 2026, London</a>
+            </p>
           </div>
         </div>
       </div>
     </section>
+
+    <!-- Publications & Research Section -->
+    <section id="research" class="container">
+      <div class="section-header">
+        <h2>Publications</h2>
+        <p class="subtitle">Peer-reviewed research</p>
+      </div>
+
+      <div class="pub-card glass">
+        <div class="pub-layout">
+          <div class="pub-cert-col">
+            <button class="cert-thumb-btn" id="cert-thumb-btn" aria-label="View full certificate">
+              <picture>
+                <source srcset="./projects/cybersec_cert_preview.webp" type="image/webp">
+                <img src="./projects/cybersec_cert_preview.png" alt="WorldS4 2026 Conference Certificate — Olorunfemi J.E." class="cert-thumb" loading="lazy" draggable="false">
+              </picture>
+              <span class="cert-thumb-overlay" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                </svg>
+                View Certificate
+              </span>
+            </button>
+          </div>
+          <div class="pub-info-col">
+            <div class="pub-badges">
+              <span class="pub-badge pub-badge-springer">Springer LNNS &middot; Forthcoming</span>
+              <span class="pub-badge pub-badge-conf">WorldS4 2026 &middot; London, UK</span>
+            </div>
+            <h3 class="pub-title">CyberSec: Vulnerability Detection Platform for Ethical Hacking</h3>
+            <p class="pub-authors">Olorunfemi J.E., Adeniji O.D. et al. &mdash; Dept. of Computer Science, University of Ibadan</p>
+            <p class="pub-venue">10th World Conference on Information Communication Systems, Software, Security &amp; Sustainability &middot; 28&ndash;30 July 2026</p>
+            <p class="pub-excerpt">A browser-based platform wrapping SQLMap under legal guardrails so students can run controlled SQL injection scans on approved targets, with structured logging and proof-of-exploit export. Reduced interaction cost by <strong>~95%</strong> (377 actions &rarr; 20) and learning burden by <strong>~95%</strong> with near-zero time overhead &mdash; making ethical hacking training accessible, auditable, and teachable at scale.</p>
+            <p class="pub-cite-note">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+              </svg>
+              DOI and citation URL will be available when Springer publishes the WorldS4 2026 proceedings.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Certificate Lightbox -->
+    <div class="cert-lightbox" id="cert-lightbox" role="dialog" aria-modal="true" aria-label="Conference Certificate">
+      <div class="cert-lightbox-inner">
+        <picture>
+          <source srcset="./projects/cybersec_cert_preview.webp" type="image/webp">
+          <img src="./projects/cybersec_cert_preview.png" alt="WorldS4 2026 Conference Certificate" draggable="false">
+        </picture>
+      </div>
+      <button class="cert-lightbox-close" id="cert-lightbox-close" aria-label="Close certificate">&#x2715;</button>
+    </div>
 
     <!-- Portfolio Section -->
     <section id="portfolio" class="container">
