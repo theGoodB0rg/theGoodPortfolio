@@ -11,7 +11,7 @@
       "100% Offline",
       "Clean Architecture"
     ],
-    "description": "100% offline media compressor & converter for Android. Resize images to exact KB for forms, compress videos, and stitch PDFs with zero server uploads.",
+    "description": "Helps people hit exact upload limits on forms and chats by compressing photos, video, and PDFs on-device, with zero server uploads.",
     "details": "Built with Kotlin and a 10-module clean architecture. Uses hardware-accelerated Media3 and in-memory FFmpeg pipelines to compress images, audio, and video on-device without cloud dependencies or privacy risks. Fully covered by zero-mock contract unit tests.",
     "link": "https://github.com/theGoodB0rg/tap-convert",
     "images": [
@@ -49,8 +49,8 @@
       "Monaco Editor",
       "Client-side"
     ],
-    "description": "Convert nested JSON to Excel and CSV with auto-unescaping. Parses 100MB+ datasets entirely in the browser with zero server roundtrips.",
-    "details": "Client-side Next.js tool engineered for high throughput. Features Monaco Editor integration, recursive data flattening, and instant exports (CSV, Excel, HTML, ZIP) without sending sensitive data to external servers.",
+    "description": "Turns messy nested JSON into clean Excel and CSV files without sending sensitive data to any server.",
+    "details": "Client-side Next.js tool engineered for high throughput. Parses 100MB+ datasets in the browser with Monaco Editor integration, recursive data flattening, and instant exports (CSV, Excel, HTML, ZIP).",
     "link": "https://github.com/theGoodB0rg/json_hub",
     "live_link": "https://jsonexport.com",
     "images": [
@@ -81,7 +81,7 @@
       "Lip-Sync",
       "In-Memory Streaming"
     ],
-    "description": "2.5D layered animation engine in Python. 9-viseme speech lip-sync, analytical kinematics, and constant O(1) in-memory RGBA streaming directly to FFmpeg.",
+    "description": "Automates mascot and explainer video production, including lip-synced speech, without writing frame files to disk.",
     "details": "Modular puppet and mascot animation engine designed for automated media pipelines. Renders Preston Blair 9-viseme speech lip-sync from audio timestamps with inverse kinematics and streams directly to FFmpeg memory buffers without writing intermediate frames to disk.",
     "link": "https://github.com/theGoodB0rg/VideoMascot",
     "images": [
@@ -159,7 +159,7 @@
       "Proxy Pool",
       "Pytest (168 tests)"
     ],
-    "description": "Modular text-to-speech engine delivering authentic Nigerian accent voice synthesis with pluggable backends and automated proxy rotation.",
+    "description": "Gives creators authentic Nigerian-accent voiceovers on demand, with unlimited generation and no watermarks.",
     "details": "Test-driven TTS engine built with Python. Features smart clause/sentence text chunking, CLI/API interfaces, and health-checked proxy management. Backed by 168 automated tests achieving 85%+ code coverage.",
     "link": "https://github.com/theGoodB0rg/audio-gen",
     "images": [],
@@ -176,7 +176,7 @@
       "SQLite",
       "Resilient Pipeline"
     ],
-    "description": "Production-style web scraping framework with pluggable provider architecture, checkpoint resume, and exponential backoff.",
+    "description": "Collects listings from multiple sites on autopilot, with crash recovery and clean exports when long runs get interrupted.",
     "details": "Modular Python data extraction framework featuring rate limiting, deduplication, JSON/CSV/SQLite export, and crash recovery checkpoints for long-running harvest jobs.",
     "link": "https://github.com/theGoodB0rg/listing-harvester",
     "images": [
@@ -203,7 +203,7 @@
       "OWASP Top 10",
       "Security"
     ],
-    "description": "Deliberately vulnerable hospital web platform and companion testing lab for OWASP Top 10 security research and defensive auditing.",
+    "description": "Hospital management platform built for security research, with documented attack paths and defensive fixes for OWASP Top 10 training.",
     "details": "Full-stack healthcare management application built with FastAPI and React. Implements clinical workflows alongside documented vulnerability vectors (SQLi, IDOR, XSS, SSRF) for defensive mitigation training.",
     "link": "https://github.com/theGoodB0rg/meditrace",
     "images": [
@@ -280,13 +280,13 @@
     "category": "web",
     "featured": false,
     "tags": [
-      "JavaScript",
+      "AI SaaS",
       "LLM",
-      "Node.js",
-      "AI"
+      "Commercial",
+      "Node.js"
     ],
-    "description": "Context-aware AI proofreading engine providing grammar, tone, and clarity refinements with zero friction.",
-    "details": "Fast web tool integrating backend LLM orchestration for instant, nuance-aware text polishing.",
+    "description": "A commercial writing product that polishes grammar, tone, and clarity in real time, with accounts and billing built in.",
+    "details": "Full-stack AI writing SaaS with streaming LLM integration, live diff rendering, secure auth, and subscription billing. Deployed to production.",
     "live_link": "https://daintyproofreader.com",
     "images": [
       {
@@ -322,5 +322,73 @@
       }
     ],
     "thumb": "./projects/thegoodportfolio/3-devices-white_03d4468f.png"
+  },
+  {
+    "id": 1342295539,
+    "title": "FreeTrialFinder",
+    "category": "python",
+    "featured": false,
+    "tags": [
+      "Python",
+      "Cost Monitoring",
+      "Cron",
+      "Test-Driven"
+    ],
+    "description": "Watches AI API credits, free trials, and promo codes across providers, and alerts before money is left on the table.",
+    "details": "Modular, test-driven cost monitor covering Claude, OpenAI, Gemini, OpenRouter, and Bedrock for IDEs like Cursor and Cline. Scheduled scans with Telegram alerts.",
+    "link": "https://github.com/theGoodB0rg/FreeTrialFinder",
+    "images": [],
+    "thumb": ""
+  },
+  {
+    "id": 1342295540,
+    "title": "ImageGenPiper",
+    "category": "python",
+    "featured": false,
+    "tags": [
+      "Python",
+      "Bulk Automation",
+      "Chrome MV3",
+      "Gemini"
+    ],
+    "description": "Produces product and marketing images in bulk through an automated pipeline, instead of one manual prompt at a time.",
+    "details": "Python CLI plus Chrome MV3 extension bridge for bulk Gemini web image generation. Async pipeline with full-resolution downloads and no API rate limits.",
+    "link": "https://github.com/theGoodB0rg/ImageGenPiper",
+    "images": [],
+    "thumb": ""
+  },
+  {
+    "id": 1342295541,
+    "title": "MotionPicturesToolkit",
+    "category": "web",
+    "featured": false,
+    "tags": [
+      "React",
+      "TypeScript",
+      "Video Automation",
+      "Marketing"
+    ],
+    "description": "Turns product info into finished marketing videos automatically, cutting out repetitive editing work.",
+    "details": "Modular, programmatic motion graphics and automated product video generation pipeline for web and mobile. Monorepo with reusable packages.",
+    "link": "https://github.com/theGoodB0rg/MotionPicturesToolkit",
+    "images": [],
+    "thumb": ""
+  },
+  {
+    "id": 1342295542,
+    "title": "Researcher Train",
+    "category": "python",
+    "featured": false,
+    "tags": [
+      "Python",
+      "Research Pipelines",
+      "Structured Data",
+      "Tested"
+    ],
+    "description": "Turns raw web input into structured, validated research output through a staged pipeline with checks at every step.",
+    "details": "Multi-stage research pipeline with intake routing, orchestration, source collectors, and validators. Backed by unit and integration tests across routing, collection, and orchestration.",
+    "link": "https://github.com/theGoodB0rg/researcher_train",
+    "images": [],
+    "thumb": ""
   }
 ]
