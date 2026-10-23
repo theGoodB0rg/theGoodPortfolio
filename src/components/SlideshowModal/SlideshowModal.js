@@ -192,6 +192,14 @@ export class SlideshowModal {
     const first = focusable[0];
     const last = focusable[focusable.length - 1];
 
+    // If focus somehow sits outside the dialog, pull it back rather than
+    // letting Tab continue through the page behind the modal.
+    if (!this.modalEl.contains(document.activeElement)) {
+      e.preventDefault();
+      first.focus();
+      return;
+    }
+
     if (e.shiftKey && document.activeElement === first) {
       e.preventDefault();
       last.focus();
@@ -214,9 +222,21 @@ export class SlideshowModal {
     this.modalEl.classList.add('active');
     document.body.style.overflow = 'hidden';
 
-    // Focus close button for accessibility
+    // Move focus into the dialog on the next frame. A focus() call in the same
+    // tick as the class change can land while the element is still hidden,
+    // which the browser ignores without reporting anything.
     if (this.closeBtn) {
-      this.closeBtn.focus();
+      const focusDialog = () => {
+        this.closeBtn.focus();
+        if (!this.modalEl.contains(document.activeElement)) {
+          this.modalEl.focus();
+        }
+      };
+      if (typeof requestAnimationFrame === 'function') {
+        requestAnimationFrame(focusDialog);
+      } else {
+        focusDialog();
+      }
     }
   }
 

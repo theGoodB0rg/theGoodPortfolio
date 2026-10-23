@@ -5,13 +5,16 @@ import { escapeHtml, safeUrl } from './escape.js';
 // Blog State
 let blogPosts = [];
 
-// Determine which page we're on
-const currentPage = window.location.pathname.split('/').pop().replace(/\.html$/, '');
+// Which page this is, and how far it sits below the site root. Posts live at
+// /blog/<slug>/ once prerendered, so the path can no longer be inferred from
+// the filename -- the page declares both on <body>.
+const pageKind = document.body.dataset.page
+    || (window.location.pathname.includes('blog-post') ? 'blog-post' : 'blog-index');
+const dataBase = document.body.dataset.base || './';
 
-// Initialize based on page
-if (currentPage === 'blog' || currentPage === '') {
+if (pageKind === 'blog-index') {
     initBlogIndex();
-} else if (currentPage === 'blog-post') {
+} else if (pageKind === 'blog-post') {
     initBlogPost();
 }
 
@@ -36,7 +39,7 @@ async function initBlogIndex() {
 
 async function loadBlogPosts() {
     try {
-        const response = await fetch('./data/blog.json');
+        const response = await fetch(`${dataBase}data/blog.json`);
         if (!response.ok) throw new Error('Failed to load blog posts');
         blogPosts = await response.json();
 
@@ -106,24 +109,44 @@ function announcePostCount(count, filter) {
 // ============================================
 
 async function initBlogPost() {
-    await loadBlogPosts();
+    const article = document.getElementById('blog-post');
+    const prerendered = article && article.dataset.prerendered === 'true';
 
-    const urlParams = new URLSearchParams(window.location.search);
-    const slug = urlParams.get('slug');
+    // A prerendered page already carries the post inline, so it needs no
+    // network round trip and must not be repainted.
+    const inline = document.getElementById('post-data');
+    let post = null;
 
-    if (!slug) {
-        showError('No blog post specified');
-        return;
+    if (inline) {
+        try {
+            post = JSON.parse(inline.textContent);
+        } catch (error) {
+            console.error('Could not read embedded post data:', error);
+        }
     }
-
-    const post = blogPosts.find(p => p.slug === slug);
 
     if (!post) {
-        showError('Blog post not found');
-        return;
+        await loadBlogPosts();
+        const slug = document.body.dataset.slug
+            || new URLSearchParams(window.location.search).get('slug');
+
+        if (!slug) {
+            showError('No blog post specified');
+            return;
+        }
+
+        post = blogPosts.find(p => p.slug === slug);
+
+        if (!post) {
+            showError('Blog post not found');
+            return;
+        }
     }
 
-    renderBlogPost(post);
+    if (!prerendered) {
+        renderBlogPost(post);
+    }
+
     setupReadingProgress();
     setupShareButtons(post);
     setupBackToTop();
