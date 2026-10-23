@@ -1157,8 +1157,29 @@ section {
   border-left-color: rgba(246, 174, 49, 0.4);
 }
 
+/* Thumbnails stay, at a reduced height so the flagship tier keeps its
+   weight. Cards with no thumbnail simply have no image area. */
+.project-card-compact .card-image {
+  aspect-ratio: 16 / 8;
+}
+
+.project-card-compact .view-overlay {
+  font-size: 0.78rem;
+}
+
 .project-card-compact .card-content {
   padding: 1.1rem 1.15rem;
+}
+
+/* A secondary action row, for a project that has screenshots but no
+   thumbnail to hang them off. */
+.card-actions-secondary {
+  margin-top: 0.5rem;
+}
+
+.card-slides-btn {
+  font-family: inherit;
+  cursor: pointer;
 }
 
 .project-card-compact .card-title {

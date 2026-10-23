@@ -3,6 +3,7 @@ import fs from 'fs';
 import path from 'path';
 import {
   filterProjects,
+  renderCompactCardHTML,
   getInitials,
   truncateText,
   renderImageContent,
@@ -15,6 +16,7 @@ import {
   categoryLabels,
   categoryOrder
 } from '../main.js';
+import { escapeHtml } from '../escape.js';
 
 const projectsPath = path.resolve(process.cwd(), 'public/data/projects.json');
 const projectsData = JSON.parse(fs.readFileSync(projectsPath, 'utf8'));
@@ -143,10 +145,36 @@ describe('Projects Filtering & Helpers', () => {
     const compactCards = html.match(/project-card-compact/g) || [];
     expect(compactCards.length).toBe(projectsData.length - flagshipCount);
 
-    // The compact tier carries no image slots: half of it has no screenshot,
-    // and an empty frame reads as broken rather than as "none yet".
-    const compactSection = html.slice(html.indexOf('portfolio-tier-compact'));
-    expect(compactSection).not.toContain('<picture>');
+  });
+
+  it('compact cards keep their screenshots, full text and tags', () => {
+    const withShots = projectsData.find(p => !p.featured && (p.images || []).length > 0);
+    const html = renderCompactCardHTML(withShots);
+
+    // Compact means smaller, not stripped. Every screenshot stays reachable.
+    expect(html).toContain('<picture>');
+    expect(html).toContain('data-slideshow-id');
+    expect(html).toContain(`View ${withShots.images.length} screenshot`);
+
+    // The description is not truncated.
+    expect(html).not.toContain('...');
+    expect(html).toContain(escapeHtml(withShots.description));
+
+    // A project with no thumbnail renders no empty image frame.
+    const bare = projectsData.find(p => !p.featured && !p.thumb);
+    const bareHtml = renderCompactCardHTML(bare);
+    expect(bareHtml).not.toContain('<picture>');
+    expect(bareHtml).toContain('no-thumb');
+  });
+
+  it('leaves no project screenshot unreachable from the grid', () => {
+    const html = renderPortfolioHTML(projectsData);
+    projectsData
+      .filter(p => (p.images || []).length > 0)
+      .forEach(p => {
+        expect(html, `${p.title} has ${p.images.length} slides with no way to open them`)
+          .toContain(`data-slideshow-id="${p.id}"`);
+      });
   });
 
   it('still tiers correctly when a filter excludes every flagship project', () => {

@@ -149,19 +149,49 @@ export function renderProjectCardHTML(project, index = 0) {
   </article>`;
 }
 
-// A compact card for the second tier: no hero image, one line of description.
-// Dropping the image is deliberate. Half the work down here has no screenshot,
-// and an empty image slot reads as broken rather than as "no screenshot yet".
+// A compact card for the second tier.
+//
+// Compact means smaller, not stripped: the screenshots, the full description
+// and the tags all stay. The image area is per-card rather than all-or-
+// nothing -- a project with a thumbnail shows it at a reduced height, and a
+// project without one simply starts at the title instead of rendering an
+// empty frame.
 export function renderCompactCardHTML(project, index = 0) {
   const title = escapeHtml(project.title);
-  const summary = truncateText(project.description || project.details || '', 95);
+  const hasImages = Boolean(project.images && project.images.length > 0);
+  const slideCount = hasImages ? project.images.length : 0;
 
-  return `<article class="project-card project-card-compact fade-in-up" style="animation-delay: ${(index * 0.04).toFixed(2)}s">
+  let imageBlock = '';
+  if (project.thumb) {
+    const inner = `
+      ${renderImageContent(project)}
+      ${hasImages ? `<span class="view-overlay flex-center" aria-hidden="true">View Screenshots</span>` : ''}`;
+    imageBlock = hasImages
+      ? `<button type="button" class="card-image card-image-trigger" data-slideshow-id="${escapeHtml(project.id)}" aria-label="View ${slideCount} screenshot${slideCount === 1 ? '' : 's'} for ${title}">${inner}</button>`
+      : `<div class="card-image">${inner}</div>`;
+  }
+
+  // A project with screenshots but no thumbnail would otherwise have no way
+  // to reach them, so it gets an explicit action instead of an image.
+  const slidesLink = (!project.thumb && hasImages)
+    ? `<button type="button" class="card-btn source card-slides-btn" data-slideshow-id="${escapeHtml(project.id)}">
+        ${ICON_EXTERNAL}
+        ${slideCount} screenshot${slideCount === 1 ? '' : 's'}
+      </button>`
+    : '';
+
+  const headingAttrs = hasImages
+    ? ` class="card-title is-clickable" data-slideshow-id="${escapeHtml(project.id)}"`
+    : ' class="card-title"';
+
+  return `<article class="project-card project-card-compact fade-in-up${project.thumb ? '' : ' no-thumb'}" style="animation-delay: ${(index * 0.04).toFixed(2)}s">
+    ${imageBlock}
     <div class="card-content">
-      <p class="card-tags">${escapeHtml((project.tags || []).slice(0, 2).join(' • '))}</p>
-      <h3 class="card-title">${title}</h3>
-      <p class="card-description">${escapeHtml(summary)}</p>
+      <p class="card-tags">${escapeHtml((project.tags || []).slice(0, 3).join(' • '))}</p>
+      <h3${headingAttrs}>${title}</h3>
+      <p class="card-description">${escapeHtml(project.description || project.details || '')}</p>
       ${renderActionButtons(project)}
+      ${slidesLink ? `<div class="card-actions card-actions-secondary">${slidesLink}</div>` : ''}
     </div>
   </article>`;
 }
