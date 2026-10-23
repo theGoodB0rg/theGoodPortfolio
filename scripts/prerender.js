@@ -27,6 +27,13 @@ const PUBLIC = path.join(ROOT, 'public');
 const SITE_URL = 'https://thegoodb0rg.pages.dev';
 const AUTHOR = 'Olorunfemi John';
 
+// Cloudflare Pages strips the .html extension, so /blog.html answers 308 to
+// /blog. Canonical tags, the sitemap and the feed must name the URL that
+// actually serves a 200, not the one that redirects to it. In-page links stay
+// relative ("blog.html") because the GitHub Pages mirror does not rewrite
+// extensions and would 404 on /blog.
+const BLOG_URL = `${SITE_URL}/blog`;
+
 const readJson = file => JSON.parse(fs.readFileSync(path.join(PUBLIC, 'data', file), 'utf-8'));
 const readDist = file => fs.readFileSync(path.join(DIST, file), 'utf-8');
 const writeDist = (file, html) => {
@@ -227,14 +234,14 @@ function prerenderBlogIndex(posts) {
   const status = document.getElementById('blog-status');
   if (status) status.textContent = `Showing ${posts.length} posts.`;
 
-  setHead(document, { canonical: `${SITE_URL}/blog.html` });
+  setHead(document, { canonical: BLOG_URL });
 
   addJsonLd(document, {
     '@context': 'https://schema.org',
     '@type': 'Blog',
-    '@id': `${SITE_URL}/blog.html#blog`,
+    '@id': `${BLOG_URL}#blog`,
     name: `${AUTHOR} — Blog`,
-    url: `${SITE_URL}/blog.html`,
+    url: BLOG_URL,
     author: { '@type': 'Person', name: AUTHOR, url: `${SITE_URL}/` },
     blogPost: posts.map(post => ({
       '@type': 'BlogPosting',
@@ -454,11 +461,58 @@ window.location.replace(target);
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Redirecting — ${AUTHOR}</title>
 <meta name="robots" content="noindex, follow">
-<link rel="canonical" href="${SITE_URL}/blog.html">
+<link rel="canonical" href="${BLOG_URL}">
 </head>
 <body>
 <p>Redirecting to the article. <a id="fallback" href="blog.html">Continue to the blog</a>.</p>
 <script type="module" src="blog-redirect.js"></script>
+</body>
+</html>
+`
+  );
+}
+
+// Without this, Cloudflare Pages answers every unknown path with index.html
+// at HTTP 200. Crawlers read that as an infinite supply of real pages that
+// all duplicate the homepage. A 404.html makes those responses honest.
+function write404() {
+  writeDist(
+    '404.html',
+    `<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Page not found — ${AUTHOR}</title>
+<meta name="robots" content="noindex, follow">
+<style>
+  :root { color-scheme: dark; }
+  body {
+    margin: 0; min-height: 100vh; display: grid; place-items: center;
+    background: hsl(225, 18%, 7%); color: hsl(40, 15%, 92%);
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    text-align: center; padding: 2rem;
+  }
+  h1 { font-size: clamp(2rem, 8vw, 3rem); margin: 0 0 0.5rem; }
+  p { color: hsl(220, 12%, 62%); margin: 0 0 2rem; }
+  .links { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+  a {
+    padding: 0.7rem 1.4rem; border-radius: 8px; text-decoration: none;
+    font-weight: 600; background: hsl(38, 92%, 58%); color: hsl(225, 18%, 7%);
+  }
+  a.secondary { background: transparent; color: inherit; border: 1px solid rgba(255,255,255,0.18); }
+  a:focus-visible { outline: 3px solid hsl(38, 92%, 58%); outline-offset: 2px; }
+</style>
+</head>
+<body>
+  <main>
+    <h1>Page not found</h1>
+    <p>That link does not lead anywhere on this site.</p>
+    <div class="links">
+      <a href="/">Go to the homepage</a>
+      <a class="secondary" href="/blog">Read the blog</a>
+    </div>
+  </main>
 </body>
 </html>
 `
@@ -470,7 +524,7 @@ window.location.replace(target);
 function writeSitemap(posts) {
   const urls = [
     { loc: `${SITE_URL}/`, priority: '1.0', changefreq: 'weekly' },
-    { loc: `${SITE_URL}/blog.html`, priority: '0.8', changefreq: 'weekly' },
+    { loc: BLOG_URL, priority: '0.8', changefreq: 'weekly' },
     ...posts.map(post => ({
       loc: absolute(postUrl(post.slug)),
       lastmod: post.date,
@@ -556,7 +610,7 @@ function writeFeed(posts) {
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>${AUTHOR} — Blog</title>
-    <link>${SITE_URL}/blog.html</link>
+    <link>${BLOG_URL}</link>
     <atom:link href="${SITE_URL}/feed.xml" rel="self" type="application/rss+xml" />
     <description>Deep dives and dev notes on AI automation, full-stack engineering and Android.</description>
     <language>en</language>
@@ -653,6 +707,7 @@ function main() {
   });
 
   writeRedirectStub(posts);
+  write404();
   writeSitemap(posts);
   writeRobots();
   writeFeed(posts);
@@ -662,7 +717,7 @@ function main() {
   console.log(`   - index.html: ${projects.length} project cards + ${Math.min(3, posts.length)} post previews`);
   console.log(`   - blog.html: ${posts.length} post cards`);
   console.log(`   - blog/<slug>/index.html: ${posts.length} full articles`);
-  console.log('   - sitemap.xml, robots.txt, feed.xml, llms.txt');
+  console.log('   - sitemap.xml, robots.txt, feed.xml, llms.txt, 404.html');
 }
 
 main();
