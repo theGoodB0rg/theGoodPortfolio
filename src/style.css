@@ -1174,7 +1174,7 @@ section {
 /* A secondary action row, for a project that has screenshots but no
    thumbnail to hang them off. */
 .card-actions-secondary {
-  margin-top: 0.5rem;
+  padding-top: 0.5rem;
 }
 
 .card-slides-btn {
@@ -1196,7 +1196,7 @@ section {
 }
 
 .project-card-compact .card-actions {
-  margin-top: 0.9rem;
+  padding-top: 0.9rem;
   gap: 0.5rem;
 }
 
@@ -1212,6 +1212,11 @@ section {
   border: 1px solid rgba(255, 255, 255, 0.05);
   border-radius: 1rem;
   border-left: 3px solid var(--color-primary);
+  /* Cards stretch to the tallest in their row, and the action row is pushed
+     to the bottom, so buttons line up across a row instead of floating at
+     whatever height the description happens to end. */
+  display: flex;
+  flex-direction: column;
 }
 
 .project-card:hover {
@@ -1299,6 +1304,9 @@ button.card-image:focus-visible {
 
 .card-content {
   padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
 .card-content h3 {
@@ -1356,7 +1364,17 @@ button.card-image:focus-visible {
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
-  margin-top: 1.2rem;
+  /* auto, not a fixed gap: takes up the slack so the row sits on the floor
+     of the card. The 1.2rem below is the minimum breathing room. */
+  margin-top: auto;
+  padding-top: 1.2rem;
+}
+
+/* A second action row follows its sibling directly rather than being pushed
+   down again. */
+.card-actions + .card-actions {
+  margin-top: 0;
+  padding-top: 0.5rem;
 }
 
 .card-btn {
