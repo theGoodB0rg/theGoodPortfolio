@@ -13,6 +13,7 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { JSDOM } from 'jsdom';
+import hljs from 'highlight.js/lib/common';
 
 import { renderProjectCardHTML, renderFiltersHTML } from '../src/project-card.js';
 import { renderBlogCardHTML, postUrl, getCategoryLabel, formatDate } from '../src/blog-card.js';
@@ -286,6 +287,42 @@ function renderPostNavigation(prev, next) {
   return html;
 }
 
+// Syntax highlighting is applied here rather than in the browser, so the
+// colours are in the shipped HTML and survive with JavaScript disabled.
+//
+// Most blocks in blog.json declare their language (class='language-kotlin'),
+// and that declaration wins: auto-detection on a short snippet guesses badly
+// and would label TypeScript as Go or PHP. Auto-detect is the fallback only
+// for the handful of blocks with no language at all.
+function highlightCodeBlocks(root, document) {
+  root.querySelectorAll('pre code').forEach(block => {
+    const source = block.textContent || '';
+    if (!source.trim()) return;
+
+    const declared = [...block.classList]
+      .find(name => name.startsWith('language-'))
+      ?.slice('language-'.length);
+
+    try {
+      let result;
+      if (declared && hljs.getLanguage(declared)) {
+        result = hljs.highlight(source, { language: declared, ignoreIllegals: true });
+      } else {
+        result = hljs.highlightAuto(source);
+        if (result.language) block.classList.add(`language-${result.language}`);
+      }
+      block.innerHTML = result.value;
+      block.classList.add('hljs');
+    } catch {
+      // A block that will not parse simply stays as plain text.
+    }
+  });
+
+  // Mark the article so the client knows not to highlight it again.
+  const article = document.getElementById('blog-post');
+  if (article) article.dataset.highlighted = 'true';
+}
+
 function prerenderPost(post, prev, next, template) {
   const dom = new JSDOM(template);
   const { document } = dom.window;
@@ -322,7 +359,10 @@ function prerenderPost(post, prev, next, template) {
   // post.content is hand-authored HTML in blog.json, so it is inserted as
   // markup by design -- the same way the client already rendered it.
   const content = document.getElementById('article-content');
-  if (content) content.innerHTML = post.content || '';
+  if (content) {
+    content.innerHTML = post.content || '';
+    highlightCodeBlocks(content, document);
+  }
 
   const tagsEl = document.getElementById('article-tags');
   if (tagsEl) {

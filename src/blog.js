@@ -1,4 +1,5 @@
 import './style.css'
+import 'highlight.js/styles/atom-one-dark.css'
 import { renderBlogCardHTML, attachBlogCardListeners, getCategoryLabel, formatDate, postUrl } from './blog-card.js';
 import { escapeHtml, safeUrl } from './escape.js';
 
@@ -325,24 +326,23 @@ function setupCodeCopy() {
     });
 }
 
-// Syntax highlighting is opt-in. highlight.js used to load from cdnjs on every
-// post page -- roughly 100KB of third-party script and CSS for the zero code
-// blocks the posts actually contain, and the one thing standing between this
-// site and a CSP without a third-party script-src.
+// Syntax highlighting normally happens at build time in scripts/prerender.js,
+// so the colours are in the shipped HTML and survive without JavaScript. The
+// theme stylesheet is bundled rather than fetched from a CDN, which is what
+// lets the CSP forbid third-party script and style sources.
 //
-// To bring it back when a post needs it, bundle a subset rather than a CDN:
-//   npm i highlight.js
-//   import hljs from 'highlight.js/lib/core';
-//   import javascript from 'highlight.js/lib/languages/javascript';
-//   hljs.registerLanguage('javascript', javascript);
-//   import 'highlight.js/styles/atom-one-dark.css';
-// and assign it to `window.hljs`, or call hljs.highlightElement here directly.
-function highlightCode() {
-    if (typeof hljs !== 'undefined') {
-        document.querySelectorAll('pre code').forEach((block) => {
-            hljs.highlightElement(block);
-        });
-    }
+// This path only runs for a post rendered client-side (the ?slug= fallback),
+// and loads highlight.js on demand so the common bundle is not shipped to
+// every reader for markup that is already highlighted.
+async function highlightCode() {
+    const article = document.getElementById('blog-post');
+    if (article && article.dataset.highlighted === 'true') return;
+
+    const blocks = document.querySelectorAll('pre code');
+    if (blocks.length === 0) return;
+
+    const { default: hljs } = await import('highlight.js/lib/common');
+    blocks.forEach(block => hljs.highlightElement(block));
 }
 
 // ============================================
