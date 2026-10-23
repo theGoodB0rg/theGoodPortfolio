@@ -1223,6 +1223,35 @@ button.card-image:focus-visible {
 }
 
 /* Card Action Buttons */
+/* Traction figures on a project card. Quiet by default so they read as
+   evidence under the description, not as another call to action. */
+.card-metrics {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0 0 0.2rem;
+  padding: 0;
+}
+
+.card-metrics li {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  padding: 0.28rem 0.6rem;
+  border-radius: 999px;
+  color: var(--color-text-main);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* The headline number carries the accent; the rest stay secondary. */
+.card-metrics li:first-child {
+  color: var(--color-primary);
+  background: var(--color-primary-glow);
+  border-color: transparent;
+}
+
 .card-actions {
   display: flex;
   flex-wrap: wrap;

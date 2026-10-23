@@ -124,12 +124,22 @@ export function renderProjectCardHTML(project, index = 0) {
   // exposes this function to the keyboard and to assistive technology.
   const headingAttrs = hasImages ? ` class="card-title is-clickable" data-slideshow-id="${escapeHtml(project.id)}"` : ' class="card-title"';
 
+  // Traction figures, where a project has any worth stating. A list rather
+  // than styled spans, so a screen reader announces how many there are.
+  const metrics = (project.metrics || []).filter(Boolean);
+  const metricsBlock = metrics.length
+    ? `<ul class="card-metrics" aria-label="Traction for ${title}">
+        ${metrics.map(m => `<li>${escapeHtml(m)}</li>`).join('')}
+      </ul>`
+    : '';
+
   return `<article class="project-card glass fade-in-up" style="animation-delay: ${(index * 0.08).toFixed(2)}s">
     ${imageBlock}
     <div class="card-content">
       <p class="card-tags">${escapeHtml((project.tags || []).slice(0, 3).join(' • '))}</p>
       <h3${headingAttrs}>${title}</h3>
       <p class="card-description">${escapeHtml(displayDesc)}</p>
+      ${metricsBlock}
       ${renderActionButtons(project)}
     </div>
   </article>`;

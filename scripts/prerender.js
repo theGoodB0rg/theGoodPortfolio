@@ -208,6 +208,18 @@ function prerenderIndex(projects, posts) {
             author: { '@id': `${SITE_URL}/#person` },
             ...(project.play_store_link || project.live_link || project.link
               ? { url: project.play_store_link || project.live_link || project.link }
+              : {}),
+            // Install counts only. Deliberately no aggregateRating: the Play
+            // listing shows no public star rating, and self-published review
+            // markup for your own product invites a structured-data penalty.
+            ...(project.installs
+              ? {
+                  interactionStatistic: {
+                    '@type': 'InteractionCounter',
+                    interactionType: 'https://schema.org/DownloadAction',
+                    userInteractionCount: project.installs
+                  }
+                }
               : {})
           }
         }))
@@ -629,7 +641,8 @@ function writeLlmsTxt(projects, posts) {
       const links = [p.play_store_link && `Google Play: ${p.play_store_link}`, p.live_link && `Website: ${p.live_link}`, p.link && `Source: ${p.link}`]
         .filter(Boolean)
         .join(' | ');
-      return `- **${p.title}** (${p.category}) — ${p.description || p.details}${links ? `\n  ${links}` : ''}`;
+      const traction = (p.metrics || []).length ? `\n  Traction: ${p.metrics.join(' · ')}` : '';
+      return `- **${p.title}** (${p.category}) — ${p.description || p.details}${traction}${links ? `\n  ${links}` : ''}`;
     })
     .join('\n');
 

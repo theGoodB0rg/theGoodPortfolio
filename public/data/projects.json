@@ -116,6 +116,12 @@
     "live_link": "https://universalundo.app/",
     "live_link_kind": "marketing",
     "live_link_label": "Visit Website",
+    "installs": 500,
+    "metrics": [
+      "500+ installs",
+      "Organic — zero ad spend",
+      "Live on Google Play with in-app purchases"
+    ],
     "play_store_link": "https://play.google.com/store/apps/details?id=com.universalundo",
     "images": [
       {

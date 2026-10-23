@@ -120,6 +120,35 @@ describe('Projects Filtering & Helpers', () => {
     expect(html2).not.toContain('Source Code');
   });
 
+  it('renders traction metrics as a labelled list, and omits them when absent', () => {
+    const withMetrics = {
+      id: 5,
+      title: 'Universal Undo',
+      category: 'mobile',
+      metrics: ['500+ installs', 'Organic — zero ad spend']
+    };
+    const html = renderProjectCardHTML(withMetrics);
+
+    expect(html).toContain('<ul class="card-metrics" aria-label="Traction for Universal Undo">');
+    expect(html).toContain('<li>500+ installs</li>');
+
+    // No empty list for the projects that have nothing to show.
+    expect(renderProjectCardHTML({ id: 6, title: 'Quiet', category: 'web' })).not.toContain('card-metrics');
+  });
+
+  it('keeps the published traction claims in step with the Play listing', () => {
+    const uu = projectsData.find(p => p.title === 'Universal Undo');
+
+    // 500+ is what the public Play Store listing shows, so it is verifiable
+    // by anyone who clicks through.
+    expect(uu.installs).toBe(500);
+    expect(uu.metrics[0]).toBe('500+ installs');
+
+    // The listing displays no star rating, so the site must not claim one.
+    const claims = uu.metrics.join(' ').toLowerCase();
+    expect(claims).not.toMatch(/star|rating|\d\.\d\s*★/);
+  });
+
   it('exposes the screenshot viewer as a real, keyboard-operable button', () => {
     const withImages = {
       id: 5,
