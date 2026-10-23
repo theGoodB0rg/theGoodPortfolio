@@ -171,10 +171,33 @@ export class SlideshowModal {
 
     if (e.key === 'Escape') {
       this.close();
+    } else if (e.key === 'Tab') {
+      this.trapFocus(e);
     } else if (e.key === 'ArrowRight') {
       this.next();
     } else if (e.key === 'ArrowLeft') {
       this.prev();
+    }
+  }
+
+  // Keep Tab inside the dialog. Without this, focus walks out into the page
+  // behind the modal, which is still visible but not reachable by pointer.
+  trapFocus(e) {
+    const focusable = Array.from(
+      this.modalEl.querySelectorAll('a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])')
+    ).filter(el => el.offsetParent !== null || el === document.activeElement);
+
+    if (focusable.length === 0) return;
+
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+
+    if (e.shiftKey && document.activeElement === first) {
+      e.preventDefault();
+      last.focus();
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault();
+      first.focus();
     }
   }
 

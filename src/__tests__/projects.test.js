@@ -7,6 +7,7 @@ import {
   truncateText,
   renderImageContent,
   renderActionButtons,
+  renderProjectCardHTML,
   getLiveLinkLabel,
   getLiveLinkKind,
   getProjectDestinations,
@@ -95,7 +96,10 @@ describe('Projects Filtering & Helpers', () => {
     expect(html).toContain('<picture>');
     expect(html).toContain('type="image/webp"');
     expect(html).toContain('00_dashboard_overview.webp');
-    expect(html).toContain('onerror=');
+    // The fallback is wired up by a delegated listener, not an inline
+    // handler, so the markup can run under a CSP without 'unsafe-inline'.
+    expect(html).not.toContain('onerror=');
+    expect(html).toContain('data-fallback-initials="TA"');
 
     const sampleNoThumb = { title: 'Test App', thumb: '' };
     const placeholderHtml = renderImageContent(sampleNoThumb);
@@ -114,6 +118,44 @@ describe('Projects Filtering & Helpers', () => {
     const html2 = renderActionButtons(projWithLiveOnly);
     expect(html2).toContain('View Live Site');
     expect(html2).not.toContain('Source Code');
+  });
+
+  it('exposes the screenshot viewer as a real, keyboard-operable button', () => {
+    const withImages = {
+      id: 5,
+      title: 'Universal Undo',
+      category: 'mobile',
+      images: [{ url: './a.png', caption: 'a' }],
+      thumb: './a.png'
+    };
+    const html = renderProjectCardHTML(withImages);
+
+    // A <button> is activated by Enter and Space for free; the old
+    // div[role=button][onclick] was focusable but did nothing from a keyboard.
+    expect(html).toContain('<button type="button" class="card-image card-image-trigger"');
+    expect(html).toContain('aria-label="View screenshots for Universal Undo"');
+    expect(html).not.toContain('role="button"');
+    expect(html).not.toContain('onclick=');
+
+    const withoutImages = { id: 6, title: 'No Shots', category: 'web' };
+    expect(renderProjectCardHTML(withoutImages)).not.toContain('card-image-trigger');
+  });
+
+  it('escapes project data before it reaches innerHTML', () => {
+    const hostile = {
+      id: 7,
+      title: '<img src=x onerror=alert(1)>',
+      category: 'web',
+      description: '"><script>alert(2)</script>',
+      live_link: 'javascript:alert(3)',
+      tags: ['<b>tag</b>']
+    };
+    const html = renderProjectCardHTML(hostile);
+
+    expect(html).not.toContain('<img src=x');
+    expect(html).not.toContain('<script>');
+    expect(html).not.toContain('javascript:alert');
+    expect(html).toContain('&lt;img src=x');
   });
 
   it('distinguishes a store listing from the marketing site beside it', () => {

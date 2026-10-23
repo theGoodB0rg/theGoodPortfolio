@@ -21,6 +21,7 @@
 </head>
 
 <body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
     <header class="glass">
         <nav class="container">
             <div class="logo">Olorunfemi<span class="logo-dot">.</span></div>
@@ -40,7 +41,7 @@
         </nav>
     </header>
 
-    <main>
+    <main id="main-content" tabindex="-1">
         <!-- Blog Hero -->
         <section id="blog-hero" class="container">
             <div class="blog-hero-content fade-in-up">
@@ -53,14 +54,15 @@
         <!-- Blog Filters -->
         <section id="blog-filters" class="container">
             <div class="portfolio-filters" id="blog-filter-buttons">
-                <button class="filter-btn active" data-filter="all">All Posts</button>
-                <button class="filter-btn" data-filter="web">Web Dev</button>
-                <button class="filter-btn" data-filter="mobile">Mobile Dev</button>
+                <button type="button" class="filter-btn active" data-filter="all" aria-pressed="true">All Posts</button>
+                <button type="button" class="filter-btn" data-filter="web" aria-pressed="false">Web Dev</button>
+                <button type="button" class="filter-btn" data-filter="mobile" aria-pressed="false">Mobile Dev</button>
             </div>
         </section>
 
         <!-- Blog Grid -->
         <section id="blog-list" class="container">
+            <p id="blog-status" class="visually-hidden" role="status" aria-live="polite"></p>
             <div class="blog-grid" id="blog-grid">
                 <!-- Blog posts will be injected here via JavaScript -->
             </div>

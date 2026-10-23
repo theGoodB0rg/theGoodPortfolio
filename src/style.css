@@ -998,12 +998,19 @@ section {
   padding: 2rem;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.3s ease;
+  /* `visibility: hidden` takes the dialog out of the accessibility tree and
+     out of the tab order. With opacity alone, every screen reader user met an
+     aria-modal dialog on page load and every keyboard user could tab into an
+     invisible close button. */
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0s linear 0.3s;
 }
 
 .cert-lightbox.is-open {
   opacity: 1;
   pointer-events: all;
+  visibility: visible;
+  transition: opacity 0.3s ease, visibility 0s linear 0s;
 }
 
 .cert-lightbox-inner {
@@ -1119,6 +1126,27 @@ section {
   position: relative;
   overflow: hidden;
   background-color: var(--color-bg);
+  display: block;
+}
+
+/* The screenshot trigger is a real <button>, so reset the UA chrome and give
+   keyboard users a focus ring they can actually see. */
+button.card-image {
+  padding: 0;
+  border: 0;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  text-align: inherit;
+}
+
+button.card-image:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: -3px;
+}
+
+.card-title.is-clickable {
+  cursor: pointer;
 }
 
 .card-image img {
@@ -2255,5 +2283,73 @@ footer {
   .share-btn {
     width: 100%;
     justify-content: center;
+  }
+}
+
+/* ========== ACCESSIBILITY ========== */
+
+/* Lets keyboard and screen reader users jump past the nav instead of
+   traversing every link on every page. */
+.skip-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10001;
+  padding: 0.85rem 1.4rem;
+  background: var(--color-primary);
+  color: var(--color-bg);
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: 0 0 8px 0;
+  transform: translateY(-120%);
+  transition: transform 0.2s ease;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+/* Visually hidden, but still announced. */
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* A consistent, visible focus indicator everywhere a control can be reached. */
+a:focus-visible,
+button:focus-visible,
+[tabindex]:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Honour a stated preference for less motion. The entrance animations set
+   opacity: 0 up front, so they must resolve to their end state rather than
+   simply be cancelled, or the content would never appear. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .fade-in-up,
+  .delay-1,
+  .delay-2,
+  .delay-3 {
+    opacity: 1;
+    transform: none;
+    animation-delay: 0s !important;
   }
 }

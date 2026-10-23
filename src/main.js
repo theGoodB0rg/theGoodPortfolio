@@ -1,6 +1,8 @@
 import './style.css'
 import { SlideshowModal } from './components/SlideshowModal/SlideshowModal.js'
 import { getProjectDestinations, getLiveLinkKind, getLiveLinkLabel } from './project-links.js'
+import { escapeHtml, safeUrl } from './escape.js'
+import { renderBlogCardHTML, attachBlogCardListeners } from './blog-card.js'
 
 // Slideshow Modal Instance
 const slideshowModal = typeof document !== 'undefined' ? new SlideshowModal().init() : null;
@@ -48,15 +50,17 @@ export function truncateText(text, limit = 120) {
 
 // Safe Image Markup Renderer
 export function renderImageContent(project) {
-  const fallbackText = getInitials(project.title);
+  const fallbackText = escapeHtml(getInitials(project.title));
   if (!project.thumb) {
     return `<div class="card-placeholder" aria-hidden="true">${fallbackText}</div>`;
   }
   const thumbWebp = project.thumb.replace(/\.(png|jpg|jpeg|gif)$/i, '.webp');
 
+  // A failed load is handled by a delegated listener on the grid rather than an
+  // inline onerror attribute, so the page needs no script-src 'unsafe-inline'.
   return `<picture>
-    <source srcset="${thumbWebp}" type="image/webp">
-    <img src="${project.thumb}" alt="${project.title}" loading="lazy" decoding="async" onerror="this.closest('.card-image').innerHTML='<div class=\\'card-placeholder\\'>${fallbackText}</div>'">
+    <source srcset="${safeUrl(thumbWebp)}" type="image/webp">
+    <img src="${safeUrl(project.thumb)}" alt="${escapeHtml(project.title)}" loading="lazy" decoding="async" data-fallback-initials="${fallbackText}">
   </picture>`;
 }
 
@@ -93,42 +97,57 @@ const ACTION_ICONS = {
 
 export function renderActionButtons(project) {
   const buttons = getProjectDestinations(project).map(dest => `
-      <a href="${dest.url}" target="_blank" rel="noopener noreferrer" class="card-btn ${dest.type}" aria-label="${dest.aria}" onclick="event.stopPropagation()">
+      <a href="${safeUrl(dest.url)}" target="_blank" rel="noopener noreferrer" class="card-btn ${escapeHtml(dest.type)}" aria-label="${escapeHtml(dest.aria)}">
         ${ACTION_ICONS[dest.type] || ICON_EXTERNAL}
-        ${dest.label}
+        ${escapeHtml(dest.label)}
       </a>`).join('');
 
   return `<div class="card-actions">${buttons}</div>`;
 }
 
+// Project Card Markup
+//
+// Returns a string so the same markup can be produced at build time by
+// scripts/prerender.js and at runtime in the browser. Interaction is wired up
+// by delegated listeners on the grid, never by inline attributes.
+export function renderProjectCardHTML(project, index = 0) {
+  const displayDesc = project.description || project.details || '';
+  const hasImages = Boolean(project.images && project.images.length > 0);
+  const title = escapeHtml(project.title);
+
+  // The screenshot viewer is a real <button>, so Enter and Space work. The
+  // previous markup put onclick on a div with role="button", which is
+  // focusable and announced as a button but does nothing from the keyboard.
+  const imageInner = `
+      ${renderImageContent(project)}
+      ${hasImages ? `<span class="view-overlay flex-center" aria-hidden="true">View Screenshots</span>` : ''}`;
+
+  const imageBlock = hasImages
+    ? `<button type="button" class="card-image card-image-trigger" data-slideshow-id="${escapeHtml(project.id)}" aria-label="View screenshots for ${title}">${imageInner}</button>`
+    : `<div class="card-image">${imageInner}</div>`;
+
+  // The heading stays a plain heading. It keeps a pointer cursor and a click
+  // handler as a redundant convenience for mouse users, but it is not a second
+  // tab stop and is not announced as a control: the image button above already
+  // exposes this function to the keyboard and to assistive technology.
+  const headingAttrs = hasImages ? ` class="card-title is-clickable" data-slideshow-id="${escapeHtml(project.id)}"` : ' class="card-title"';
+
+  return `<article class="project-card glass fade-in-up" style="animation-delay: ${(index * 0.08).toFixed(2)}s">
+    ${imageBlock}
+    <div class="card-content">
+      <p class="card-tags">${escapeHtml((project.tags || []).slice(0, 3).join(' • '))}</p>
+      <h3${headingAttrs}>${title}</h3>
+      <p class="card-description">${escapeHtml(displayDesc)}</p>
+      ${renderActionButtons(project)}
+    </div>
+  </article>`;
+}
+
 // Project Card DOM Generator
 export function createProjectCard(project, index = 0) {
-  const card = document.createElement('div');
-  card.className = 'project-card glass fade-in-up';
-  card.style.animationDelay = `${index * 0.08}s`;
-
-  const imageContent = renderImageContent(project);
-  const displayDesc = project.description || project.details || '';
-  const actionsHtml = renderActionButtons(project);
-  const hasImages = project.images && project.images.length > 0;
-
-  const overlayHtml = hasImages ? `<div class="view-overlay flex-center">View Screenshots</div>` : '';
-  const cursorStyle = hasImages ? 'cursor: pointer;' : '';
-  const clickAttr = hasImages ? `onclick="openSlideshow(${project.id})" tabindex="0" role="button" aria-label="View screenshots for ${project.title}"` : '';
-
-  card.innerHTML = `
-    <div class="card-image" ${clickAttr} style="${cursorStyle}">
-      ${imageContent}
-      ${overlayHtml}
-    </div>
-    <div class="card-content">
-      <div class="card-tags">${(project.tags || []).slice(0, 3).join(' • ')}</div>
-      <h3 ${hasImages ? `onclick="openSlideshow(${project.id})" style="cursor: pointer;"` : ''}>${project.title}</h3>
-      <p class="card-description">${displayDesc}</p>
-      ${actionsHtml}
-    </div>
-  `;
-  return card;
+  const template = document.createElement('template');
+  template.innerHTML = renderProjectCardHTML(project, index).trim();
+  return template.content.firstElementChild;
 }
 
 // Dynamic Filters
@@ -141,39 +160,83 @@ export function generateFilters() {
     if (!categories.includes(cat)) categories.push(cat);
   });
 
+  // aria-pressed tells a screen reader which filter is currently applied;
+  // the `active` class alone only communicates that visually.
   const html = categories.map(cat => `
-    <button class="filter-btn ${cat === 'all' ? 'active' : ''}" data-filter="${cat}">
-      ${categoryLabels[cat] || (cat.charAt(0).toUpperCase() + cat.slice(1))}
+    <button type="button" class="filter-btn ${cat === 'all' ? 'active' : ''}" data-filter="${escapeHtml(cat)}" aria-pressed="${cat === 'all' ? 'true' : 'false'}">
+      ${escapeHtml(categoryLabels[cat] || (cat.charAt(0).toUpperCase() + cat.slice(1)))}
     </button>
   `).join('');
 
   filterContainer.innerHTML = html;
 
-  document.querySelectorAll('.filter-btn').forEach(btn => {
+  filterContainer.querySelectorAll('.filter-btn').forEach(btn => {
     btn.addEventListener('click', () => {
-      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      filterContainer.querySelectorAll('.filter-btn').forEach(b => {
+        b.classList.remove('active');
+        b.setAttribute('aria-pressed', 'false');
+      });
       btn.classList.add('active');
+      btn.setAttribute('aria-pressed', 'true');
       renderProjects(btn.dataset.filter);
     });
   });
 }
 
+// Announce the result of a filter change. The grid itself is not a live region
+// — re-announcing 16 cards would be unusable — so a short status message
+// carries the count instead.
+function announceProjectCount(count, filter) {
+  const status = typeof document !== 'undefined' ? document.getElementById('portfolio-status') : null;
+  if (!status) return;
+  const label = categoryLabels[filter] || filter;
+  status.textContent = count === 0
+    ? `No projects in ${label}.`
+    : `Showing ${count} ${count === 1 ? 'project' : 'projects'}${filter === 'all' ? '' : ` in ${label}`}.`;
+}
+
 // Render Projects
 export function renderProjects(filter = 'all') {
   if (!grid) return;
-  grid.innerHTML = '';
 
   const filtered = filterProjects(projects, filter);
 
   if (filtered.length === 0) {
-    grid.innerHTML = '<div class="empty-state">No projects found in this category.</div>';
+    grid.innerHTML = '<p class="empty-state">No projects found in this category.</p>';
+    announceProjectCount(0, filter);
     return;
   }
 
-  filtered.forEach((project, index) => {
-    const card = createProjectCard(project, index);
-    grid.appendChild(card);
+  grid.innerHTML = filtered.map((project, index) => renderProjectCardHTML(project, index)).join('');
+  announceProjectCount(filtered.length, filter);
+}
+
+// Delegated interaction for the grid. One listener on the container covers
+// every card, including cards that were prerendered into the HTML at build
+// time and so were never created by this script.
+export function attachGridListeners(container) {
+  if (!container || container.dataset.listenersAttached === 'true') return;
+  container.dataset.listenersAttached = 'true';
+
+  container.addEventListener('click', (event) => {
+    const trigger = event.target.closest('[data-slideshow-id]');
+    if (!trigger) return;
+    const id = Number(trigger.dataset.slideshowId);
+    openSlideshow(Number.isNaN(id) ? trigger.dataset.slideshowId : id);
   });
+
+  // `error` does not bubble, so this listener runs in the capture phase.
+  container.addEventListener('error', (event) => {
+    const img = event.target;
+    if (!img || img.tagName !== 'IMG') return;
+    const picture = img.closest('picture');
+    const initials = img.dataset.fallbackInitials || '??';
+    const placeholder = document.createElement('div');
+    placeholder.className = 'card-placeholder';
+    placeholder.setAttribute('aria-hidden', 'true');
+    placeholder.textContent = initials;
+    (picture || img).replaceWith(placeholder);
+  }, true);
 }
 
 // Fetch Projects
@@ -185,7 +248,16 @@ export async function loadProjects() {
     projects = await response.json();
 
     generateFilters();
-    renderProjects();
+
+    // Cards prerendered at build time are already correct, so the first load
+    // only attaches behaviour. Re-rendering here would blank the grid and
+    // repaint identical markup.
+    if (!grid || grid.dataset.prerendered !== 'true') {
+      renderProjects();
+    } else {
+      announceProjectCount(projects.length, 'all');
+    }
+    attachGridListeners(grid);
 
     if (typeof observer !== 'undefined') {
       setTimeout(() => {
@@ -216,66 +288,6 @@ if (typeof window !== 'undefined') {
 // BLOG PREVIEW ON HOMEPAGE
 // ============================================
 
-export function getBlogCategoryLabel(category) {
-  const labels = {
-    'web': 'Web Dev',
-    'mobile': 'Mobile Dev',
-    'tutorial': 'Tutorial',
-    'thoughts': 'Thoughts'
-  };
-  return labels[category] || category;
-}
-
-export function formatBlogDate(dateString) {
-  const date = new Date(dateString);
-  return date.toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'short',
-    day: 'numeric'
-  });
-}
-
-export function createBlogPreviewCard(post, index) {
-  const card = document.createElement('div');
-  card.className = 'blog-card glass fade-in-up';
-  card.style.animationDelay = `${index * 0.1}s`;
-
-  const categoryLabel = getBlogCategoryLabel(post.category);
-  const formattedDate = formatBlogDate(post.date);
-
-  card.innerHTML = `
-    <div class="blog-card-image">
-      ${post.thumbnail ?
-      `<picture><source srcset="${post.thumbnail.replace(/\.(png|jpg|jpeg)$/i, '.webp')}" type="image/webp"><img src="${post.thumbnail}" alt="${post.title}" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\\'blog-placeholder\\'>${getInitials(post.title)}</div>'"></picture>` :
-      `<div class="blog-placeholder">${getInitials(post.title)}</div>`
-    }
-      ${post.featured ? '<span class="featured-badge">Featured</span>' : ''}
-    </div>
-    <div class="blog-card-content">
-      <div class="blog-card-meta">
-        <span class="blog-category">${categoryLabel}</span>
-        <span class="blog-date">${formattedDate}</span>
-      </div>
-      <h3>${post.title}</h3>
-      <p class="blog-excerpt">${post.excerpt}</p>
-      <div class="blog-card-footer">
-        <span class="reading-time">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="12" cy="12" r="10"/>
-            <polyline points="12 6 12 12 16 14"/>
-          </svg>
-          ${post.readingTime} min read
-        </span>
-        <a href="blog-post.html?slug=${post.slug}" class="read-more-link">
-          Read More →
-        </a>
-      </div>
-    </div>
-  `;
-
-  return card;
-}
-
 export async function loadBlogPreview() {
   if (typeof fetch === 'undefined') return;
   try {
@@ -290,12 +302,13 @@ export async function loadBlogPreview() {
     const previewGrid = document.getElementById('blog-preview-grid');
     if (!previewGrid) return;
 
-    previewGrid.innerHTML = '';
-
-    latestPosts.forEach((post, index) => {
-      const card = createBlogPreviewCard(post, index);
-      previewGrid.appendChild(card);
-    });
+    // Already prerendered at build time: attach behaviour, do not repaint.
+    if (previewGrid.dataset.prerendered !== 'true') {
+      previewGrid.innerHTML = latestPosts
+        .map((post, index) => renderBlogCardHTML(post, index, { dateStyle: 'short' }))
+        .join('');
+    }
+    attachBlogCardListeners(previewGrid);
   } catch (error) {
     console.error('Error loading blog preview:', error);
   }
@@ -354,24 +367,37 @@ if (typeof window !== 'undefined' && typeof document !== 'undefined' && !isTestE
 
   function openCertLightbox() {
     certLightbox.classList.add('is-open');
+    certLightbox.removeAttribute('inert');
     document.body.style.overflow = 'hidden';
     certLightboxClose.focus();
   }
 
   function closeCertLightbox() {
     certLightbox.classList.remove('is-open');
+    certLightbox.setAttribute('inert', '');
     document.body.style.overflow = '';
     certThumbBtn.focus();
   }
 
   if (certThumbBtn && certLightbox && certLightboxClose) {
+    // Belt and braces alongside `visibility: hidden` in CSS: a closed dialog
+    // must not be focusable or announced.
+    certLightbox.setAttribute('inert', '');
+
     certThumbBtn.addEventListener('click', openCertLightbox);
     certLightboxClose.addEventListener('click', closeCertLightbox);
     certLightbox.addEventListener('click', (e) => {
       if (e.target === certLightbox) closeCertLightbox();
     });
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && certLightbox.classList.contains('is-open')) closeCertLightbox();
+      if (!certLightbox.classList.contains('is-open')) return;
+      if (e.key === 'Escape') {
+        closeCertLightbox();
+      } else if (e.key === 'Tab') {
+        // The dialog holds a single control, so Tab simply stays on it.
+        e.preventDefault();
+        certLightboxClose.focus();
+      }
     });
   }
 }

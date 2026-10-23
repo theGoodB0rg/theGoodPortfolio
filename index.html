@@ -21,6 +21,7 @@
 </head>
 
 <body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
   <header class="glass">
     <nav class="container">
       <div class="logo">Olorunfemi<span class="logo-dot">.</span></div>
@@ -40,7 +41,7 @@
     </nav>
   </header>
 
-  <main>
+  <main id="main-content" tabindex="-1">
     <!-- Hero Section — Full-width, personality-driven -->
     <section id="hero" class="container">
       <div class="hero-content">
@@ -319,8 +320,10 @@
         </div>
       </div>
 
+      <p id="portfolio-status" class="visually-hidden" role="status" aria-live="polite"></p>
+
       <div class="portfolio-grid" id="portfolio-grid">
-        <!-- Projects will be injected here via JavaScript -->
+        <!-- Prerendered at build time by scripts/prerender.js; re-rendered client-side when filtered. -->
       </div>
 
       <!-- Inline CTA -->

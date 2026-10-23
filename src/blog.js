@@ -1,4 +1,6 @@
 import './style.css'
+import { renderBlogCardHTML, attachBlogCardListeners, getCategoryLabel, formatDate, postUrl } from './blog-card.js';
+import { escapeHtml, safeUrl } from './escape.js';
 
 // Blog State
 let blogPosts = [];
@@ -53,10 +55,17 @@ function setupFilters() {
     const filterButtons = document.querySelectorAll('#blog-filter-buttons .filter-btn');
 
     filterButtons.forEach(btn => {
+        if (!btn.hasAttribute('aria-pressed')) {
+            btn.setAttribute('aria-pressed', btn.classList.contains('active') ? 'true' : 'false');
+        }
         btn.addEventListener('click', () => {
             // Update active state
-            filterButtons.forEach(b => b.classList.remove('active'));
+            filterButtons.forEach(b => {
+                b.classList.remove('active');
+                b.setAttribute('aria-pressed', 'false');
+            });
             btn.classList.add('active');
+            btn.setAttribute('aria-pressed', 'true');
 
             // Render filtered posts
             renderBlogGrid(btn.dataset.filter);
@@ -68,62 +77,28 @@ function renderBlogGrid(filter = 'all') {
     const grid = document.getElementById('blog-grid');
     if (!grid) return;
 
-    grid.innerHTML = '';
-
     const filtered = filter === 'all'
         ? blogPosts
         : blogPosts.filter(post => post.category === filter);
 
     if (filtered.length === 0) {
-        grid.innerHTML = '<div class="empty-state">No posts found in this category.</div>';
+        grid.innerHTML = '<p class="empty-state">No posts found in this category.</p>';
+        announcePostCount(0, filter);
         return;
     }
 
-    filtered.forEach((post, index) => {
-        const card = createBlogCard(post, index);
-        grid.appendChild(card);
-    });
+    grid.innerHTML = filtered.map((post, index) => renderBlogCardHTML(post, index)).join('');
+    attachBlogCardListeners(grid);
+    announcePostCount(filtered.length, filter);
 }
 
-function createBlogCard(post, index) {
-    const card = document.createElement('div');
-    card.className = 'blog-card glass fade-in-up';
-    card.style.animationDelay = `${index * 0.1}s`;
-
-    const categoryLabel = getCategoryLabel(post.category);
-    const formattedDate = formatDate(post.date);
-
-    card.innerHTML = `
-    <div class="blog-card-image">
-      ${post.thumbnail ?
-            `<picture><source srcset="${post.thumbnail.replace(/\.(png|jpg|jpeg)$/i, '.webp')}" type="image/webp"><img src="${post.thumbnail}" alt="${post.title}" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\\'blog-placeholder\\'>${getInitials(post.title)}</div>'"></picture>` :
-            `<div class="blog-placeholder">${getInitials(post.title)}</div>`
-        }
-      ${post.featured ? '<span class="featured-badge">Featured</span>' : ''}
-    </div>
-    <div class="blog-card-content">
-      <div class="blog-card-meta">
-        <span class="blog-category">${categoryLabel}</span>
-        <span class="blog-date">${formattedDate}</span>
-      </div>
-      <h3>${post.title}</h3>
-      <p class="blog-excerpt">${post.excerpt}</p>
-      <div class="blog-card-footer">
-        <span class="reading-time">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="12" cy="12" r="10"/>
-            <polyline points="12 6 12 12 16 14"/>
-          </svg>
-          ${post.readingTime} min read
-        </span>
-        <a href="blog-post.html?slug=${post.slug}" class="read-more-link">
-          Read More →
-        </a>
-      </div>
-    </div>
-  `;
-
-    return card;
+function announcePostCount(count, filter) {
+    const status = document.getElementById('blog-status');
+    if (!status) return;
+    const label = filter === 'all' ? '' : ` in ${getCategoryLabel(filter)}`;
+    status.textContent = count === 0
+        ? `No posts${label}.`
+        : `Showing ${count} ${count === 1 ? 'post' : 'posts'}${label}.`;
 }
 
 // ============================================
@@ -339,29 +314,6 @@ function highlightCode() {
 // UTILITY FUNCTIONS
 // ============================================
 
-function getCategoryLabel(category) {
-    const labels = {
-        'web': 'Web Dev',
-        'mobile': 'Mobile Dev',
-        'tutorial': 'Tutorial',
-        'thoughts': 'Thoughts'
-    };
-    return labels[category] || category;
-}
-
-function formatDate(dateString) {
-    const date = new Date(dateString);
-    return date.toLocaleDateString('en-US', {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric'
-    });
-}
-
-function getInitials(title) {
-    if (!title) return '??';
-    return title.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase();
-}
 
 function setMeta(id, attr, value) {
     const el = document.getElementById(id);
