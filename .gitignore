@@ -21,3 +21,13 @@ scripts/generate_application_documents.py
 scripts/pdf_extractor.py
 # Interview dossier (private prep material)
 /virtual_nation_brief/
+
+# Job-application documents are kept outside the repo: this is a public
+# repository and public/ is served as the website, so anything here is
+# readable by anyone. Only the CV linked from the site belongs in public/.
+/public/*.docx
+/public/*.md
+/public/resume_*.pdf
+/public/cover_letter_*.pdf
+/public/Olorunfemi_John_*_Resume.pdf
+/public/Olorunfemi_John_*_Cover_Letter.pdf

@@ -1,0 +1,42 @@
+# Security headers for Cloudflare Pages.
+#
+# script-src is 'self' with no 'unsafe-inline': every inline onclick/onerror
+# attribute was removed and the legacy ?slug= redirect loads blog-redirect.js
+# as a file, so nothing on the site needs inline script.
+#
+# style-src keeps 'unsafe-inline' because cards carry an inline
+# style="animation-delay: ..." attribute. Inline style is a far weaker vector
+# than inline script, and removing it would mean a generated stylesheet rule
+# per card. fonts.googleapis.com is allowed for the @import in style.css.
+
+/*
+  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; form-action 'none'; frame-ancestors 'none'; base-uri 'none'; object-src 'none'; upgrade-insecure-requests
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()
+  Cross-Origin-Opener-Policy: same-origin
+  X-Frame-Options: DENY
+
+# Hashed filenames, so these can be cached hard and forever.
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Machine-readable endpoints. Served as text so crawlers and agents can read
+# them rather than download them.
+/llms.txt
+  Content-Type: text/plain; charset=utf-8
+  Cache-Control: public, max-age=3600
+
+/robots.txt
+  Content-Type: text/plain; charset=utf-8
+
+/sitemap.xml
+  Content-Type: application/xml; charset=utf-8
+
+/feed.xml
+  Content-Type: application/rss+xml; charset=utf-8
+
+/data/*
+  Content-Type: application/json; charset=utf-8
+  Access-Control-Allow-Origin: *
+  Cache-Control: public, max-age=3600

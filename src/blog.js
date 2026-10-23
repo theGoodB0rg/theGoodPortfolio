@@ -325,6 +325,18 @@ function setupCodeCopy() {
     });
 }
 
+// Syntax highlighting is opt-in. highlight.js used to load from cdnjs on every
+// post page -- roughly 100KB of third-party script and CSS for the zero code
+// blocks the posts actually contain, and the one thing standing between this
+// site and a CSP without a third-party script-src.
+//
+// To bring it back when a post needs it, bundle a subset rather than a CDN:
+//   npm i highlight.js
+//   import hljs from 'highlight.js/lib/core';
+//   import javascript from 'highlight.js/lib/languages/javascript';
+//   hljs.registerLanguage('javascript', javascript);
+//   import 'highlight.js/styles/atom-one-dark.css';
+// and assign it to `window.hljs`, or call hljs.highlightElement here directly.
 function highlightCode() {
     if (typeof hljs !== 'undefined') {
         document.querySelectorAll('pre code').forEach((block) => {
