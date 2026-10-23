@@ -1,5 +1,6 @@
 import { TouchHandler } from './TouchHandler.js';
 import './slideshow.css';
+import { getProjectDestinations } from '../../project-links.js';
 
 /**
  * SlideshowModal Component
@@ -81,6 +82,7 @@ export class SlideshowModal {
                     </div>
                     <div class="info-actions">
                       <a id="info-link" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Visit Project</a>
+                      <a id="info-link-alt" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" hidden>Visit Website</a>
                     </div>
                   </div>
                 </div>
@@ -110,6 +112,7 @@ export class SlideshowModal {
     this.infoTitle = this.modalEl.querySelector('#info-title');
     this.infoDesc = this.modalEl.querySelector('#info-desc');
     this.infoLink = this.modalEl.querySelector('#info-link');
+    this.infoLinkAlt = this.modalEl.querySelector('#info-link-alt');
     this.titleEl = this.modalEl.querySelector('#modal-project-title');
     this.slideCounter = this.modalEl.querySelector('#slide-counter');
     this.dotsContainer = this.modalEl.querySelector('#modal-dots');
@@ -294,19 +297,35 @@ export class SlideshowModal {
         this.infoDesc.textContent = this.currentProject.details || this.currentProject.description || 'No specific details available.';
       }
 
+      const destinations = getProjectDestinations(this.currentProject);
+
       if (this.infoLink) {
-        const targetUrl = this.currentProject.live_link || this.currentProject.play_store_link || this.currentProject.link || '#';
-        this.infoLink.href = targetUrl;
-        this.infoLink.textContent = this.currentProject.live_link
-          ? 'Visit Live Site'
-          : (this.currentProject.play_store_link ? 'View on Google Play' : 'View on GitHub');
-        this.infoLink.style.display = (this.currentProject.live_link || this.currentProject.play_store_link || this.currentProject.link) ? 'inline-flex' : 'none';
+        this.applyDestination(this.infoLink, destinations[0]);
+      }
+
+      if (this.infoLinkAlt) {
+        this.applyDestination(this.infoLinkAlt, destinations[1]);
       }
 
       if (this.slideCounter) {
         this.slideCounter.textContent = `${this.totalSlides} / ${this.totalSlides}`;
       }
     }
+  }
+
+  // Point one of the info-slide buttons at a destination, or hide it outright
+  // when the project has no second place to go.
+  applyDestination(anchor, destination) {
+    if (!destination) {
+      anchor.hidden = true;
+      anchor.style.display = 'none';
+      return;
+    }
+    anchor.hidden = false;
+    anchor.style.display = 'inline-flex';
+    anchor.href = destination.url;
+    anchor.textContent = destination.label;
+    anchor.setAttribute('aria-label', destination.aria);
   }
 
   destroy() {

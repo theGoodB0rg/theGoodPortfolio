@@ -7,6 +7,9 @@ import {
   truncateText,
   renderImageContent,
   renderActionButtons,
+  getLiveLinkLabel,
+  getLiveLinkKind,
+  getProjectDestinations,
   categoryLabels,
   categoryOrder
 } from '../main.js';
@@ -111,5 +114,54 @@ describe('Projects Filtering & Helpers', () => {
     const html2 = renderActionButtons(projWithLiveOnly);
     expect(html2).toContain('View Live Site');
     expect(html2).not.toContain('Source Code');
+  });
+
+  it('distinguishes a store listing from the marketing site beside it', () => {
+    const app = {
+      title: 'Universal Undo',
+      category: 'mobile',
+      live_link: 'https://universalundo.app/',
+      play_store_link: 'https://play.google.com/store/apps/details?id=com.universalundo'
+    };
+
+    const html = renderActionButtons(app);
+
+    // The website must never be labelled as if it were the download.
+    expect(html).toContain('Get it on Google Play');
+    expect(html).toContain('Visit Website');
+    expect(html).not.toContain('Get App');
+
+    // Different styles, so the two never read as the same action.
+    expect(html).toContain('card-btn store');
+    expect(html).toContain('card-btn site');
+
+    // The store listing leads, because installing is the real call to action.
+    expect(html.indexOf('card-btn store')).toBeLessThan(html.indexOf('card-btn site'));
+
+    // Each destination spells itself out for screen readers.
+    expect(html).toContain('aria-label="Get Universal Undo on Google Play (opens in a new tab)"');
+    expect(html).toContain('aria-label="Visit the Universal Undo website (opens in a new tab)"');
+  });
+
+  it('still calls a mobile project without a store listing a download', () => {
+    const app = { title: 'Sideloaded', category: 'mobile', live_link: 'https://example.com' };
+    expect(getLiveLinkLabel(app)).toBe('Get App');
+    expect(getLiveLinkKind(app)).toBe('app');
+  });
+
+  it('lets a project override its own link label', () => {
+    const app = { title: 'Thing', category: 'web', live_link: 'https://example.com', live_link_label: 'Try the demo' };
+    expect(getLiveLinkLabel(app)).toBe('Try the demo');
+  });
+
+  it('orders destinations store, site, then source', () => {
+    const app = {
+      title: 'Everything',
+      category: 'mobile',
+      link: 'https://github.com/x/y',
+      live_link: 'https://example.com',
+      play_store_link: 'https://play.google.com/store/apps/details?id=x'
+    };
+    expect(getProjectDestinations(app).map(d => d.type)).toEqual(['store', 'site', 'source']);
   });
 });

@@ -114,6 +114,8 @@
     "description": "The Ctrl+Z your Android never had. Shake to undo deleted text across any app. 100% offline in under 3MB RAM.",
     "details": "System-wide undo service leveraging Android Accessibility APIs. Retains transient keystroke history locally in RAM with zero cloud permissions, zero telemetry, and instant gesture restoration.",
     "live_link": "https://universalundo.app/",
+    "live_link_kind": "marketing",
+    "live_link_label": "Visit Website",
     "play_store_link": "https://play.google.com/store/apps/details?id=com.universalundo",
     "images": [
       {
