@@ -15,7 +15,7 @@ import { fileURLToPath } from 'url';
 import { JSDOM } from 'jsdom';
 import hljs from 'highlight.js/lib/common';
 
-import { renderProjectCardHTML, renderFiltersHTML } from '../src/project-card.js';
+import { renderPortfolioHTML, renderFiltersHTML } from '../src/project-card.js';
 import { renderBlogCardHTML, postUrl, getCategoryLabel, formatDate } from '../src/blog-card.js';
 import { escapeHtml } from '../src/escape.js';
 
@@ -128,7 +128,7 @@ function prerenderIndex(projects, posts) {
 
   const grid = document.getElementById('portfolio-grid');
   if (grid) {
-    grid.innerHTML = projects.map((p, i) => renderProjectCardHTML(p, i)).join('');
+    grid.innerHTML = renderPortfolioHTML(projects);
     grid.dataset.prerendered = 'true';
   }
 

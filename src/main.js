@@ -12,6 +12,8 @@ import {
   renderImageContent,
   renderActionButtons,
   renderProjectCardHTML,
+  renderCompactCardHTML,
+  renderPortfolioHTML,
   renderFiltersHTML
 } from './project-card.js'
 
@@ -24,6 +26,8 @@ export {
   renderImageContent,
   renderActionButtons,
   renderProjectCardHTML,
+  renderCompactCardHTML,
+  renderPortfolioHTML,
   renderFiltersHTML
 }
 
@@ -94,14 +98,7 @@ export function renderProjects(filter = 'all') {
   if (!grid) return;
 
   const filtered = filterProjects(projects, filter);
-
-  if (filtered.length === 0) {
-    grid.innerHTML = '<p class="empty-state">No projects found in this category.</p>';
-    announceProjectCount(0, filter);
-    return;
-  }
-
-  grid.innerHTML = filtered.map((project, index) => renderProjectCardHTML(project, index)).join('');
+  grid.innerHTML = renderPortfolioHTML(projects, filter);
   announceProjectCount(filtered.length, filter);
 }
 

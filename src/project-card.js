@@ -6,16 +6,20 @@
 import { escapeHtml, safeUrl } from './escape.js';
 import { getProjectDestinations, getLiveLinkKind, getLiveLinkLabel } from './project-links.js';
 
-// Category display labels and preferred ordering
+// Category display labels and preferred ordering.
+//
+// Named by outcome rather than by language: "Python" described a tool, not a
+// result, and sat oddly beside the others. Automation leads because that is
+// what the rest of the page sells.
 export const categoryLabels = {
   all: 'All',
-  mobile: 'Android & Systems',
-  web: 'Web & Tools',
-  python: 'Python & AI',
+  automation: 'AI & Automation',
+  web: 'Web & SaaS',
+  mobile: 'Mobile & Systems',
   security: 'Security'
 };
 
-export const categoryOrder = ['all', 'mobile', 'web', 'python', 'security'];
+export const categoryOrder = ['all', 'automation', 'web', 'mobile', 'security'];
 
 // Filter Helper
 export function filterProjects(allProjects, filter = 'all') {
@@ -143,6 +147,59 @@ export function renderProjectCardHTML(project, index = 0) {
       ${renderActionButtons(project)}
     </div>
   </article>`;
+}
+
+// A compact card for the second tier: no hero image, one line of description.
+// Dropping the image is deliberate. Half the work down here has no screenshot,
+// and an empty image slot reads as broken rather than as "no screenshot yet".
+export function renderCompactCardHTML(project, index = 0) {
+  const title = escapeHtml(project.title);
+  const summary = truncateText(project.description || project.details || '', 95);
+
+  return `<article class="project-card project-card-compact fade-in-up" style="animation-delay: ${(index * 0.04).toFixed(2)}s">
+    <div class="card-content">
+      <p class="card-tags">${escapeHtml((project.tags || []).slice(0, 2).join(' • '))}</p>
+      <h3 class="card-title">${title}</h3>
+      <p class="card-description">${escapeHtml(summary)}</p>
+      ${renderActionButtons(project)}
+    </div>
+  </article>`;
+}
+
+// The whole portfolio section, in two tiers.
+//
+// Everything used to render at one size, so sixteen projects carried equal
+// weight and nothing stood out. Flagship projects now lead at full size with
+// their screenshots; the rest follow as compact cards under a heading.
+export function renderPortfolioHTML(projects, filter = 'all') {
+  const visible = filterProjects(projects, filter);
+  if (visible.length === 0) {
+    return '<p class="empty-state">No projects found in this category.</p>';
+  }
+
+  const flagship = visible.filter(p => p.featured);
+  const rest = visible.filter(p => !p.featured);
+
+  let html = '';
+
+  if (flagship.length > 0) {
+    html += `<div class="portfolio-grid portfolio-tier-flagship">
+      ${flagship.map((p, i) => renderProjectCardHTML(p, i)).join('')}
+    </div>`;
+  }
+
+  if (rest.length > 0) {
+    // Only call it "More work" when there is a flagship tier above it to be
+    // "more" than; a filtered view may have no featured project at all.
+    if (flagship.length > 0) {
+      html += `<h3 class="tier-heading">More work</h3>`;
+    }
+    html += `<div class="portfolio-grid portfolio-tier-compact">
+      ${rest.map((p, i) => renderCompactCardHTML(p, i)).join('')}
+    </div>`;
+  }
+
+  return html;
 }
 
 // Filter buttons, rendered as markup so the build can emit them too.

@@ -8,6 +8,7 @@ import {
   renderImageContent,
   renderActionButtons,
   renderProjectCardHTML,
+  renderPortfolioHTML,
   getLiveLinkLabel,
   getLiveLinkKind,
   getProjectDestinations,
@@ -69,9 +70,9 @@ describe('Projects Filtering & Helpers', () => {
     expect(mobile.length).toBeGreaterThan(0);
     mobile.forEach(p => expect(p.category).toBe('mobile'));
 
-    const python = filterProjects(projectsData, 'python');
-    expect(python.length).toBeGreaterThan(0);
-    python.forEach(p => expect(p.category).toBe('python'));
+    const automation = filterProjects(projectsData, 'automation');
+    expect(automation.length).toBeGreaterThan(0);
+    automation.forEach(p => expect(p.category).toBe('automation'));
 
     const web = filterProjects(projectsData, 'web');
     expect(web.length).toBeGreaterThan(0);
@@ -118,6 +119,41 @@ describe('Projects Filtering & Helpers', () => {
     const html2 = renderActionButtons(projWithLiveOnly);
     expect(html2).toContain('View Live Site');
     expect(html2).not.toContain('Source Code');
+  });
+
+  it('keeps every project inside the declared category set', () => {
+    const known = new Set(categoryOrder.filter(c => c !== 'all'));
+    projectsData.forEach(p => {
+      expect(known.has(p.category), `${p.title} has unknown category "${p.category}"`).toBe(true);
+    });
+
+    // Automation leads, because that is what the rest of the page sells.
+    expect(categoryOrder[1]).toBe('automation');
+    expect(categoryLabels.automation).toBe('AI & Automation');
+  });
+
+  it('splits the portfolio into a flagship tier and a compact tier', () => {
+    const html = renderPortfolioHTML(projectsData);
+    const flagshipCount = projectsData.filter(p => p.featured).length;
+
+    expect(html).toContain('portfolio-tier-flagship');
+    expect(html).toContain('portfolio-tier-compact');
+    expect(html).toContain('More work');
+
+    const compactCards = html.match(/project-card-compact/g) || [];
+    expect(compactCards.length).toBe(projectsData.length - flagshipCount);
+
+    // The compact tier carries no image slots: half of it has no screenshot,
+    // and an empty frame reads as broken rather than as "none yet".
+    const compactSection = html.slice(html.indexOf('portfolio-tier-compact'));
+    expect(compactSection).not.toContain('<picture>');
+  });
+
+  it('still tiers correctly when a filter excludes every flagship project', () => {
+    const html = renderPortfolioHTML(projectsData, 'security');
+    expect(html).toContain('project-card-compact');
+    // Nothing to be "more" than, so no heading.
+    expect(html).not.toContain('More work');
   });
 
   it('renders traction metrics as a labelled list, and omits them when absent', () => {

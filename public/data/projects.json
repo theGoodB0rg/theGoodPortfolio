@@ -72,7 +72,7 @@
   {
     "id": 1342295537,
     "title": "VideoMascot",
-    "category": "python",
+    "category": "automation",
     "featured": true,
     "tags": [
       "Python",
@@ -159,7 +159,7 @@
   {
     "id": 103,
     "title": "Nigerian TTS",
-    "category": "python",
+    "category": "automation",
     "featured": false,
     "tags": [
       "Python",
@@ -176,7 +176,7 @@
   {
     "id": 104,
     "title": "ListingHarvester",
-    "category": "python",
+    "category": "automation",
     "featured": false,
     "tags": [
       "Python",
@@ -334,7 +334,7 @@
   {
     "id": 1342295539,
     "title": "FreeTrialFinder",
-    "category": "python",
+    "category": "automation",
     "featured": false,
     "tags": [
       "Python",
@@ -351,7 +351,7 @@
   {
     "id": 1342295540,
     "title": "ImageGenPiper",
-    "category": "python",
+    "category": "automation",
     "featured": false,
     "tags": [
       "Python",
@@ -368,7 +368,7 @@
   {
     "id": 1342295541,
     "title": "MotionPicturesToolkit",
-    "category": "web",
+    "category": "automation",
     "featured": false,
     "tags": [
       "React",
@@ -385,7 +385,7 @@
   {
     "id": 1342295542,
     "title": "Researcher Train",
-    "category": "python",
+    "category": "automation",
     "featured": false,
     "tags": [
       "Python",
