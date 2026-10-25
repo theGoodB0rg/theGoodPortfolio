@@ -39,6 +39,59 @@
     "thumb": "./projects/tap_convert/00_dashboard_overview.png"
   },
   {
+    "id": 1342295543,
+    "title": "ReportDesk",
+    "category": "automation",
+    "featured": true,
+    "tags": [
+      "Cloudflare Workers",
+      "TypeScript",
+      "Tool-Calling LLM",
+      "SQLite / D1",
+      "SQL Guard"
+    ],
+    "description": "Self-serve reporting automation over an ERP: tool-calling AI analyst for briefings and drafts, guarded natural-language SQL, and invoice reconciliation.",
+    "details": "AI-assisted reporting automation platform designed to eliminate IT reporting bottlenecks. Features a bounded tool-calling AI assistant that pulls KPIs, runs saved reports, drafts reviewable emails, and translates plain-English questions into checked, read-only SQL queries over a mock ERP. Includes automated request triage, invoice reconciliation against billing exports, daily token budget guardrails, and 196 tests covering adversarial SQL injection and tool-loop safety.",
+    "link": "https://github.com/theGoodB0rg/reportdesk",
+    "live_link": "https://reportdesk.thegoodb0rg.workers.dev/#about",
+    "live_link_label": "Live Demo",
+    "images": [
+      {
+        "url": "./projects/reportdesk/01-overview.png",
+        "caption": "Operations overview dashboard with headline receivables, revenue, and supply KPIs linking directly to reports."
+      },
+      {
+        "url": "./projects/reportdesk/02-assistant.png",
+        "caption": "Bounded tool-calling AI assistant pulling KPIs, running reports, and drafting reviewable emails with full audit steps."
+      },
+      {
+        "url": "./projects/reportdesk/03-reports.png",
+        "caption": "Saved reports with sortable tables, data bars, and CSV export for Excel, Power BI, or Tableau."
+      },
+      {
+        "url": "./projects/reportdesk/04-ask-your-data.png",
+        "caption": "Guarded natural-language query engine converting plain-English questions to checked, read-only SQL."
+      },
+      {
+        "url": "./projects/reportdesk/05-request-desk.png",
+        "caption": "Request desk triaging requests to saved reports, queries, or IT with transparent reasoning."
+      },
+      {
+        "url": "./projects/reportdesk/06-reconciliation.png",
+        "caption": "Reconciliation engine comparing ERP invoices against billing exports with issue-type filters."
+      },
+      {
+        "url": "./projects/reportdesk/07-impact.png",
+        "caption": "Self-service vs. IT load analytics and automation impact metrics."
+      },
+      {
+        "url": "./projects/reportdesk/08-overview-dark.png",
+        "caption": "Operations overview rendered in dark theme with accessible, high-contrast SVG data visualizations."
+      }
+    ],
+    "thumb": "./projects/reportdesk/01-overview.png"
+  },
+  {
     "id": 1131011700,
     "title": "JsonExport",
     "category": "web",
