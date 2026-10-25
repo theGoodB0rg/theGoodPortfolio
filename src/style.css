@@ -554,6 +554,10 @@ header nav {
 .featured-info p {
   color: var(--color-text-muted);
   line-height: 1.7;
+  margin-bottom: 1rem;
+}
+
+.featured-info p:last-of-type {
   margin-bottom: 2rem;
 }
 
