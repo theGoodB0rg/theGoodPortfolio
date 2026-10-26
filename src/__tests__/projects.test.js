@@ -31,10 +31,23 @@ describe('Projects Data & Structure', () => {
     const tapConvert = projectsData.find(p => p.title === 'TapConvert');
     expect(tapConvert).toBeDefined();
     expect(tapConvert.category).toBe('mobile');
-    expect(tapConvert.featured).toBe(true);
+    expect(tapConvert.featured).toBe(false); // lives in the grid; ReportDesk leads the flagship tier
     expect(tapConvert.link).toBe('https://github.com/theGoodB0rg/tap-convert');
     expect(tapConvert.images.length).toBeGreaterThanOrEqual(4);
     expect(tapConvert.thumb).toContain('projects/tap_convert');
+  });
+
+  it('leads the flagship tier with ReportDesk, presented as a fully working demo with a GIF', () => {
+    const reportDesk = projectsData[0];
+    expect(reportDesk.title).toBe('ReportDesk');
+    expect(reportDesk.featured).toBe(true);
+    expect(reportDesk.category).toBe('automation');
+    expect(reportDesk.thumb).toMatch(/\.gif$/);
+    expect(reportDesk.images[0].url).toMatch(/\.gif$/);
+    expect(reportDesk.live_link).toBe('https://reportdesk.thegoodb0rg.workers.dev/?ref=portfolio#assistant');
+    expect(reportDesk.live_link_label).toBe('Try the live AI demo');
+    expect(reportDesk.description).toMatch(/fully working/i);
+    expect(reportDesk.link).toBe('https://github.com/theGoodB0rg/reportdesk');
   });
 
   it('enforces strict privacy: proprietary projects must NOT expose git repo links', () => {

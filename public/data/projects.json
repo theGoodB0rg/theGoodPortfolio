@@ -1,44 +1,5 @@
 [
   {
-    "id": 101,
-    "title": "TapConvert",
-    "category": "mobile",
-    "featured": true,
-    "tags": [
-      "Kotlin 2.0",
-      "Jetpack Compose",
-      "FFmpeg",
-      "100% Offline",
-      "Clean Architecture"
-    ],
-    "description": "Helps people hit exact upload limits on forms and chats by compressing photos, video, and PDFs on-device, with zero server uploads.",
-    "details": "Built with Kotlin and a 10-module clean architecture. Uses hardware-accelerated Media3 and in-memory FFmpeg pipelines to compress images, audio, and video on-device without cloud dependencies or privacy risks. Fully covered by zero-mock contract unit tests.",
-    "link": "https://github.com/theGoodB0rg/tap-convert",
-    "images": [
-      {
-        "url": "./projects/tap_convert/00_dashboard_overview.png",
-        "caption": "TapConvert dashboard with 1-tap conversion presets and modern Material You UI."
-      },
-      {
-        "url": "./projects/tap_convert/01_quick_action_share_sheet.png",
-        "caption": "System share sheet integration for instant conversions directly from any app."
-      },
-      {
-        "url": "./projects/tap_convert/02_conversion_configuration.png",
-        "caption": "Granular compression settings and target file size constraints."
-      },
-      {
-        "url": "./projects/tap_convert/03_active_offline_processing.png",
-        "caption": "Hardware-accelerated on-device transcoding with zero battery waste."
-      },
-      {
-        "url": "./projects/tap_convert/04_reclaimed_storage_result.png",
-        "caption": "Instant storage savings verification and clean export sharing."
-      }
-    ],
-    "thumb": "./projects/tap_convert/00_dashboard_overview.png"
-  },
-  {
     "id": 1342295543,
     "title": "ReportDesk",
     "category": "automation",
@@ -50,12 +11,16 @@
       "SQLite / D1",
       "SQL Guard"
     ],
-    "description": "Self-serve reporting automation over an ERP: tool-calling AI analyst for briefings and drafts, guarded natural-language SQL, and invoice reconciliation.",
-    "details": "AI-assisted reporting automation platform designed to eliminate IT reporting bottlenecks. Features a bounded tool-calling AI assistant that pulls KPIs, runs saved reports, drafts reviewable emails, and translates plain-English questions into checked, read-only SQL queries over a mock ERP. Includes automated request triage, invoice reconciliation against billing exports, daily token budget guardrails, and 196 tests covering adversarial SQL injection and tool-loop safety.",
+    "description": "Self-serve reporting automation over an ERP: a tool-calling AI analyst for briefings and drafts, guarded natural-language SQL, and invoice reconciliation. Fully working: ask the AI anything on the live demo.",
+    "details": "A fully working system, not a front-end mock-up: visitors can talk to a real AI analyst on the live demo. AI-assisted reporting automation platform designed to eliminate IT reporting bottlenecks. Features a bounded tool-calling AI assistant that pulls KPIs, runs saved reports, drafts reviewable emails, and translates plain-English questions into checked, read-only SQL queries over a mock ERP. Includes automated request triage, invoice reconciliation against billing exports, daily token budget guardrails, and 196 tests covering adversarial SQL injection and tool-loop safety.",
     "link": "https://github.com/theGoodB0rg/reportdesk",
-    "live_link": "https://reportdesk.thegoodb0rg.workers.dev/#about",
-    "live_link_label": "Live Demo",
+    "live_link": "https://reportdesk.thegoodb0rg.workers.dev/?ref=portfolio#assistant",
+    "live_link_label": "Try the live AI demo",
     "images": [
+      {
+        "url": "./projects/reportdesk/assistant_demo.gif",
+        "caption": "Live clip: the AI analyst takes a plain-English request, runs a report, writes the briefing and drafts the email for review. Real AI, real queries."
+      },
       {
         "url": "./projects/reportdesk/01-overview.png",
         "caption": "Operations overview dashboard with headline receivables, revenue, and supply KPIs linking directly to reports."
@@ -89,7 +54,52 @@
         "caption": "Operations overview rendered in dark theme with accessible, high-contrast SVG data visualizations."
       }
     ],
-    "thumb": "./projects/reportdesk/01-overview.png"
+    "thumb": "./projects/reportdesk/assistant_demo.gif",
+    "live_link_kind": "app",
+    "metrics": [
+      "Fully working: talk to the AI live",
+      "Real queries on a live database",
+      "196 automated tests"
+    ]
+  },
+  {
+    "id": 101,
+    "title": "TapConvert",
+    "category": "mobile",
+    "featured": false,
+    "tags": [
+      "Kotlin 2.0",
+      "Jetpack Compose",
+      "FFmpeg",
+      "100% Offline",
+      "Clean Architecture"
+    ],
+    "description": "Helps people hit exact upload limits on forms and chats by compressing photos, video, and PDFs on-device, with zero server uploads.",
+    "details": "Built with Kotlin and a 10-module clean architecture. Uses hardware-accelerated Media3 and in-memory FFmpeg pipelines to compress images, audio, and video on-device without cloud dependencies or privacy risks. Fully covered by zero-mock contract unit tests.",
+    "link": "https://github.com/theGoodB0rg/tap-convert",
+    "images": [
+      {
+        "url": "./projects/tap_convert/00_dashboard_overview.png",
+        "caption": "TapConvert dashboard with 1-tap conversion presets and modern Material You UI."
+      },
+      {
+        "url": "./projects/tap_convert/01_quick_action_share_sheet.png",
+        "caption": "System share sheet integration for instant conversions directly from any app."
+      },
+      {
+        "url": "./projects/tap_convert/02_conversion_configuration.png",
+        "caption": "Granular compression settings and target file size constraints."
+      },
+      {
+        "url": "./projects/tap_convert/03_active_offline_processing.png",
+        "caption": "Hardware-accelerated on-device transcoding with zero battery waste."
+      },
+      {
+        "url": "./projects/tap_convert/04_reclaimed_storage_result.png",
+        "caption": "Instant storage savings verification and clean export sharing."
+      }
+    ],
+    "thumb": "./projects/tap_convert/00_dashboard_overview.png"
   },
   {
     "id": 1131011700,
